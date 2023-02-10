@@ -5,9 +5,8 @@ import battlemap.Meta.TileType;
 
 public class WallPos extends TilePos
 {
-    public WallPos(int posX, int posY, TileType tileType, boolean isPassable, boolean isVisible)
+    public WallPos(int posX, int posY)
     {
-        super(posX, posY, tileType, isPassable, isVisible);
-        metaData.setTileType(TileType.WALL);
+        super(posX, posY, TileType.WALL, false, false);
     }
 }

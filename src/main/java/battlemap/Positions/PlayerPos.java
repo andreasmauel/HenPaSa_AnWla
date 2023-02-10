@@ -5,9 +5,8 @@ import battlemap.Meta.TileType;
 
 public class PlayerPos extends CharacterPos
 {
-    public PlayerPos(int posX, int posY, TileType tileType, boolean isPassable, boolean isVisible, AbstractCharacter character)
+    public PlayerPos(int posX, int posY, AbstractCharacter character)
     {
-        super(posX, posY, tileType, isPassable, isVisible, character);
-        metaData.setTileType(TileType.PLAYER);
+        super(posX, posY, TileType.PLAYER, false, true, character);
     }
 }

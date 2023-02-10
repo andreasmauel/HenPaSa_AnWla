@@ -5,9 +5,8 @@ import battlemap.Meta.TileType;
 
 public class DoorPos extends TilePos
 {
-    public DoorPos(int posX, int posY, TileType tileType, boolean isPassable, boolean isVisible)
+    public DoorPos(int posX, int posY)
     {
-        super(posX, posY, tileType, isPassable, isVisible);
-        metaData.setTileType(TileType.DOOR);
+        super(posX, posY, TileType.DOOR, false, false);
     }
 }

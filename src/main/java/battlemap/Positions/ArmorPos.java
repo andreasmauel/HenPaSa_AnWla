@@ -6,9 +6,8 @@ import equipment.Equipment;
 
 public class ArmorPos extends EquipmentPos
 {
-    public ArmorPos(int posX, int posY, TileType tileType, boolean isPassable, boolean isVisible, Equipment equipment)
+    public ArmorPos(int posX, int posY, Equipment equipment)
     {
-        super(posX, posY, tileType, isPassable, isVisible, equipment);
-        metaData.setTileType(TileType.ARMOR);
+        super(posX, posY, TileType.ARMOR, true, false, equipment);
     }
 }

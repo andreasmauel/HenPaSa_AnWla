@@ -5,9 +5,8 @@ import battlemap.Meta.TileType;
 
 public class MonsterPos extends CharacterPos
 {
-    public MonsterPos(int posX, int posY, TileType tileType, boolean isPassable, boolean isVisible, AbstractCharacter character)
+    public MonsterPos(int posX, int posY, AbstractCharacter character)
     {
-        super(posX, posY, tileType, isPassable, isVisible, character);
-        metaData.setTileType(TileType.MONSTER);
+        super(posX, posY, TileType.MONSTER, false, false, character);
     }
 }
