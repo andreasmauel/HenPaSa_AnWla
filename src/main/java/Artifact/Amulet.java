@@ -1,7 +1,9 @@
 package Artifact;
 
 public class Amulet extends Magical{
-    public Amulet(){}
+    public Amulet(){
+        super(false);
+    }
 
 
     public void use() {

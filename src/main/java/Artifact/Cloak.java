@@ -2,9 +2,11 @@ package Artifact;
 
 public class Cloak extends Magical{
 
-    public Cloak(){}
+    public Cloak(){
+        super(false);
+    }
 
     public void use() {
-        Player.setVisible = true;
+        Player.setisVisible = true;
     }
 }

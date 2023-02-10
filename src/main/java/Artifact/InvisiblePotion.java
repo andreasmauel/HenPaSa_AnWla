@@ -3,10 +3,11 @@ package Artifact;
 public class InvisiblePotion extends Potion{
 
     public InvisiblePotion(int charges){
-        this.setCharges(charges);
+        super(charges);
+
     }
 
     public void use() {
-        Player.setVisible = true;
+        Player.setisVisible = true;
     }
 }
