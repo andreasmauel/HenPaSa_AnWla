@@ -2,28 +2,33 @@ package equipment.weapon;
 
 import util.Attribute;
 
-public class Dagger extends Weapon{
+public class Sword extends Weapon{
 
-    public Dagger() {
-        //TODO Würfel später hinzufügen bzw damage
-        super(Attribute.DEXTERITY,2,1,0,4,true,2,true);
+    public Sword() {
+        super(Attribute.STRENGTH,15,3,13,8,false,1,false);
     }
+
+    @Override
     protected void draw() {
 
     }
 
+    @Override
     protected void prepare() {
 
     }
 
+    @Override
     protected void aim() {
 
     }
 
+    @Override
     protected void strike() {
 
     }
 
+    @Override
     protected void holster() {
 
     }
