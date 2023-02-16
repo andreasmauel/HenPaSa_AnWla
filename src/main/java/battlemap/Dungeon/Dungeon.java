@@ -1,9 +1,13 @@
 package battlemap.Dungeon;
 
+import Artifact.Artifact;
 import battlemap.AbstractPositions.ArtifactPos;
 import battlemap.AbstractPositions.CharacterPos;
 import battlemap.AbstractPositions.EquipmentPos;
 import battlemap.AbstractPositions.TilePos;
+import battlemap.Meta.TileType;
+import battlemap.Positions.*;
+import equipment.Equipment;
 
 public class Dungeon
 {
@@ -41,6 +45,40 @@ public class Dungeon
         }
     }
 
+    public void transferTilePos(int x, int y, TilePos tile)
+    {
+        tiles[x][y] = tile;
+    }
+
+    public void setLockedPos(int x, int y, TileType type, int difficultyClass, boolean isSecret)
+    {
+        switch(type)
+        {
+            case CHEST:
+                tiles[x][y] = new ChestPos(x,y,difficultyClass,isSecret);
+                break;
+            case DOOR:
+                tiles[x][y] = new DoorPos(x,y,difficultyClass, isSecret);
+                break;
+            default:
+                tiles[x][y] = null;
+                break;
+        }
+    }
+
+    public void setStructurePos(int x, int y, TileType type)
+    {
+        switch(type)
+        {
+            case WALL:
+                tiles[x][y] = new WallPos(x,y);
+                break;
+            default:
+                tiles[x][y] = null;
+                break;
+        }
+    }
+
     public TilePos getTilePos(int x, int y)
     {
         try
@@ -53,6 +91,26 @@ public class Dungeon
         }
     }
 
+    public void transferCharacterPos(int x, int y, CharacterPos character)
+    {
+        characters[x][y] = character;
+    }
+
+    public void setCharacterPos(int x, int y, TileType type, AbstractCharacter character)
+    {
+        switch(type)
+        {
+            case PLAYER:
+                characters[x][y] = new PlayerPos(x,y,character);
+                break;
+            case MONSTER:
+                characters[x][y] = new MonsterPos(x,y,character);
+                break;
+            default:
+                characters[x][y] = null;
+                break;
+        }
+    }
     public CharacterPos getCharacterPos(int x, int y)
     {
         try
@@ -65,6 +123,22 @@ public class Dungeon
         }
     }
 
+    public void setEquipmentPos(int x, int y, TileType type, Equipment equipment)
+    {
+        switch(type)
+        {
+            case ARMOR:
+                this.equipment[x][y] = new ArmorPos(x,y,equipment);
+                break;
+            case WEAPON:
+                this.equipment[x][y] = new WeaponPos(x,y,equipment);
+                break;
+            default:
+                this.equipment[x][y] = null;
+                break;
+        }
+    }
+
     public EquipmentPos getEquipmentPos(int x, int y)
     {
         try
@@ -74,6 +148,22 @@ public class Dungeon
         catch (ArrayIndexOutOfBoundsException e)
         {
             return null;
+        }
+    }
+
+    public void setArtifactPos(int x, int y, TileType type, Artifact artifact)
+    {
+        switch(type)
+        {
+            case MAGICAL:
+                artifacts[x][y] = new MagicalPos(x,y,artifact);
+                break;
+            case POTION:
+                artifacts[x][y] = new PotionPos(x,y,artifact);
+                break;
+            default:
+                artifacts[x][y] = null;
+                break;
         }
     }
 
