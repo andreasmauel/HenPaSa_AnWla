@@ -39,7 +39,7 @@ public abstract class TilePos
     {
         if(!lock.equals(null))
         {
-            if(lock.getopenable())
+            if(!lock.isLocked())
             {
                 metaData.setPassable(true);
             }
@@ -50,7 +50,7 @@ public abstract class TilePos
     {
         if(!lock.equals(null))
         {
-            if(lock.getcloseable())
+            if(!lock.isLocked())
             {
                 metaData.setPassable(false);
             }

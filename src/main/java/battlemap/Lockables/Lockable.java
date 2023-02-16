@@ -22,30 +22,6 @@ public abstract class Lockable
         }
     }
 
-    public boolean getopenable()
-    {
-        if(isLocked)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-
-    public boolean getcloseable()
-    {
-        if(isLocked)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-
     public void reveal(int roll)
     {
         if(roll > difficultyClass)
@@ -57,5 +33,15 @@ public abstract class Lockable
     public int getDifficultyClass()
     {
         return difficultyClass;
+    }
+
+    public boolean isLocked()
+    {
+        return isLocked;
+    }
+
+    public boolean isSecret()
+    {
+        return isSecret;
     }
 }
