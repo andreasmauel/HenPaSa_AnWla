@@ -5,8 +5,6 @@ import util.Attribute;
 
 public abstract class Weapon extends Equipment {
 
-
-
     private final int  damage;
     private final boolean  multiAttackAllowed;
     private final float  range;
