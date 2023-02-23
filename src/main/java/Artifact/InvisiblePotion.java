@@ -8,6 +8,6 @@ public class InvisiblePotion extends Potion{
     }
 
     public void use() {
-        Player.setisVisible = true;
+        player.setisVisible = true;
     }
 }

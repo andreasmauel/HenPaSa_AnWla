@@ -1,5 +1,8 @@
 package GameController;
 
+import GameController.DiceSites;
+import GameController.IDice;
+
 import java.util.Random;
 
 public class DiceFour extends IDice {

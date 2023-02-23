@@ -36,5 +36,9 @@ public abstract class IDice {
             return x;
         }
     }
+
+    public DiceSites getDiceSites(){
+        return diceSites;
+    }
     }
 

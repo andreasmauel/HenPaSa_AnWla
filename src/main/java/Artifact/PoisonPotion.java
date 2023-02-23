@@ -6,7 +6,7 @@ public class PoisonPotion extends  Potion{
         super(charges);
 
     }
-    public void use() {
-        return Player.getlifePoints - 6;
+    public int use() {
+        return player.getlifePoints - 6;
     }
 }
