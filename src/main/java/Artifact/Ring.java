@@ -7,7 +7,8 @@ public class Ring extends Magical{
         super(false);
     }
 
-    public void use() {
+    public int use() {
 
+        return 0;
     }
 }
