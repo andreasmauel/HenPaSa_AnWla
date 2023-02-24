@@ -6,7 +6,7 @@ public class Amulet extends Magical{
     }
 
 
-    public void use() {
-        return Player.getArmorClass + 2;
+    public int use() {
+        return player.getArmorClass + 2;
     }
 }
