@@ -50,15 +50,25 @@ public class Dungeon
         tiles[x][y] = tile;
     }
 
-    public void setLockedPos(int x, int y, TileType type, int difficultyClass, boolean isSecret)
+    public void setDoorPos(int x, int y, TileType type, int difficultyClass, boolean isSecret)
+    {
+        switch(type)
+        {
+            case DOOR:
+                tiles[x][y] = new DoorPos(x,y,difficultyClass, isSecret);
+                break;
+            default:
+                tiles[x][y] = null;
+                break;
+        }
+    }
+
+    public void setChestPos(int x, int y, TileType type, int difficultyClass, boolean isSecret, Equipment eqLoot, Artifact artLoot)
     {
         switch(type)
         {
             case CHEST:
-                tiles[x][y] = new ChestPos(x,y,difficultyClass,isSecret);
-                break;
-            case DOOR:
-                tiles[x][y] = new DoorPos(x,y,difficultyClass, isSecret);
+                tiles[x][y] = new ChestPos(x,y,difficultyClass,isSecret, eqLoot, artLoot);
                 break;
             default:
                 tiles[x][y] = null;
