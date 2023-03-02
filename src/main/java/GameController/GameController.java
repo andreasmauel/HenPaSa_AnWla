@@ -29,4 +29,12 @@ public class GameController
     public void roundEnd(){
 
     }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public ArrayList<Player> getMonster() {
+        return monster;
+    }
 }
