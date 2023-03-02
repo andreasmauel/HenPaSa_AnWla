@@ -31,12 +31,12 @@ public abstract class AbstractCharacter implements Comparable {
         this.name = name;
     }
 
-    public int getDesterity() {
+    public int getDexterity() {
         return desterity;
     }
 
-    public void setDesterity(int desterity) {
-        this.desterity = desterity;
+    public void setDexterity(int desterity) {
+        this.dexterity = desterity;
     }
 
     public int getIntelligence() {

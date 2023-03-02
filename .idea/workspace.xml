@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917e2d75-376f-453a-8849-64cdfab3c8c6" name="Changes" comment="Lockables refactored">
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/Main/MainFrame.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/Main/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="917e2d75-376f-453a-8849-64cdfab3c8c6" name="Changes" comment="merge main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Characters/AbstractCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Characters/AbstractCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Characters/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Characters/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +58,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "H:/ehrlich_pas/SUDProjekt",
     "settings.editor.selected.configurable": "project.propGUI"
   }
@@ -100,7 +100,21 @@
       <option name="project" value="LOCAL" />
       <updated>1677744069939</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="merge main">
+      <created>1677749981563</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1677749981563</updated>
+    </task>
+    <task id="LOCAL-00006" summary="merge main">
+      <created>1677749988788</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1677749988788</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,6 +133,7 @@
     <MESSAGE value="Charakter.drawio" />
     <MESSAGE value="added test folder and updated pom" />
     <MESSAGE value="Lockables refactored" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lockables refactored" />
+    <MESSAGE value="merge main" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge main" />
   </component>
 </project>

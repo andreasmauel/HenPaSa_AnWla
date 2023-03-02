@@ -43,6 +43,27 @@ public class Player extends AbstractCharacter{
     }
 
     public int modifier(util.Attribute attribute){
+        switch (attribute){
+            case WISDOM:
+                return (getWisdom()-10)/2;
+
+            case CHARISMA:
+                return ();
+
+            case CONSTITUTION:
+                return (getConstitution()-10)/2;
+
+            case DEXTERITY:
+                return (getDexterity()-10)/2;
+
+            case STRENGTH:
+                return (getStrenght()-10)/2;
+
+            case INTELLIGENCE:
+                return (getIntelligence()-10)/2;
+
+            default:
+        }
 
         return 0;
     }
