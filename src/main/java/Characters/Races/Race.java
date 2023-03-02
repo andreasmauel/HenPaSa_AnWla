@@ -1,4 +1,4 @@
-package Characters;
+package Characters.Races;
 
 public abstract class Race {
     private int intelligenceModifier;
@@ -10,4 +10,5 @@ public abstract class Race {
     public void applyModifier(){
 
     }
+
 }

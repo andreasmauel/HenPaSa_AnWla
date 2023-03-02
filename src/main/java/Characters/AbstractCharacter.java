@@ -1,5 +1,6 @@
 package Characters;
 
+import Characters.Races.Race;
 import Mocks.Armor;
 import Mocks.Weapon;
 
@@ -22,9 +23,129 @@ public abstract class AbstractCharacter {
     private ViewDirection viewDirection;
     private ArrayList<Effect> effects;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getDesterity() {
+        return desterity;
+    }
+
+    public void setDesterity(int desterity) {
+        this.desterity = desterity;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public int getStrenght() {
+        return strenght;
+    }
+
+    public void setStrenght(int strenght) {
+        this.strenght = strenght;
+    }
+
+    public int getConstitution() {
+        return constitution;
+    }
+
+    public void setConstitution(int constitution) {
+        this.constitution = constitution;
+    }
+
+    public int getWisdom() {
+        return wisdom;
+    }
+
+    public void setWisdom(int wisdom) {
+        this.wisdom = wisdom;
+    }
+
+    public Race getRace() {
+        return race;
+    }
+
+    public void setRace(Race race) {
+        this.race = race;
+    }
+
+    public int getLifepoints() {
+        return lifepoints;
+    }
+
+    public void setLifepoints(int lifepoints) {
+        this.lifepoints = lifepoints;
+    }
+
+    public int getWalkingrange() {
+        return walkingrange;
+    }
+
+    public void setWalkingrange(int walkingrange) {
+        this.walkingrange = walkingrange;
+    }
+
+    public int getArmorClass() {
+        return armorClass;
+    }
+
+    public void setArmorClass(int armorClass) {
+        this.armorClass = armorClass;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public Armor getCurrentarmor() {
+        return currentarmor;
+    }
+
+    public void setCurrentarmor(Armor currentarmor) {
+        this.currentarmor = currentarmor;
+    }
+
+    public boolean isVisible() {
+        return isVisible;
+    }
+
+    public void setVisible(boolean visible) {
+        isVisible = visible;
+    }
+
+    public ViewDirection getViewDirection() {
+        return viewDirection;
+    }
+
+    public void setViewDirection(ViewDirection viewDirection) {
+        this.viewDirection = viewDirection;
+    }
+
+    public ArrayList<Effect> getEffects() {
+        return effects;
+    }
+
+    public void setEffects(ArrayList<Effect> effects) {
+        this.effects = effects;
+    }
+
     public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
                              Race race, int lifepoints, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
-                             ViewDirection viewDirection,ArrayList<Effect> effects) {
+                             ViewDirection viewDirection, ArrayList<Effect> effects) {
         this.name = name;
         this.desterity = desterity;
         this.intelligence = intelligence;
@@ -40,7 +161,6 @@ public abstract class AbstractCharacter {
         this.viewDirection = viewDirection;
         this.effects = effects;
     }
-    // TODO getter Setter noch schreiben
 
     public int attack(){
         return 0;
@@ -55,3 +175,5 @@ public abstract class AbstractCharacter {
     }
 
 }
+
+

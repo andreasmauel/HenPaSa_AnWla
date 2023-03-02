@@ -1,6 +1,7 @@
 package Characters;
 
-import Artifact.Artifact;
+import Characters.Races.Race;
+import Characters.classes.Clazz;
 import Mocks.Armor;
 import equipment.Equipment;
 
