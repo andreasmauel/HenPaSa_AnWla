@@ -6,9 +6,9 @@ import Mocks.Weapon;
 
 import java.util.ArrayList;
 
-public abstract class AbstractCharacter {
+public abstract class AbstractCharacter implements Comparable {
     private String name;
-    private int desterity;
+    private int dexterity;
     private int intelligence;
     private int strenght;
     private int constitution;
