@@ -1,14 +1,16 @@
 package battlemap.AbstractPositions;
 
+import battlemap.Lockables.Chest;
+import battlemap.Lockables.Door;
 import battlemap.Lockables.Lockable;
 import battlemap.Meta.MetaData;
 import battlemap.Meta.TileType;
-import equipment.Equipment;
 
 public abstract class TilePos
 {
     protected MetaData metaData;
-    protected Lockable lock;
+    protected Chest chest;
+    protected Door door;
 
     public TilePos(int posX, int posY, TileType tileType, boolean isPassable, boolean isVisible)
     {
@@ -27,19 +29,40 @@ public abstract class TilePos
 
     public Lockable getLockable()
     {
-        return lock;
+        if(!chest.equals(null))
+        {
+            return chest;
+        } else if (!door.equals(null))
+        {
+            return door;
+        } else
+        {
+            return null;
+        }
     }
 
-    public void setLockable(Lockable lock)
+    public void setChest(Chest chest)
     {
-        this.lock = lock;
+        if(!door.equals(null))
+        this.chest = chest;
     }
 
+    public void setDoor(Door door)
+    {
+        if(!chest.equals(null))
+        this.door = door;
+    }
     public void open()
     {
-        if(!lock.equals(null))
+        if(!chest.equals(null))
         {
-            if(!lock.isLocked())
+            if(!chest.isLocked())
+            {
+                metaData.setPassable(true);
+            }
+        } else if (!door.equals(null))
+        {
+            if(!door.isLocked())
             {
                 metaData.setPassable(true);
             }
@@ -48,9 +71,15 @@ public abstract class TilePos
 
     public void close()
     {
-        if(!lock.equals(null))
+        if(!chest.equals(null))
         {
-            if(!lock.isLocked())
+            if(!chest.isLocked())
+            {
+                metaData.setPassable(false);
+            }
+        } else if (!door.equals(null))
+        {
+            if(!door.isLocked())
             {
                 metaData.setPassable(false);
             }
