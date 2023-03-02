@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="HenPaSa_AnWla" />
-        <module name="HenPaSa_AnWla_Project" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="HenPaSa_AnWla" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

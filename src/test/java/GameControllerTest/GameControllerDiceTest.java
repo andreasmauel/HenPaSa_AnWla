@@ -18,6 +18,7 @@ public class GameControllerDiceTest {
 		assertEquals(1|2|3|4, test);
 	}
 
+
 	@Test
 	public void testRollDiceAdvantageDiceFour(){
 		for(int i = 0; i < 100; i++) {
