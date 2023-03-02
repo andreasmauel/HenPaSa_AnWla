@@ -1,13 +1,14 @@
 package Artifact;
 
+import Characters.Player;
+
 public class Cloak extends Magical{
 
     public Cloak(){
         super(false);
     }
 
-    public int use() {
+    public void use(Player player) {
         player.setisVisible = true;
-        return 0;
     }
 }

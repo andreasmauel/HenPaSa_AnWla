@@ -1,12 +1,14 @@
 package Artifact;
 
+import Characters.Player;
+
 public class Amulet extends Magical{
     public Amulet(){
         super(false);
     }
 
 
-    public int use() {
-        return player.getArmorClass + 2;
+      public void use(Player player) {
+        player.getArmorClass + 2;
     }
 }
