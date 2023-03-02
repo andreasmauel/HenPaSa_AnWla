@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="917e2d75-376f-453a-8849-64cdfab3c8c6" name="Changes" comment="changes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/GameController/FightController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GameController/RoundController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_9_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_02_2023_11_00__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_02_2023_11_00__Changes_.xml" afterDir="false" />
+    <list default="true" id="917e2d75-376f-453a-8849-64cdfab3c8c6" name="Changes" comment="unversioned files">
+      <change afterPath="$PROJECT_DIR$/src/main/java/GameController/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HenPaSa_AnWla.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HenPaSa_AnWla.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +55,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "H:/ehrlich_pas/HenPaSa_AnWla"
+    "last_opened_file_path": "H:/1_Oberstufe/Schulprojekt/git"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -98,21 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677742218533</updated>
     </task>
-    <task id="LOCAL-00004" summary="changes">
-      <created>1677742700848</created>
+    <task id="LOCAL-00004" summary="unversioned files">
+      <created>1677742846909</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1677742700848</updated>
+      <updated>1677742846909</updated>
     </task>
-    <task id="LOCAL-00005" summary="changes">
-      <created>1677742771762</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1677742771762</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,7 +115,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Charakter.drawio" />
     <MESSAGE value="added test folder and updated pom" />
-    <MESSAGE value="changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes" />
+    <MESSAGE value="unversioned files" />
+    <option name="LAST_COMMIT_MESSAGE" value="unversioned files" />
   </component>
 </project>
