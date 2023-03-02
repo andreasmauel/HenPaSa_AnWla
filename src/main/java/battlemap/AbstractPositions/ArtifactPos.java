@@ -1,4 +1,4 @@
-package battlemap.Dungeon.AbstractPositions;
+package battlemap.AbstractPositions;
 
 import Artifact.Artifact;
 import battlemap.Meta.MetaData;

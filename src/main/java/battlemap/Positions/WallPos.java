@@ -1,6 +1,6 @@
 package battlemap.Positions;
 
-import battlemap.Dungeon.AbstractPositions.TilePos;
+import battlemap.AbstractPositions.TilePos;
 import battlemap.Meta.TileType;
 
 public class WallPos extends TilePos

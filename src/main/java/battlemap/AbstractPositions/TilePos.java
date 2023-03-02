@@ -1,4 +1,4 @@
-package battlemap.Dungeon.AbstractPositions;
+package battlemap.AbstractPositions;
 
 import battlemap.Lockables.Chest;
 import battlemap.Lockables.Door;

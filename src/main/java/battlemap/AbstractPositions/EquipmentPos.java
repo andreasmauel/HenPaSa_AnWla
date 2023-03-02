@@ -1,4 +1,4 @@
-package battlemap.Dungeon.AbstractPositions;
+package battlemap.AbstractPositions;
 
 import battlemap.Meta.MetaData;
 import battlemap.Meta.TileType;
