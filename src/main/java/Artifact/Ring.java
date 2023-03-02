@@ -9,8 +9,9 @@ public class Ring extends Magical{
         super(false);
     }
 
-    public void use(Player player) {
+    public boolean use(Player player) {
 
 
+        return 0;
     }
 }

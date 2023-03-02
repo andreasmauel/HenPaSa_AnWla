@@ -9,10 +9,8 @@ public class InvisiblePotion extends Potion{
 
     }
 
-    @Override
     public void use(Player player) {
-        player.setisVisible = true;
-
+        player.setVisible(false);
     }
 
 
