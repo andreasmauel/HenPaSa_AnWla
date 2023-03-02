@@ -5,10 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="917e2d75-376f-453a-8849-64cdfab3c8c6" name="Changes" comment="Lockables refactored">
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/Main/MainFrame.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/Main/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/Main/GuiCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_02_2023_11_00__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_02_2023_11_00__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Main/MainFrame.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Main/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/Main/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/AbstractPositions/ArtifactPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Dungeon/AbstractPositions/ArtifactPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/AbstractPositions/CharacterPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Dungeon/AbstractPositions/CharacterPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/AbstractPositions/EquipmentPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Dungeon/AbstractPositions/EquipmentPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/AbstractPositions/TilePos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Dungeon/AbstractPositions/TilePos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/Dungeon/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Dungeon/Dungeon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/Positions/ArmorPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Positions/ArmorPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/Positions/ChestPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Positions/ChestPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/Positions/DoorPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Positions/DoorPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/Positions/MagicalPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Positions/MagicalPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/Positions/MonsterPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Positions/MonsterPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/Positions/PlayerPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Positions/PlayerPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/Positions/PotionPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Positions/PotionPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/Positions/WallPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Positions/WallPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlemap/Positions/WeaponPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlemap/Positions/WeaponPos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +76,43 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "last_opened_file_path": "H:/ehrlich_pas/SUDProjekt",
-    "settings.editor.selected.configurable": "project.propGUI"
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
 }]]></component>
+  <component name="RunManager" selected="Application.GuiCreator">
+    <configuration name="GuiCreator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.Main.GuiCreator" />
+      <module name="HenPaSa_AnWla" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.Main.MainFrame" />
+      <module name="HenPaSa_AnWla" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GuiCreator" />
+        <item itemvalue="Application.MainFrame" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

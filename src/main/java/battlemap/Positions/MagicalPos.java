@@ -1,7 +1,7 @@
 package battlemap.Positions;
 
 import Artifact.Artifact;
-import battlemap.AbstractPositions.ArtifactPos;
+import battlemap.Dungeon.AbstractPositions.ArtifactPos;
 import battlemap.Meta.TileType;
 
 public class MagicalPos extends ArtifactPos

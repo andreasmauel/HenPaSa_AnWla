@@ -1,10 +1,10 @@
 package battlemap.Dungeon;
 
 import Artifact.Artifact;
-import battlemap.AbstractPositions.ArtifactPos;
-import battlemap.AbstractPositions.CharacterPos;
-import battlemap.AbstractPositions.EquipmentPos;
-import battlemap.AbstractPositions.TilePos;
+import battlemap.Dungeon.AbstractPositions.ArtifactPos;
+import battlemap.Dungeon.AbstractPositions.CharacterPos;
+import battlemap.Dungeon.AbstractPositions.EquipmentPos;
+import battlemap.Dungeon.AbstractPositions.TilePos;
 import battlemap.Lockables.Chest;
 import battlemap.Lockables.Door;
 import battlemap.Meta.TileType;

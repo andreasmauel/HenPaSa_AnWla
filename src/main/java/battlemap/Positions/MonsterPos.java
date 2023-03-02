@@ -1,6 +1,6 @@
 package battlemap.Positions;
 
-import battlemap.AbstractPositions.CharacterPos;
+import battlemap.Dungeon.AbstractPositions.CharacterPos;
 import battlemap.Meta.TileType;
 
 public class MonsterPos extends CharacterPos

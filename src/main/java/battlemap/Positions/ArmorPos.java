@@ -1,6 +1,6 @@
 package battlemap.Positions;
 
-import battlemap.AbstractPositions.EquipmentPos;
+import battlemap.Dungeon.AbstractPositions.EquipmentPos;
 import battlemap.Meta.TileType;
 import equipment.Equipment;
 

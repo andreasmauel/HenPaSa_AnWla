@@ -1,11 +1,8 @@
 package battlemap.Positions;
 
-import Artifact.Artifact;
-import battlemap.AbstractPositions.TilePos;
+import battlemap.Dungeon.AbstractPositions.TilePos;
 import battlemap.Lockables.Chest;
-import battlemap.Lockables.Lockable;
 import battlemap.Meta.TileType;
-import equipment.Equipment;
 
 public class ChestPos extends TilePos
 {
