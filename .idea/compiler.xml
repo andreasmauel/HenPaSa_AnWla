@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SUDProjekt" />
         <module name="HenPaSa_AnWla" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="HenPaSa_AnWla" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
