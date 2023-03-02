@@ -5,6 +5,8 @@ import battlemap.AbstractPositions.ArtifactPos;
 import battlemap.AbstractPositions.CharacterPos;
 import battlemap.AbstractPositions.EquipmentPos;
 import battlemap.AbstractPositions.TilePos;
+import battlemap.Lockables.Chest;
+import battlemap.Lockables.Door;
 import battlemap.Meta.TileType;
 import battlemap.Positions.*;
 import equipment.Equipment;
@@ -50,12 +52,12 @@ public class Dungeon
         tiles[x][y] = tile;
     }
 
-    public void setDoorPos(int x, int y, TileType type, int difficultyClass, boolean isSecret)
+    public void setDoorPos(int x, int y, TileType type, Door door)
     {
         switch(type)
         {
             case DOOR:
-                tiles[x][y] = new DoorPos(x,y,difficultyClass, isSecret);
+                tiles[x][y] = new DoorPos(x,y,door);
                 break;
             default:
                 tiles[x][y] = null;
@@ -63,12 +65,12 @@ public class Dungeon
         }
     }
 
-    public void setChestPos(int x, int y, TileType type, int difficultyClass, boolean isSecret, Equipment eqLoot, Artifact artLoot)
+    public void setChestPos(int x, int y, TileType type, Chest chest)
     {
         switch(type)
         {
             case CHEST:
-                tiles[x][y] = new ChestPos(x,y,difficultyClass,isSecret, eqLoot, artLoot);
+                tiles[x][y] = new ChestPos(x,y,chest);
                 break;
             default:
                 tiles[x][y] = null;

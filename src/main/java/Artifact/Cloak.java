@@ -6,7 +6,8 @@ public class Cloak extends Magical{
         super(false);
     }
 
-    public void use() {
-        Player.setisVisible = true;
+    public int use() {
+        player.setisVisible = true;
+        return 0;
     }
 }

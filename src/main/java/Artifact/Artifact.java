@@ -1,5 +1,6 @@
 package Artifact;
 
 public interface Artifact {
-    public void use();
+
+    public int use();
 }
