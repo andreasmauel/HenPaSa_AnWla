@@ -7,4 +7,8 @@ public enum Effect {
     SLEEP,
     ARMOR,
 
+    REDUCEATTACK,
+
+    HIDE,
+
 }

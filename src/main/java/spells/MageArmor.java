@@ -4,8 +4,7 @@ import util.Effect;
 
 public class MageArmor extends Spell{
     public MageArmor() {
-        this.dice = new DiceEight();
-        this.effect = Effect.ARMOR;
+        super(new DiceEight(), Effect.ARMOR);
     }
 
     @Override

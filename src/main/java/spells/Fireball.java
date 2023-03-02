@@ -7,9 +7,8 @@ public class Fireball extends Spell{
     private final int range;
 
     public Fireball() {
+        super(new DiceEight(), Effect.DAMAGE);
         this.range = 3;
-        this.dice = new DiceEight();
-        this.effect = Effect.DAMAGE;
     }
 
     @Override
