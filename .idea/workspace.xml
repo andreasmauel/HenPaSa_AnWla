@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5aa2dc5-f97e-43e1-b393-d4e4ffe91e6d" name="Changes" comment="updated remaining spells" />
+    <list default="true" id="b5aa2dc5-f97e-43e1-b393-d4e4ffe91e6d" name="Changes" comment="updated remaining spells">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
