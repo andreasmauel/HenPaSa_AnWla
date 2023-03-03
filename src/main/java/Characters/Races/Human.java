@@ -7,7 +7,5 @@ public class Human extends Race{
     private int constitutionModifier = 1;
     private int wisdomModifier = 1;
 
-    public void applyModifier(){
 
-    }
 }

@@ -7,7 +7,5 @@ public class Hobbit extends Race{
     private int constitutionModifier = 1;
     private int wisdomModifier = 2;
 
-    public void applyModifier(){
 
-    }
 }

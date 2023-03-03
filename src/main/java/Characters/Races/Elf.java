@@ -7,8 +7,6 @@ public class Elf extends Race{
     private int constitutionModifier = 0;
     private int wisdomModifier = 1;
 
-    public void applyModifier(){
 
-    }
 
 }
