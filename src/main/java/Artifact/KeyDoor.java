@@ -8,7 +8,7 @@ public class KeyDoor implements IKey, Artifact {
         this.keycharges = keycharges;
     }
 
-    public void use() {
+    public int use() {
         if(keycharges != 0) {
         }
     }
