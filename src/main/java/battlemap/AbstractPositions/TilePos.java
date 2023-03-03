@@ -29,10 +29,10 @@ public abstract class TilePos
 
     public Lockable getLockable()
     {
-        if(!chest.equals(null))
+        if(chest!=null)
         {
             return chest;
-        } else if (!door.equals(null))
+        } else if (door!=null)
         {
             return door;
         } else
@@ -43,24 +43,24 @@ public abstract class TilePos
 
     public void setChest(Chest chest)
     {
-        if(!door.equals(null))
+        if(door!=null)
         this.chest = chest;
     }
 
     public void setDoor(Door door)
     {
-        if(!chest.equals(null))
+        if(chest !=null)
         this.door = door;
     }
     public void open()
     {
-        if(!chest.equals(null))
+        if(chest!=null)
         {
             if(!chest.isLocked())
             {
                 metaData.setPassable(true);
             }
-        } else if (!door.equals(null))
+        } else if (door!=null)
         {
             if(!door.isLocked())
             {
@@ -71,13 +71,13 @@ public abstract class TilePos
 
     public void close()
     {
-        if(!chest.equals(null))
+        if(chest!=null)
         {
             if(!chest.isLocked())
             {
                 metaData.setPassable(false);
             }
-        } else if (!door.equals(null))
+        } else if (door!=null)
         {
             if(!door.isLocked())
             {
