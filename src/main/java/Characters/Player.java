@@ -6,6 +6,8 @@ import GameController.DiceTwenty;
 import GameController.IDice;
 import Mocks.Armor;
 import equipment.Equipment;
+import equipment.armor.Armor;
+import util.Attribute;
 
 import java.util.ArrayList;
 
@@ -13,8 +15,7 @@ public class Player extends AbstractCharacter{
 
     private Clazz clazz;
     private ArrayList<Equipment> inventory;
-    private IDice dice = new DiceTwenty() {
-    }
+
 
     public Player(String name, int dexterity, int intelligence, int strenght, int constitution, int wisdom,
                   Race race, int lifepoints, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
@@ -42,34 +43,4 @@ public class Player extends AbstractCharacter{
         return 0;
     }
 
-    public int modifier(util.Attribute attribute){
-        switch (attribute){
-            case WISDOM:
-                return (getWisdom()-10)/2;
-
-            case CHARISMA:
-                return ();
-
-            case CONSTITUTION:
-                return (getConstitution()-10)/2;
-
-            case DEXTERITY:
-                return (getDexterity()-10)/2;
-
-            case STRENGTH:
-                return (getStrenght()-10)/2;
-
-            case INTELLIGENCE:
-                return (getIntelligence()-10)/2;
-
-            default:
-        }
-
-        return 0;
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
 }

@@ -1,8 +1,13 @@
 package Characters;
 
 import Characters.Races.Race;
+import GameController.DiceTwenty;
+import GameController.IDice;
 import Mocks.Armor;
 import Mocks.Weapon;
+import equipment.armor.Armor;
+import equipment.weapon.Weapon;
+import util.Attribute;
 
 import java.util.ArrayList;
 
@@ -32,12 +37,14 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public int getDexterity() {
-        return desterity;
+        return dexterity;
     }
 
-    public void setDexterity(int desterity) {
-        this.dexterity = desterity;
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
     }
+
+    IDice dice = new DiceTwenty();
 
     public int getIntelligence() {
         return intelligence;
@@ -147,7 +154,7 @@ public abstract class AbstractCharacter implements Comparable {
                              Race race, int lifepoints, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
                              ViewDirection viewDirection, ArrayList<Effect> effects) {
         this.name = name;
-        this.desterity = desterity;
+        this.dexterity = desterity;
         this.intelligence = intelligence;
         this.strenght = strenght;
         this.constitution = constitution;
@@ -174,6 +181,36 @@ public abstract class AbstractCharacter implements Comparable {
         this.weapon = weapon;
     }
 
+    public int modifier(util.Attribute attribute){
+        switch (attribute){
+            case WISDOM:
+                return (getWisdom()-10)/2;
+
+            case CONSTITUTION:
+                return (getConstitution()-10)/2;
+
+            case DEXTERITY:
+                return (getDexterity()-10)/2;
+
+            case STRENGTH:
+                return (getStrenght()-10)/2;
+
+            case INTELLIGENCE:
+                return (getIntelligence()-10)/2;
+
+            default:
+        }
+
+        return 0;
+    }
+
+    public int compareInitiative(Player player, Attribute attribute){
+        return compareTo(player) + modifier(attribute);
+    }
+    @Override
+    public int compareTo(Object o) {
+        return dice.rollDice() ;
+    }
 }
 
 

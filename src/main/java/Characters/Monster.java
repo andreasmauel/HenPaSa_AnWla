@@ -2,6 +2,7 @@ package Characters;
 
 import Characters.Races.Race;
 import Mocks.Armor;
+import equipment.armor.Armor;
 
 import java.util.ArrayList;
 
@@ -18,8 +19,5 @@ public class Monster extends AbstractCharacter{
         return 0;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
+
 }
