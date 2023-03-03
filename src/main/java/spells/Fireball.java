@@ -1,5 +1,6 @@
 package spells;
 
+import GameController.DiceEight;
 import util.Effect;
 
 public class Fireball extends Spell{

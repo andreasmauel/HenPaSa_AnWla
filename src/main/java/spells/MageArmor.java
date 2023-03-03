@@ -1,5 +1,6 @@
 package spells;
 
+import GameController.DiceEight;
 import util.Effect;
 
 public class MageArmor extends Spell{
