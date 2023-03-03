@@ -18,6 +18,8 @@ public class Dungeon
     private EquipmentPos[][] equipment;
     private ArtifactPos[][] artifacts;
     private String name;
+    private int xMax;
+    private int yMax;
 
     public Dungeon(int xMax, int yMax, String name)
     {
@@ -30,21 +32,23 @@ public class Dungeon
             this.name = name;
         }
 
+        if (xMax > 25)
+            this.xMax=25;
+        else if (xMax<10)
+        {
+            this.xMax = 10;
+        }
 
-        if(xMax>10 && yMax>10)
+        if (yMax > 15)
+            this.yMax=15;
+        else if (yMax<10)
         {
-            tiles = new TilePos[xMax][yMax];
-            characters = new CharacterPos[xMax][yMax];
-            equipment = new EquipmentPos[xMax][yMax];
-            artifacts = new ArtifactPos[xMax][yMax];
+            this.yMax  =10;
         }
-        else
-        {
-            tiles = new TilePos[10][10];
-            characters = new CharacterPos[10][10];
-            equipment = new EquipmentPos[10][10];
-            artifacts = new ArtifactPos[10][10];
-        }
+            tiles = new TilePos[this.xMax][this.yMax];
+            characters = new CharacterPos[this.xMax][this.yMax];
+            equipment = new EquipmentPos[this.xMax][this.yMax];
+            artifacts = new ArtifactPos[this.xMax][this.yMax];
     }
 
     public void transferTilePos(int x, int y, TilePos tile)
@@ -194,5 +198,13 @@ public class Dungeon
     public String getName()
     {
         return name;
+    }
+
+    public int getxMax() {
+        return xMax;
+    }
+
+    public int getyMax() {
+        return yMax;
     }
 }
