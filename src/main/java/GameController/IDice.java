@@ -10,7 +10,10 @@ public abstract class IDice {
         Random random = new Random();
         if (diceSites.equals(DiceSites.FOUR)) {
             return random.nextInt(1, 5);
-        } else if (diceSites.equals(DiceSites.EIGHT)) {
+        }
+        else if (diceSites.equals(DiceSites.SIX)) {
+            return random.nextInt(1, 7);
+        }else if (diceSites.equals(DiceSites.EIGHT)) {
             return random.nextInt(1, 9);
         } else if (diceSites.equals(DiceSites.TEN)) {
             return random.nextInt(1, 11);

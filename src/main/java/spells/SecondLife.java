@@ -1,14 +1,15 @@
 package spells;
 
+import GameController.DiceTen;
 import util.Effect;
 
 public class SecondLife extends Spell{
-    protected SecondLife(Dice dice, Effect effect) {
+    protected SecondLife() {
         super(new DiceTen(), Effect.HEAL);
     }
 
     @Override
     public int cast() {
-        return this.dice.roll();
+        return this.dice.rollDice();
     }
 }
