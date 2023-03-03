@@ -11,6 +11,7 @@ public class GameController
     private ArrayList<Player> monster = new ArrayList<Player>();
     private Dungeon dungeon;
     private HashMap<String, IDice> dices = new HashMap<String, IDice>();
+    private GameStart gameStart = new GameStart();
     GameController(){
         dices.put("four", new DiceFour());
         dices.put("eight", new DiceEight());
@@ -19,7 +20,7 @@ public class GameController
     }
 
     public void gameStart(){
-
+        gameStart.run();
     }
 
     public void roundStart(){
@@ -28,5 +29,13 @@ public class GameController
 
     public void roundEnd(){
 
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public ArrayList<Player> getMonster() {
+        return monster;
     }
 }
