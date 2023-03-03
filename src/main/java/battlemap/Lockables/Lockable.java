@@ -1,7 +1,5 @@
 package battlemap.Lockables;
 
-import Artifact.Artifact;
-
 public abstract class Lockable
 {
     protected boolean isSecret;

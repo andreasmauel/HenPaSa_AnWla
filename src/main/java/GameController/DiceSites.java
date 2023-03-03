@@ -1,6 +1,6 @@
 package GameController;
 
 public enum DiceSites {
-        FOUR, EIGHT, TEN, TWENTY;
+        FOUR, EIGHT, SIX, TEN, TWENTY;
     }
 
