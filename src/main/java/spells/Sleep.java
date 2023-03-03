@@ -1,11 +1,12 @@
 package spells;
 
+import GameController.DiceFour;
 import util.Effect;
 
 public class Sleep extends Spell {
 
 
-    protected Sleep(Dice dice, Effect effect) {
+    protected Sleep() {
         super(new DiceFour(), Effect.SLEEP);
     }
 

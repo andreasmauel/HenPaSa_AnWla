@@ -1,14 +1,17 @@
 package spells;
 
+import GameController.DiceFour;
 import util.Effect;
 
 public class MagicMist extends Spell{
-    protected MagicMist(Dice dice, Effect effect) {
+    protected MagicMist() {
         super(new DiceFour(), Effect.REDUCEATTACK);
     }
 
+    //TODO
+
     @Override
     public int cast() {
-        return this.dice.roll();
+        return this.dice.rollDice();
     }
 }
