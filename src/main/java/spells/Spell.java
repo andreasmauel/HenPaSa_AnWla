@@ -1,13 +1,14 @@
 package spells;
 
+import GameController.IDice;
 import util.Effect;
 
 public abstract class Spell {
 
-     protected final Dice dice;
+     protected final IDice dice;
      private  final Effect effect;
 
-    protected Spell(Dice dice, Effect effect) {
+    protected Spell(IDice dice, Effect effect) {
         this.dice = dice;
         this.effect = effect;
     }
