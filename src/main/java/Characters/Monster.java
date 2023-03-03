@@ -14,10 +14,7 @@ public class Monster extends AbstractCharacter{
                 currentarmor, isVisible, viewDirection, effects);
     }
 
-    @Override
-    public int attack(){
-        return 0;
-    }
+
 
 
 }

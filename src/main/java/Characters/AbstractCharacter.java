@@ -3,8 +3,6 @@ package Characters;
 import Characters.Races.Race;
 import GameController.DiceTwenty;
 import GameController.IDice;
-import Mocks.Armor;
-import Mocks.Weapon;
 import equipment.armor.Armor;
 import equipment.weapon.Weapon;
 import util.Attribute;
@@ -27,6 +25,7 @@ public abstract class AbstractCharacter implements Comparable {
     private boolean isVisible;
     private ViewDirection viewDirection;
     private ArrayList<Effect> effects;
+
 
     public String getName() {
         return name;
@@ -114,10 +113,6 @@ public abstract class AbstractCharacter implements Comparable {
         return weapon;
     }
 
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
-    }
-
     public Armor getCurrentarmor() {
         return currentarmor;
     }
@@ -169,8 +164,8 @@ public abstract class AbstractCharacter implements Comparable {
         this.effects = effects;
     }
 
-    public int attack(){
-        return 0;
+    public int attack(Player player){
+        FightController.fight(player);
     }
 
     public void move(){

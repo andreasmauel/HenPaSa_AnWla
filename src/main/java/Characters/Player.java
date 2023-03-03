@@ -4,7 +4,6 @@ import Characters.Races.Race;
 import Characters.classes.Clazz;
 import GameController.DiceTwenty;
 import GameController.IDice;
-import Mocks.Armor;
 import equipment.Equipment;
 import equipment.armor.Armor;
 import util.Attribute;
@@ -26,17 +25,13 @@ public class Player extends AbstractCharacter{
         this.inventory = inventory;
     }
 
+
     public void useArtifact(){
 
     }
 
     public String showInventory(){
         return "0";
-    }
-
-    @Override
-    public int attack(){
-        return 0;
     }
 
     public int calculateMaxLivepoints(){
