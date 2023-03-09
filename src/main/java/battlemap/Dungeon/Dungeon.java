@@ -33,16 +33,16 @@ public class Dungeon
             this.name = name;
         }
 
-        if (xMax > 25)
+        if (xMax >= 25)
             this.xMax=25;
-        else if (xMax<10)
+        else if (xMax<=10)
         {
             this.xMax = 10;
         }
 
-        if (yMax > 15)
+        if (yMax >= 15)
             this.yMax=15;
-        else if (yMax<10)
+        else if (yMax<=10)
         {
             this.yMax  =10;
         }

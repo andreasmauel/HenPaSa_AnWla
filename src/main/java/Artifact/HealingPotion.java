@@ -2,7 +2,7 @@ package Artifact;
 
 import Characters.AbstractCharacter;
 import Characters.Player;
-import GameController.DiceFour;
+import GameController.dices.DiceFour;
 
 public class HealingPotion extends Potion{
 

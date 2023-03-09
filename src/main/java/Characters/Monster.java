@@ -1,6 +1,7 @@
 package Characters;
 
 import Characters.Races.Race;
+
 import equipment.armor.Armor;
 import util.Effect;
 
