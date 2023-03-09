@@ -12,10 +12,7 @@ public class MainFrame {
     private JFrame jFrame = new JFrame();
     private JPanel dungeonPanel = new JPanel();
     private StatusFrame statusPanel = new StatusFrame();
-
-    public static void main(String[] args) throws IOException {
-
-    }
+    private DialogBox dialogBox = new DialogBox();
 
     public MainFrame()
     {
@@ -84,6 +81,11 @@ public class MainFrame {
 
     public void generateStatusScreen() throws IOException {
         jFrame.add(statusPanel.generateStatusBackground());
+        jFrame.repaint();
+    }
+
+    public void generateDialogBox() throws IOException {
+        jFrame.add(dialogBox.generateDialogBox());
         jFrame.repaint();
     }
 }
