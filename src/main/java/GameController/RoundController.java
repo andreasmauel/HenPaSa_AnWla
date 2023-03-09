@@ -1,5 +1,7 @@
 package GameController;
 
+import Characters.Player;
+
 public class RoundController {
     RoundController() {
 

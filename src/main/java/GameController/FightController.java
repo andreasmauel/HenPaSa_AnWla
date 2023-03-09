@@ -1,5 +1,9 @@
 package GameController;
 
+import Characters.AbstractCharacter;
+import Characters.Monster;
+import Characters.Player;
+
 import java.util.ArrayList;
 
 public class FightController {
@@ -42,6 +46,6 @@ public class FightController {
     }
 
     private void addToFight(AbstractCharacter character) {
-        this.fightOrder.sort();
+        this.fightOrder.sort(character.compareInitiative());
     }
 }

@@ -1,5 +1,6 @@
 package GameController;
 
+import Characters.Player;
 import battlemap.Dungeon.Dungeon;
 
 import java.util.ArrayList;
