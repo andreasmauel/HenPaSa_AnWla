@@ -11,6 +11,7 @@ import java.io.IOException;
 public class MainFrame {
     private JFrame jFrame = new JFrame();
     private JPanel dungeonPanel = new JPanel();
+    private StatusFrame statusPanel = new StatusFrame();
 
     public static void main(String[] args) throws IOException {
 
@@ -82,13 +83,7 @@ public class MainFrame {
     }
 
     public void generateStatusScreen() throws IOException {
-        File file = new File("H:\\Graphics\\Black.png");
-        BufferedImage bufferedImage = ImageIO.read(file);
-        ImageIcon imageIcon = new ImageIcon(bufferedImage);
-        JLabel jLabel = new JLabel();
-        jLabel.setIcon(imageIcon);
-        jLabel.setBounds(1250,0, 430, 750);
-        jFrame.add(jLabel);
+        jFrame.add(statusPanel.generateStatusBackground());
         jFrame.repaint();
     }
 }
