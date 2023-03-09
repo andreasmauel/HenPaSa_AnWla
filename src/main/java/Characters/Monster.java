@@ -1,8 +1,9 @@
 package Characters;
 
 import Characters.Races.Race;
-import Mocks.Armor;
+
 import equipment.armor.Armor;
+import util.Effect;
 
 import java.util.ArrayList;
 

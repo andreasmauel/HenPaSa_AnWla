@@ -6,6 +6,7 @@ import GameController.IDice;
 import equipment.armor.Armor;
 import equipment.weapon.Weapon;
 import util.Attribute;
+import util.Effect;
 
 import java.util.ArrayList;
 

@@ -12,6 +12,6 @@ public class Ring extends Magical{
     public boolean use(Player player) {
 
 
-        return 0;
+        return true;
     }
 }

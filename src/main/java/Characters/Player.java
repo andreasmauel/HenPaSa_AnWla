@@ -7,6 +7,7 @@ import GameController.IDice;
 import equipment.Equipment;
 import equipment.armor.Armor;
 import util.Attribute;
+import util.Effect;
 
 import java.util.ArrayList;
 
