@@ -3,7 +3,9 @@ package GameController;
 import Characters.AbstractCharacter;
 import util.Effect;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class EffectController {
@@ -12,9 +14,8 @@ public class EffectController {
 
     Map<Effect, Integer> effects;
 
-    public EffectController(AbstractCharacter character) {
+    public EffectController() {
         this.effects = new HashMap<>();
-        this.character = character;
     }
 
     public String triggerEffect(Effect effect, int stat) {
@@ -38,11 +39,11 @@ public class EffectController {
         }
     }
 
-    public Map<Effect, Integer> activateEffects() {
+    public List<Effect> activeEffects() {
 
         Map<Effect, Integer> effectsCopy = new HashMap<Effect, Integer>(this.effects);
         decreaseDuration();
-        return effectsCopy;
+        return getListOfMap(effectsCopy);
     }
 
     public Map<Effect, Integer> getEffects() {
@@ -59,5 +60,13 @@ public class EffectController {
                 entry.setValue(duration);
             }
         }
+    }
+
+    private List<Effect> getListOfMap(Map<Effect, Integer> effectsCopy) {
+        List<Effect> activeEffects = new ArrayList<>();
+        for (Map.Entry<Effect, Integer> entry : effectsCopy.entrySet()) {
+            activeEffects.add(entry.getKey());
+        }
+        return activeEffects;
     }
 }

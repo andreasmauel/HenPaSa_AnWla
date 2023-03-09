@@ -1,6 +1,6 @@
-package GameController;
+package GameController.dices;
 
-public class DiceSix extends IDice{
+public class DiceSix extends IDice {
 
     protected DiceSites diceSites;
 

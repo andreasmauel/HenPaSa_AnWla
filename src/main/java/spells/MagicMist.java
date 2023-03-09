@@ -1,6 +1,6 @@
 package spells;
 
-import GameController.DiceFour;
+import GameController.dices.DiceFour;
 import util.Effect;
 
 public class MagicMist extends Spell{

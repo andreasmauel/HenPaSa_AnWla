@@ -1,4 +1,4 @@
-package GameController;
+package GameController.dices;
 
 import java.util.Random;
 

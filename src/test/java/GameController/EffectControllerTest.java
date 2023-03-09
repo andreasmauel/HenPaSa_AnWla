@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EffectControllerTest {
 
 
-    EffectController effectController = new EffectController(null);
+    EffectController effectController = new EffectController();
 
     private void createEffects() {
 
