@@ -11,7 +11,7 @@ import util.Effect;
 
 import java.util.ArrayList;
 
-public abstract class AbstractCharacter implements Comparable<> {
+public abstract class AbstractCharacter implements Comparable {
     private String name;
     private int dexterity;
     private int intelligence;
@@ -202,13 +202,13 @@ public abstract class AbstractCharacter implements Comparable<> {
         return 0;
     }
 
-    public int compareInitiative(Player player, Attribute attribute){
-        if(this.compareInitiative((Player) this, attribute) < compareTo(player) + modifier(attribute)) {
+    public int compareInitiative(Player player){
+        if(this.compareInitiative((Player) this) < compareTo(player) + modifier(Attribute.DEXTERITY)) {
 
-        } else if (this.compareInitiative((Player) this, attribute) < compareTo(player) + modifier(attribute)) {
-                return player.getDexterity();
-            }
-         return 1;
+        } else if (this.compareInitiative((Player) this) < compareTo(player) + modifier(Attribute.DEXTERITY)) {
+            return player.getDexterity();
+        }
+        return 1;
     }
 
     @Override

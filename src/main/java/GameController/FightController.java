@@ -7,29 +7,30 @@ import Characters.Player;
 import java.util.ArrayList;
 
 public class FightController {
-    private Player[] players;
+    private ArrayList<Player> players;
 
-    private Monster[] monsters;
+    private ArrayList<Player> monsters;
 
     private ArrayList<AbstractCharacter> fightOrder;
 
-    FightController(Player[] players, Monster[] monsters) {
-
+    FightController(ArrayList<Player> players, ArrayList<Player> monsters) {
+        this.setPlayers(players);
+        this.setMonsters(monsters);
     }
 
-    public Player[] getPlayers() {
+    public ArrayList<Player> getPlayers() {
         return players;
     }
 
-    public void setPlayers(Player[] players) {
+    public void setPlayers(ArrayList<Player> players) {
         this.players = players;
     }
 
-    public Monster[] getMonsters() {
+    public ArrayList<Player> getMonsters() {
         return monsters;
     }
 
-    public void setMonsters(Monster[] monsters) {
+    public void setMonsters(ArrayList<Player> monsters) {
         this.monsters = monsters;
     }
 
@@ -46,6 +47,6 @@ public class FightController {
     }
 
     private void addToFight(AbstractCharacter character) {
-        this.fightOrder.sort(character.compareInitiative());
+        this.fightOrder.sort();
     }
 }
