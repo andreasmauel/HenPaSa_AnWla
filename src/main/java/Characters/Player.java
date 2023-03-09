@@ -2,8 +2,7 @@ package Characters;
 
 import Characters.Races.Race;
 import Characters.classes.Clazz;
-import GameController.DiceTwenty;
-import GameController.IDice;
+
 import equipment.Equipment;
 import equipment.armor.Armor;
 import util.Attribute;

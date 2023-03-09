@@ -1,8 +1,8 @@
 package Characters;
 
 import Characters.Races.Race;
-import GameController.DiceTwenty;
-import GameController.IDice;
+import GameController.dices.DiceTwenty;
+import GameController.dices.IDice;
 import equipment.armor.Armor;
 import equipment.weapon.Weapon;
 import util.Attribute;
