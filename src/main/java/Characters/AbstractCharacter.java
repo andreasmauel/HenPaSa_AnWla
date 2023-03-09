@@ -7,6 +7,7 @@ import GameController.IDice;
 import equipment.armor.Armor;
 import equipment.weapon.Weapon;
 import util.Attribute;
+import util.Effect;
 
 import java.util.ArrayList;
 
@@ -203,6 +204,7 @@ public abstract class AbstractCharacter implements Comparable<> {
     public int compareInitiative(){
         return compareTo(this) + modifier(Attribute.DEXTERITY);
     }
+
     @Override
     public int compareTo(Object o) {
         return dice.rollDice() ;
