@@ -1,6 +1,7 @@
 package battlemap.Dungeon;
 
 import Artifact.Artifact;
+import Characters.AbstractCharacter;
 import battlemap.AbstractPositions.ArtifactPos;
 import battlemap.AbstractPositions.CharacterPos;
 import battlemap.AbstractPositions.EquipmentPos;

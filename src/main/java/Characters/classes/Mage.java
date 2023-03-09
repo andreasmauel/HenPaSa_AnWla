@@ -1,5 +1,7 @@
 package Characters.classes;
 
+import spells.Spell;
+
 import java.sql.Array;
 import java.util.ArrayList;
 

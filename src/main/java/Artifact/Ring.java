@@ -1,5 +1,6 @@
 package Artifact;
 
+import Characters.AbstractCharacter;
 import Characters.Player;
 
 public class Ring extends Magical{
@@ -9,9 +10,7 @@ public class Ring extends Magical{
         super(false);
     }
 
-    public boolean use(Player player) {
-
-
+    public int use(AbstractCharacter player) {
         return 0;
     }
 }
