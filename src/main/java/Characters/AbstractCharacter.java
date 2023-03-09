@@ -4,6 +4,7 @@ import Characters.Races.Race;
 import GameController.dices.DiceTwenty;
 import GameController.dices.IDice;
 import equipment.armor.Armor;
+import equipment.armor.ChainMail;
 import equipment.weapon.Weapon;
 import util.Attribute;
 import util.Effect;
@@ -127,6 +128,9 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public void setVisible(boolean visible) {
+        if(currentarmor.equals(ChainMail.class)){
+            isVisible = true;
+        }
         isVisible = visible;
     }
 

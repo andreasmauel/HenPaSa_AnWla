@@ -1,5 +1,6 @@
 package Artifact;
 
+import Characters.AbstractCharacter;
 import Characters.Player;
 
 public class InvisiblePotion extends Potion{
@@ -9,7 +10,7 @@ public class InvisiblePotion extends Potion{
 
     }
 
-    public void use(Player player) {
+    public void use(AbstractCharacter player) {
         player.setVisible(false);
     }
 
