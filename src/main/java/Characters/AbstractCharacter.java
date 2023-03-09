@@ -11,7 +11,7 @@ import util.Effect;
 
 import java.util.ArrayList;
 
-public abstract class AbstractCharacter implements Comparable {
+public abstract class AbstractCharacter implements Comparable<> {
     private String name;
     private int dexterity;
     private int intelligence;
@@ -202,9 +202,10 @@ public abstract class AbstractCharacter implements Comparable {
         return 0;
     }
 
-    public int compareInitiative(Player player, Attribute attribute){
-        return compareTo(player) + modifier(attribute);
+    public int compareInitiative(){
+        return compareTo(this) + modifier(Attribute.DEXTERITY);
     }
+
     @Override
     public int compareTo(Object o) {
         return dice.rollDice() ;
