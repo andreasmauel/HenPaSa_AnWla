@@ -1,8 +1,25 @@
 package GameController;
 
-public class CharacterController {
-    public void createPlayerCharacter(){
+import Characters.AbstractCharacter;
+import Characters.Player;
 
+public class CharacterController {
+    public Player createPlayerCharacter(){
+        name;
+        dexterity,
+        intelligence,
+        strenght,
+        constitution,
+        wisdom,
+        race,
+        lifepoints
+        walkingrange,
+        armorClass,
+        currentarmor,
+        isVisible,
+        viewDirection,
+        effects
+        return new Player()
     }
 
     private void rollAttributes(){

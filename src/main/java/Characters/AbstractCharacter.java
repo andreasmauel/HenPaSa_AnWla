@@ -2,10 +2,12 @@ package Characters;
 
 import Characters.Races.Race;
 import GameController.DiceTwenty;
+import GameController.FightController;
 import GameController.IDice;
 import equipment.armor.Armor;
 import equipment.weapon.Weapon;
 import util.Attribute;
+import util.Effect;
 
 import java.util.ArrayList;
 
@@ -165,7 +167,8 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public int attack(Player player){
-        FightController.fight(player);
+        //ToDo: player actions implementieren
+        return 0;
     }
 
     public void move(){

@@ -1,5 +1,9 @@
 package GameController;
 
+import Characters.AbstractCharacter;
+import Characters.Monster;
+import Characters.Player;
+
 import java.util.ArrayList;
 
 public class FightController {
