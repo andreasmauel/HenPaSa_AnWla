@@ -1,9 +1,4 @@
-package GameController;
-
-import GameController.DiceSites;
-import GameController.IDice;
-
-import java.util.Random;
+package GameController.dices;
 
 public class DiceFour extends IDice {
 

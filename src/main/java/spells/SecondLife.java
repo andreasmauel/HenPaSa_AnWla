@@ -1,6 +1,6 @@
 package spells;
 
-import GameController.DiceTen;
+import GameController.dices.DiceTen;
 import util.Effect;
 
 public class SecondLife extends Spell{

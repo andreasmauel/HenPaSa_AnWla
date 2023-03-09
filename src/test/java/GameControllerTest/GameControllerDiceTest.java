@@ -2,7 +2,7 @@ package GameControllerTest;
 
 import static org.junit.Assert.*;
 
-import GameController.*;
+import GameController.dices.*;
 import org.junit.Test;
 
 public class GameControllerDiceTest {

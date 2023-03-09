@@ -1,6 +1,6 @@
 package spells;
 
-import GameController.IDice;
+import GameController.dices.IDice;
 import util.Effect;
 
 public abstract class Spell {

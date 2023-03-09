@@ -1,6 +1,4 @@
-package GameController;
-
-import java.util.Random;
+package GameController.dices;
 
 public class DiceEight extends IDice {
 
