@@ -165,7 +165,7 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public int attack(Player player){
-        FightController.fight(player);
+        return 0;
     }
 
     public void move(){
@@ -200,8 +200,14 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public int compareInitiative(Player player, Attribute attribute){
-        return compareTo(player) + modifier(attribute);
+        if(this.compareInitiative((Player) this, attribute) < compareTo(player) + modifier(attribute)) {
+
+        } else if (this.compareInitiative((Player) this, attribute) < compareTo(player) + modifier(attribute)) {
+                return player.getDexterity();
+            }
+         return 1;
     }
+
     @Override
     public int compareTo(Object o) {
         return dice.rollDice() ;
