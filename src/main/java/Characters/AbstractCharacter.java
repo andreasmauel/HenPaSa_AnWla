@@ -202,8 +202,13 @@ public abstract class AbstractCharacter implements Comparable<> {
         return 0;
     }
 
-    public int compareInitiative(){
-        return compareTo(this) + modifier(Attribute.DEXTERITY);
+    public int compareInitiative(Player player, Attribute attribute){
+        if(this.compareInitiative((Player) this, attribute) < compareTo(player) + modifier(attribute)) {
+
+        } else if (this.compareInitiative((Player) this, attribute) < compareTo(player) + modifier(attribute)) {
+                return player.getDexterity();
+            }
+         return 1;
     }
 
     @Override
