@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class DialogBox
 {
-    public JTextArea textbox = new JTextArea();
+    public static JTextArea textbox = new JTextArea();
     private JScrollPane scrollArea = new JScrollPane();
 
     public JScrollPane generateDialogBox()
@@ -19,5 +19,11 @@ public class DialogBox
         textbox.setForeground(Color.WHITE);
 
         return scrollArea;
+    }
+
+    public static void ConsoleOut(String output)
+    {
+        textbox.append(output);
+        textbox.append("\n");
     }
 }
