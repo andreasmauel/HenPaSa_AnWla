@@ -27,14 +27,14 @@ class EffectControllerTest {
     void addEffect() {
 
         effectController.addEffect(Effect.HIDE, 2);
-        assertEquals(3, effectController.getEffects().size());
+        assertEquals(1, effectController.getEffects().size());
 
     }
 
     @Test
     void getEffects() {
         effectController.getEffects();
-        assertEquals(1, effectController.getEffects());
+        assertEquals(0, effectController.getEffects().size());
     }
 
 }

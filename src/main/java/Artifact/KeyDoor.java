@@ -12,5 +12,6 @@ public class KeyDoor implements IKey, Artifact {
         if(keycharges != 0) {
             keycharges = keycharges - 1;
         }
+        return 0; //TODO Was soll hier zurückgegeben werden?
     }
 }
