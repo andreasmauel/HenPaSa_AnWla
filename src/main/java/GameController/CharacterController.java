@@ -12,14 +12,14 @@ public class CharacterController {
         constitution,
         wisdom,
         race,
-        lifepoints
+        lifepoints,
         walkingrange,
         armorClass,
         currentarmor,
         isVisible,
         viewDirection,
         effects
-        return new Player()
+        return new Player();
     }
 
     private void rollAttributes(){

@@ -9,8 +9,9 @@ import util.Attribute;
 import util.Effect;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
-public abstract class AbstractCharacter implements Comparable {
+public abstract class AbstractCharacter {
     private String name;
     private int dexterity;
     private int intelligence;
@@ -27,6 +28,24 @@ public abstract class AbstractCharacter implements Comparable {
     private ViewDirection viewDirection;
     private ArrayList<Effect> effects;
 
+    public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
+                             Race race, int lifepoints, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
+                             ViewDirection viewDirection, ArrayList<Effect> effects) {
+        this.name = name;
+        this.dexterity = desterity;
+        this.intelligence = intelligence;
+        this.strenght = strenght;
+        this.constitution = constitution;
+        this.wisdom = wisdom;
+        this.race = race;
+        this.lifepoints = lifepoints;
+        this.walkingrange = walkingrange;
+        this.armorClass = armorClass;
+        this.currentarmor = currentarmor;
+        this.isVisible = isVisible;
+        this.viewDirection = viewDirection;
+        this.effects = effects;
+    }
 
     public String getName() {
         return name;
@@ -122,6 +141,10 @@ public abstract class AbstractCharacter implements Comparable {
         this.currentarmor = currentarmor;
     }
 
+    public void rollInitiative() {
+        //ToDo: implement when dice is ready
+    }
+
     public boolean isVisible() {
         return isVisible;
     }
@@ -143,25 +166,6 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public void setEffects(ArrayList<Effect> effects) {
-        this.effects = effects;
-    }
-
-    public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
-                             Race race, int lifepoints, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
-                             ViewDirection viewDirection, ArrayList<Effect> effects) {
-        this.name = name;
-        this.dexterity = desterity;
-        this.intelligence = intelligence;
-        this.strenght = strenght;
-        this.constitution = constitution;
-        this.wisdom = wisdom;
-        this.race = race;
-        this.lifepoints = lifepoints;
-        this.walkingrange = walkingrange;
-        this.armorClass = armorClass;
-        this.currentarmor = currentarmor;
-        this.isVisible = isVisible;
-        this.viewDirection = viewDirection;
         this.effects = effects;
     }
 
@@ -201,18 +205,16 @@ public abstract class AbstractCharacter implements Comparable {
         return 0;
     }
 
-    public int compareInitiative(Player player){
-        if(this.compareInitiative((Player) this) < compareTo(player) + modifier(Attribute.DEXTERITY)) {
-
-        } else if (this.compareInitiative((Player) this) < compareTo(player) + modifier(Attribute.DEXTERITY)) {
-            return player.getDexterity();
+    public class initiativeCompetitor implements Comparator<AbstractCharacter> {
+        @Override
+        public int compare(AbstractCharacter player1, AbstractCharacter player2) {
+            if (pl)
         }
-        return 1;
-    }
 
-    @Override
-    public int compareTo(Object o) {
-        return dice.rollDice() ;
+        @Override
+        public boolean equals(Object obj) {
+            return false;
+        }
     }
 }
 
