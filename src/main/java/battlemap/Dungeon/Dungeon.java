@@ -196,6 +196,51 @@ public class Dungeon
         }
     }
 
+    public TileList fieldSearch(int x, int y)
+    {
+        try
+        {
+            if (tiles[x][y] != null)
+            {
+                return TileList.TILES;
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+        }
+        try
+        {
+            if (characters[x][y] != null)
+            {
+                return TileList.CHARACTERS;
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+        }
+        try
+        {
+            if (equipment[x][y] != null)
+            {
+                return TileList.EQUIPMENT;
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+        }
+        try
+        {
+            if (artifacts[x][y] != null)
+            {
+                return TileList.ARTIFACTS;
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+        }
+        return TileList.FLOOR;
+    }
+
     public String getName()
     {
         return name;
