@@ -10,7 +10,7 @@ public class StatusFrame
 {
 
     public JLabel generateStatusBackground() throws IOException {
-        File file = new File("H:\\Graphics\\Status.png");
+        File file = new File(".\\Graphics\\Status.png");
         BufferedImage bufferedImage = ImageIO.read(file);
         ImageIcon imageIcon = new ImageIcon(bufferedImage);
         JLabel jLabel = new JLabel();

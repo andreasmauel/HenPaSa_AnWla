@@ -66,26 +66,26 @@ public class MainFrame {
                     switch (dungeon.getTilePos(x, y).getMetaData().getTileType()) {
                         case DOOR:
                             if (dungeon.getTilePos(x, y).getLockable().isLocked()) {
-                                addTile(posX, posY, "H:\\Graphics\\DoorTile_Locked.png");
+                                addTile(posX, posY, ".\\Graphics\\DoorTile_Locked.png");
                             } else if (dungeon.getTilePos(x, y).getMetaData().isPassable()) {
-                                addTile(posX, posY, "H:\\Graphics\\DoorTile_open.png");
+                                addTile(posX, posY, ".\\Graphics\\DoorTile_open.png");
                             } else {
-                                addTile(posX, posY, "H:\\Graphics\\DoorTile_closed.png");
+                                addTile(posX, posY, ".\\Graphics\\DoorTile_closed.png");
                             }
                             break;
                         case CHEST:
                             break;
                         case WALL:
-                            addTile(posX, posY, "H:\\Graphics\\WallTile.png");
+                            addTile(posX, posY, ".\\Graphics\\WallTile.png");
                             break;
                         default:
-                            addTile(posX, posY, "H:\\Graphics\\FloorTile.png");
+                            addTile(posX, posY, ".\\Graphics\\FloorTile.png");
                             break;
                     }
                 }
                 else
                 {
-                    addTile(posX, posY, "H:\\Graphics\\FloorTile.png");
+                    addTile(posX, posY, ".\\Graphics\\FloorTile.png");
                 }
                 if(dungeon.getEquipmentPos(x,y) != null) {
 
