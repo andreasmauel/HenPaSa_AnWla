@@ -92,6 +92,7 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public void setLifepoints(int lifepoints) {
+
         this.lifepoints = lifepoints;
     }
 

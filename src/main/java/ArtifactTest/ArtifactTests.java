@@ -7,13 +7,12 @@ import Characters.Races.Dwarf;
 import Characters.ViewDirection;
 import GameController.dices.DiceFour;
 import equipment.armor.LeatherArmor;
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 import util.Effect;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class ArtifactTests {
 
@@ -44,8 +43,8 @@ public class ArtifactTests {
 
 	@Test
 	public void testHealingPotion(){
-		int healtini = testMonster.getLifepoints();
-		assertEquals(testMonster.getLifepoints() > healtini, healingPotion.use(testMonster, dice));
+		healingPotion.use(testMonster);
+		assertTrue(testMonster.getLifepoints() > 20);
 	}
 
 	@Test
