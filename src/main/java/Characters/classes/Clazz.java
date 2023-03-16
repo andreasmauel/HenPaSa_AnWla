@@ -1,13 +1,15 @@
 package Characters.classes;
 
+import util.Attribute;
+
 import java.util.ArrayList;
 
 public class Clazz {
     private int baseLifePoints;
     private int baseArmorclass;
-    private Mocks.Attribute mainAttribute;
-    private Mocks.Attribute secondMainAttribute;
-    private ArrayList<Mocks.Attribute> savingthrowAttribute;
+    private Attribute mainAttribute;
+    private Attribute secondMainAttribute;
+    private ArrayList<Attribute> savingthrowAttribute;
 
 
 }

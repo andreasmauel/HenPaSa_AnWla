@@ -6,7 +6,6 @@ public enum Effect {
     HEAL,
     SLEEP,
     ARMOR,
-
     REDUCEATTACK,
 
     HIDE,

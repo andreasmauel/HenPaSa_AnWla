@@ -1,5 +1,6 @@
 package battlemap.AbstractPositions;
 
+import Characters.AbstractCharacter;
 import battlemap.Meta.MetaData;
 import battlemap.Meta.TileType;
 

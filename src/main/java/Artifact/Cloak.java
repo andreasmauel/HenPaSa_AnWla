@@ -1,6 +1,6 @@
 package Artifact;
 
-import Characters.Player;
+import Characters.AbstractCharacter;
 
 public class Cloak extends Magical{
 
@@ -8,7 +8,7 @@ public class Cloak extends Magical{
         super(false);
     }
 
-    public void use(Player player) {
+    public void use(AbstractCharacter player) {
         player.setVisible(false);
     }
 }

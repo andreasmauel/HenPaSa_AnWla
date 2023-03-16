@@ -1,7 +1,7 @@
 package spells;
 
 import util.Effect;
-import GameController.DiceSix;
+import GameController.dices.DiceSix;
 
 public class BurningHands extends Spell{
 

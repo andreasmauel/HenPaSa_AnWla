@@ -1,4 +1,4 @@
-package GameController;
+package GameController.dices;
 
 import java.util.Random;
 
@@ -10,4 +10,9 @@ public class DiceEight extends IDice {
         this.diceSites = DiceSites.EIGHT;
     }
 
+    @Override
+    public int rollDice() {
+        Random random = new Random();
+        return random.nextInt(1, 9);
+    }
 }

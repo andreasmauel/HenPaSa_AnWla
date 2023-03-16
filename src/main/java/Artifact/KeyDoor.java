@@ -10,6 +10,9 @@ public class KeyDoor implements IKey, Artifact {
 
     public int use() {
         if(keycharges != 0) {
+            keycharges = keycharges - 1;
+            return  keycharges;
         }
+        return keycharges;
     }
 }

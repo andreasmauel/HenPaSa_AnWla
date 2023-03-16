@@ -1,6 +1,7 @@
 package battlemap.Dungeon;
 
 import Artifact.Artifact;
+import Characters.AbstractCharacter;
 import battlemap.AbstractPositions.ArtifactPos;
 import battlemap.AbstractPositions.CharacterPos;
 import battlemap.AbstractPositions.EquipmentPos;
@@ -32,16 +33,16 @@ public class Dungeon
             this.name = name;
         }
 
-        if (xMax > 25)
+        if (xMax >= 25)
             this.xMax=25;
-        else if (xMax<10)
+        else if (xMax<=10)
         {
             this.xMax = 10;
         }
 
-        if (yMax > 15)
+        if (yMax >= 15)
             this.yMax=15;
-        else if (yMax<10)
+        else if (yMax<=10)
         {
             this.yMax  =10;
         }
@@ -193,6 +194,51 @@ public class Dungeon
         {
             return null;
         }
+    }
+
+    public TileList fieldSearch(int x, int y)
+    {
+        try
+        {
+            if (tiles[x][y] != null)
+            {
+                return TileList.TILES;
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+        }
+        try
+        {
+            if (characters[x][y] != null)
+            {
+                return TileList.CHARACTERS;
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+        }
+        try
+        {
+            if (equipment[x][y] != null)
+            {
+                return TileList.EQUIPMENT;
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+        }
+        try
+        {
+            if (artifacts[x][y] != null)
+            {
+                return TileList.ARTIFACTS;
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+        }
+        return TileList.FLOOR;
     }
 
     public String getName()
