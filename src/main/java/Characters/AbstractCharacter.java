@@ -212,7 +212,8 @@ public abstract class AbstractCharacter {
     public class initiativeCompetitor implements Comparator<AbstractCharacter> {
         @Override
         public int compare(AbstractCharacter player1, AbstractCharacter player2) {
-            if (pl)
+            //if (pl)
+            return 0;
         }
 
         @Override

@@ -47,6 +47,6 @@ public class FightController {
     }
 
     private void addToFight(AbstractCharacter character) {
-        this.fightOrder.sort(character);
+        //this.fightOrder.sort(character);
     }
 }

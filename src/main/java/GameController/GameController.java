@@ -1,6 +1,7 @@
 package GameController;
 
 import Characters.Player;
+import GameController.dices.*;
 import battlemap.Dungeon.Dungeon;
 
 import java.util.ArrayList;
@@ -18,10 +19,6 @@ public class GameController
         dices.put("eight", new DiceEight());
         dices.put("ten", new DiceTen());
         dices.put("twenty", new DiceTwenty());
-    }
-
-    public static void main(String[] args){
-
     }
 
     public void gameStart(){
