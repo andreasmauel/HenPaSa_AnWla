@@ -20,6 +20,10 @@ public class GameController
         dices.put("twenty", new DiceTwenty());
     }
 
+    public static void main(String[] args){
+
+    }
+
     public void gameStart(){
         gameStart.run();
     }

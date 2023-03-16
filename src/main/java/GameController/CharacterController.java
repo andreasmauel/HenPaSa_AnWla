@@ -8,7 +8,7 @@ public class CharacterController {
         name;
         dexterity,
         intelligence,
-        strenght,
+        strength,
         constitution,
         wisdom,
         race,
