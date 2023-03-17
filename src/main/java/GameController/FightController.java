@@ -1,12 +1,13 @@
 package GameController;
 
 import Characters.AbstractCharacter;
-import Characters.Monster;
 import Characters.Player;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class FightController {
+    private boolean fightEnd;
     private ArrayList<Player> players;
 
     private ArrayList<Player> monsters;
@@ -14,6 +15,7 @@ public class FightController {
     private ArrayList<AbstractCharacter> fightOrder;
 
     FightController(ArrayList<Player> players, ArrayList<Player> monsters) {
+        this.fightEnd = false;
         this.setPlayers(players);
         this.setMonsters(monsters);
     }
@@ -34,19 +36,38 @@ public class FightController {
         this.monsters = monsters;
     }
 
-    private void playerAction() {
+    public void startFight() {
+        for (Player player : this.players) {
+            this.addToFight(player);
+        }
+        for (Player monster : this.monsters) {
+            this.addToFight(monster);
+        }
+        this.nextCharacter();
+    }
+
+    public void nextCharacter() {
+        if (this.monsters.isEmpty() || this.players.isEmpty()) {
+            this.fightEnd = true;
+        }
+        this.fightOrder.iterator().next();
+    }
+
+    public boolean isFightEnd() {
+        return fightEnd;
+    }
+
+    public void playerAction() {
 
     }
 
-    private void checkFight() {
-
-    }
-
-    private void monsterActions() {
+    public void monsterActions() {
 
     }
 
     private void addToFight(AbstractCharacter character) {
-        //this.fightOrder.sort(character);
+        character.rollInitiative();
+        this.fightOrder.add(character);
+        this.fightOrder.sort(new AbstractCharacter.InitiativeComperetor());
     }
 }
