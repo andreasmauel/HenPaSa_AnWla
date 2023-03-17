@@ -33,7 +33,7 @@ public class WeaponTest {
     }
     @Test
     public void handAxeDamage() {
-        assertTrue( handAxe.useWeapon() >= 1 && handAxe.useWeapon() <= 6 );
+        assertTrue( handAxe.useWeapon() >= 1 && handAxe.useWeapon() <= 6);
     }
     @Test
     public void rapierDamage() {

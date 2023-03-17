@@ -6,7 +6,7 @@ import util.Attribute;
 public class BattleAxe extends Weapon{
     public BattleAxe() {
         //TODO damage
-        super(Attribute.STRENGTH,10,4,0,new DiceSix(),false,1,false);
+        super(Attribute.STRENGTH,10,4,0, new DiceSix(),false,1,false);
     }
 
     @Override
