@@ -22,7 +22,7 @@ public class GameController
     }
 
     public void gameStart(){
-        gameStart.run();
+        players.addAll(gameStart.run());
     }
 
     public void roundStart(){
