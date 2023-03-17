@@ -4,6 +4,7 @@ import battlemap.Dungeon.Dungeon;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -41,8 +42,12 @@ public class MainFrame {
         this.dungeon = dungeon;
         generateMap(this.dungeon);
         generateStatusScreen();
+        statusPanel.setActiveCharacter(1);
         generateDialogBox();
         generateContextMenu();
+
+
+        jFrame.setExtendedState(jFrame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
     }
 
     private void addTile(int x, int y, String path) throws IOException {
@@ -83,18 +88,28 @@ public class MainFrame {
                             break;
                     }
                 }
+                else if(dungeon.getCharacterPos(x,y) != null) {
+                    switch (dungeon.getCharacterPos(x, y).getMetaData().getTileType()) {
+                        case PLAYER:
+                            addTile(posX, posY, ".\\Graphics\\fighter.png");
+                            break;
+                        case MONSTER:
+                            addTile(posX, posY, ".\\Graphics\\monster_orc.png");
+                            break;
+                        default:
+                            addTile(posX, posY, ".\\Graphics\\FloorTile.png");
+                            break;
+                    }
+                }
+                else if(dungeon.getEquipmentPos(x,y) != null) {
+
+                }
+                else if(dungeon.getArtifactPos(x,y) != null) {
+
+                }
                 else
                 {
                     addTile(posX, posY, ".\\Graphics\\FloorTile.png");
-                }
-                if(dungeon.getEquipmentPos(x,y) != null) {
-
-                }
-                if(dungeon.getArtifactPos(x,y) != null) {
-
-                }
-                if(dungeon.getCharacterPos(x,y) != null) {
-
                 }
             }
         }
