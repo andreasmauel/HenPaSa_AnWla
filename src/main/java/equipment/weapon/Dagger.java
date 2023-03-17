@@ -20,9 +20,7 @@ public class Dagger extends Weapon{
 
     }
 
-    protected void strike() {
 
-    }
 
     protected void holster() {
 

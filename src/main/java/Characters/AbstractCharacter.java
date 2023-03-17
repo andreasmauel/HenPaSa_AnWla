@@ -27,7 +27,17 @@ public abstract class AbstractCharacter implements Comparable {
     private boolean isVisible;
     private ViewDirection viewDirection;
     private ArrayList<Effect> effects;
+    private int xPosition;
+    private int yPosition;
 
+
+    public int getX() {
+        return this.xPosition;
+    }
+
+    public int getY() {
+        return this.yPosition;
+    }
 
     public String getName() {
         return name;
@@ -169,12 +179,17 @@ public abstract class AbstractCharacter implements Comparable {
         this.effects = effects;
     }
 
-    public int attack(Player player){
-        return 0;
+    public void attack(AbstractCharacter character){
+       int damage = this.weapon.useWeapon();
+       character.getDamage(damage);
     }
 
     public void move(){
 
+    }
+
+    public void getDamage(int damage) {
+        this.setLifepoints(this.getLifepoints() - damage);
     }
 
     public void changeWeapon(Weapon weapon){

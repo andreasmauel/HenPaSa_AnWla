@@ -10,19 +10,18 @@ public class MonsterController {
 
     Monster monster;
     Player[] players;
-    Dungeon dungeon;
 
-    AbstractCharacter nearestEnemy;
+    Player nearestEnemy;
 
     public MonsterController(Monster monster , Player[] players, Dungeon dungeon) {
         this.monster = monster;
         this.players = players;
-        this.dungeon = dungeon;
-
     }
 
+
+
     public void attack() {
-      if(distanceToNearestEnemy() < this.monster.getRange()) {
+      if(distanceToNearestEnemy() < this.monster.getWeapon().getRange()) {
           this.monster.attack(this.nearestEnemy);
       }
     }
@@ -45,7 +44,4 @@ public class MonsterController {
     public int distanceToNearestEnemy() {
         return DistanceCalculator.getDistanceBetweenCharacters(this.nearestEnemy, this.monster);
     }
-
-
-
 }

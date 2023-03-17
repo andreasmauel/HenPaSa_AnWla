@@ -34,10 +34,7 @@ public class RangeWeapon extends Weapon {
 
     }
 
-    @Override
-    protected void strike() {
 
-    }
 
     @Override
     protected void holster() {

@@ -25,10 +25,6 @@ public class Dart extends RangeWeapon{
         super.aim();
     }
 
-    @Override
-    protected void strike() {
-        super.strike();
-    }
 
     @Override
     protected void holster() {

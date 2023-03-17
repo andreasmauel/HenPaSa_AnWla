@@ -23,10 +23,7 @@ public class Spear extends Weapon {
 
     }
 
-    @Override
-    protected void strike() {
 
-    }
 
     @Override
     protected void holster() {
