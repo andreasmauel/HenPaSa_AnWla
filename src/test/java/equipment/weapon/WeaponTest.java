@@ -17,36 +17,35 @@ public class WeaponTest {
 
     @Test
     public void battleAxeDamage() {
-        assertEquals(6, battleAxe.useWeapon());
+        assertTrue( battleAxe.useWeapon() >= 1 && battleAxe.useWeapon() <= 6 );
     }
-
     @Test
     public void bowDamage() {
-        assertEquals(8, bow.useWeapon());
+        assertTrue( bow.useWeapon() >= 1 && bow.useWeapon() <= 8 );
     }
     @Test
     public void daggerDamage() {
-        assertEquals(4, dagger.useWeapon());
+        assertTrue( dagger.useWeapon() >= 1 && dagger.useWeapon() <= 4 );
     }
     @Test
     public void dartDamage() {
-        assertEquals(4, dart.useWeapon());
+        assertTrue( dart.useWeapon() >= 1 && dart.useWeapon() <= 4 );
     }
     @Test
     public void handAxeDamage() {
-        assertEquals(6, handAxe.useWeapon());
+        assertTrue( handAxe.useWeapon() >= 1 && handAxe.useWeapon() <= 6 );
     }
     @Test
     public void rapierDamage() {
-        assertEquals(8, rapier.useWeapon());
+        assertTrue( rapier.useWeapon() >= 1 && rapier.useWeapon() <= 8 );
     }
     @Test
     public void spearDamage() {
-        assertEquals(6, spear.useWeapon());
+        assertTrue( spear.useWeapon() >= 1 && spear.useWeapon() <= 6 );
     }
     @Test
     public void swordDamage() {
-        assertEquals(8, sword.useWeapon());
+        assertTrue( sword.useWeapon() >= 1 && sword.useWeapon() <= 8 );
     }
 
 }

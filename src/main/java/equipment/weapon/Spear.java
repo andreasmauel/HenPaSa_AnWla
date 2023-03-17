@@ -1,11 +1,12 @@
 package equipment.weapon;
 
+import GameController.dices.DiceSix;
 import util.Attribute;
 
 public class Spear extends Weapon {
 
     public Spear() {
-        super(Attribute.NOATTRIBUTE,2,3,0,6,false,2,false);
+        super(Attribute.NOATTRIBUTE,2,3,0,new DiceSix(),false,2,false);
     }
 
     @Override
