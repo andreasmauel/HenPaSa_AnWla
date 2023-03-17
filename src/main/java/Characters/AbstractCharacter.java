@@ -28,6 +28,8 @@ public abstract class AbstractCharacter {
     private boolean isVisible;
     private ViewDirection viewDirection;
     private ArrayList<Effect> effects;
+    private IDice diceTwenty = new DiceTwenty();
+    private int initiative;
 
     public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
                              Race race, int lifepoints, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
@@ -63,8 +65,6 @@ public abstract class AbstractCharacter {
     public void setDexterity(int dexterity) {
         this.dexterity = dexterity;
     }
-
-    IDice dice = new DiceTwenty();
 
     public int getIntelligence() {
         return intelligence;
@@ -142,8 +142,16 @@ public abstract class AbstractCharacter {
         this.currentarmor = currentarmor;
     }
 
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public int getInitiative() {
+        return initiative;
+    }
+
     public void rollInitiative() {
-        //ToDo: implement when dice is ready
+        this.initiative = this.diceTwenty.rollDice() + this.modifier(Attribute.DEXTERITY);
     }
 
     public boolean isVisible() {
@@ -209,10 +217,14 @@ public abstract class AbstractCharacter {
         return 0;
     }
 
-    public class initiativeCompetitor implements Comparator<AbstractCharacter> {
+    public static class InitiativeComperetor implements Comparator<AbstractCharacter> {
         @Override
-        public int compare(AbstractCharacter player1, AbstractCharacter player2) {
-            //if (pl)
+        public int compare(AbstractCharacter otherPlayer, AbstractCharacter player) {
+            if (otherPlayer.getInitiative() < player.getInitiative()) {
+                return -1;
+            } else if (otherPlayer.getInitiative() > player.getInitiative()) {
+                return 1;
+            }
             return 0;
         }
 

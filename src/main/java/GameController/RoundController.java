@@ -36,10 +36,6 @@ public class RoundController {
             this.playerAction(player);
             this.checkFight(player);
         }
-        for (Player monster: this.monsters) {
-            this.monstersAction(monster);
-            this.checkFight(monster);
-        }
     }
 
     private void monstersAction(Player monster) {
