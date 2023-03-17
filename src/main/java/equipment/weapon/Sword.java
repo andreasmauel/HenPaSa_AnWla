@@ -1,11 +1,12 @@
 package equipment.weapon;
 
+import GameController.dices.DiceEight;
 import util.Attribute;
 
 public class Sword extends Weapon{
 
     public Sword() {
-        super(Attribute.STRENGTH,15,3,13,8,false,1,false);
+        super(Attribute.STRENGTH,15,3,13,new DiceEight(),false,1,false);
     }
 
     @Override
@@ -23,10 +24,7 @@ public class Sword extends Weapon{
 
     }
 
-    @Override
-    protected void strike() {
 
-    }
 
     @Override
     protected void holster() {

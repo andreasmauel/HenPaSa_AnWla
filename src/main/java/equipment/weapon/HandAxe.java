@@ -1,12 +1,13 @@
 package equipment.weapon;
 
+import GameController.dices.DiceEight;
 import util.Attribute;
 
 public class HandAxe extends Weapon {
 
     public HandAxe() {
         //TODO Damage
-        super(Attribute.NOATTRIBUTE,5,2,0,6,true,2,true);
+        super(Attribute.NOATTRIBUTE,5,2,0,new DiceEight(),true,2,true);
     }
     @Override
     protected void draw() {
@@ -23,10 +24,7 @@ public class HandAxe extends Weapon {
 
     }
 
-    @Override
-    protected void strike() {
 
-    }
 
     @Override
     protected void holster() {

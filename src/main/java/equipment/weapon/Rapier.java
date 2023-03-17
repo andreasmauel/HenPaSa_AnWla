@@ -1,11 +1,12 @@
 package equipment.weapon;
 
+import GameController.dices.DiceEight;
 import util.Attribute;
 
 public class Rapier extends Weapon {
 
     public Rapier() {
-        super(Attribute.DEXTERITY,25,2,0,8,false,1,false);
+        super(Attribute.DEXTERITY,25,2,0,new DiceEight(),false,1,false);
     }
 
     @Override
@@ -23,10 +24,7 @@ public class Rapier extends Weapon {
 
     }
 
-    @Override
-    protected void strike() {
 
-    }
 
     @Override
     protected void holster() {

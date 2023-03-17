@@ -1,12 +1,13 @@
 package equipment.weapon;
 
+import GameController.dices.DiceFour;
 import util.Attribute;
 
 public class Dart extends RangeWeapon{
 
 
     public Dart() {
-        super(Attribute.DEXTERITY, 0.1F, 0.25F, 0, 4, false, 2, false);
+        super(Attribute.DEXTERITY, 0.1F, 0.25F, 0, new DiceFour(), false, 2, false);
         this.setAmmo(20);
     }
 
@@ -25,10 +26,6 @@ public class Dart extends RangeWeapon{
         super.aim();
     }
 
-    @Override
-    protected void strike() {
-        super.strike();
-    }
 
     @Override
     protected void holster() {
