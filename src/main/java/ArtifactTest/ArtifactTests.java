@@ -5,6 +5,7 @@ import Characters.AbstractCharacter;
 import Characters.Monster;
 import Characters.Races.Dwarf;
 import Characters.ViewDirection;
+import Characters.classes.Fighter;
 import GameController.dices.DiceFour;
 import equipment.armor.LeatherArmor;
 import static org.junit.Assert.*;
@@ -18,7 +19,7 @@ public class ArtifactTests {
 
 	private ArrayList<Effect> effect;
 	AbstractCharacter testMonster = new Monster("test", 5, 6, 7, 2, 3,
-			new Dwarf(), 20, 2, 4, new LeatherArmor(), true, ViewDirection.NORTH, effect);
+			new Dwarf(), 2, 4, new LeatherArmor(), true, ViewDirection.NORTH, effect);
 
 	Amulet amulet = new Amulet();
 	Cloak cloak = new Cloak();

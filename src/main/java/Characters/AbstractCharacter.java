@@ -94,11 +94,7 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public void setLifepoints(int lifepoints) {
-        if (lifepoints < clazz.getBaseLifePoints()) {
-            this.lifepoints = lifepoints;
-        } else {
-            this.lifepoints = clazz.getBaseLifePoints();
-        }
+        this.lifepoints = lifepoints;
     }
 
         public int getWalkingrange() {
@@ -158,7 +154,7 @@ public abstract class AbstractCharacter implements Comparable {
 
     public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
                              Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
-                             ViewDirection viewDirection, ArrayList<Effect> effects, Clazz Class) {
+                             ViewDirection viewDirection, ArrayList<Effect> effects) {
         this.name = name;
         this.dexterity = desterity;
         this.intelligence = intelligence;
@@ -166,14 +162,18 @@ public abstract class AbstractCharacter implements Comparable {
         this.constitution = constitution;
         this.wisdom = wisdom;
         this.race = race;
-        this.lifepoints = clazz.getBaseLifePoints();
+        if(clazz != null) {
+            this.lifepoints = clazz.getBaseLifePoints();
+        } else{
+            this.setLifepoints(20);
+        }
         this.walkingrange = walkingrange;
         this.armorClass = armorClass;
         this.currentarmor = currentarmor;
         this.isVisible = isVisible;
         this.viewDirection = viewDirection;
         this.effects = effects;
-        this.clazz = clazz;
+
     }
 
     public int attack(Player player){
