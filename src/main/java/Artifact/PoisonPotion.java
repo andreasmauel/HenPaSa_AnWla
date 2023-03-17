@@ -8,7 +8,7 @@ public class PoisonPotion extends  Potion{
     public PoisonPotion(int charges) {
         super(charges);
     }
-    public int use(AbstractCharacter player) {
-        return player.getLifepoints() - 6;
+    public void use(AbstractCharacter player) {
+        player.setLifepoints(player.getLifepoints() - 6);
     }
 }

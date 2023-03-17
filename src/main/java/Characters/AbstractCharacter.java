@@ -1,6 +1,7 @@
 package Characters;
 
 import Characters.Races.Race;
+import Characters.classes.Clazz;
 import GameController.dices.DiceTwenty;
 import GameController.dices.IDice;
 import equipment.armor.Armor;
@@ -12,6 +13,7 @@ import util.Effect;
 import java.util.ArrayList;
 
 public abstract class AbstractCharacter implements Comparable {
+    private Clazz clazz;
     private String name;
     private int dexterity;
     private int intelligence;
@@ -95,7 +97,7 @@ public abstract class AbstractCharacter implements Comparable {
         this.lifepoints = lifepoints;
     }
 
-    public int getWalkingrange() {
+        public int getWalkingrange() {
         return walkingrange;
     }
 
@@ -151,7 +153,7 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
-                             Race race, int lifepoints, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
+                             Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
                              ViewDirection viewDirection, ArrayList<Effect> effects) {
         this.name = name;
         this.dexterity = desterity;
@@ -160,13 +162,18 @@ public abstract class AbstractCharacter implements Comparable {
         this.constitution = constitution;
         this.wisdom = wisdom;
         this.race = race;
-        this.lifepoints = lifepoints;
+        if(clazz != null) {
+            this.lifepoints = clazz.getBaseLifePoints();
+        } else{
+            this.setLifepoints(20);
+        }
         this.walkingrange = walkingrange;
         this.armorClass = armorClass;
         this.currentarmor = currentarmor;
         this.isVisible = isVisible;
         this.viewDirection = viewDirection;
         this.effects = effects;
+
     }
 
     public int attack(Player player){
