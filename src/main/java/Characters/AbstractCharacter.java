@@ -4,6 +4,7 @@ import Characters.Races.Race;
 import Characters.classes.Clazz;
 import GameController.dices.DiceTwenty;
 import GameController.dices.IDice;
+import battlemap.Dungeon.Dungeon;
 import equipment.armor.Armor;
 import equipment.armor.ChainMail;
 import equipment.weapon.Weapon;
@@ -39,6 +40,14 @@ public abstract class AbstractCharacter implements Comparable {
 
     public int getY() {
         return this.yPosition;
+    }
+
+    public void setxPosition(int xPosition){
+        this.xPosition = xPosition;
+    }
+
+    public void setyPosition(int yPosition){
+        this.yPosition = yPosition;
     }
 
     public String getName() {
@@ -189,10 +198,6 @@ public abstract class AbstractCharacter implements Comparable {
     public void attack(AbstractCharacter character){
        int damage = this.weapon.useWeapon();
        character.getDamage(damage);
-    }
-
-    public void move(){
-
     }
 
     public void getDamage(int damage) {
