@@ -9,10 +9,9 @@ import java.util.Collections;
 public class FightController {
     private boolean fightEnd;
     private ArrayList<Player> players;
-
     private ArrayList<Player> monsters;
-
     private ArrayList<AbstractCharacter> fightOrder;
+    private int currentPlayerIndex = 0;
 
     FightController(ArrayList<Player> players, ArrayList<Player> monsters) {
         this.fightEnd = false;
@@ -46,11 +45,10 @@ public class FightController {
         this.nextCharacter();
     }
 
-    public void nextCharacter() {
+    public Player nextCharacter() {
         if (this.monsters.isEmpty() || this.players.isEmpty()) {
             this.fightEnd = true;
         }
-        this.fightOrder.iterator().next();
     }
 
     public boolean isFightEnd() {
