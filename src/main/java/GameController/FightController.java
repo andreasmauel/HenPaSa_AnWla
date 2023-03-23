@@ -42,15 +42,16 @@ public class FightController {
         for (Player monster : this.monsters) {
             this.addToFight(monster);
         }
-        this.nextCharacter();
+        //this.nextCharacter();
     }
 
+    /*
     public Player nextCharacter() {
         if (this.monsters.isEmpty() || this.players.isEmpty()) {
             this.fightEnd = true;
         }
     }
-
+*/
     public boolean isFightEnd() {
         return fightEnd;
     }
