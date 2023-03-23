@@ -1,6 +1,6 @@
 package Artifact;
 
-public class KeyChest implements IKey, Artifact {
+public class KeyChest implements IKey {
 
     private int keycharges;
 
