@@ -11,6 +11,7 @@ public class FightController {
     private ArrayList<Player> players;
     private ArrayList<Player> monsters;
     private ArrayList<AbstractCharacter> fightOrder;
+    private AbstractCharacter currentCharacter;
     private int currentPlayerIndex = 0;
 
     FightController(ArrayList<Player> players, ArrayList<Player> monsters) {
@@ -42,16 +43,25 @@ public class FightController {
         for (Player monster : this.monsters) {
             this.addToFight(monster);
         }
-        //this.nextCharacter();
+        this.currentCharacter = this.fightOrder.get(this.currentPlayerIndex);
     }
 
-    /*
-    public Player nextCharacter() {
+    public void startFightRound() {
+
+    }
+
+    public void endFightRound() {
         if (this.monsters.isEmpty() || this.players.isEmpty()) {
-            this.fightEnd = true;
+            this.fightEnd();
+            return ;
         }
     }
-*/
+
+    public void fightEnd() {
+        this.currentPlayerIndex = 0;
+        this.fightEnd = true;
+    }
+
     public boolean isFightEnd() {
         return fightEnd;
     }
