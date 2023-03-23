@@ -1,4 +1,4 @@
-package GameControllerTest;
+package GameController;
 
 import static org.junit.Assert.*;
 
