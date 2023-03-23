@@ -45,7 +45,7 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
-                             Race race, int lifepoints, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
+                             Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
                              ViewDirection viewDirection, ArrayList<Effect> effects) {
         this.name = name;
         this.dexterity = desterity;
@@ -54,13 +54,18 @@ public abstract class AbstractCharacter implements Comparable {
         this.constitution = constitution;
         this.wisdom = wisdom;
         this.race = race;
-        this.lifepoints = lifepoints;
+        if(clazz != null) {
+            this.lifepoints = clazz.getBaseLifePoints();
+        } else{
+            this.setLifepoints(20);
+        }
         this.walkingrange = walkingrange;
         this.armorClass = armorClass;
         this.currentarmor = currentarmor;
         this.isVisible = isVisible;
         this.viewDirection = viewDirection;
         this.effects = effects;
+
     }
 
     public String getName() {
@@ -192,30 +197,6 @@ public abstract class AbstractCharacter implements Comparable {
 
     public void setEffects(ArrayList<Effect> effects) {
         this.effects = effects;
-    }
-
-    public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
-                             Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
-                             ViewDirection viewDirection, ArrayList<Effect> effects) {
-        this.name = name;
-        this.dexterity = desterity;
-        this.intelligence = intelligence;
-        this.strenght = strenght;
-        this.constitution = constitution;
-        this.wisdom = wisdom;
-        this.race = race;
-        if(clazz != null) {
-            this.lifepoints = clazz.getBaseLifePoints();
-        } else{
-            this.setLifepoints(20);
-        }
-        this.walkingrange = walkingrange;
-        this.armorClass = armorClass;
-        this.currentarmor = currentarmor;
-        this.isVisible = isVisible;
-        this.viewDirection = viewDirection;
-        this.effects = effects;
-
     }
 
     public void attack(AbstractCharacter character){
