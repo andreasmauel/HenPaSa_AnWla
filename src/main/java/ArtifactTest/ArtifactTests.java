@@ -5,21 +5,21 @@ import Characters.AbstractCharacter;
 import Characters.Monster;
 import Characters.Races.Dwarf;
 import Characters.ViewDirection;
+import Characters.classes.Fighter;
 import GameController.dices.DiceFour;
 import equipment.armor.LeatherArmor;
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 import util.Effect;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 public class ArtifactTests {
 
 	private ArrayList<Effect> effect;
 	AbstractCharacter testMonster = new Monster("test", 5, 6, 7, 2, 3,
-			new Dwarf(), 20, 2, 4, new LeatherArmor(), true, ViewDirection.NORTH, effect);
+			new Dwarf(), 2, 4, new LeatherArmor(), true, ViewDirection.NORTH, effect);
 
 	Amulet amulet = new Amulet();
 	Cloak cloak = new Cloak();
@@ -44,8 +44,8 @@ public class ArtifactTests {
 
 	@Test
 	public void testHealingPotion(){
-		int healtini = testMonster.getLifepoints();
-		assertEquals(testMonster.getLifepoints() > healtini, healingPotion.use(testMonster, dice));
+		healingPotion.use(testMonster);
+		assertTrue(testMonster.getLifepoints() > 20);
 	}
 
 	@Test

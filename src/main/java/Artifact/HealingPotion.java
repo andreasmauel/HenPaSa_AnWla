@@ -1,7 +1,6 @@
 package Artifact;
 
 import Characters.AbstractCharacter;
-import Characters.Player;
 import GameController.dices.DiceFour;
 
 public class HealingPotion extends Potion{
@@ -9,7 +8,9 @@ public class HealingPotion extends Potion{
     public HealingPotion(int charges){
         super(charges);
     }
-    public int use(AbstractCharacter player, DiceFour dice) {
-        return player.getLifepoints() + (2 * dice.rollDice()) + 2;
+    public void use(AbstractCharacter player) {
+        DiceFour dice = new DiceFour();
+        player.setLifepoints(player.getLifepoints() + dice.rollDice() + dice.rollDice() + 2);
+
     }
 }

@@ -4,6 +4,7 @@ import battlemap.Dungeon.Dungeon;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -41,8 +42,12 @@ public class MainFrame {
         this.dungeon = dungeon;
         generateMap(this.dungeon);
         generateStatusScreen();
+        statusPanel.setActiveCharacter(1);
         generateDialogBox();
         generateContextMenu();
+
+
+        jFrame.setExtendedState(jFrame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
     }
 
     private void addTile(int x, int y, String path) throws IOException {
@@ -66,35 +71,45 @@ public class MainFrame {
                     switch (dungeon.getTilePos(x, y).getMetaData().getTileType()) {
                         case DOOR:
                             if (dungeon.getTilePos(x, y).getLockable().isLocked()) {
-                                addTile(posX, posY, "H:\\Graphics\\DoorTile_Locked.png");
+                                addTile(posX, posY, ".\\Graphics\\DoorTile_Locked.png");
                             } else if (dungeon.getTilePos(x, y).getMetaData().isPassable()) {
-                                addTile(posX, posY, "H:\\Graphics\\DoorTile_open.png");
+                                addTile(posX, posY, ".\\Graphics\\DoorTile_open.png");
                             } else {
-                                addTile(posX, posY, "H:\\Graphics\\DoorTile_closed.png");
+                                addTile(posX, posY, ".\\Graphics\\DoorTile_closed.png");
                             }
                             break;
                         case CHEST:
                             break;
                         case WALL:
-                            addTile(posX, posY, "H:\\Graphics\\WallTile.png");
+                            addTile(posX, posY, ".\\Graphics\\WallTile.png");
                             break;
                         default:
-                            addTile(posX, posY, "H:\\Graphics\\FloorTile.png");
+                            addTile(posX, posY, ".\\Graphics\\FloorTile.png");
                             break;
                     }
                 }
+                else if(dungeon.getCharacterPos(x,y) != null) {
+                    switch (dungeon.getCharacterPos(x, y).getMetaData().getTileType()) {
+                        case PLAYER:
+                            addTile(posX, posY, ".\\Graphics\\fighter.png");
+                            break;
+                        case MONSTER:
+                            addTile(posX, posY, ".\\Graphics\\monster_orc.png");
+                            break;
+                        default:
+                            addTile(posX, posY, ".\\Graphics\\FloorTile.png");
+                            break;
+                    }
+                }
+                else if(dungeon.getEquipmentPos(x,y) != null) {
+
+                }
+                else if(dungeon.getArtifactPos(x,y) != null) {
+
+                }
                 else
                 {
-                    addTile(posX, posY, "H:\\Graphics\\FloorTile.png");
-                }
-                if(dungeon.getEquipmentPos(x,y) != null) {
-
-                }
-                if(dungeon.getArtifactPos(x,y) != null) {
-
-                }
-                if(dungeon.getCharacterPos(x,y) != null) {
-
+                    addTile(posX, posY, ".\\Graphics\\FloorTile.png");
                 }
             }
         }

@@ -1,11 +1,12 @@
 package equipment.weapon;
 
+import GameController.dices.DiceSix;
 import util.Attribute;
 
 public class BattleAxe extends Weapon{
     public BattleAxe() {
         //TODO damage
-        super(Attribute.STRENGTH,10,4,0,6,false,1,false);
+        super(Attribute.STRENGTH,10,4,0, new DiceSix(),false,1,false);
     }
 
     @Override
@@ -23,10 +24,6 @@ public class BattleAxe extends Weapon{
 
     }
 
-    @Override
-    protected void strike() {
-
-    }
 
     @Override
     protected void holster() {

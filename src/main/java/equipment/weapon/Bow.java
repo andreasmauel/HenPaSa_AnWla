@@ -1,12 +1,13 @@
 package equipment.weapon;
 
+import GameController.dices.DiceEight;
 import util.Attribute;
 
 public class Bow extends RangeWeapon {
 
 
-    public Bow(Attribute attribute, float price, float weigth, int requiredStrength, int damage, boolean multiAttackAllowed, float range, boolean isThrowable, int ammo) {
-        super(Attribute.DEXTERITY, 15, 2, 13, 8, false, 6, false);
+    public Bow() {
+        super(Attribute.DEXTERITY, 15, 2, 13, new DiceEight(), false, 6, false);
         this.setAmmo(20);
     }
 
@@ -23,11 +24,6 @@ public class Bow extends RangeWeapon {
     @Override
     protected void aim() {
         super.aim();
-    }
-
-    @Override
-    protected void strike() {
-        super.strike();
     }
 
     @Override
