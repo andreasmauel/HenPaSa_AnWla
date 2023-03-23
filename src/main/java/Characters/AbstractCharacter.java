@@ -4,6 +4,7 @@ import Characters.Races.Race;
 import Characters.classes.Clazz;
 import GameController.dices.DiceTwenty;
 import GameController.dices.IDice;
+import battlemap.AbstractPositions.TilePos;
 import equipment.armor.Armor;
 import equipment.armor.ChainMail;
 import equipment.weapon.Weapon;
@@ -39,6 +40,11 @@ public abstract class AbstractCharacter implements Comparable {
 
     public int getY() {
         return this.yPosition;
+    }
+
+    public void setPosition(int xPosition, int yPosition){
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
     }
 
     public String getName() {
@@ -191,10 +197,6 @@ public abstract class AbstractCharacter implements Comparable {
        character.getDamage(damage);
     }
 
-    public void move(){
-
-    }
-
     public void getDamage(int damage) {
         this.setLifepoints(this.getLifepoints() - damage);
     }
@@ -239,6 +241,8 @@ public abstract class AbstractCharacter implements Comparable {
     public int compareTo(Object o) {
         return dice.rollDice() ;
     }
+
+    public abstract void move(int xposition, int yposition, TilePos tilePos);
 }
 
 

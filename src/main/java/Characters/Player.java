@@ -1,11 +1,13 @@
 package Characters;
 
+import Artifact.Artifact;
+import Artifact.IKey;
 import Characters.Races.Race;
 import Characters.classes.Clazz;
 
+import battlemap.AbstractPositions.TilePos;
 import equipment.Equipment;
 import equipment.armor.Armor;
-import util.Attribute;
 import util.Effect;
 
 import java.util.ArrayList;
@@ -36,8 +38,12 @@ public class Player extends AbstractCharacter{
     }
 
 
-    public void useArtifact(){
+    public void useArtifact(Artifact artifact){
+        artifact.use();
+    }
 
+    public void useKey(IKey key){
+        key.use();
     }
 
     public String showInventory(){
@@ -48,4 +54,11 @@ public class Player extends AbstractCharacter{
         return 0;
     }
 
+    @Override
+    public void move(int xposition, int yposition, TilePos tilePos) {
+        if (tilePos.getMetaData().isPassable()){
+            setPosition(xposition, yposition);
+        }
+
+    }
 }
