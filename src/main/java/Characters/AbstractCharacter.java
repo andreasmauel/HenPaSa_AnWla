@@ -17,7 +17,7 @@ public abstract class AbstractCharacter implements Comparable {
     private String name;
     private int dexterity;
     private int intelligence;
-    private int strenght;
+    private int strength;
     private int constitution;
     private int wisdom;
     private Race race;
@@ -54,6 +54,9 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public void setDexterity(int dexterity) {
+        if (dexterity > 20){
+            this.dexterity = 20;
+        }
         this.dexterity = dexterity;
     }
 
@@ -64,15 +67,21 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
+        if (intelligence > 20){
+            this.intelligence = 20;
+        }
+        this.intelligence = strength;
     }
 
-    public int getStrenght() {
-        return strenght;
+    public int getStrength() {
+        return strength;
     }
 
-    public void setStrenght(int strenght) {
-        this.strenght = strenght;
+    public void setStrength(int strength) {
+        if (strength > 20){
+            this.strength = 20;
+        }
+        this.strength = strength;
     }
 
     public int getConstitution() {
@@ -80,7 +89,10 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public void setConstitution(int constitution) {
-        this.constitution = constitution;
+        if (constitution > 20){
+            this.constitution = 20;
+        }
+        this.constitution = strength;
     }
 
     public int getWisdom() {
@@ -88,6 +100,9 @@ public abstract class AbstractCharacter implements Comparable {
     }
 
     public void setWisdom(int wisdom) {
+        if (wisdom > 20){
+            this.wisdom = 20;
+        }
         this.wisdom = wisdom;
     }
 
@@ -97,6 +112,7 @@ public abstract class AbstractCharacter implements Comparable {
 
     public void setRace(Race race) {
         this.race = race;
+        race.applyModifier(this);
     }
 
     public int getLifepoints() {
@@ -162,13 +178,13 @@ public abstract class AbstractCharacter implements Comparable {
         this.effects = effects;
     }
 
-    public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
+    public AbstractCharacter(String name, int desterity, int intelligence, int strength, int constitution, int wisdom,
                              Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
                              ViewDirection viewDirection, ArrayList<Effect> effects) {
         this.name = name;
         this.dexterity = desterity;
         this.intelligence = intelligence;
-        this.strenght = strenght;
+        this.strength = strength;
         this.constitution = constitution;
         this.wisdom = wisdom;
         this.race = race;
@@ -215,7 +231,7 @@ public abstract class AbstractCharacter implements Comparable {
                 return (getDexterity()-10)/2;
 
             case STRENGTH:
-                return (getStrenght()-10)/2;
+                return (getStrength()-10)/2;
 
             case INTELLIGENCE:
                 return (getIntelligence()-10)/2;

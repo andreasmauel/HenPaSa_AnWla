@@ -45,7 +45,7 @@ public class Player extends AbstractCharacter{
     }
 
     public int calculateMaxLivepoints(){
-        return 0;
+        return clazz.getBaseLifePoints() + (modifier(Attribute.CONSTITUTION)-10)/2;
     }
 
 }
