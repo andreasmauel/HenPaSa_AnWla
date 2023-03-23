@@ -11,8 +11,9 @@ import util.Attribute;
 import util.Effect;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
-public abstract class AbstractCharacter implements Comparable {
+public abstract class AbstractCharacter {
     private Clazz clazz;
     private String name;
     private int dexterity;
@@ -29,6 +30,8 @@ public abstract class AbstractCharacter implements Comparable {
     private boolean isVisible;
     private ViewDirection viewDirection;
     private ArrayList<Effect> effects;
+    private IDice diceTwenty = new DiceTwenty();
+    private int initiative;
     private int xPosition;
     private int yPosition;
 
@@ -39,6 +42,30 @@ public abstract class AbstractCharacter implements Comparable {
 
     public int getY() {
         return this.yPosition;
+    }
+
+    public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
+                             Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
+                             ViewDirection viewDirection, ArrayList<Effect> effects) {
+        this.name = name;
+        this.dexterity = desterity;
+        this.intelligence = intelligence;
+        this.strenght = strenght;
+        this.constitution = constitution;
+        this.wisdom = wisdom;
+        this.race = race;
+        if(clazz != null) {
+            this.lifepoints = clazz.getBaseLifePoints();
+        } else{
+            this.setLifepoints(20);
+        }
+        this.walkingrange = walkingrange;
+        this.armorClass = armorClass;
+        this.currentarmor = currentarmor;
+        this.isVisible = isVisible;
+        this.viewDirection = viewDirection;
+        this.effects = effects;
+
     }
 
     public String getName() {
@@ -56,8 +83,6 @@ public abstract class AbstractCharacter implements Comparable {
     public void setDexterity(int dexterity) {
         this.dexterity = dexterity;
     }
-
-    IDice dice = new DiceTwenty();
 
     public int getIntelligence() {
         return intelligence;
@@ -135,6 +160,18 @@ public abstract class AbstractCharacter implements Comparable {
         this.currentarmor = currentarmor;
     }
 
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public int getInitiative() {
+        return initiative;
+    }
+
+    public void rollInitiative() {
+        this.initiative = this.diceTwenty.rollDice() + this.modifier(Attribute.DEXTERITY);
+    }
+
     public boolean isVisible() {
         return isVisible;
     }
@@ -160,30 +197,6 @@ public abstract class AbstractCharacter implements Comparable {
 
     public void setEffects(ArrayList<Effect> effects) {
         this.effects = effects;
-    }
-
-    public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
-                             Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
-                             ViewDirection viewDirection, ArrayList<Effect> effects) {
-        this.name = name;
-        this.dexterity = desterity;
-        this.intelligence = intelligence;
-        this.strenght = strenght;
-        this.constitution = constitution;
-        this.wisdom = wisdom;
-        this.race = race;
-        if(clazz != null) {
-            this.lifepoints = clazz.getBaseLifePoints();
-        } else{
-            this.setLifepoints(20);
-        }
-        this.walkingrange = walkingrange;
-        this.armorClass = armorClass;
-        this.currentarmor = currentarmor;
-        this.isVisible = isVisible;
-        this.viewDirection = viewDirection;
-        this.effects = effects;
-
     }
 
     public void attack(AbstractCharacter character){
@@ -226,18 +239,21 @@ public abstract class AbstractCharacter implements Comparable {
         return 0;
     }
 
-    public int compareInitiative(Player player, Attribute attribute){
-        if(this.compareInitiative((Player) this, attribute) < compareTo(player) + modifier(attribute)) {
-
-        } else if (this.compareInitiative((Player) this, attribute) < compareTo(player) + modifier(attribute)) {
-                return player.getDexterity();
+    public static class InitiativeComperetor implements Comparator<AbstractCharacter> {
+        @Override
+        public int compare(AbstractCharacter otherPlayer, AbstractCharacter player) {
+            if (otherPlayer.getInitiative() < player.getInitiative()) {
+                return -1;
+            } else if (otherPlayer.getInitiative() > player.getInitiative()) {
+                return 1;
             }
-         return 1;
-    }
+            return 0;
+        }
 
-    @Override
-    public int compareTo(Object o) {
-        return dice.rollDice() ;
+        @Override
+        public boolean equals(Object obj) {
+            return false;
+        }
     }
 }
 
