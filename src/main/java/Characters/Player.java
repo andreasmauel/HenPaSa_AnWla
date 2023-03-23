@@ -31,10 +31,10 @@ public class Player extends AbstractCharacter{
         super(name, dexterity, intelligence, strenght, constitution, wisdom, race, walkingrange, armorClass,
                 currentArmor, isVisible, viewDirection, effects);
         this.clazz = clazz;
+        this.clazz.applyModifiers(this);
         this.inventory = inventory;
 
     }
-
 
     public void useArtifact(){
 

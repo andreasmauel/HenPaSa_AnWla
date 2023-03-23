@@ -50,7 +50,7 @@ public abstract class AbstractCharacter {
         this.name = name;
         this.dexterity = desterity;
         this.intelligence = intelligence;
-        this.strenght = strenght;
+        this.strength = strenght;
         this.constitution = constitution;
         this.wisdom = wisdom;
         this.race = race;
