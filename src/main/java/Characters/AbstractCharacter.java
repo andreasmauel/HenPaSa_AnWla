@@ -13,7 +13,7 @@ import util.Effect;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public abstract class AbstractCharacter implements Comparable {
+public abstract class AbstractCharacter {
     private Clazz clazz;
     private String name;
     private int dexterity;
