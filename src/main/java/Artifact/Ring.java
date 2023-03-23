@@ -10,7 +10,7 @@ public class Ring extends Magical{
         super(false);
     }
 
-    public int use(AbstractCharacter player) {
-        return 0;
-    }
+    public void use(AbstractCharacter player) {
+
+            }
 }
