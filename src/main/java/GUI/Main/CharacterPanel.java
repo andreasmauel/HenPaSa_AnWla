@@ -28,10 +28,10 @@ public class CharacterPanel extends JPanel {
 
     public void setPlayerInfo() {
         playerInfo.setLayout(new BoxLayout(playerInfo, BoxLayout.LINE_AXIS));
-        JTextField playerName = new JTextField("Name: " +player.getName());
-        JTextField level = new JTextField("Level: " + 1) ;
-        JTextField race = new JTextField("Race: " + player.getRace());
-        JTextField clazz = new JTextField("Class: " + player.getClazzName());
+        JLabel playerName = new JLabel("Name: " +player.getName());
+        JLabel level = new JLabel("Level: " + 1) ;
+        JLabel race = new JLabel("Race: " + player.getRace());
+        JLabel clazz = new JLabel("Class: " + player.getClazzName());
         playerInfo.add(playerName);
         playerInfo.add(level);
         playerInfo.add(race);
