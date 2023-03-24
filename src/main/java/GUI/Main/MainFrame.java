@@ -1,12 +1,14 @@
 package GUI.Main;
 
 import battlemap.Dungeon.Dungeon;
+import battlemap.Meta.TileType;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -60,6 +62,30 @@ public class MainFrame {
         dungeonPanel.add(jLabel);
     }
 
+    private void addRotTile(int x, int y, String path) throws IOException
+    {
+        File file = new File(path);
+        BufferedImage bufferedImage = ImageIO.read(file);
+
+        // The required drawing location
+        int drawLocationX = x;
+        int drawLocationY = y;
+
+// Rotation information
+
+        double rotationRequired = Math.toRadians (90);
+        double locationX = bufferedImage.getWidth() / 2;
+        double locationY = bufferedImage.getHeight() / 2;
+        AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
+        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+
+        ImageIcon imageIcon = new ImageIcon(op.filter(bufferedImage, null));
+        JLabel jLabel = new JLabel();
+        jLabel.setIcon(imageIcon);
+        jLabel.setBounds(x,y, 50, 50);
+        dungeonPanel.add(jLabel);
+    }
+
     private void generateMap(Dungeon dungeon) throws IOException {
         for(int x = 0; x < dungeon.getxMax(); x++)
         {
@@ -70,15 +96,46 @@ public class MainFrame {
                 if(dungeon.getTilePos(x,y) != null) {
                     switch (dungeon.getTilePos(x, y).getMetaData().getTileType()) {
                         case DOOR:
-                            if (dungeon.getTilePos(x, y).getLockable().isLocked()) {
-                                addTile(posX, posY, ".\\Graphics\\DoorTile_Locked.png");
-                            } else if (dungeon.getTilePos(x, y).getMetaData().isPassable()) {
-                                addTile(posX, posY, ".\\Graphics\\DoorTile_open.png");
-                            } else {
-                                addTile(posX, posY, ".\\Graphics\\DoorTile_closed.png");
+                            try{
+                            if(dungeon.getTilePos(x, y-1).getMetaData().getTileType() == TileType.WALL)
+                            {
+                                if (dungeon.getTilePos(x, y).getDoor().isLocked()) {
+                                    addRotTile(posX, posY, ".\\Graphics\\DoorTile_Locked.png");
+                                } else if (dungeon.getTilePos(x, y).getMetaData().isPassable()) {
+                                    addRotTile(posX, posY, ".\\Graphics\\DoorTile_open.png");
+                                } else {
+                                    addRotTile(posX, posY, ".\\Graphics\\DoorTile_closed.png");
+                                }
+                            }
+                            else
+                            {
+                                if (dungeon.getTilePos(x, y).getDoor().isLocked()) {
+                                    addTile(posX, posY, ".\\Graphics\\DoorTile_Locked.png");
+                                } else if (dungeon.getTilePos(x, y).getMetaData().isPassable()) {
+                                    addTile(posX, posY, ".\\Graphics\\DoorTile_open.png");
+                                } else {
+                                    addTile(posX, posY, ".\\Graphics\\DoorTile_closed.png");
+                                }
+                            }
+                            } catch (Exception e )
+                            {
+                                if (dungeon.getTilePos(x, y).getDoor().isLocked()) {
+                                    addTile(posX, posY, ".\\Graphics\\DoorTile_Locked.png");
+                                } else if (dungeon.getTilePos(x, y).getMetaData().isPassable()) {
+                                    addTile(posX, posY, ".\\Graphics\\DoorTile_open.png");
+                                } else {
+                                    addTile(posX, posY, ".\\Graphics\\DoorTile_closed.png");
+                                }
                             }
                             break;
                         case CHEST:
+                            if (dungeon.getTilePos(x, y).getChest().isLocked()) {
+                                addTile(posX, posY, ".\\Graphics\\ChestTile_Locked.png");
+                            } else if (dungeon.getTilePos(x, y).getChest().getArtifactLoot() == null && dungeon.getTilePos(x, y).getChest().getEquipmentLoot() == null) {
+                                addTile(posX, posY, ".\\Graphics\\ChestTile_open.png");
+                            } else {
+                                addTile(posX, posY, ".\\Graphics\\ChestTile_closed.png");
+                            }
                             break;
                         case WALL:
                             addTile(posX, posY, ".\\Graphics\\WallTile.png");
@@ -102,10 +159,10 @@ public class MainFrame {
                     }
                 }
                 else if(dungeon.getEquipmentPos(x,y) != null) {
-
+                    addTile(posX, posY, ".\\Graphics\\ItemTile.png");
                 }
                 else if(dungeon.getArtifactPos(x,y) != null) {
-
+                    addTile(posX, posY, ".\\Graphics\\ArtifactTile.png");
                 }
                 else
                 {

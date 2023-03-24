@@ -1,5 +1,6 @@
 package Characters;
 
+import Artifact.Artifact;
 import Characters.Races.Race;
 import Characters.classes.Clazz;
 
@@ -36,8 +37,9 @@ public class Player extends AbstractCharacter{
     }
 
 
-    public void useArtifact(){
+    public void useArtifact(Artifact artifact){
 
+        artifact.use(this);
     }
 
     public String showInventory(){

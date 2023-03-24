@@ -8,12 +8,14 @@ import Characters.ViewDirection;
 import Characters.classes.Fighter;
 import GameController.dices.DiceFour;
 import equipment.armor.LeatherArmor;
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 import util.Effect;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ArtifactTests {
 
@@ -33,7 +35,8 @@ public class ArtifactTests {
 
 	@Test
 	public void testAmulett() {
-		assertEquals(6, amulet.use(testMonster));
+		poisonPotion.use(testMonster);
+		assertEquals(6, testMonster.getArmorClass());
 	}
 
 	@Test

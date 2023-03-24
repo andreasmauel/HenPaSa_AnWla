@@ -4,6 +4,7 @@ import Characters.Races.Race;
 import Characters.classes.Clazz;
 import GameController.dices.DiceTwenty;
 import GameController.dices.IDice;
+import battlemap.Dungeon.Dungeon;
 import equipment.armor.Armor;
 import equipment.armor.ChainMail;
 import equipment.weapon.Weapon;
@@ -42,6 +43,14 @@ public abstract class AbstractCharacter {
 
     public int getY() {
         return this.yPosition;
+    }
+
+    public void setxPosition(int xPosition){
+        this.xPosition = xPosition;
+    }
+
+    public void setyPosition(int yPosition){
+        this.yPosition = yPosition;
     }
 
     public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
@@ -202,10 +211,6 @@ public abstract class AbstractCharacter {
     public void attack(AbstractCharacter character){
        int damage = this.weapon.useWeapon();
        character.getDamage(damage);
-    }
-
-    public void move(){
-
     }
 
     public void getDamage(int damage) {

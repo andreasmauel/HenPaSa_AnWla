@@ -2,7 +2,6 @@ package battlemap.AbstractPositions;
 
 import battlemap.Lockables.Chest;
 import battlemap.Lockables.Door;
-import battlemap.Lockables.Lockable;
 import battlemap.Meta.MetaData;
 import battlemap.Meta.TileType;
 
@@ -27,15 +26,22 @@ public abstract class TilePos
         this.metaData = metaData;
     }
 
-    public Lockable getLockable()
+    public Chest getChest()
     {
         if(chest!=null)
         {
             return chest;
-        } else if (door!=null)
+        }else
+        {
+            return null;
+        }
+    }
+
+    public Door getDoor() {
+        if (door!=null)
         {
             return door;
-        } else
+        }else
         {
             return null;
         }
@@ -52,6 +58,7 @@ public abstract class TilePos
         if(chest !=null)
         this.door = door;
     }
+
     public void open()
     {
         if(chest!=null)
