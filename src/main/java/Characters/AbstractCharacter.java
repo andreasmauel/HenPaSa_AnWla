@@ -55,7 +55,7 @@ public abstract class AbstractCharacter {
 
     public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
                              Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
-                             ViewDirection viewDirection, ArrayList<Effect> effects) {
+                             ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz) {
         this.name = name;
         this.dexterity = desterity;
         this.intelligence = intelligence;
@@ -63,6 +63,7 @@ public abstract class AbstractCharacter {
         this.constitution = constitution;
         this.wisdom = wisdom;
         this.race = race;
+        this.clazz = clazz;
         if(clazz != null) {
             this.lifepoints = clazz.getBaseLifePoints();
         } else{
@@ -103,6 +104,10 @@ public abstract class AbstractCharacter {
 
     public int getStrenght() {
         return strenght;
+    }
+
+    public String getClazzName() {
+        return this.clazz.getClassName();
     }
 
     public void setStrenght(int strenght) {

@@ -11,7 +11,7 @@ public class Mage extends Clazz{
     public int BaseLifePoints = 8;
 
     public Mage(int baseArmorclass, Attribute mainAttribute, Attribute secondMainAttribute, ArrayList<Attribute> savingthrowAttribute) {
-        super(8, baseArmorclass, mainAttribute, secondMainAttribute, savingthrowAttribute);
+        super("Mage",8, baseArmorclass, mainAttribute, secondMainAttribute, savingthrowAttribute);
     }
 
     public void EnemyDifficultyDetermination(){

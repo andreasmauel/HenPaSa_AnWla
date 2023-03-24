@@ -44,7 +44,7 @@ public class MainFrame {
         this.dungeon = dungeon;
         generateMap(this.dungeon);
         generateStatusScreen();
-        statusPanel.setActiveCharacter(1);
+//        statusPanel.setActiveCharacter(1);
         generateDialogBox();
         generateContextMenu();
 

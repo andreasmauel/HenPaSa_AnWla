@@ -30,8 +30,8 @@ public class Player extends AbstractCharacter{
                   Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
                   ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz) {
         super(name, dexterity, intelligence, strenght, constitution, wisdom, race, walkingrange, armorClass,
-                currentArmor, isVisible, viewDirection, effects);
-        this.clazz = clazz;
+                currentArmor, isVisible, viewDirection, effects, clazz);
+
         this.inventory = inventory;
 
     }
