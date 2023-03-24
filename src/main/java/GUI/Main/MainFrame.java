@@ -197,19 +197,19 @@ public class MainFrame {
             int y = (e.getY() - e.getY()%50)/50;
                 switch (dungeon.fieldSearch(x, y)) {
                     case TILES:
-                        contextMenu.displayTileType(dungeon.getTilePos(x, y).getMetaData().getTileType());
+                        contextMenu.displayTileType(dungeon.getTilePos(x, y).getMetaData().getTileType(),x,y);
                         break;
                     case CHARACTERS:
-                        contextMenu.displayTileType(dungeon.getCharacterPos(x, y).getMetaData().getTileType());
+                        contextMenu.displayTileType(dungeon.getCharacterPos(x, y).getMetaData().getTileType(),x,y);
                         break;
                     case EQUIPMENT:
-                        contextMenu.displayTileType(dungeon.getEquipmentPos(x, y).getMetaData().getTileType());
+                        contextMenu.displayTileType(dungeon.getEquipmentPos(x, y).getMetaData().getTileType(),x,y);
                         break;
                     case ARTIFACTS:
-                        contextMenu.displayTileType(dungeon.getArtifactPos(x, y).getMetaData().getTileType());
+                        contextMenu.displayTileType(dungeon.getArtifactPos(x, y).getMetaData().getTileType(),x,y);
                         break;
                     default:
-                        contextMenu.displayTileType(null);
+                        contextMenu.displayTileType(null,x,y);
                         break;
                 }
             }
