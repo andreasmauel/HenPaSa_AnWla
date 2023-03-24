@@ -8,9 +8,11 @@ import java.util.ArrayList;
 public class RoundController {
 
     private ArrayList<Player> players;
-    private ArrayList<Player> monsters;
+    private ArrayList<Monster> monsters;
 
-    RoundController(ArrayList<Player> players, ArrayList<Player> monsters) {
+    private FightController fightController = new FightController(players, monsters);
+
+    RoundController(ArrayList<Player> players, ArrayList<Monster> monsters) {
         this.setPlayers(players);
         this.setMonsters(monsters);
     }
@@ -23,11 +25,11 @@ public class RoundController {
         this.players = players;
     }
 
-    public ArrayList<Player> getMonsters() {
+    public ArrayList<Monster> getMonsters() {
         return monsters;
     }
 
-    public void setMonsters(ArrayList<Player> monsters) {
+    public void setMonsters(ArrayList<Monster> monsters) {
         this.monsters = monsters;
     }
 
@@ -38,7 +40,7 @@ public class RoundController {
         }
     }
 
-    private void monstersAction(Player monster) {
+    private void monstersAction(Monster monster) {
 
     }
 
@@ -47,6 +49,9 @@ public class RoundController {
     }
 
     private void checkFight(Player character) {
-
+/*        if(.contains(instanceof Monster)){
+*            fightController.startFightRound(new EffectController());
+* TODO: funktion des Sichtfeldes noch erwartet
+*/        }
     }
-}
+
