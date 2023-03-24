@@ -1,7 +1,5 @@
 package GUI.Main.ActionHandler;
 
-import Main.DialogBox;
-
 public class MoveAction extends ActionOption
 {
     public MoveAction()
@@ -14,6 +12,6 @@ public class MoveAction extends ActionOption
     @Override
     public void executeAction( String x, String y)
     {
-        DialogBox.ConsoleOut("Shuffles to: " +x+" "+y);
+        //DialogBox.ConsoleOut("Shuffles to: " +x+" "+y);
     }
 }
