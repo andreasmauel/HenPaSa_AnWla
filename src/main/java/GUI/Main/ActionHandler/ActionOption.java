@@ -1,13 +1,12 @@
 package GUI.Main.ActionHandler;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ActionOption extends JMenuItem
+public class ActionOption
 {
-    protected String actionName;
-    protected String actionEvent;
+    protected String actionName = "Action";
+    protected String actionEvent = "NULL";
 
     protected ButtonListener buttonListener = new ButtonListener();
 
@@ -16,16 +15,23 @@ public class ActionOption extends JMenuItem
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            if(e.getActionCommand() == getActionEvent())
+            String event = e.getActionCommand();
+            String[] command = event.split(",");
+            if(command[0].equals(getActionEvent()))
             {
-                executeAction();
+                executeAction(command[1], command[2]);
             }
         }
     }
 
     public ActionOption()
     {
-        super();
+
+    }
+
+    @Override
+    public String toString() {
+        return actionName;
     }
 
     public String getActionName()
@@ -41,7 +47,7 @@ public class ActionOption extends JMenuItem
     {
         return buttonListener;
     }
-    public void executeAction()
+    public void executeAction( String x, String y)
     {
 
     }

@@ -17,10 +17,10 @@ public class DialogBox
         textbox.setFont(new Font("Impact", Font.PLAIN, 20));
         textbox.setBackground(new Color(72, 72, 72, 255));
         textbox.setForeground(Color.WHITE);
+        textbox.setEditable(false);
 
         return scrollArea;
     }
-
     public static void ConsoleOut(String output)
     {
         textbox.append(output);

@@ -10,7 +10,7 @@ public class AttackAction extends ActionOption
     }
 
     @Override
-    public void executeAction()
+    public void executeAction( String x, String y)
     {
 
     }
