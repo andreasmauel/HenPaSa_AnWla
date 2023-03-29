@@ -134,6 +134,10 @@ public abstract class AbstractCharacter {
         return race;
     }
 
+    public String getRaceName() {
+        return this.getClass().getSimpleName();
+    }
+
     public void setRace(Race race) {
         this.race = race;
     }

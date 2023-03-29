@@ -18,8 +18,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class StatusFrame
-{
 
+{
     private JPanel statusFrame;
     private BufferedImage boxes;
 
@@ -36,8 +36,6 @@ public class StatusFrame
         statusFrame.setLayout(new BoxLayout(statusFrame, BoxLayout.PAGE_AXIS));
         statusFrame.setBounds(1250,0, 430, 750);
 
-
-
 //        JLabel jLabel = new JLabel();
 //        jLabel.setIcon(imageIcon);
 //        jLabel.setBounds(0,0, 430, 750);
@@ -46,6 +44,10 @@ public class StatusFrame
                 1,new Elf(), 5,3, new NoArmor(), true, ViewDirection.EAST,
                 new ArrayList<Effect>(), thief);
         statusFrame.add(new CharacterPanel(player));
+        statusFrame.add(new CharacterPanel(player));
+        statusFrame.add(new CharacterPanel(player));
+        statusFrame.add(new CharacterPanel(player));
+
 //        statusFrame.add(jLabel);
 
         return statusFrame;

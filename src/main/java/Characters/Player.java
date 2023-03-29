@@ -1,11 +1,17 @@
 package Characters;
 
+
+
+
 import Artifact.Artifact;
 import Characters.Races.Race;
 import Characters.classes.Clazz;
 
 import equipment.Equipment;
 import equipment.armor.Armor;
+import equipment.armor.NoArmor;
+import equipment.weapon.Dagger;
+import equipment.weapon.Weapon;
 import util.Attribute;
 import util.Effect;
 
@@ -16,6 +22,9 @@ public class Player extends AbstractCharacter{
     private Clazz clazz;
     private ArrayList<Equipment> inventory;
     public ArrayList<Effect> effects;
+    private ArrayList<Weapon> weapons;
+    private ArrayList<Armor> armor;
+    private ArrayList<Artifact> artifact;
 
     @Override
     public void setLifepoints(int lifepoints) {
@@ -33,6 +42,12 @@ public class Player extends AbstractCharacter{
                 currentArmor, isVisible, viewDirection, effects, clazz);
 
         this.inventory = inventory;
+        this.weapons = new ArrayList<>();
+        this.weapons.add(new Dagger());
+        this.armor = new ArrayList<>();
+        this.armor.add(new NoArmor());
+        this.artifact = new ArrayList<>();
+
 
     }
 
@@ -50,4 +65,19 @@ public class Player extends AbstractCharacter{
         return 0;
     }
 
+    public ArrayList<Weapon> getWeapons() {
+        return weapons;
+    }
+
+    public ArrayList<Armor> getArmor() {
+        return armor;
+    }
+
+    public ArrayList<Artifact> getArtifact() {
+        return artifact;
+    }
+
+    public Clazz getClazz() {
+        return clazz;
+    }
 }
