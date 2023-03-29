@@ -36,6 +36,9 @@ public class CharacterPanel extends JPanel {
         playerInfo.setBackground(new Color(72, 72, 72, 255));
         playerStats.setBackground(new Color(72, 72, 72, 255));
         activeEquipment.setBackground(new Color(72, 72, 72, 255));
+        disableComponents(activeEquipment, false);
+        disableComponents(playerStats, false);
+        disableComponents(playerInfo, false);
         this.add(playerInfo, BorderLayout.NORTH);
         this.add(playerStats, BorderLayout.WEST);
         this.add(activeEquipment, BorderLayout.EAST);
@@ -155,6 +158,8 @@ public class CharacterPanel extends JPanel {
         }
 
         disableComponents(activeEquipment, active);
+        disableComponents(playerInfo, active);
+        disableComponents(playerStats, active);
         active = !active;
     }
 

@@ -143,7 +143,7 @@ public abstract class AbstractCharacter {
     }
 
     public String getRaceName() {
-        return this.getClass().getSimpleName();
+        return this.getRace().getClass().getSimpleName();
     }
 
     public void setRace(Race race) {
