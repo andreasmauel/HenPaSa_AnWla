@@ -3,11 +3,13 @@ package GUI.Main;
 import Characters.AbstractCharacter;
 import Characters.Player;
 import Characters.classes.Mage;
+import equipment.Equipment;
 import util.Effect;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.util.Arrays;
 
 public class CharacterPanel extends JPanel {
 
@@ -66,37 +68,36 @@ public class CharacterPanel extends JPanel {
     }
 
     private void setPickablePanel() {
-        activeEquipment.setLayout(new GridLayout(4, 2));
+        activeEquipment.setLayout(new GridLayout(4, 2,5 ,5));
         JComboBox weapons;
         JComboBox armor;
         JComboBox artifact;
         JComboBox spells;
         if (player.getWeapons().size() != 0) {
             weapons = new JComboBox(player.getWeapons().toArray());
+            weapons.setRenderer(new MyComboBoxRenderer());
         } else {
             weapons = new JComboBox();
         }
-        if (player.getWeapons().size() != 0) {
+        if (player.getArmor().size() != 0) {
             armor = new JComboBox(player.getArmor().toArray());
+            armor.setRenderer(new MyComboBoxRenderer());
         } else {
             armor = new JComboBox();
         }
-        if (player.getWeapons().size() != 0) {
+        if (player.getArtifact().size() != 0) {
             artifact = new JComboBox(player.getArtifact().toArray());
+            artifact.setRenderer(new MyComboBoxRenderer());
         } else {
             artifact = new JComboBox();
         }
-        if (player.getWeapons().size() != 0) {
-            spells = new JComboBox();
-        } else {
-            spells = new JComboBox();
-        }
         if (this.player.getClazz() instanceof Mage) {
-            spells = new JComboBox();
+            spells = new JComboBox(((Mage)this.player.getClazz()).getSpells().toArray());
+            spells.setRenderer(new MyComboBoxRenderer());
         } else {
             spells = new JComboBox();
         }
-        JLabel remainingMovement = new JLabel();
+        JLabel remainingMovement = new JLabel("Current Movement");
 
         activeEquipment.add(weapons);
         activeEquipment.add(armor);
@@ -113,11 +114,29 @@ public class CharacterPanel extends JPanel {
 
     private JPanel createEffectsPanel() {
         JPanel effectsPanel = new JPanel();
-        effectsPanel.setLayout(new BoxLayout(effectsPanel, BoxLayout.LINE_AXIS));
+        effectsPanel.setLayout(new BoxLayout(effectsPanel, BoxLayout.PAGE_AXIS));
         for (Effect effect : player.getEffects()) {
             effectsPanel.add(new JLabel(effect.name()));
         }
         return effectsPanel;
+    }
+
+    private static class MyComboBoxRenderer implements ListCellRenderer<Object> {
+
+        @Override
+        public Component getListCellRendererComponent(JList<? extends Object> list, Object value, int index,
+                                                      boolean isSelected, boolean cellHasFocus) {
+            Component component = new JLabel(value.getClass().getSimpleName());
+            if (isSelected) {
+                component.setBackground(list.getSelectionBackground());
+                component.setForeground(list.getSelectionForeground());
+            } else {
+                component.setBackground(list.getBackground());
+                component.setForeground(list.getForeground());
+            }
+            return component;
+        }
+
     }
 
 }

@@ -10,6 +10,7 @@ import Characters.classes.Clazz;
 import equipment.Equipment;
 import equipment.armor.Armor;
 import equipment.armor.NoArmor;
+import equipment.weapon.BattleAxe;
 import equipment.weapon.Dagger;
 import equipment.weapon.Weapon;
 import util.Attribute;
@@ -19,19 +20,17 @@ import java.util.ArrayList;
 
 public class Player extends AbstractCharacter{
 
-    private Clazz clazz;
     private ArrayList<Equipment> inventory;
-    public ArrayList<Effect> effects;
     private ArrayList<Weapon> weapons;
     private ArrayList<Armor> armor;
     private ArrayList<Artifact> artifact;
 
     @Override
     public void setLifepoints(int lifepoints) {
-        if (lifepoints < clazz.getBaseLifePoints()) {
+        if (lifepoints < this.getClazz().getBaseLifePoints()) {
             this.setLifepoints(lifepoints);
         } else {
-            this.setLifepoints(clazz.getBaseLifePoints());
+            this.setLifepoints(this.getClazz().getBaseLifePoints());
         }
     }
 
@@ -44,6 +43,7 @@ public class Player extends AbstractCharacter{
         this.inventory = inventory;
         this.weapons = new ArrayList<>();
         this.weapons.add(new Dagger());
+        this.weapons.add(new BattleAxe());
         this.armor = new ArrayList<>();
         this.armor.add(new NoArmor());
         this.artifact = new ArrayList<>();
@@ -61,6 +61,8 @@ public class Player extends AbstractCharacter{
         return "0";
     }
 
+
+
     public int calculateMaxLivepoints(){
         return 0;
     }
@@ -75,9 +77,5 @@ public class Player extends AbstractCharacter{
 
     public ArrayList<Artifact> getArtifact() {
         return artifact;
-    }
-
-    public Clazz getClazz() {
-        return clazz;
     }
 }

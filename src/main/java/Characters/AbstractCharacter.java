@@ -86,6 +86,14 @@ public abstract class AbstractCharacter {
         this.name = name;
     }
 
+    public Clazz getClazz() {
+        return clazz;
+    }
+
+    public void addEffect(Effect effect) {
+        this.effects.add(effect);
+    }
+
     public int getDexterity() {
         return dexterity;
     }
