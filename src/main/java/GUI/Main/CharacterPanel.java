@@ -18,18 +18,24 @@ public class CharacterPanel extends JPanel {
         initCharacter();
     }
 
-    Player player;
-    JPanel playerInfo = new JPanel();
-    JPanel playerStats = new JPanel();
-    JPanel activeEquipment = new JPanel();
+    private Player player;
+    private JPanel playerInfo = new JPanel();
+    private JPanel playerStats = new JPanel();
+    private JPanel activeEquipment = new JPanel();
+    boolean active = true;
+
     JPanel equipmentSpellsEffects = new JPanel();
 
 
     public JPanel initCharacter() {
         this.setLayout(new BorderLayout(5, 5));
+        this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
         setPlayerInfo();
         setPlayerStats();
         setPickablePanel();
+        playerInfo.setBackground(new Color(72, 72, 72, 255));
+        playerStats.setBackground(new Color(72, 72, 72, 255));
+        activeEquipment.setBackground(new Color(72, 72, 72, 255));
         this.add(playerInfo, BorderLayout.NORTH);
         this.add(playerStats, BorderLayout.WEST);
         this.add(activeEquipment, BorderLayout.EAST);
@@ -39,9 +45,13 @@ public class CharacterPanel extends JPanel {
     public void setPlayerInfo() {
         playerInfo.setLayout(new BoxLayout(playerInfo, BoxLayout.LINE_AXIS));
         JLabel playerName = new JLabel("Name: " + player.getName());
+        playerName.setForeground(Color.WHITE);
         JLabel level = new JLabel("Level: " + 1);
+        level.setForeground(Color.WHITE);
         JLabel race = new JLabel("Race: " + player.getRaceName());
+        race.setForeground(Color.WHITE);
         JLabel clazz = new JLabel("Class: " + player.getClazzName());
+        clazz.setForeground(Color.WHITE);
         playerInfo.add(Box.createVerticalStrut(5));
         playerInfo.add(playerName);
         playerInfo.add(Box.createVerticalStrut(20));
@@ -68,7 +78,7 @@ public class CharacterPanel extends JPanel {
     }
 
     private void setPickablePanel() {
-        activeEquipment.setLayout(new GridLayout(4, 2,5 ,5));
+        activeEquipment.setLayout(new GridLayout(4, 2, 5, 5));
         JComboBox weapons;
         JComboBox armor;
         JComboBox artifact;
@@ -92,33 +102,66 @@ public class CharacterPanel extends JPanel {
             artifact = new JComboBox();
         }
         if (this.player.getClazz() instanceof Mage) {
-            spells = new JComboBox(((Mage)this.player.getClazz()).getSpells().toArray());
+            spells = new JComboBox(((Mage) this.player.getClazz()).getSpells().toArray());
             spells.setRenderer(new MyComboBoxRenderer());
         } else {
             spells = new JComboBox();
         }
         JLabel remainingMovement = new JLabel("Current Movement");
-
+        remainingMovement.setForeground(Color.WHITE);
         activeEquipment.add(weapons);
         activeEquipment.add(armor);
         activeEquipment.add(artifact);
         activeEquipment.add(spells);
         activeEquipment.add(remainingMovement);
         activeEquipment.add(createEffectsPanel());
+        disableComponents(activeEquipment, false);
 
     }
 
     private JLabel createLabelWithValue(String type, Object value) {
-        return new JLabel(type + value);
+        JLabel label = new JLabel(type + value);
+        label.setForeground(Color.WHITE);
+        return label;
     }
 
     private JPanel createEffectsPanel() {
         JPanel effectsPanel = new JPanel();
         effectsPanel.setLayout(new BoxLayout(effectsPanel, BoxLayout.PAGE_AXIS));
+        effectsPanel.setBackground(new Color(72, 72, 72, 255));
         for (Effect effect : player.getEffects()) {
-            effectsPanel.add(new JLabel(effect.name()));
+            JLabel label = new JLabel(effect.name());
+            label.setForeground(Color.WHITE);
+            effectsPanel.add(label);
         }
+
+        //Fuer Test
+        JButton button = new JButton("Change active");
+        button.addActionListener(e -> {
+            toggleBorder();
+        });
+        //
+
+        effectsPanel.add(button);
+
         return effectsPanel;
+    }
+
+    public void toggleBorder() {
+        if (!active) {
+            this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
+        } else {
+            this.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 3));
+        }
+
+        disableComponents(activeEquipment, active);
+        active = !active;
+    }
+
+    private void disableComponents(JPanel panel, boolean bool) {
+        for(Component component : panel.getComponents()) {
+            component.setEnabled(bool);
+        }
     }
 
     private static class MyComboBoxRenderer implements ListCellRenderer<Object> {

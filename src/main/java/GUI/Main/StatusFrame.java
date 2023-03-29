@@ -40,6 +40,7 @@ public class StatusFrame
         };
         statusFrame.setLayout(new BoxLayout(statusFrame, BoxLayout.PAGE_AXIS));
         statusFrame.setBounds(1250,0, 430, 750);
+//        statusFrame.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
 
         Clazz thief = new Thief(10, Attribute.DEXTERITY, Attribute.CONSTITUTION, new ArrayList<Attribute>());
@@ -67,6 +68,10 @@ public class StatusFrame
 //        jLabel.setIcon(imageIcon);
 //        jLabel.setBounds(0,0, 430, 750);
 //        statusFrame.add(jLabel);
+
+        for( Component component : statusFrame.getComponents()) {
+            component.setBackground(new Color(72, 72, 72, 255));
+        }
         return statusFrame;
     }
 
@@ -101,5 +106,7 @@ public class StatusFrame
         statusFrame.add(jLabel);
         statusFrame.repaint();
     }
+
+
 
 }
