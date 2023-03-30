@@ -7,6 +7,7 @@ import Characters.Player;
 import java.util.ArrayList;
 
 public class FightController {
+    private final GameController gameController;
     private boolean fightEnd;
     private ArrayList<Player> players;
     private ArrayList<Monster> monsters;
@@ -14,7 +15,8 @@ public class FightController {
     private AbstractCharacter currentCharacter;
     private int currentCharacterIndex = 0;
 
-    public FightController(ArrayList<Player> players, ArrayList<Monster> monsters) {
+    public FightController(ArrayList<Player> players, ArrayList<Monster> monsters, GameController gameController) {
+        this.gameController = gameController;
         this.fightEnd = false;
         this.setPlayers(players);
         this.setMonsters(monsters);
@@ -37,44 +39,22 @@ public class FightController {
         this.monsters = monsters;
     }
 
-
-
-    public void startFightRound() {
-        currentCharacter.getEffects().triggerEffects();
-        if (currentCharacter.getEffects().isSleepActive) {
-            endFightRound();
-        }
-    }
-
-    public void endFightRound() {
+    public void nextRound() {
         if (this.monsters.isEmpty() || this.players.isEmpty()) {
             this.fightEnd();
             return ;
         }
         if (this.currentCharacterIndex == this.fightOrder.size() - 1) {
             this.currentCharacterIndex = 0;
-            this.currentCharacter = this.fightOrder.get(this.currentCharacterIndex);
         } else {
             this.currentCharacterIndex ++;
-            this.currentCharacter = this.fightOrder.get(this.currentCharacterIndex);
         }
+        this.currentCharacter = this.fightOrder.get(this.currentCharacterIndex);
     }
 
     public void fightEnd() {
         this.currentCharacterIndex = 0;
         this.fightEnd = true;
-    }
-
-    public boolean isFightEnd() {
-        return fightEnd;
-    }
-
-    public void playerAction(Player player, AbstractCharacter target) {
-        player.attack(target);
-    }
-
-    public void monsterActions(Monster monster) {
-        monster.attack(players.get(0));
     }
 
     private void startFight()    {
@@ -84,7 +64,7 @@ public class FightController {
         for (Monster monster : this.monsters) {
             this.addToFight(monster);
         }
-        this.currentCharacter = this.fightOrder.get(this.currentCharacterIndex);
+        this.gameController.getRoundController().setActiveCharacter(fightOrder.get(this.currentCharacterIndex));
     }
 
     private void addToFight(AbstractCharacter character) {

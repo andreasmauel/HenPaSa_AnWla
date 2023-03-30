@@ -36,7 +36,7 @@ public abstract class AbstractCharacter implements Subject {
     private Armor currentarmor;
     private boolean isVisible;
     private ViewDirection viewDirection;
-    private EffectController effects;
+    private EffectController effects = new EffectController(this);
     private IDice diceTwenty = new DiceTwenty();
     private int initiative;
     private int xPosition;
@@ -70,8 +70,6 @@ public abstract class AbstractCharacter implements Subject {
         this.isVisible = isVisible;
         this.viewDirection = viewDirection;
         this.remainingRange = walkingrange;
-        this.effects = effects;
-
     }
 
 

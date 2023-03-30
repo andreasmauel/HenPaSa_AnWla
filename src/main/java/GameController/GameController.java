@@ -47,7 +47,7 @@ public class GameController {
         while(players.get(3) == null) {
             wait(100);
         }
-        this.roundController = new RoundController(players, monster);
+        this.roundController = new RoundController(players, monster, this);
         this.map = new StartDungeon();
         this.map.createMap(this.players, this);
     }
