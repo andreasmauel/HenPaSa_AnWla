@@ -1,16 +1,19 @@
 package GUI.Main.ActionHandler;
 
+import GameController.GameController;
+import battlemap.Dungeon.Dungeon;
+
 public class PickUpAction extends ActionOption
 {
-    public PickUpAction()
+    public PickUpAction(Dungeon dungeon, GameController gameController)
     {
-        super();
+        super(dungeon, gameController);
         this.actionName = "Pick-up";
         this.actionEvent = "PICKUP";
     }
 
     @Override
-    public void executeAction( String x, String y)
+    public void executeAction( int x, int y)
     {
 
     }

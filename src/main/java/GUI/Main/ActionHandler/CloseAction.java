@@ -1,16 +1,19 @@
 package GUI.Main.ActionHandler;
 
+import GameController.GameController;
+import battlemap.Dungeon.Dungeon;
+
 public class CloseAction extends ActionOption
 {
-    public CloseAction()
+    public CloseAction(Dungeon dungeon, GameController gameController)
     {
-        super();
+        super(dungeon, gameController);
         this.actionName = "Close";
         this.actionEvent = "CLOSE";
     }
 
     @Override
-    public void executeAction( String x, String y)
+    public void executeAction( int x, int y)
     {
 
     }

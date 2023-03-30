@@ -2,17 +2,24 @@ package GameController;
 
 import Characters.Monster;
 import Characters.Player;
+import GUI.Main.ActionHandler.MoveAction;
+import battlemap.Dungeon.Dungeon;
+
 
 import java.util.ArrayList;
 
 public class RoundController {
-
     private ArrayList<Player> players;
-    private ArrayList<Player> monsters;
+    private ArrayList<Monster> monsters;
+    private int index = 0;
 
-    RoundController(ArrayList<Player> players, ArrayList<Player> monsters) {
+
+    private FightController fightController;
+
+    RoundController(ArrayList<Player> players, ArrayList<Monster> monster) {
         this.setPlayers(players);
         this.setMonsters(monsters);
+        this.fightController = new FightController(this.players, this.monsters);
     }
 
     public ArrayList<Player> getPlayers() {
@@ -23,22 +30,29 @@ public class RoundController {
         this.players = players;
     }
 
-    public ArrayList<Player> getMonsters() {
+    public ArrayList<Monster> getMonsters() {
         return monsters;
     }
 
-    public void setMonsters(ArrayList<Player> monsters) {
+    public void setMonsters(ArrayList<Monster> monsters) {
         this.monsters = monsters;
     }
 
     public void performRound() {
-        for (Player player : this.players) {
-            this.playerAction(player);
-            this.checkFight(player);
+        Player player = getActivePlayer();
+        if(getActivePlayer() != null){
+            endRound();
         }
+       this.playerAction(player);
+       this.checkFight(player);
+       
     }
 
-    private void monstersAction(Player monster) {
+    private void endRound() {
+        index++;
+    }
+
+    private void monstersAction(Monster monster) {
 
     }
 
@@ -47,6 +61,19 @@ public class RoundController {
     }
 
     private void checkFight(Player character) {
+/*        if(.contains(instanceof Monster)){
+*            fightController.startFightRound(new EffectController());
+* TODO: funktion des Sichtfeldes noch erwartet
+*/        }
+
+    public Player getActivePlayer() {
+        return players.get(index);
+    }
+
+    public void move(Player player){
+        int x = player.getX();
+        int y = player.getY();
 
     }
-}
+    }
+

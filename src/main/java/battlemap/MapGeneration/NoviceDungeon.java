@@ -1,28 +1,48 @@
 package battlemap.MapGeneration;
 
 import Characters.Monster;
+import Characters.Player;
 import Characters.Races.Hobbit;
+import Characters.Races.Human;
 import Characters.ViewDirection;
+import Characters.classes.Fighter;
+import Characters.classes.FightingStyle;
+import Characters.classes.Mage;
+import Characters.classes.Thief;
 import GUI.Main.MainFrame;
+import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
-import battlemap.Lockables.Chest;
 import battlemap.Lockables.Door;
 import battlemap.Meta.TileType;
+import equipment.armor.ChainMail;
 import equipment.armor.LeatherArmor;
+import equipment.weapon.BattleAxe;
+import util.Attribute;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class MapGeneration
+public class NoviceDungeon
 {
     private Dungeon dungeon;
     private MainFrame mainFrame;
 
     public static void main(String[] args) throws IOException {
-        MapGeneration map = new MapGeneration();
+        ArrayList<Player> players = new ArrayList<Player>();
+        players.add(new Player("Ben",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Fighter(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>(), new BattleAxe(), FightingStyle.CLOSECOMBAT)));
+        players.add(new Player("Lisa",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Mage(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>())));
+        players.add(new Player("Tim",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Thief(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>())));
+        players.add(new Player("Brian",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Fighter(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>(), new BattleAxe(), FightingStyle.CLOSECOMBAT)));
+        NoviceDungeon map = new NoviceDungeon();
+        map.createMap(players, new GameController());
     }
 
-    public MapGeneration() throws IOException {
-        dungeon = new Dungeon(25, 15, "Start Dungeon");
+    public NoviceDungeon(){
+    }
+
+    public Dungeon createMap(ArrayList<Player> players, GameController gameController)
+    {
+        dungeon = new Dungeon(25, 15, "Novice Dungeon");
         boolean[][] generated = new boolean[dungeon.getxMax()][dungeon.getyMax()];
 
         for(int x = 0; x < dungeon.getxMax(); x++)
@@ -102,7 +122,19 @@ public class MapGeneration
 
 //              MAKE CHARACTERS
                 if(x==2 && y ==11 && generated[x][y] != true) {
-                    //dungeon.setCharacterPos(x, y, TileType.PLAYER, new AbstractCharacter());
+                    dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(0));
+                    generated[x][y] = true;
+                }
+                if(x==3 && y ==11 && generated[x][y] != true) {
+                    dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(1));
+                    generated[x][y] = true;
+                }
+                if(x==2 && y ==12 && generated[x][y] != true) {
+                    dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(2));
+                    generated[x][y] = true;
+                }
+                if(x==3 && y ==12 && generated[x][y] != true) {
+                    dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(3));
                     generated[x][y] = true;
                 }
                 //MAKE CHARACTERS
@@ -116,7 +148,7 @@ public class MapGeneration
                 //SET MONSTERS
             }
         }
-
-        mainFrame = new MainFrame(dungeon);
+        mainFrame = new MainFrame(dungeon, gameController);
+        return dungeon;
     }
 }

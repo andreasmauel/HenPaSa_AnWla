@@ -52,7 +52,7 @@ public class ArtifactTests {
 	@Test
 	public void testHealingPotion(){
 		healingPotion.use(testMonster);
-		assertTrue(testMonster.getLifepoints() > 20);
+		assertTrue(testMonster.getCurrentLifepoints() > 20);
 	}
 
 	@Test
@@ -74,7 +74,7 @@ public class ArtifactTests {
 	@Test
 	public void testPoisonPotion(){
 		poisonPotion.use(testMonster);
-		assertEquals(14, testMonster.getLifepoints());
+		assertEquals(14, testMonster.getCurrentLifepoints());
 	}
 
 	@Test

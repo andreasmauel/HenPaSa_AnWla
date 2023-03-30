@@ -1,18 +1,31 @@
 package GUI.Main.ActionHandler;
 
+import GameController.GameController;
+import battlemap.Dungeon.Dungeon;
 import battlemap.Meta.TileType;
 
 import java.util.ArrayList;
 
 public class ActionHandler
 {
-    public ActionOption attack = new AttackAction();
-    public ActionOption move = new MoveAction();
-    public ActionOption pickup = new PickUpAction();
-    public ActionOption open = new OpenAction();
-    public ActionOption close = new CloseAction();
-    public ActionOption unlock = new UnlockAction();
-    public ActionOption endTurn = new EndTurnAction();
+    public ActionOption attack;
+    public ActionOption move;
+    public ActionOption pickup;
+    public ActionOption open;
+    public ActionOption close;
+    public ActionOption unlock;
+    public ActionOption endTurn;
+
+    public ActionHandler(Dungeon dungeon, GameController gameController)
+    {
+        attack = new AttackAction(dungeon, gameController);
+        move = new MoveAction(dungeon, gameController);
+        pickup = new PickUpAction(dungeon, gameController);
+        open = new OpenAction(dungeon, gameController);
+        close = new CloseAction(dungeon, gameController);
+        unlock = new UnlockAction(dungeon, gameController);
+        endTurn = new EndTurnAction(dungeon, gameController);
+    }
 
     public ArrayList<ActionOption> getOptions(TileType tileType)
     {

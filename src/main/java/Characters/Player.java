@@ -1,8 +1,5 @@
 package Characters;
 
-
-
-
 import Artifact.Artifact;
 import Characters.Races.Race;
 import Characters.classes.Clazz;
@@ -13,26 +10,24 @@ import equipment.armor.NoArmor;
 import equipment.weapon.BattleAxe;
 import equipment.weapon.Dagger;
 import equipment.weapon.Weapon;
+import observer.Observer;
+import observer.Subject;
 import util.Attribute;
 import util.Effect;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Player extends AbstractCharacter{
+public class Player extends AbstractCharacter {
+
+
 
     private ArrayList<Equipment> inventory;
     private ArrayList<Weapon> weapons;
     private ArrayList<Armor> armor;
     private ArrayList<Artifact> artifact;
 
-    @Override
-    public void setLifepoints(int lifepoints) {
-        if (lifepoints < this.getClazz().getBaseLifePoints()) {
-            this.setLifepoints(lifepoints);
-        } else {
-            this.setLifepoints(this.getClazz().getBaseLifePoints());
-        }
-    }
+    private Artifact currentArtifact;
 
     public Player(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
                   Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
@@ -53,9 +48,13 @@ public class Player extends AbstractCharacter{
     }
 
 
-    public void useArtifact(Artifact artifact){
+    public void useArtifact(){
 
-        artifact.use(this);
+        this.currentArtifact.use(this);
+    }
+
+    public void setCurrentArtifact(Artifact artifact) {
+        this.currentArtifact = artifact;
     }
 
     public String showInventory(){
@@ -79,4 +78,6 @@ public class Player extends AbstractCharacter{
     public ArrayList<Artifact> getArtifact() {
         return artifact;
     }
+
+
 }
