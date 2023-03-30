@@ -1,27 +1,28 @@
 package battlemap.MapGeneration;
 
 import Characters.Monster;
+import Characters.Player;
 import Characters.Races.Hobbit;
 import Characters.ViewDirection;
 import GUI.Main.MainFrame;
 import battlemap.Dungeon.Dungeon;
-import battlemap.Lockables.Chest;
 import battlemap.Lockables.Door;
 import battlemap.Meta.TileType;
 import equipment.armor.LeatherArmor;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class MapGeneration
+public class StartDungeon
 {
     private Dungeon dungeon;
     private MainFrame mainFrame;
 
     public static void main(String[] args) throws IOException {
-        MapGeneration map = new MapGeneration();
+        StartDungeon map = new StartDungeon(null);
     }
 
-    public MapGeneration() throws IOException {
+    public StartDungeon(ArrayList<Player> players) throws IOException {
         dungeon = new Dungeon(25, 15, "Start Dungeon");
         boolean[][] generated = new boolean[dungeon.getxMax()][dungeon.getyMax()];
 
