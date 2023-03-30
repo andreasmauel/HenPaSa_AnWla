@@ -33,7 +33,7 @@ public class StartDungeon
     public  StartDungeon(){
 
         ArrayList<Player> list = new ArrayList<>();
-        Clazz thief = new Thief(10, Attribute.DEXTERITY, Attribute.CONSTITUTION, new ArrayList<Attribute>());
+        Clazz thief = new Thief();
         Mage mage = new Mage(10, Attribute.DEXTERITY, Attribute.CONSTITUTION, new ArrayList<Attribute>());
         mage.addSpell(new Fireball());
         Player player = new Player("Gustav", 10,10,10,10,

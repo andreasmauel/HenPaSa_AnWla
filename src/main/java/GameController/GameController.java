@@ -39,10 +39,10 @@ public class GameController {
 
     public void gameStart(){
         //players.addAll(gameStart.run());
-        Player player1 = new Player("Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new ArrayList<>(), new Thief(4, Attribute.CHARISMA, Attribute.CONSTITUTION, new ArrayList<Attribute>()));
-        Player player2 = new Player("Berta", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new ArrayList<>(), new Thief(4, Attribute.CHARISMA, Attribute.CONSTITUTION, new ArrayList<Attribute>()));
-        Player player3 = new Player("Hans", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new ArrayList<>(), new Thief(4, Attribute.CHARISMA, Attribute.CONSTITUTION, new ArrayList<Attribute>()));
-        Player player4 = new Player("Guenter", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new ArrayList<>(), new Thief(4, Attribute.CHARISMA, Attribute.CONSTITUTION, new ArrayList<Attribute>()));
+        Player player1 = new Player("Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new ArrayList<>(), new Thief());
+        Player player2 = new Player("Berta", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new ArrayList<>(), new Thief());
+        Player player3 = new Player("Hans", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new ArrayList<>(), new Thief());
+        Player player4 = new Player("Guenter", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new ArrayList<>(), new Thief());
 
         this.players.add(player1);
         this.players.add(player2);
@@ -50,7 +50,7 @@ public class GameController {
         this.players.add(player4);
 
         StartDungeon dungeon = new StartDungeon();
-        dungeon.createMap(this.players, this);
+        //dungeon.createMap(this.players, this);
     }
 
     public void setPlayers(ArrayList<Player> players) {

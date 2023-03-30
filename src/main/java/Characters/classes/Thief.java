@@ -7,8 +7,11 @@ import java.util.ArrayList;
 public class Thief extends Clazz{
     private boolean isSneaking;
 
-    public Thief(int baseArmorclass, Attribute mainAttribute, Attribute secondMainAttribute, ArrayList<Attribute> savingthrowAttribute) {
-        super("Thief",8, baseArmorclass, mainAttribute, secondMainAttribute, savingthrowAttribute);
+    public Thief() {
+        super("Thief",8, 10, Attribute.DEXTERITY, Attribute.INTELLIGENCE, new ArrayList<Attribute>() {{
+            add(Attribute.DEXTERITY);
+            add(Attribute.INTELLIGENCE);
+        }});
         this.isSneaking = false;
     }
 
