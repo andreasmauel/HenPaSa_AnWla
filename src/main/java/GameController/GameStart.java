@@ -183,7 +183,7 @@ public class GameStart {
                                 else fightingStyle = FightingStyle.DEFENSE;
                                 Clazz fighter = new Fighter(primaryAttribute, Attribute.CONSTITUTION, savingThrows, secondaryWeapon, fightingStyle);
                                 Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH,effects, fighter);
-                                //players.add(playerCount, player);
+                                players.add(count, player);
                             }
 
                         });

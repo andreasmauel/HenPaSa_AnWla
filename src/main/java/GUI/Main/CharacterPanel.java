@@ -71,7 +71,7 @@ public class CharacterPanel extends JPanel {
 
         playerStats.add(createLabelWithValue("HP: ", player.getLifepoints()));
         playerStats.add(createLabelWithValue("Max HP: ", player.calculateMaxLivepoints()));
-        playerStats.add(createLabelWithValue("STR: ", player.getStrenght()));
+        playerStats.add(createLabelWithValue("STR: ", player.getStrength()));
         playerStats.add(createLabelWithValue("DEX: ", player.getDexterity()));
         playerStats.add(createLabelWithValue("WIS: ", player.getWisdom()));
         playerStats.add(createLabelWithValue("INT: ", player.getInitiative()));
