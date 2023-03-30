@@ -6,6 +6,7 @@ import Characters.Races.Dwarf;
 import Characters.ViewDirection;
 import Characters.classes.Thief;
 import equipment.armor.ChainMail;
+import equipment.weapon.Rapier;
 import org.junit.jupiter.api.Test;
 import util.Attribute;
 import util.Effect;
@@ -17,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EffectControllerTest {
 
 
-    EffectController effectController = new EffectController(new Player("Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new Thief()));
+    EffectController effectController = new EffectController(new Player("Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new Thief(), new Rapier()));
 
     private void createEffects() {
 
