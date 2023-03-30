@@ -3,19 +3,20 @@ package GameController;
 import Characters.Monster;
 import Characters.Player;
 import GUI.Main.ActionHandler.MoveAction;
+import battlemap.Dungeon.Dungeon;
 
 import java.util.ArrayList;
 
 public class RoundController {
-
     private ArrayList<Player> players;
     private ArrayList<Monster> monsters;
 
-    private static FightController fightController = new FightController(players, monsters);
+    private FightController fightController;
 
-    RoundController(ArrayList<Player> players, ArrayList<Monster> monsters) {
+    RoundController(ArrayList<Player> players, ArrayList<Monster> monster) {
         this.setPlayers(players);
         this.setMonsters(monsters);
+        this.fightController = new FightController(this.players, this.monsters);
     }
 
     public ArrayList<Player> getPlayers() {
@@ -72,9 +73,6 @@ public class RoundController {
         int x = player.getX();
         int y = player.getY();
 
-        String xcord = null;
-        String ycord = null;
-        MoveAction.executeAction(xcord,ycord);
     }
-    }
+}
 
