@@ -1,5 +1,6 @@
 package GUI.Main.ActionHandler;
 
+import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
 
 import java.awt.event.ActionEvent;
@@ -11,6 +12,7 @@ public class ActionOption
     protected String actionEvent = "NULL";
 
     protected Dungeon dungeon;
+    protected GameController gameController;
 
     protected ButtonListener buttonListener = new ButtonListener();
 
@@ -30,9 +32,10 @@ public class ActionOption
         }
     }
 
-    public ActionOption(Dungeon dungeon)
+    public ActionOption(Dungeon dungeon, GameController gameController)
     {
         this.dungeon = dungeon;
+        this.gameController = gameController;
     }
 
     @Override

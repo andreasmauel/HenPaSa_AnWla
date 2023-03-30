@@ -1,13 +1,14 @@
 package GUI.Main.ActionHandler;
 
-
+import GameController.GameController;
+import GameController.RoundController;
 import battlemap.Dungeon.Dungeon;
 
 public class AttackAction extends ActionOption
 {
-    public AttackAction(Dungeon dungeon)
+    public AttackAction(Dungeon dungeon, GameController gameController)
     {
-        super(dungeon);
+        super(dungeon, gameController);
         this.actionName = "Attack";
         this.actionEvent = "ATTACK";
     }

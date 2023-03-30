@@ -1,22 +1,22 @@
 package GUI.Main.ActionHandler;
 
-import Characters.Player;
 import GUI.Main.DialogBox;
-
-import GameController.RoundController;
+import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
 
 public class MoveAction extends ActionOption
 {
-    public MoveAction(Dungeon dungeon)
+    public MoveAction(Dungeon dungeon, GameController gameController)
     {
-        super(dungeon);
+        super(dungeon, gameController);
         this.actionName = "Move";
         this.actionEvent = "MOVE";
     }
 
-    public void executeAction(Player player, int x, int y) {
-
+    @Override
+    public void executeAction( int x, int y)
+    {
+        this.gameController.getRoundController().getActivePlayer();
         DialogBox.ConsoleOut("Shuffles to: " +x+" "+y);
     }
 }
