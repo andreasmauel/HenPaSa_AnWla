@@ -10,13 +10,10 @@ import equipment.armor.NoArmor;
 import equipment.weapon.BattleAxe;
 import equipment.weapon.Dagger;
 import equipment.weapon.Weapon;
-import observer.Observer;
-import observer.Subject;
 import util.Attribute;
 import util.Effect;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Player extends AbstractCharacter {
 

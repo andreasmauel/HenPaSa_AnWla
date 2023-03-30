@@ -27,16 +27,6 @@ public class StartDungeon
     private Dungeon dungeon;
     private MainFrame mainFrame;
 
-    public static void main(String[] args) throws IOException {
-        ArrayList<Player> players = new ArrayList<Player>();
-        players.add(new Player("Ben",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Fighter(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>(), new BattleAxe(), FightingStyle.CLOSECOMBAT)));
-        players.add(new Player("Lisa",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Mage(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>())));
-        players.add(new Player("Tim",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Thief(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>())));
-        players.add(new Player("Brian",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Fighter(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>(), new BattleAxe(), FightingStyle.CLOSECOMBAT)));
-        StartDungeon map = new StartDungeon();
-        map.createMap(players, new GameController());
-    }
-
     public StartDungeon(){
     }
 
