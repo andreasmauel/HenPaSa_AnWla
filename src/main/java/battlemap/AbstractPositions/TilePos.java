@@ -1,5 +1,6 @@
 package battlemap.AbstractPositions;
 
+import GUI.Main.DialogBox;
 import battlemap.Lockables.Chest;
 import battlemap.Lockables.Door;
 import battlemap.Meta.MetaData;
@@ -66,12 +67,22 @@ public abstract class TilePos
             if(!chest.isLocked())
             {
                 metaData.setPassable(true);
+                DialogBox.ConsoleOut("You open the chest!");
+            }
+            else
+            {
+                DialogBox.ConsoleOut("Its locked!");
             }
         } else if (door!=null)
         {
             if(!door.isLocked())
             {
                 metaData.setPassable(true);
+                DialogBox.ConsoleOut("You open the Door!");
+            }
+            else
+            {
+                DialogBox.ConsoleOut("Its locked!");
             }
         }
     }

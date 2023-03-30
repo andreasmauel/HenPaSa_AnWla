@@ -1,5 +1,7 @@
 package GUI.Main.ActionHandler;
 
+import Characters.AbstractCharacter;
+import Characters.Player;
 import battlemap.Dungeon.Dungeon;
 
 public class UnlockAction extends ActionOption
@@ -20,5 +22,13 @@ public class UnlockAction extends ActionOption
         //make roll to unlock
         //remove key
         //unlocked door
+
+       // if(dungeon.isInRange(CurrentBoi, 1, x, y))
+       // {
+            //dungeon.getTilePos(x, y).open();
+           // Player curBoi = new Player();
+            // curBoi.arti
+
+        //}
     }
 }
