@@ -31,7 +31,7 @@ public class MainFrame {
 
     private MouseDetector mouseClick = new MouseDetector();
 
-    public MainFrame(Dungeon dungeon) throws IOException {
+    public MainFrame(Dungeon dungeon){
         jFrame.setLayout(null);
         jFrame.setSize(1920, 1080);
         jFrame.setVisible(true);
@@ -52,9 +52,14 @@ public class MainFrame {
         jFrame.setExtendedState(jFrame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
     }
 
-    private void addTile(int x, int y, String path) throws IOException {
+    private void addTile(int x, int y, String path) {
         File file = new File(path);
-        BufferedImage bufferedImage = ImageIO.read(file);
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = ImageIO.read(file);
+        } catch (IOException e) {
+            DialogBox.ConsoleOut("Couldn't read file " + file);
+        }
         ImageIcon imageIcon = new ImageIcon(bufferedImage);
         JLabel jLabel = new JLabel();
         jLabel.setIcon(imageIcon);
@@ -86,7 +91,7 @@ public class MainFrame {
         dungeonPanel.add(jLabel);
     }
 
-    private void generateMap(Dungeon dungeon) throws IOException {
+    private void generateMap(Dungeon dungeon) {
         for(int x = 0; x < dungeon.getxMax(); x++)
         {
             int posX = x*50;
@@ -187,17 +192,17 @@ public class MainFrame {
         jFrame.repaint();
     }
 
-    private void generateStatusScreen() throws IOException {
+    private void generateStatusScreen(){
         jFrame.add(statusPanel.generateStatusBackground());
         jFrame.repaint();
     }
 
-    private void generateDialogBox() throws IOException {
+    private void generateDialogBox(){
         jFrame.add(dialogBox.generateDialogBox());
         jFrame.repaint();
     }
 
-    private void generateContextMenu(Dungeon dungeon) throws IOException {
+    private void generateContextMenu(Dungeon dungeon){
         jFrame.add(contextMenu.generateContextMenu(dungeon));
         jFrame.repaint();
     }

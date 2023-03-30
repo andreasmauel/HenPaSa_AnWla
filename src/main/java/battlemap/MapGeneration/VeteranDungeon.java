@@ -3,12 +3,20 @@ package battlemap.MapGeneration;
 import Characters.Monster;
 import Characters.Player;
 import Characters.Races.Hobbit;
+import Characters.Races.Human;
 import Characters.ViewDirection;
+import Characters.classes.Fighter;
+import Characters.classes.FightingStyle;
+import Characters.classes.Mage;
+import Characters.classes.Thief;
 import GUI.Main.MainFrame;
 import battlemap.Dungeon.Dungeon;
 import battlemap.Lockables.Door;
 import battlemap.Meta.TileType;
+import equipment.armor.ChainMail;
 import equipment.armor.LeatherArmor;
+import equipment.weapon.BattleAxe;
+import util.Attribute;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,10 +27,20 @@ public class VeteranDungeon
     private MainFrame mainFrame;
 
     public static void main(String[] args) throws IOException {
-        VeteranDungeon map = new VeteranDungeon(null);
+        ArrayList<Player> players = new ArrayList<Player>();
+        players.add(new Player("Ben",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Fighter(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>(), new BattleAxe(), FightingStyle.CLOSECOMBAT)));
+        players.add(new Player("Lisa",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Mage(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>())));
+        players.add(new Player("Tim",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Thief(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>())));
+        players.add(new Player("Brian",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Fighter(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>(), new BattleAxe(), FightingStyle.CLOSECOMBAT)));
+        VeteranDungeon map = new VeteranDungeon();
+        map.createMap(players);
     }
 
-    public VeteranDungeon(ArrayList<Player> players) throws IOException {
+    public VeteranDungeon(){
+    }
+
+    public Dungeon createMap(ArrayList<Player> players)
+    {
         dungeon = new Dungeon(25, 15, "Veteran Dungeon");
         boolean[][] generated = new boolean[dungeon.getxMax()][dungeon.getyMax()];
 
@@ -103,7 +121,19 @@ public class VeteranDungeon
 
 //              MAKE CHARACTERS
                 if(x==2 && y ==11 && generated[x][y] != true) {
-                    //dungeon.setCharacterPos(x, y, TileType.PLAYER, new AbstractCharacter());
+                    dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(0));
+                    generated[x][y] = true;
+                }
+                if(x==3 && y ==11 && generated[x][y] != true) {
+                    dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(1));
+                    generated[x][y] = true;
+                }
+                if(x==2 && y ==12 && generated[x][y] != true) {
+                    dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(2));
+                    generated[x][y] = true;
+                }
+                if(x==3 && y ==12 && generated[x][y] != true) {
+                    dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(3));
                     generated[x][y] = true;
                 }
                 //MAKE CHARACTERS
@@ -117,7 +147,7 @@ public class VeteranDungeon
                 //SET MONSTERS
             }
         }
-
         mainFrame = new MainFrame(dungeon);
+        return dungeon;
     }
 }

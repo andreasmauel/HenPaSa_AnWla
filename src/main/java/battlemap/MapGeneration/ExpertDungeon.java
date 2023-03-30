@@ -32,10 +32,15 @@ public class ExpertDungeon
         players.add(new Player("Lisa",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Mage(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>())));
         players.add(new Player("Tim",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Thief(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>())));
         players.add(new Player("Brian",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Fighter(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>(), new BattleAxe(), FightingStyle.CLOSECOMBAT)));
-        ExpertDungeon map = new ExpertDungeon(players);
+        ExpertDungeon map = new ExpertDungeon();
+        map.createMap(players);
     }
 
-    public ExpertDungeon(ArrayList<Player> players) throws IOException {
+    public ExpertDungeon(){
+    }
+
+    public Dungeon createMap(ArrayList<Player> players)
+    {
         dungeon = new Dungeon(25, 15, "Expert Dungeon");
         boolean[][] generated = new boolean[dungeon.getxMax()][dungeon.getyMax()];
 
@@ -142,7 +147,7 @@ public class ExpertDungeon
                 //SET MONSTERS
             }
         }
-
         mainFrame = new MainFrame(dungeon);
+        return dungeon;
     }
 }
