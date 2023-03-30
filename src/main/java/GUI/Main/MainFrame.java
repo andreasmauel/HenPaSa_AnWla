@@ -93,7 +93,34 @@ public class MainFrame {
             for (int y = 0; y < dungeon.getyMax(); y++)
             {
                 int posY = y*50;
-                if(dungeon.getTilePos(x,y) != null) {
+                if(dungeon.getCharacterPos(x,y) != null) {
+                    switch (dungeon.getCharacterPos(x, y).getMetaData().getTileType()) {
+                        case PLAYER:
+                            switch(dungeon.getCharacterPos(x, y).getCharacter().getClazzName())
+                            {
+                                case "Mage":
+                                    addTile(posX, posY, ".\\Graphics\\mage.png");
+                                    break;
+                                case "Thief":
+                                    addTile(posX, posY, ".\\Graphics\\thief.png");
+                                    break;
+                                case "Fighter":
+                                    addTile(posX, posY, ".\\Graphics\\fighter.png");
+                                    break;
+                                default:
+                                    addTile(posX, posY, ".\\Graphics\\fighter.png");
+                                    break;
+                            }
+                            break;
+                        case MONSTER:
+                            addTile(posX, posY, ".\\Graphics\\monster_orc.png");
+                            break;
+                        default:
+                            addTile(posX, posY, ".\\Graphics\\FloorTile.png");
+                            break;
+                    }
+                }
+                else if(dungeon.getTilePos(x,y) != null) {
                     switch (dungeon.getTilePos(x, y).getMetaData().getTileType()) {
                         case DOOR:
                             try{
@@ -139,19 +166,6 @@ public class MainFrame {
                             break;
                         case WALL:
                             addTile(posX, posY, ".\\Graphics\\WallTile.png");
-                            break;
-                        default:
-                            addTile(posX, posY, ".\\Graphics\\FloorTile.png");
-                            break;
-                    }
-                }
-                else if(dungeon.getCharacterPos(x,y) != null) {
-                    switch (dungeon.getCharacterPos(x, y).getMetaData().getTileType()) {
-                        case PLAYER:
-                            addTile(posX, posY, ".\\Graphics\\fighter.png");
-                            break;
-                        case MONSTER:
-                            addTile(posX, posY, ".\\Graphics\\monster_orc.png");
                             break;
                         default:
                             addTile(posX, posY, ".\\Graphics\\FloorTile.png");
