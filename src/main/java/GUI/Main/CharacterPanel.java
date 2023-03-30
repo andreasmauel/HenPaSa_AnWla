@@ -9,7 +9,9 @@ import observer.Observer;
 import util.Effect;
 
 import javax.swing.*;
+
 import java.awt.*;
+import java.util.List;
 import java.util.Random;
 
 public class CharacterPanel extends JPanel implements Observer {
@@ -245,8 +247,30 @@ public class CharacterPanel extends JPanel implements Observer {
          ac.setText("AC: " + player.getArmorClass());
          mov.setText("MOV: Movement" );
          maxMov.setText("Max Mov");
+         weapons.removeAllItems();
+         fillComboBox(weapons, player.getWeapons());
+         weapons.setSelectedItem(player.getCurrentWeapon());
+
+        armor.removeAllItems();
+        fillComboBox(armor, player.getArmor());
+        armor.setSelectedItem(player.getCurrentarmor());
+
+        artifact.removeAllItems();
+        fillComboBox(artifact, player.getArtifact());
+        artifact.setSelectedItem(player.getCurrentArtifact());
+
+        if(player.getClazz() instanceof Mage) {
+            spells.removeAllItems();
+            fillComboBox(spells, ((Mage) player.getClazz()).getSpells());
+        }
 
 
+    }
+
+    private void fillComboBox(JComboBox box, List<? extends Object> list) {
+        for(Object object : list) {
+            box.addItem(object);
+        }
     }
 
     private static class MyComboBoxRenderer implements ListCellRenderer<Object> {

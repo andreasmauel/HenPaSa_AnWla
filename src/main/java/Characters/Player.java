@@ -56,10 +56,13 @@ public class Player extends AbstractCharacter {
         this.currentArtifact = artifact;
     }
 
+    public Artifact getCurrentArtifact() {
+        return this.currentArtifact;
+    }
+
     public String showInventory(){
         return "0";
     }
-
 
 
     public int calculateMaxLivepoints(){
