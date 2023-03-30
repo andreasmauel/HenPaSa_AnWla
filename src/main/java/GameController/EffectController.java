@@ -11,22 +11,35 @@ import java.util.Map;
 public class EffectController {
 
     AbstractCharacter character;
-
     Map<Effect, Integer> effects;
+    Boolean isSleepActive = false;
 
-    public EffectController() {
+    public EffectController(AbstractCharacter character) {
+        this.setCharacter(character);
         this.effects = new HashMap<>();
     }
 
-    public String triggerEffects() {
+    public AbstractCharacter getCharacter() {
+        return character;
+    }
 
-//        switch(effect) {
-//            case DAMAGE -> this.character.setLife(this.character.getLife - stat );
-//            case HEAL -> this.character.setLife(this.character.getLife + stat);
-//            case SLEEP -> this.character.skipRounds(stat);
-//            case ARMOR -> this.character.setCurrentArmorClass(this.character.getCurrentArmorClass() + stat);
-//        }
-        return null;
+    public void setCharacter(AbstractCharacter character) {
+        this.character = character;
+    }
+
+    public void setEffects(Map<Effect, Integer> effects) {
+        this.effects = effects;
+    }
+
+    public void triggerEffects() {
+        for (Effect effect : getListOfMap(this.effects)) {
+            switch(effect) {
+                case DAMAGE -> this.character.setHealDamage(2, Effect.DAMAGE);
+                case HEAL -> this.character.setHealDamage(2, Effect.HEAL);
+                case SLEEP -> this.isSleepActive = true;
+                case ARMOR -> this.character.setArmorClass(this.character.getArmorClass() + 2);
+            }
+        }
     }
 
     public void addEffect(Effect effect, int duration) {
@@ -54,6 +67,10 @@ public class EffectController {
             Integer duration = entry.getValue();
             duration--;
             if (duration == 0) {
+                switch (entry.getKey()) {
+                    case ARMOR -> this.character.setArmorClass(this.character.getArmorClass() - 2);
+                    case SLEEP -> this.isSleepActive = false;
+                }
                 this.effects.remove(entry.getKey());
             } else {
                 entry.setValue(duration);

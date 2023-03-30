@@ -2,6 +2,7 @@ package Characters;
 
 import Characters.Races.Race;
 import Characters.classes.Clazz;
+import GameController.EffectController;
 import GameController.dices.DiceTwenty;
 import GameController.dices.IDice;
 import equipment.armor.Armor;
@@ -33,7 +34,7 @@ public abstract class AbstractCharacter implements Subject {
     private Armor currentarmor;
     private boolean isVisible;
     private ViewDirection viewDirection;
-    private ArrayList<Effect> effects;
+    private EffectController effects;
     private IDice diceTwenty = new DiceTwenty();
     private int initiative;
     private int xPosition;
@@ -44,7 +45,7 @@ public abstract class AbstractCharacter implements Subject {
 
     public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
                              Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
-                             ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz) {
+                             ViewDirection viewDirection, Clazz clazz) {
         this.name = name;
         this.dexterity = desterity;
         this.intelligence = intelligence;
@@ -115,9 +116,8 @@ public abstract class AbstractCharacter implements Subject {
         return clazz;
     }
 
-    public void addEffect(Effect effect) {
-        this.effects.add(effect);
-        notifyObserver();
+    public void addEffect(Effect effect, int duration) {
+        this.effects.addEffect(effect, duration);
     }
 
     public int getDexterity() {
@@ -288,13 +288,8 @@ public abstract class AbstractCharacter implements Subject {
         this.viewDirection = viewDirection;
     }
 
-    public ArrayList<Effect> getEffects() {
+    public EffectController getEffects() {
         return effects;
-    }
-
-    public void setEffects(ArrayList<Effect> effects) {
-        this.effects = effects;
-        notifyObserver();
     }
 
     public void attack(AbstractCharacter character) {
