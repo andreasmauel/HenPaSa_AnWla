@@ -32,28 +32,6 @@ public class StartDungeon
 
     public  StartDungeon(){
 
-        ArrayList<Player> list = new ArrayList<>();
-        Clazz thief = new Thief(10, Attribute.DEXTERITY, Attribute.CONSTITUTION, new ArrayList<Attribute>());
-        Mage mage = new Mage(10, Attribute.DEXTERITY, Attribute.CONSTITUTION, new ArrayList<Attribute>());
-        mage.addSpell(new Fireball());
-        Player player = new Player("Gustav", 10,10,10,10,
-                1,new Elf(), 5,3, new NoArmor(), true, ViewDirection.EAST,
-                new ArrayList<Effect>(), thief);
-        Player player2 = new Player("Ronaldo", 10,10,10,10,
-                1,new Elf(), 5,3, new LeatherArmor(), true, ViewDirection.EAST,
-                new ArrayList<Effect>(), mage);
-        Player player3 = new Player("Mauel Andi", 10,10,10,10,
-                1,new Elf(), 5,3, new LeatherArmor(), true, ViewDirection.EAST,
-                new ArrayList<Effect>(), mage);
-        Player player4 = new Player("Patrik", 10,10,10,10,
-                1,new Elf(), 5,3, new LeatherArmor(), true, ViewDirection.EAST,
-                new ArrayList<Effect>(), thief);
-        list.add(player);
-        list.add(player2);
-        list.add(player3);
-        list.add(player4);
-        GameController controller = new GameController();
-        createMap(list, controller);
     }
 
 
