@@ -16,6 +16,7 @@ public class FightController {
 
     public FightController(ArrayList<Player> players, ArrayList<Monster> monsters) {
         this.fightEnd = false;
+        this.startFight();
         this.setPlayers(players);
         this.setMonsters(monsters);
     }
@@ -36,15 +37,7 @@ public class FightController {
         this.monsters = monsters;
     }
 
-    public void startFight()    {
-        for (Player player : this.players) {
-            this.addToFight(player);
-        }
-        for (Monster monster : this.monsters) {
-            this.addToFight(monster);
-        }
-        this.currentCharacter = this.fightOrder.get(this.currentCharacterIndex);
-    }
+
 
     public void startFightRound() {
         currentCharacter.getEffects().triggerEffects();
@@ -82,6 +75,16 @@ public class FightController {
 
     public void monsterActions(Monster monster) {
         monster.attack(players.get(0));
+    }
+
+    private void startFight()    {
+        for (Player player : this.players) {
+            this.addToFight(player);
+        }
+        for (Monster monster : this.monsters) {
+            this.addToFight(monster);
+        }
+        this.currentCharacter = this.fightOrder.get(this.currentCharacterIndex);
     }
 
     private void addToFight(AbstractCharacter character) {

@@ -189,7 +189,7 @@ public class GameStart {
                                     fightingStyle = FightingStyle.CLOSECOMBAT;
                                 else fightingStyle = FightingStyle.DEFENSE;
                                 Clazz fighter = new Fighter(primaryAttribute, Attribute.CONSTITUTION, savingThrows, secondaryWeapon, fightingStyle);
-                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, fighter, primaryWeapon);
+                                Player player = new Player(count, nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, fighter, primaryWeapon);
                                 players.add(count, player);
                                 jDialog.setVisible(false);
                                 jDialog.dispatchEvent(new WindowEvent(
@@ -243,7 +243,7 @@ public class GameStart {
                                 //(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
                                 //                  Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
                                 //                  ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz)
-                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief, new Rapier());
+                                Player player = new Player(count, nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief, new Rapier());
                                 players.add(count, player);
                                 jDialog.setVisible(false);
                                 jDialog.dispatchEvent(new WindowEvent(
@@ -296,7 +296,7 @@ public class GameStart {
                                 //(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
                                 //                  Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
                                 //                  ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz)
-                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief, new Spear());
+                                Player player = new Player(count, nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief, new Spear());
                                 players.add(count, player);
                                 jDialog.setVisible(false);
                                 jDialog.dispatchEvent(new WindowEvent(

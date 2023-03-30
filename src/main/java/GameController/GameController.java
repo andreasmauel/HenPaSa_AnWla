@@ -27,8 +27,8 @@ public class GameController {
     private Dungeon dungeon;
     private HashMap<String, IDice> dices = new HashMap<String, IDice>();
     private GameStart gameStart = new GameStart();
-    private FightController fightController = new FightController(players, monster);
     private RoundController roundController = new RoundController(players, monster);
+    private StartDungeon map;
 
     public GameController(){
         dices.put("four", new DiceFour());
@@ -37,24 +37,28 @@ public class GameController {
         dices.put("twenty", new DiceTwenty());
     }
 
-    public FightController getFightController(){
-        return fightController;
-    }
-
     public void gameStart(){
         //players.addAll(gameStart.run());
-        Player player1 = new Player("Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Dart());
-        Player player2 = new Player("Berta", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Rapier());
-        Player player3 = new Player("Hans", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Bow());
-        Player player4 = new Player("Guenter", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Spear());
+        Player player1 = new Player(1, "Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Dart());
+        Player player2 = new Player(2, "Berta", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Rapier());
+        Player player3 = new Player(3, "Hans", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Bow());
+        Player player4 = new Player(4, "Guenter", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Spear());
 
         this.players.add(player1);
         this.players.add(player2);
         this.players.add(player3);
         this.players.add(player4);
 
-        StartDungeon dungeon = new StartDungeon();
-        dungeon.createMap(this.players, this);
+        this.map = new StartDungeon();
+        this.map.createMap(this.players, this);
+    }
+
+    public StartDungeon getMap() {
+        return map;
+    }
+
+    public void setMap(StartDungeon map) {
+        this.map = map;
     }
 
     public void setPlayers(ArrayList<Player> players) {
@@ -87,10 +91,6 @@ public class GameController {
 
     public void setGameStart(GameStart gameStart) {
         this.gameStart = gameStart;
-    }
-
-    public void setFightController(FightController fightController) {
-        this.fightController = fightController;
     }
 
     public RoundController getRoundController() {

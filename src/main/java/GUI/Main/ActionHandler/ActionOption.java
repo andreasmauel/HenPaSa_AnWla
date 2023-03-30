@@ -5,6 +5,7 @@ import battlemap.Dungeon.Dungeon;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class ActionOption
 {
@@ -27,7 +28,12 @@ public class ActionOption
             {
                 int x = Integer.getInteger(command[1]);
                 int y = Integer.getInteger(command[2]);
-                executeAction(x, y);
+                try {
+                    executeAction(x, y);
+                } catch (Exception exception) {
+
+                }
+
             }
         }
     }
@@ -56,7 +62,7 @@ public class ActionOption
     {
         return buttonListener;
     }
-    public void executeAction(int x, int y) {
+    public void executeAction(int x, int y) throws IOException {
 
     }
 

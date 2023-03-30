@@ -5,7 +5,6 @@ import Characters.AbstractCharacter;
 import Characters.Monster;
 import Characters.Races.Dwarf;
 import Characters.ViewDirection;
-import Characters.classes.Fighter;
 import GameController.dices.DiceFour;
 import equipment.armor.LeatherArmor;
 
@@ -18,15 +17,9 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 public class ArtifactTests {
-
-	private ArrayList<Effect> effect;
-	AbstractCharacter testMonster = new Monster("test", 5, 6, 7, 2, 3,
-			new Dwarf(), 2, 4, new LeatherArmor(), true, ViewDirection.NORTH, effect, new Dagger());
+	AbstractCharacter testMonster = new Monster(5 ,"test", 5, 6, 7, 2, 3,
+			new Dwarf(), 2, 4, new LeatherArmor(), true, ViewDirection.NORTH, new Dagger());
 
 	Amulet amulet = new Amulet();
 	Cloak cloak = new Cloak();

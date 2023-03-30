@@ -18,6 +18,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public abstract class AbstractCharacter implements Subject {
+    private final int id;
     private Clazz clazz;
     private String name;
     private int dexterity;
@@ -43,9 +44,10 @@ public abstract class AbstractCharacter implements Subject {
     private List<Observer> observer = new ArrayList<>();
 
 
-    public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
+    public AbstractCharacter(int id, String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
                              Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
                              ViewDirection viewDirection, Clazz clazz, Weapon currentWeapon) {
+        this.id = id;
         this.name = name;
         this.dexterity = desterity;
         this.intelligence = intelligence;
@@ -87,6 +89,10 @@ public abstract class AbstractCharacter implements Subject {
         }
     }
 
+
+    public int getId() {
+        return id;
+    }
 
     public int getX() {
         return this.xPosition;

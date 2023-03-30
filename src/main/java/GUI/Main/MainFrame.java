@@ -32,6 +32,10 @@ public class MainFrame {
         }
     }
 
+    public StatusFrame getStatusPanel() {
+        return statusPanel;
+    }
+
     private MouseDetector mouseClick = new MouseDetector();
 
     public MainFrame(Dungeon dungeon, GameController gameController, ArrayList<Player> players){

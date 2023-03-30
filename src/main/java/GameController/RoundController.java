@@ -12,8 +12,6 @@ public class RoundController {
     private ArrayList<Player> players;
     private ArrayList<Monster> monsters;
     private int index = 0;
-
-
     private FightController fightController;
 
     RoundController(ArrayList<Player> players, ArrayList<Monster> monster) {
@@ -38,14 +36,8 @@ public class RoundController {
         this.monsters = monsters;
     }
 
-    public void performRound() {
-        Player player = getActivePlayer();
-        if(getActivePlayer() != null){
-            endRound();
-        }
-       this.playerAction(player);
-       this.checkFight(player);
-       
+    public void nextRound() {
+
     }
 
     private void endRound() {
@@ -64,7 +56,8 @@ public class RoundController {
 /*        if(.contains(instanceof Monster)){
 *            fightController.startFightRound(new EffectController());
 * TODO: funktion des Sichtfeldes noch erwartet
-*/        }
+*/
+    }
 
     public Player getActivePlayer() {
         return players.get(index);
@@ -75,5 +68,4 @@ public class RoundController {
         int y = player.getY();
 
     }
-    }
-
+}

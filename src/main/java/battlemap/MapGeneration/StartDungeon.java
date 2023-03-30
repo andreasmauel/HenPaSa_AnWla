@@ -35,7 +35,9 @@ public class StartDungeon
 
     }
 
-
+    public MainFrame getMainFrame() {
+        return mainFrame;
+    }
 
     public Dungeon createMap(ArrayList<Player> players, GameController gameController)
     {
@@ -139,7 +141,7 @@ public class StartDungeon
                 //SET MONSTERS
                 if(x==2 && y ==7 && generated[x][y] != true)
                 {
-                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster("Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, null, new Dagger()));
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
                     generated[x][y] = true;
                 }
                 //SET MONSTERS

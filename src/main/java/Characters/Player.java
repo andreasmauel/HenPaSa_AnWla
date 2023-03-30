@@ -27,12 +27,14 @@ public class Player extends AbstractCharacter {
 
     private Artifact currentArtifact;
 
-    public Player(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
+    public Player(int id, String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
                   Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
                   ViewDirection viewDirection, Clazz clazz, Weapon weapon) {
-        super(name, dexterity, intelligence, strength, constitution, wisdom, race, walkingrange, armorClass,
+        super(id, name, dexterity, intelligence, strength, constitution, wisdom, race, walkingrange, armorClass,
                 currentArmor, isVisible, viewDirection, clazz, weapon );
-
+        if (id < 0 || id > 4) {
+            throw new RuntimeException("Player Id must be 1 to 4");
+        }
         this.getClazz().applyModifiers(this);
         this.inventory = inventory;
         this.weapons = new ArrayList<>();
