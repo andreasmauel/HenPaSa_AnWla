@@ -224,6 +224,121 @@ public class Dungeon
         return TileList.FLOOR;
     }
 
+    public boolean isInRange(AbstractCharacter character, int range, int x, int y)
+    {
+        int charPosX = -1;
+        int charPosY = -1;
+        for (CharacterPos[] seeker: characters)
+        {
+            for (CharacterPos looker: seeker)
+            {
+                if(looker.getCharacter().equals(character))
+                {
+                    charPosX = looker.getMetaData().getPosX();
+                    charPosY = looker.getMetaData().getPosY();
+                }
+            }
+        }
+
+        if(charPosX == -1)
+        {
+            return false;
+        }
+
+        int diffX;
+        int diffY;
+        int convdiffX;
+        int convdiffY;
+        int step = 0;
+
+        int movePosX = charPosX;
+        int movePosY = charPosY;
+
+        while(movePosX < x-1 && movePosY < y-1)
+        {
+            diffX = x-movePosX;
+            diffY = y-movePosY;
+            convdiffX = diffX;
+            convdiffY = diffY;
+
+            if(convdiffX < 0)
+            {
+                convdiffX*=-1;
+            }
+            if(convdiffY < 0)
+            {
+                convdiffY*=-1;
+            }
+
+            if(convdiffX>=convdiffY)
+            {
+                step = diffX/convdiffX;
+                movePosX+=step;
+                switch(fieldSearch(movePosX,movePosY))
+                {
+                    case CHARACTERS:
+                        if(!getCharacterPos(movePosX,movePosY).getMetaData().isPassable())
+                            return false;
+                        break;
+                    case TILES:
+                        if(!getTilePos(movePosX,movePosY).getMetaData().isPassable())
+                            return false;
+                        break;
+                    case ARTIFACTS:
+                        if(!getArtifactPos(movePosX,movePosY).getMetaData().isPassable())
+                            return false;
+                        break;
+                    case EQUIPMENT:
+                        if(!getEquipmentPos(movePosX,movePosY).getMetaData().isPassable())
+                            return false;
+                        break;
+                }
+            }
+            else
+            {
+                step = diffY/convdiffY;
+                movePosY+=step;
+                switch(fieldSearch(movePosX,movePosY))
+                {
+                    case CHARACTERS:
+                        if(!getCharacterPos(movePosX,movePosY).getMetaData().isPassable())
+                            return false;
+                        break;
+                    case TILES:
+                        if(!getTilePos(movePosX,movePosY).getMetaData().isPassable())
+                            return false;
+                        break;
+                    case ARTIFACTS:
+                        if(!getArtifactPos(movePosX,movePosY).getMetaData().isPassable())
+                            return false;
+                        break;
+                    case EQUIPMENT:
+                        if(!getEquipmentPos(movePosX,movePosY).getMetaData().isPassable())
+                            return false;
+                        break;
+                }
+            }
+        }
+
+        return true;
+
+    }
+
+    public CharacterPos getCharacterByEntity(AbstractCharacter character)
+    {
+        for (CharacterPos[] seeker: characters)
+        {
+            for (CharacterPos looker: seeker)
+            {
+                if(looker.getCharacter().equals(character))
+                {
+                    return looker;
+                }
+            }
+        }
+        return null;
+    }
+
     public String getName()
     {
         return name;

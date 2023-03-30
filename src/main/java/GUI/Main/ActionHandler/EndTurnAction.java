@@ -1,16 +1,18 @@
 package GUI.Main.ActionHandler;
 
+import battlemap.Dungeon.Dungeon;
+
 public class EndTurnAction extends ActionOption
 {
-    public EndTurnAction()
+    public EndTurnAction(Dungeon dungeon)
     {
-        super();
+        super(dungeon);
         this.actionName = "End Turn";
         this.actionEvent = "ENDTURN";
     }
 
     @Override
-    public void executeAction( String x, String y)
+    public void executeAction( int x, int y)
     {
 
     }

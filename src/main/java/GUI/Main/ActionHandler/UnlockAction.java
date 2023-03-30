@@ -1,17 +1,24 @@
 package GUI.Main.ActionHandler;
 
+import battlemap.Dungeon.Dungeon;
+
 public class UnlockAction extends ActionOption
 {
-    public UnlockAction()
+    public UnlockAction(Dungeon dungeon)
     {
-        super();
+        super(dungeon);
         this.actionName = "Pick-up";
         this.actionEvent = "PICKUP";
     }
 
     @Override
-    public void executeAction( String x, String y)
+    public void executeAction( int x, int y)
     {
-
+        //Get Player
+        //get door
+        //check for key
+        //make roll to unlock
+        //remove key
+        //unlocked door
     }
 }

@@ -44,9 +44,9 @@ public class MainFrame {
         this.dungeon = dungeon;
         generateMap(this.dungeon);
         generateStatusScreen();
-        statusPanel.setActiveCharacter(1);
+//        statusPanel.setActiveCharacter(1);
         generateDialogBox();
-        generateContextMenu();
+        generateContextMenu(this.dungeon);
 
 
         jFrame.setExtendedState(jFrame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -93,7 +93,34 @@ public class MainFrame {
             for (int y = 0; y < dungeon.getyMax(); y++)
             {
                 int posY = y*50;
-                if(dungeon.getTilePos(x,y) != null) {
+                if(dungeon.getCharacterPos(x,y) != null) {
+                    switch (dungeon.getCharacterPos(x, y).getMetaData().getTileType()) {
+                        case PLAYER:
+                            switch(dungeon.getCharacterPos(x, y).getCharacter().getClazzName())
+                            {
+                                case "Mage":
+                                    addTile(posX, posY, ".\\Graphics\\mage.png");
+                                    break;
+                                case "Thief":
+                                    addTile(posX, posY, ".\\Graphics\\thief.png");
+                                    break;
+                                case "Fighter":
+                                    addTile(posX, posY, ".\\Graphics\\fighter.png");
+                                    break;
+                                default:
+                                    addTile(posX, posY, ".\\Graphics\\fighter.png");
+                                    break;
+                            }
+                            break;
+                        case MONSTER:
+                            addTile(posX, posY, ".\\Graphics\\monster_orc.png");
+                            break;
+                        default:
+                            addTile(posX, posY, ".\\Graphics\\FloorTile.png");
+                            break;
+                    }
+                }
+                else if(dungeon.getTilePos(x,y) != null) {
                     switch (dungeon.getTilePos(x, y).getMetaData().getTileType()) {
                         case DOOR:
                             try{
@@ -145,19 +172,6 @@ public class MainFrame {
                             break;
                     }
                 }
-                else if(dungeon.getCharacterPos(x,y) != null) {
-                    switch (dungeon.getCharacterPos(x, y).getMetaData().getTileType()) {
-                        case PLAYER:
-                            addTile(posX, posY, ".\\Graphics\\fighter.png");
-                            break;
-                        case MONSTER:
-                            addTile(posX, posY, ".\\Graphics\\monster_orc.png");
-                            break;
-                        default:
-                            addTile(posX, posY, ".\\Graphics\\FloorTile.png");
-                            break;
-                    }
-                }
                 else if(dungeon.getEquipmentPos(x,y) != null) {
                     addTile(posX, posY, ".\\Graphics\\ItemTile.png");
                 }
@@ -183,8 +197,8 @@ public class MainFrame {
         jFrame.repaint();
     }
 
-    private void generateContextMenu() throws IOException {
-        jFrame.add(contextMenu.generateContextMenu());
+    private void generateContextMenu(Dungeon dungeon) throws IOException {
+        jFrame.add(contextMenu.generateContextMenu(dungeon));
         jFrame.repaint();
     }
 
@@ -197,19 +211,19 @@ public class MainFrame {
             int y = (e.getY() - e.getY()%50)/50;
                 switch (dungeon.fieldSearch(x, y)) {
                     case TILES:
-                        contextMenu.displayTileType(dungeon.getTilePos(x, y).getMetaData().getTileType());
+                        contextMenu.displayTileType(dungeon.getTilePos(x, y).getMetaData().getTileType(),x,y);
                         break;
                     case CHARACTERS:
-                        contextMenu.displayTileType(dungeon.getCharacterPos(x, y).getMetaData().getTileType());
+                        contextMenu.displayTileType(dungeon.getCharacterPos(x, y).getMetaData().getTileType(),x,y);
                         break;
                     case EQUIPMENT:
-                        contextMenu.displayTileType(dungeon.getEquipmentPos(x, y).getMetaData().getTileType());
+                        contextMenu.displayTileType(dungeon.getEquipmentPos(x, y).getMetaData().getTileType(),x,y);
                         break;
                     case ARTIFACTS:
-                        contextMenu.displayTileType(dungeon.getArtifactPos(x, y).getMetaData().getTileType());
+                        contextMenu.displayTileType(dungeon.getArtifactPos(x, y).getMetaData().getTileType(),x,y);
                         break;
                     default:
-                        contextMenu.displayTileType(null);
+                        contextMenu.displayTileType(null,x,y);
                         break;
                 }
             }
