@@ -2,15 +2,22 @@ package GameController;
 
 import Characters.Monster;
 import Characters.Player;
+import GUI.Main.ActionHandler.MoveAction;
+
 
 import java.util.ArrayList;
 
 public class RoundController {
 
-    private ArrayList<Player> players;
-    private ArrayList<Player> monsters;
+    private  ArrayList<Player> players;
+    private ArrayList<Monster> monsters;
+    private int index = 0;
 
-    RoundController(ArrayList<Player> players, ArrayList<Player> monsters) {
+
+
+    private FightController fightController = new FightController(players, monsters);
+
+    RoundController(ArrayList<Player> players, ArrayList<Monster> monsters) {
         this.setPlayers(players);
         this.setMonsters(monsters);
     }
@@ -23,22 +30,29 @@ public class RoundController {
         this.players = players;
     }
 
-    public ArrayList<Player> getMonsters() {
+    public ArrayList<Monster> getMonsters() {
         return monsters;
     }
 
-    public void setMonsters(ArrayList<Player> monsters) {
+    public void setMonsters(ArrayList<Monster> monsters) {
         this.monsters = monsters;
     }
 
     public void performRound() {
-        for (Player player : this.players) {
-            this.playerAction(player);
-            this.checkFight(player);
+        Player player = getActivePlayer();
+        if(getActivePlayer() != null){
+            endRound();
         }
+       this.playerAction(player);
+       this.checkFight(player);
+       
     }
 
-    private void monstersAction(Player monster) {
+    private void endRound() {
+        index++;
+    }
+
+    private void monstersAction(Monster monster) {
 
     }
 
@@ -47,6 +61,20 @@ public class RoundController {
     }
 
     private void checkFight(Player character) {
+/*        if(.contains(instanceof Monster)){
+*            fightController.startFightRound(new EffectController());
+* TODO: funktion des Sichtfeldes noch erwartet
+*/        }
 
+    public Player getActivePlayer() {
+        return players.get(index);
     }
-}
+
+    public void move(int x , int y){
+        Player player = getActivePlayer();
+        GameController.dungeon.isInRange(player, player.getWalkingrange(), x, y);
+        MoveAction moveAction = new MoveAction(GameController.dungeon);
+        moveAction.executeAction(x,y);
+    }
+    }
+

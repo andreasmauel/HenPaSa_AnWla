@@ -1,5 +1,6 @@
 package GameController;
 
+import Characters.Monster;
 import Characters.Player;
 import GameController.dices.*;
 import battlemap.Dungeon.Dungeon;
@@ -7,12 +8,19 @@ import battlemap.Dungeon.Dungeon;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class GameController
-{
+public class GameController {
+
+
     private ArrayList<Player> players = new ArrayList<Player>();
-    private ArrayList<Player> monster = new ArrayList<Player>();
-    private Dungeon dungeon;
+    private ArrayList<Monster> monster = new ArrayList<Monster>();
+    public static Dungeon dungeon;
     private HashMap<String, IDice> dices = new HashMap<String, IDice>();
+
+    private FightController fightController = new FightController(players, monster);
+
+    public FightController getFightController(){
+        return fightController;
+    }
     private GameStart gameStart = new GameStart();
     GameController(){
         dices.put("four", new DiceFour());
@@ -37,7 +45,7 @@ public class GameController
         return players;
     }
 
-    public ArrayList<Player> getMonster() {
+    public ArrayList<Monster> getMonster() {
         return monster;
     }
 }
