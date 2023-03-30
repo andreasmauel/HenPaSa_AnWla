@@ -29,16 +29,6 @@ public class Player extends AbstractCharacter {
 
     private Artifact currentArtifact;
 
-    @Override
-    public void setLifepoints(int lifepoints) {
-        if (lifepoints < this.getClazz().getBaseLifePoints()) {
-            this.setLifepoints(lifepoints);
-        } else {
-            this.setLifepoints(this.getClazz().getBaseLifePoints());
-        }
-        notifyObserver();
-    }
-
     public Player(String name, int dexterity, int intelligence, int strenght, int constitution, int wisdom,
                   Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
                   ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz) {

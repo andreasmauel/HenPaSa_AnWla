@@ -25,7 +25,8 @@ public abstract class AbstractCharacter implements Subject {
     private int constitution;
     private int wisdom;
     private Race race;
-    private int lifepoints;
+    private int currentLifepoints;
+    private int maxLifePoints;
     private int walkingrange;
     private int armorClass;
     private Weapon currentWeapon;
@@ -53,10 +54,11 @@ public abstract class AbstractCharacter implements Subject {
         this.race = race;
         this.clazz = clazz;
         if(clazz != null) {
-            this.lifepoints = clazz.getBaseLifePoints();
+            this.maxLifePoints = clazz.getBaseLifePoints();
         } else{
-            this.setLifepoints(20);
+            this.setMaxLifePoints(20);
         }
+        this.currentLifepoints = this.maxLifePoints;
         this.walkingrange = walkingrange;
         this.armorClass = armorClass;
         this.currentarmor = currentarmor;
@@ -82,6 +84,8 @@ public abstract class AbstractCharacter implements Subject {
             observer.update();
         }
     }
+
+
 
     public int getX() {
         return this.xPosition;
@@ -179,13 +183,30 @@ public abstract class AbstractCharacter implements Subject {
         notifyObserver();
     }
 
-    public int getLifepoints() {
-        return lifepoints;
+    public int getCurrentLifepoints() {
+        return this.currentLifepoints;
     }
 
-    public void setLifepoints(int lifepoints) {
-        this.lifepoints = lifepoints;
+    public int getMaxLifePoints() {
+        return this.maxLifePoints;
+    }
+
+    public void setHealDamage(int lifepoints, Effect effect) {
+
+        if(this.currentLifepoints - lifepoints <= 0 && effect == Effect.DAMAGE) {
+            this.currentLifepoints = 0;
+        } else if(this.currentLifepoints + lifepoints >= this.maxLifePoints && effect == Effect.HEAL) {
+            this.currentLifepoints = maxLifePoints;
+        } else if( effect == Effect.DAMAGE) {
+            this.currentLifepoints =- lifepoints;
+        } else {
+            this.currentLifepoints =+ lifepoints;
+        }
         notifyObserver();
+    }
+
+    public void setMaxLifePoints(int lifepoints) {
+        this.maxLifePoints = lifepoints;
     }
 
         public int getWalkingrange() {
@@ -266,7 +287,7 @@ public abstract class AbstractCharacter implements Subject {
     }
 
     public void getDamage(int damage) {
-        this.setLifepoints(this.getLifepoints() - damage);
+        this.setHealDamage(damage, Effect.DAMAGE);
     }
 
 

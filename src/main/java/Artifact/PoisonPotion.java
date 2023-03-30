@@ -2,6 +2,7 @@ package Artifact;
 
 import Characters.AbstractCharacter;
 import Characters.Player;
+import util.Effect;
 
 public class PoisonPotion extends  Potion{
 
@@ -10,6 +11,6 @@ public class PoisonPotion extends  Potion{
     }
     @Override
     public void use(AbstractCharacter player) {
-        player.setLifepoints(player.getLifepoints() - 6);
+        player.setHealDamage(player.getCurrentLifepoints() - 6, Effect.DAMAGE);
     }
 }

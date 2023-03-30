@@ -10,6 +10,7 @@ import util.Effect;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class CharacterPanel extends JPanel implements Observer {
 
@@ -70,14 +71,14 @@ public class CharacterPanel extends JPanel implements Observer {
     private void setPlayerStats() {
         playerStats.setLayout(new GridLayout(5, 2));
 
-        playerStats.add(createLabelWithValue("HP: ", player.getLifepoints()));
-        playerStats.add(createLabelWithValue("Max HP: ", player.calculateMaxLivepoints()));
+        playerStats.add(createLabelWithValue("HP: ", player.getCurrentLifepoints()));
+        playerStats.add(createLabelWithValue("Max HP: ", player.getMaxLifePoints()));
         playerStats.add(createLabelWithValue("STR: ", player.getStrenght()));
         playerStats.add(createLabelWithValue("DEX: ", player.getDexterity()));
         playerStats.add(createLabelWithValue("WIS: ", player.getWisdom()));
         playerStats.add(createLabelWithValue("INT: ", player.getInitiative()));
         playerStats.add(createLabelWithValue("CON: ", player.getConstitution()));
-        playerStats.add(createLabelWithValue("AC: " , player.getArmorClass()));
+        playerStats.add(createLabelWithValue("AC: ", player.getArmorClass()));
         playerStats.add(createLabelWithValue("MOV: ", player.getWalkingrange()));
         playerStats.add(createLabelWithValue("Max MOV: ", player.getWalkingrange()));
     }
@@ -114,11 +115,11 @@ public class CharacterPanel extends JPanel implements Observer {
         }
         JLabel remainingMovement = new JLabel("Current Movement");
         remainingMovement.setForeground(Color.WHITE);
-        weapons.addItemListener( e -> {
-            player.setCurrentWeapon((Weapon)e.getItem());
+        weapons.addItemListener(e -> {
+            player.setCurrentWeapon((Weapon) e.getItem());
         });
         armor.addItemListener(e -> {
-            player.setCurrentarmor((Armor)e.getItem());
+            player.setCurrentarmor((Armor) e.getItem());
         });
         artifact.addItemListener(e -> {
             player.setCurrentArtifact((Artifact) e.getItem());
@@ -155,9 +156,13 @@ public class CharacterPanel extends JPanel implements Observer {
             toggleBorder();
         });
         //
-
+        JButton button2 = new JButton("SetValue");
+        button2.addActionListener(e -> {
+            Random random = new Random();
+            player.setHealDamage(random.nextInt(1, 3), Effect.DAMAGE);
+        });
         effectsPanel.add(button);
-
+        effectsPanel.add(button2);
         return effectsPanel;
     }
 
@@ -175,13 +180,26 @@ public class CharacterPanel extends JPanel implements Observer {
     }
 
     private void disableComponents(JPanel panel, boolean bool) {
-        for(Component component : panel.getComponents()) {
+        for (Component component : panel.getComponents()) {
             component.setEnabled(bool);
         }
     }
 
     @Override
     public void update() {
+        updateAllValues();
+        System.out.println("Repainted");
+    }
+
+    private void updateAllValues() {
+
+        this.remove(this.getComponent(0));
+        this.remove(this.getComponent(0));
+        this.remove(this.getComponent(0));
+        this.repaint();
+        setPlayerStats();
+        setPlayerInfo();
+        setPickablePanel();
         this.repaint();
     }
 
