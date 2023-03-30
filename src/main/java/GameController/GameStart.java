@@ -165,7 +165,6 @@ public class GameStart {
                                 Race race = getRace(raceString);
                                 int armorClass = 13;
                                 int walkingRange = 5;
-                                ArrayList<Effect> effects = new ArrayList<>();
                                 Armor armor;
                                 if (armorChoice.getSelectedItem().toString() == "Lederpanzer")
                                     armor = new LeatherArmor();
@@ -239,11 +238,10 @@ public class GameStart {
                                 Armor armor = new LeatherArmor();
                                 int walkingRange = 5;
                                 Thief thief = new Thief();
-                                ArrayList<Effect> effects = new ArrayList<>();
                                 //(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
                                 //                  Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
                                 //                  ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz)
-                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, effects, thief);
+                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief);
                                 players.add(count, player);
                                 jDialog.setVisible(false);
                                 jDialog.dispatchEvent(new WindowEvent(
@@ -293,11 +291,10 @@ public class GameStart {
                                 Armor armor = new LeatherArmor();
                                 int walkingRange = 5;
                                 Thief thief = new Thief();
-                                ArrayList<Effect> effects = new ArrayList<>();
                                 //(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
                                 //                  Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
                                 //                  ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz)
-                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, effects, thief);
+                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief);
                                 players.add(count, player);
                                 jDialog.setVisible(false);
                                 jDialog.dispatchEvent(new WindowEvent(
