@@ -7,8 +7,8 @@ public class RangeWeapon extends Weapon {
 
     private int ammo;
 
-    public RangeWeapon(Attribute attribute, float price, float weigth, int requiredStrength, IDice dice, boolean multiAttackAllowed, float range, boolean isThrowable) {
-        super(attribute,  price,  weigth, requiredStrength, dice, multiAttackAllowed,range, isThrowable);
+    public RangeWeapon(Attribute attribute, float price, float weigth, int requiredStrength, IDice dice, boolean multiAttackAllowed, int range, boolean isThrowable) {
+        super(attribute,  price,  weigth, requiredStrength, dice, multiAttackAllowed, range, isThrowable);
 
     }
 
