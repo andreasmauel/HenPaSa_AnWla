@@ -53,9 +53,9 @@ public abstract class AbstractCharacter implements Subject {
         this.wisdom = wisdom;
         this.race = race;
         this.clazz = clazz;
-        if(clazz != null) {
+        if (clazz != null) {
             this.maxLifePoints = clazz.getBaseLifePoints();
-        } else{
+        } else {
             this.setMaxLifePoints(20);
         }
         this.currentLifepoints = this.maxLifePoints;
@@ -80,11 +80,10 @@ public abstract class AbstractCharacter implements Subject {
 
 
     public void notifyObserver() {
-        for(Observer observer : this.observer) {
+        for (Observer observer : this.observer) {
             observer.update();
         }
     }
-
 
 
     public int getX() {
@@ -95,11 +94,11 @@ public abstract class AbstractCharacter implements Subject {
         return this.yPosition;
     }
 
-    public void setxPosition(int xPosition){
+    public void setxPosition(int xPosition) {
         this.xPosition = xPosition;
     }
 
-    public void setyPosition(int yPosition){
+    public void setyPosition(int yPosition) {
         this.yPosition = yPosition;
     }
 
@@ -126,7 +125,7 @@ public abstract class AbstractCharacter implements Subject {
     }
 
     public void setDexterity(int dexterity) {
-        if (dexterity > 20){
+        if (dexterity > 20) {
             this.dexterity = 20;
         }
         this.dexterity = dexterity;
@@ -140,7 +139,7 @@ public abstract class AbstractCharacter implements Subject {
     }
 
     public void setIntelligence(int intelligence) {
-        if (intelligence > 20){
+        if (intelligence > 20) {
             this.intelligence = 20;
         }
         this.intelligence = intelligence;
@@ -156,7 +155,7 @@ public abstract class AbstractCharacter implements Subject {
     }
 
     public void setStrength(int strength) {
-        if (strength > 20){
+        if (strength > 20) {
             this.strength = 20;
         }
         this.strength = strength;
@@ -168,7 +167,7 @@ public abstract class AbstractCharacter implements Subject {
     }
 
     public void setConstitution(int constitution) {
-        if (constitution > 20){
+        if (constitution > 20) {
             this.constitution = 20;
         }
         this.constitution = constitution;
@@ -180,7 +179,7 @@ public abstract class AbstractCharacter implements Subject {
     }
 
     public void setWisdom(int wisdom) {
-        if (wisdom > 20){
+        if (wisdom > 20) {
             this.wisdom = 20;
         }
         this.wisdom = wisdom;
@@ -211,14 +210,14 @@ public abstract class AbstractCharacter implements Subject {
 
     public void setHealDamage(int lifepoints, Effect effect) {
 
-        if(this.currentLifepoints - lifepoints <= 0 && effect == Effect.DAMAGE) {
+        if (this.currentLifepoints - lifepoints <= 0 && effect == Effect.DAMAGE) {
             this.currentLifepoints = 0;
-        } else if(this.currentLifepoints + lifepoints >= this.maxLifePoints && effect == Effect.HEAL) {
+        } else if (this.currentLifepoints + lifepoints >= this.maxLifePoints && effect == Effect.HEAL) {
             this.currentLifepoints = maxLifePoints;
-        } else if( effect == Effect.DAMAGE) {
-            this.currentLifepoints =- lifepoints;
+        } else if (effect == Effect.DAMAGE) {
+            this.currentLifepoints = this.currentLifepoints - lifepoints;
         } else {
-            this.currentLifepoints =+ lifepoints;
+            this.currentLifepoints = +lifepoints;
         }
         notifyObserver();
     }
@@ -227,7 +226,7 @@ public abstract class AbstractCharacter implements Subject {
         this.maxLifePoints = lifepoints;
     }
 
-        public int getWalkingrange() {
+    public int getWalkingrange() {
         return walkingrange;
     }
 
@@ -255,12 +254,10 @@ public abstract class AbstractCharacter implements Subject {
 
     public void setCurrentarmor(Armor currentarmor) {
         this.currentarmor = currentarmor;
-        notifyObserver();
     }
 
     public void setCurrentWeapon(Weapon currentWeapon) {
         this.currentWeapon = currentWeapon;
-        notifyObserver();
     }
 
     public int getInitiative() {
@@ -276,10 +273,11 @@ public abstract class AbstractCharacter implements Subject {
     }
 
     public void setVisible(boolean visible) {
-        if(currentarmor.equals(ChainMail.class)){
+        if (currentarmor.equals(ChainMail.class)) {
             isVisible = true;
+        } else {
+            isVisible = visible;
         }
-        isVisible = visible;
     }
 
     public ViewDirection getViewDirection() {
@@ -299,9 +297,9 @@ public abstract class AbstractCharacter implements Subject {
         notifyObserver();
     }
 
-    public void attack(AbstractCharacter character){
-       int damage = this.currentWeapon.useWeapon();
-       character.getDamage(damage);
+    public void attack(AbstractCharacter character) {
+        int damage = this.currentWeapon.useWeapon();
+        character.getDamage(damage);
     }
 
     public void getDamage(int damage) {
@@ -309,22 +307,22 @@ public abstract class AbstractCharacter implements Subject {
     }
 
 
-    public int modifier(util.Attribute attribute){
-        switch (attribute){
+    public int modifier(util.Attribute attribute) {
+        switch (attribute) {
             case WISDOM:
-                return (getWisdom()-10)/2;
+                return (getWisdom() - 10) / 2;
 
             case CONSTITUTION:
-                return (getConstitution()-10)/2;
+                return (getConstitution() - 10) / 2;
 
             case DEXTERITY:
-                return (getDexterity()-10)/2;
+                return (getDexterity() - 10) / 2;
 
             case STRENGTH:
-                return (getStrength()-10)/2;
+                return (getStrength() - 10) / 2;
 
             case INTELLIGENCE:
-                return (getIntelligence()-10)/2;
+                return (getIntelligence() - 10) / 2;
 
             default:
         }

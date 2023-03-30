@@ -1,5 +1,6 @@
 package GUI.Main;
 
+import Characters.Player;
 import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
 import battlemap.Meta.TileType;
@@ -13,6 +14,7 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainFrame {
     private JFrame jFrame = new JFrame();
@@ -32,7 +34,7 @@ public class MainFrame {
 
     private MouseDetector mouseClick = new MouseDetector();
 
-    public MainFrame(Dungeon dungeon, GameController gameController){
+    public MainFrame(Dungeon dungeon, GameController gameController, ArrayList<Player> players){
         jFrame.setLayout(null);
         jFrame.setSize(1920, 1080);
         jFrame.setVisible(true);
@@ -44,7 +46,7 @@ public class MainFrame {
         jFrame.add(dungeonPanel);
         this.dungeon = dungeon;
         generateMap(this.dungeon);
-        generateStatusScreen();
+        generateStatusScreen(players);
 //        statusPanel.setActiveCharacter(1);
         generateDialogBox();
         generateContextMenu(this.dungeon, gameController);
@@ -193,8 +195,8 @@ public class MainFrame {
         jFrame.repaint();
     }
 
-    private void generateStatusScreen(){
-        jFrame.add(statusPanel.generateStatusBackground());
+    private void generateStatusScreen(ArrayList<Player> players){
+        jFrame.add(statusPanel.generateStatusBackground(players));
         jFrame.repaint();
     }
 
