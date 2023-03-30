@@ -1,6 +1,7 @@
 package GameController;
 
 import Characters.AbstractCharacter;
+import GUI.Main.DialogBox;
 import util.Effect;
 
 import java.util.ArrayList;
@@ -31,19 +32,37 @@ public class EffectController {
         this.effects = effects;
     }
 
+    public Boolean getSleepActive() {
+        return isSleepActive;
+    }
+
+    public void setSleepActive(Boolean sleepActive) {
+        isSleepActive = sleepActive;
+    }
+
     public void triggerEffects() {
         for (Effect effect : getListOfMap(this.effects)) {
             switch(effect) {
-                case DAMAGE -> this.character.setHealDamage(2, Effect.DAMAGE);
-                case HEAL -> this.character.setHealDamage(2, Effect.HEAL);
-                case SLEEP -> this.isSleepActive = true;
-                case ARMOR -> this.character.setArmorClass(this.character.getArmorClass() + 2);
+                case DAMAGE:
+                    this.character.setHealDamage(2, Effect.DAMAGE);
+                    DialogBox.ConsoleOut("Durch den Heileffect hat " + this.character.getName()  + " 2 Lebenspunkte erhalten");
+                case HEAL:
+                    this.character.setHealDamage(2, Effect.HEAL);
+                    DialogBox.ConsoleOut("Durch den schadenseffect hat " + this.character.getName()  + " 2 schaden erhalten");
             }
         }
     }
 
     public void addEffect(Effect effect, int duration) {
         if (this.effects.get(effect) == null) {
+            switch (effect) {
+                case SLEEP:
+                    this.isSleepActive = true;
+                    DialogBox.ConsoleOut(this.character.getName() + " wurde mit dem Schlafeffect belegt");
+                case ARMOR:
+                    this.character.setArmorClass(this.character.getArmorClass() + 2);
+                    DialogBox.ConsoleOut(this.character.getName() + " durch den Rüstungseffect wurde deine Armorklasse um 2 erhöt");
+            }
             this.effects.put(effect, duration);
         } else {
             int x = this.effects.get(effect);

@@ -3,10 +3,8 @@ package GameController;
 import Characters.AbstractCharacter;
 import Characters.Monster;
 import Characters.Player;
-import GUI.Main.ActionHandler.AttackAction;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class FightController {
     private boolean fightEnd;
@@ -14,7 +12,7 @@ public class FightController {
     private ArrayList<Monster> monsters;
     private ArrayList<AbstractCharacter> fightOrder;
     private AbstractCharacter currentCharacter;
-    private int currentPlayerIndex = 0;
+    private int currentCharacterIndex = 0;
 
     public FightController(ArrayList<Player> players, ArrayList<Monster> monsters) {
         this.fightEnd = false;
@@ -38,21 +36,21 @@ public class FightController {
         this.monsters = monsters;
     }
 
-    public void startFight() {
+    public void startFight()    {
         for (Player player : this.players) {
             this.addToFight(player);
         }
         for (Monster monster : this.monsters) {
             this.addToFight(monster);
         }
-        this.currentCharacter = this.fightOrder.get(this.currentPlayerIndex);
-}
+        this.currentCharacter = this.fightOrder.get(this.currentCharacterIndex);
+    }
 
     public void startFightRound() {
-        currentCharacter.getEffects();
-
-
-
+        currentCharacter.getEffects().triggerEffects();
+        if (currentCharacter.getEffects().isSleepActive) {
+            endFightRound();
+        }
     }
 
     public void endFightRound() {
@@ -60,10 +58,17 @@ public class FightController {
             this.fightEnd();
             return ;
         }
+        if (this.currentCharacterIndex == this.fightOrder.size() - 1) {
+            this.currentCharacterIndex = 0;
+            this.currentCharacter = this.fightOrder.get(this.currentCharacterIndex);
+        } else {
+            this.currentCharacterIndex ++;
+            this.currentCharacter = this.fightOrder.get(this.currentCharacterIndex);
+        }
     }
 
     public void fightEnd() {
-        this.currentPlayerIndex = 0;
+        this.currentCharacterIndex = 0;
         this.fightEnd = true;
     }
 
