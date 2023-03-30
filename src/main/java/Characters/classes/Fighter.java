@@ -10,9 +10,10 @@ public class Fighter extends Clazz{
     private FightingStyle fightingStyle;
 
     public Fighter(int baseArmorclass, Attribute mainAttribute, Attribute secondMainAttribute, ArrayList<Attribute> savingthrowAttribute, Equipment secundaryWeapon, FightingStyle fightingStyle) {
-        super(10, baseArmorclass, mainAttribute, secondMainAttribute, savingthrowAttribute);
+        super("Fighter",10, baseArmorclass, mainAttribute, secondMainAttribute, savingthrowAttribute);
         this.secundaryWeapon = secundaryWeapon;
         this.fightingStyle = fightingStyle;
+
     }
 
 

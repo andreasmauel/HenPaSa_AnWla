@@ -1,6 +1,6 @@
 package Artifact;
 
-public class KeyDoor implements IKey, Artifact {
+public class KeyDoor implements IKey {
 
     private int keycharges;
 

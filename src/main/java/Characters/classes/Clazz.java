@@ -6,6 +6,8 @@ import util.Attribute;
 import java.util.ArrayList;
 
 public class Clazz {
+
+    private String className;
     private int baseLifePoints;
     private int baseArmorclass;
     private Attribute mainAttribute;
@@ -13,26 +15,31 @@ public class Clazz {
     private ArrayList<Attribute> savingthrowAttribute;
 
     public int getBaseLifePoints() {
-        return baseLifePoints;
+        return this.baseLifePoints;
     }
 
     public int getBaseArmorclass() {
-        return baseArmorclass;
+        return this.baseArmorclass;
+    }
+
+    public String getClassName() {
+        return this.className;
     }
 
     public Attribute getMainAttribute() {
-        return mainAttribute;
+        return this.mainAttribute;
     }
 
     public Attribute getSecondMainAttribute() {
-        return secondMainAttribute;
+        return this.secondMainAttribute;
     }
 
     public ArrayList<Attribute> getSavingthrowAttribute() {
-        return savingthrowAttribute;
+        return this.savingthrowAttribute;
     }
 
-    public Clazz(int baseLifePoints, int baseArmorclass, Attribute mainAttribute, Attribute secondMainAttribute, ArrayList<Attribute> savingthrowAttribute){
+    public Clazz(String className, int baseLifePoints, int baseArmorclass, Attribute mainAttribute, Attribute secondMainAttribute, ArrayList<Attribute> savingthrowAttribute){
+        this.className = className;
         this.baseLifePoints = baseLifePoints;
         this.baseArmorclass = baseArmorclass;
         this.mainAttribute = mainAttribute;

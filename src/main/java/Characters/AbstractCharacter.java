@@ -4,6 +4,7 @@ import Characters.Races.Race;
 import Characters.classes.Clazz;
 import GameController.dices.DiceTwenty;
 import GameController.dices.IDice;
+import battlemap.Dungeon.Dungeon;
 import equipment.armor.Armor;
 import equipment.armor.ChainMail;
 import equipment.weapon.Weapon;
@@ -44,9 +45,17 @@ public abstract class AbstractCharacter {
         return this.yPosition;
     }
 
+    public void setxPosition(int xPosition){
+        this.xPosition = xPosition;
+    }
+
+    public void setyPosition(int yPosition){
+        this.yPosition = yPosition;
+    }
+
     public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
                              Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
-                             ViewDirection viewDirection, ArrayList<Effect> effects) {
+                             ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz) {
         this.name = name;
         this.dexterity = desterity;
         this.intelligence = intelligence;
@@ -54,6 +63,7 @@ public abstract class AbstractCharacter {
         this.constitution = constitution;
         this.wisdom = wisdom;
         this.race = race;
+        this.clazz = clazz;
         if(clazz != null) {
             this.lifepoints = clazz.getBaseLifePoints();
         } else{
@@ -74,6 +84,14 @@ public abstract class AbstractCharacter {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Clazz getClazz() {
+        return clazz;
+    }
+
+    public void addEffect(Effect effect) {
+        this.effects.add(effect);
     }
 
     public int getDexterity() {
@@ -102,6 +120,10 @@ public abstract class AbstractCharacter {
 
     public int getStrength() {
         return strength;
+    }
+
+    public String getClazzName() {
+        return this.clazz.getClassName();
     }
 
     public void setStrength(int strength) {
@@ -135,6 +157,10 @@ public abstract class AbstractCharacter {
 
     public Race getRace() {
         return race;
+    }
+
+    public String getRaceName() {
+        return this.getRace().getClass().getSimpleName();
     }
 
     public void setRace(Race race) {
@@ -220,10 +246,6 @@ public abstract class AbstractCharacter {
     public void attack(AbstractCharacter character){
        int damage = this.weapon.useWeapon();
        character.getDamage(damage);
-    }
-
-    public void move(){
-
     }
 
     public void getDamage(int damage) {

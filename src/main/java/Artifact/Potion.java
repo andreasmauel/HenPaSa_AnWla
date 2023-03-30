@@ -1,5 +1,7 @@
 package Artifact;
 
+import Characters.AbstractCharacter;
+
 public abstract class Potion implements Artifact {
     private int charges;
 
@@ -17,5 +19,10 @@ public abstract class Potion implements Artifact {
 
     public void setCharges(int charges) {
         this.charges = charges;
+    }
+
+    @Override
+    public void use(AbstractCharacter player) {
+
     }
 }

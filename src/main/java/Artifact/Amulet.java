@@ -10,6 +10,8 @@ public class Amulet extends Magical{
 
 
 
-      public int use(AbstractCharacter player) {return player.getArmorClass() + 2;
+      public void use(AbstractCharacter player) {
+        player.setArmorClass(player.getArmorClass() + 2);
     }
+
 }
