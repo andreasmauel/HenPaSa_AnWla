@@ -2,9 +2,8 @@ package GameController;
 
 import Characters.Monster;
 import Characters.Player;
-import GUI.Main.ActionHandler.ActionOption;
 import GUI.Main.ActionHandler.MoveAction;
-import battlemap.Dungeon.Dungeon;
+
 
 import java.util.ArrayList;
 
