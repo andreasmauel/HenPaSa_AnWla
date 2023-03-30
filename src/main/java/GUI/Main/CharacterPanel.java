@@ -24,10 +24,31 @@ public class CharacterPanel extends JPanel implements Observer {
     private JPanel playerInfo = new JPanel();
     private JPanel playerStats = new JPanel();
     private JPanel activeEquipment = new JPanel();
+    private JPanel equipmentSpellsEffects = new JPanel();
     boolean active = true;
 
-    JPanel equipmentSpellsEffects = new JPanel();
+    //Alle Attribute
+    JLabel playerName;
+    JLabel level;
+    JLabel race;
+    JLabel clazz;
+    JLabel hp;
+    JLabel hpMax;
+    JLabel str;
+    JLabel dex;
+    JLabel wis;
+    JLabel inte;
+    JLabel con;
+    JLabel ac;
+    JLabel mov;
+    JLabel maxMov;
 
+
+
+    JComboBox weapons;
+    JComboBox armor;
+    JComboBox artifact;
+    JComboBox spells;
 
     public JPanel initCharacter() {
         this.setLayout(new BorderLayout(5, 5));
@@ -49,13 +70,13 @@ public class CharacterPanel extends JPanel implements Observer {
 
     public void setPlayerInfo() {
         playerInfo.setLayout(new BoxLayout(playerInfo, BoxLayout.LINE_AXIS));
-        JLabel playerName = new JLabel("Name: " + player.getName());
+        playerName = new JLabel("Name: " + player.getName());
         playerName.setForeground(Color.WHITE);
-        JLabel level = new JLabel("Level: " + 1);
+        level = new JLabel("Level: " + 1);
         level.setForeground(Color.WHITE);
-        JLabel race = new JLabel("Race: " + player.getRaceName());
+        race = new JLabel("Race: " + player.getRaceName());
         race.setForeground(Color.WHITE);
-        JLabel clazz = new JLabel("Class: " + player.getClazzName());
+        clazz = new JLabel("Class: " + player.getClazzName());
         clazz.setForeground(Color.WHITE);
         playerInfo.add(Box.createVerticalStrut(5));
         playerInfo.add(playerName);
@@ -71,24 +92,41 @@ public class CharacterPanel extends JPanel implements Observer {
     private void setPlayerStats() {
         playerStats.setLayout(new GridLayout(5, 2));
 
-        playerStats.add(createLabelWithValue("HP: ", player.getCurrentLifepoints()));
-        playerStats.add(createLabelWithValue("Max HP: ", player.getMaxLifePoints()));
-        playerStats.add(createLabelWithValue("STR: ", player.getStrenght()));
-        playerStats.add(createLabelWithValue("DEX: ", player.getDexterity()));
-        playerStats.add(createLabelWithValue("WIS: ", player.getWisdom()));
-        playerStats.add(createLabelWithValue("INT: ", player.getInitiative()));
-        playerStats.add(createLabelWithValue("CON: ", player.getConstitution()));
-        playerStats.add(createLabelWithValue("AC: ", player.getArmorClass()));
-        playerStats.add(createLabelWithValue("MOV: ", player.getWalkingrange()));
-        playerStats.add(createLabelWithValue("Max MOV: ", player.getWalkingrange()));
+        hp = new JLabel("HP: " + player.getCurrentLifepoints());
+        hp.setForeground(Color.WHITE);
+        playerStats.add(hp);
+        hpMax = new JLabel("Max HP: " + player.getMaxLifePoints());
+        hpMax.setForeground(Color.WHITE);
+        playerStats.add(hpMax);
+        str = new JLabel("STR: " + player.getStrenght());
+        str.setForeground(Color.WHITE);
+        playerStats.add(str);
+        dex = new JLabel("DEX: "+ player.getDexterity());
+        dex.setForeground(Color.WHITE);
+        playerStats.add(dex);
+        wis = new JLabel("WIS: "+ player.getWisdom());
+        wis.setForeground(Color.WHITE);
+        playerStats.add(wis);
+        inte = new JLabel("INT: " + player.getInitiative());
+        inte.setForeground(Color.WHITE);
+        playerStats.add(inte);
+        con = new JLabel("CON: " + player.getConstitution());
+        con.setForeground(Color.WHITE);
+        playerStats.add(con);
+        ac = new JLabel("AC: " + player.getArmorClass());
+        ac.setForeground(Color.WHITE);
+        playerStats.add(ac);
+        mov = new JLabel("MOV: " + player.getWalkingrange());
+        mov.setForeground(Color.WHITE);
+        playerStats.add(mov);
+        maxMov = new JLabel("Max MOV: " + player.getWalkingrange());
+        maxMov.setForeground(Color.WHITE);
+        playerStats.add(maxMov);
     }
 
     private void setPickablePanel() {
         activeEquipment.setLayout(new GridLayout(4, 2, 5, 5));
-        JComboBox weapons;
-        JComboBox armor;
-        JComboBox artifact;
-        JComboBox spells;
+
         if (player.getWeapons().size() != 0) {
             weapons = new JComboBox(player.getWeapons().toArray());
             weapons.setRenderer(new MyComboBoxRenderer());
@@ -193,14 +231,22 @@ public class CharacterPanel extends JPanel implements Observer {
 
     private void updateAllValues() {
 
-        this.remove(this.getComponent(0));
-        this.remove(this.getComponent(0));
-        this.remove(this.getComponent(0));
-        this.repaint();
-        setPlayerStats();
-        setPlayerInfo();
-        setPickablePanel();
-        this.repaint();
+        playerName.setText("Name: " + player.getName());
+         level.setText("Level: 1");
+         race.setText("Race: " + player.getRaceName());
+         clazz.setText("Class: " + player.getClazzName());
+         hp.setText("HP: " + player.getCurrentLifepoints());
+         hpMax.setText("Max HP: " + player.getMaxLifePoints());
+         str.setText("STR: " + player.getStrenght());
+         dex.setText("DEX: " + player.getDexterity());
+         wis.setText("WIS: " + player.getWisdom());
+         inte.setText("INT: " + player.getIntelligence());
+         con.setText("CON: " + player.getConstitution());
+         ac.setText("AC: " + player.getArmorClass());
+         mov.setText("MOV: Movement" );
+         maxMov.setText("Max Mov");
+
+
     }
 
     private static class MyComboBoxRenderer implements ListCellRenderer<Object> {
