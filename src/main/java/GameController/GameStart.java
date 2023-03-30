@@ -9,6 +9,7 @@ import Characters.ViewDirection;
 import Characters.classes.Clazz;
 import Characters.classes.Fighter;
 import Characters.classes.FightingStyle;
+import Characters.classes.Thief;
 import equipment.armor.Armor;
 import equipment.armor.ChainMail;
 import equipment.armor.LeatherArmor;
@@ -22,6 +23,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -163,7 +165,6 @@ public class GameStart {
                                 Race race = getRace(raceString);
                                 int armorClass = 13;
                                 int walkingRange = 5;
-                                ArrayList<Effect> effects = new ArrayList<>();
                                 Armor armor;
                                 if (armorChoice.getSelectedItem().toString() == "Lederpanzer")
                                     armor = new LeatherArmor();
@@ -188,7 +189,9 @@ public class GameStart {
                                 Clazz fighter = new Fighter(primaryAttribute, Attribute.CONSTITUTION, savingThrows, secondaryWeapon, fightingStyle);
                                 Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, fighter, primaryWeapon);
                                 players.add(count, player);
-                                //frame.dispose();
+                                jDialog.setVisible(false);
+                                jDialog.dispatchEvent(new WindowEvent(
+                                        jDialog, WindowEvent.WINDOW_CLOSING));
                             }
 
                         });
@@ -197,27 +200,30 @@ public class GameStart {
                         jDialog.setVisible(true);
                     }
                     else if (clazzString == "Dieb"){
-                        String primary = "Stärke";
-                        String secondary = "Konstitution";
+                        String primary = "Geschicklichkeit";
+                        String secondary = "Intelligenz";
                         JDialog jDialog = new JDialog();
                         jDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                        jDialog.setTitle("Bitte wichtigste Eigenschaften auswählen");
-                        jDialog.setSize(300,190);
+                        jDialog.setTitle("Zusätzliche Eigenschaften auswählen");
+                        jDialog.setSize(300,220);
                         JPanel jPanel = new JPanel();
                         jPanel.setLayout(null);
                         jDialog.add(jPanel);
 
-                        JLabel primaryLabel = new JLabel("Wichtigste Eigenschaft wählen:");
+                        JLabel primaryLabel = new JLabel("Wichtigste Eigenschaft: " + primary);
                         primaryLabel.setBounds(10, 5, 250, 20);
                         jPanel.add(primaryLabel);
-                        JComboBox primaryCombo= new JComboBox(new String[]{"Stärke", "Geschicklichkeit"});
-                        primaryCombo.setBounds(10, 35, 250, 20);
-                        jPanel.add(primaryCombo);
                         JLabel secondaryLabel = new JLabel("Zweitwichtigste Eigenschaft: " + secondary);
-                        secondaryLabel.setBounds(10, 65, 250, 20);
+                        secondaryLabel.setBounds(10, 35, 250, 20);
                         jPanel.add(secondaryLabel);
+                        JLabel chooseEquipment = new JLabel("Ausrüstung wählen");
+                        chooseEquipment.setBounds(10, 65, 250, 20);
+                        jPanel.add(chooseEquipment);
+                        JComboBox equipmentChoice = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Knüppel", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
+                        equipmentChoice.setBounds(10, 95, 250, 20);
+                        jPanel.add(equipmentChoice);
                         JButton finish = new JButton("Auswahl bestätigen");
-                        finish.setBounds(100, 110, 160, 20);
+                        finish.setBounds(100, 145, 160, 20);
                         jPanel.add(finish);
                         finish.addActionListener(new ActionListener() {
                             @Override
@@ -229,8 +235,17 @@ public class GameStart {
                                 int wisdom = 10;
                                 Race race = getRace(raceString);
                                 int armorClass = 10;
+                                Armor armor = new LeatherArmor();
                                 int walkingRange = 5;
-                                //Player player = new Player(dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, race, armorClass,);
+                                Thief thief = new Thief();
+                                //(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
+                                //                  Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
+                                //                  ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz)
+                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief);
+                                players.add(count, player);
+                                jDialog.setVisible(false);
+                                jDialog.dispatchEvent(new WindowEvent(
+                                        jDialog, WindowEvent.WINDOW_CLOSING));
                             }
                         });
 
@@ -238,7 +253,57 @@ public class GameStart {
                         jDialog.setVisible(true);
                     }
                     if (clazzString == "Zauberer"){
-                        //clazz = new Clazz()
+                        String primary = "Geschicklichkeit";
+                        String secondary = "Intelligenz";
+                        JDialog jDialog = new JDialog();
+                        jDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        jDialog.setTitle("Zusätzliche Eigenschaften auswählen");
+                        jDialog.setSize(300,220);
+                        JPanel jPanel = new JPanel();
+                        jPanel.setLayout(null);
+                        jDialog.add(jPanel);
+
+                        JLabel primaryLabel = new JLabel("Wichtigste Eigenschaft: " + primary);
+                        primaryLabel.setBounds(10, 5, 250, 20);
+                        jPanel.add(primaryLabel);
+                        JLabel secondaryLabel = new JLabel("Zweitwichtigste Eigenschaft: " + secondary);
+                        secondaryLabel.setBounds(10, 35, 250, 20);
+                        jPanel.add(secondaryLabel);
+                        JLabel chooseEquipment = new JLabel("Ausrüstung wählen");
+                        chooseEquipment.setBounds(10, 65, 250, 20);
+                        jPanel.add(chooseEquipment);
+                        JComboBox equipmentChoice = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Knüppel", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
+                        equipmentChoice.setBounds(10, 95, 250, 20);
+                        jPanel.add(equipmentChoice);
+                        JButton finish = new JButton("Auswahl bestätigen");
+                        finish.setBounds(100, 145, 160, 20);
+                        jPanel.add(finish);
+                        finish.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                int dexterity = 10;
+                                int intelligence = 10;
+                                int strength = 10;
+                                int constitution = 10;
+                                int wisdom = 10;
+                                Race race = getRace(raceString);
+                                int armorClass = 10;
+                                Armor armor = new LeatherArmor();
+                                int walkingRange = 5;
+                                Thief thief = new Thief();
+                                //(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
+                                //                  Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
+                                //                  ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz)
+                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief);
+                                players.add(count, player);
+                                jDialog.setVisible(false);
+                                jDialog.dispatchEvent(new WindowEvent(
+                                        jDialog, WindowEvent.WINDOW_CLOSING));
+                            }
+                        });
+
+                        jDialog.setModal(true);
+                        jDialog.setVisible(true);
                     }
                     //players.set(count, new Player());
                 }

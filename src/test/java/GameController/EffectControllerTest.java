@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EffectControllerTest {
 
 
-    EffectController effectController = new EffectController(new Player("Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new Thief(4, Attribute.CHARISMA, Attribute.CONSTITUTION, new ArrayList<>())));
+    EffectController effectController = new EffectController(new Player("Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new Thief()));
 
     private void createEffects() {
 
