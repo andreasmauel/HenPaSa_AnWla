@@ -114,7 +114,7 @@ public class GameStart {
                         JDialog jDialog = new JDialog();
                         jDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                         jDialog.setTitle("Zusätzliche Eigenschaften auswählen");
-                        jDialog.setSize(300,300);
+                        jDialog.setSize(300,400);
                         JPanel jPanel = new JPanel();
                         jPanel.setLayout(null);
                         jDialog.add(jPanel);
@@ -128,26 +128,29 @@ public class GameStart {
                         JLabel secondaryLabel = new JLabel("Zweitwichtigste Eigenschaft: " + secondary);
                         secondaryLabel.setBounds(10, 65, 250, 20);
                         jPanel.add(secondaryLabel);
-                        JLabel chooseArmor = new JLabel("Rüstung wählen (Lederpanzer gewährt Pfeil u. Bogen):");
-                        chooseArmor.setBounds(10, 95, 250, 20);
+                        JLabel chooseArmor = new JLabel("<html>Rüstung wählen: <br/>(Lederpanzer gewährt Pfeil u. Bogen)</html>");
+                        chooseArmor.setBounds(10, 95, 250, 30);
                         jPanel.add(chooseArmor);
                         JComboBox armorChoice = new JComboBox(new String[]{"Kettenpanzer", "Lederpanzer"});
-                        armorChoice.setBounds(10, 125, 250, 20);
+                        armorChoice.setBounds(10, 135, 250, 20);
                         jPanel.add(armorChoice);
                         JLabel chooseEquipment = new JLabel("Ausrüstung wählen");
-                        chooseEquipment.setBounds(10, 155, 250, 20);
+                        chooseEquipment.setBounds(10, 165, 250, 20);
                         jPanel.add(chooseEquipment);
-                        JComboBox equipmentChoice = new JComboBox(new String[]{"", "Geschicklichkeit"});
-                        equipmentChoice.setBounds(10, 185, 250, 20);
-                        jPanel.add(equipmentChoice);
+                        JComboBox equipmentChoice1 = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Knüppel", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
+                        equipmentChoice1.setBounds(10, 195, 250, 20);
+                        jPanel.add(equipmentChoice1);
+                        JComboBox equipmentChoice2 = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Knüppel", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
+                        equipmentChoice2.setBounds(10, 225, 250, 20);
+                        jPanel.add(equipmentChoice2);
                         JLabel chooseFightingStyle = new JLabel("Kampfstil wählen");
-                        chooseFightingStyle.setBounds(10, 215, 250, 20);
+                        chooseFightingStyle.setBounds(10, 255, 250, 20);
                         jPanel.add(chooseFightingStyle);
                         JComboBox fightingStyleChoice = new JComboBox(new String[]{"Bogenschießen", "Nahkampf", "Verteidigung"});
-                        fightingStyleChoice.setBounds(10, 245, 250, 20);
+                        fightingStyleChoice.setBounds(10, 285, 250, 20);
                         jPanel.add(fightingStyleChoice);
                         JButton finish = new JButton("Auswahl bestätigen");
-                        finish.setBounds(100, 295, 160, 20);
+                        finish.setBounds(100, 335, 160, 20);
                         jPanel.add(finish);
                         finish.addActionListener(new ActionListener() {
                             @Override
@@ -185,6 +188,7 @@ public class GameStart {
                                 Clazz fighter = new Fighter(primaryAttribute, Attribute.CONSTITUTION, savingThrows, secondaryWeapon, fightingStyle);
                                 Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH,effects, fighter);
                                 players.add(count, player);
+                                //frame.dispose();
                             }
 
                         });
