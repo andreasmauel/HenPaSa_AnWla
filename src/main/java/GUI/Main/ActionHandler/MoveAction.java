@@ -1,7 +1,9 @@
 package GUI.Main.ActionHandler;
 
+import Characters.Player;
 import GUI.Main.DialogBox;
 
+import GameController.RoundController;
 import battlemap.Dungeon.Dungeon;
 
 public class MoveAction extends ActionOption
@@ -13,10 +15,8 @@ public class MoveAction extends ActionOption
         this.actionEvent = "MOVE";
     }
 
-    @Override
-    public void executeAction( int x, int y)
-    public static void executeAction(String x, String y)
-    {
-        //DialogBox.ConsoleOut("Shuffles to: " +x+" "+y);
+    public void executeAction(Player player, int x, int y) {
+
+        DialogBox.ConsoleOut("Shuffles to: " +x+" "+y);
     }
 }

@@ -53,8 +53,7 @@ public class ActionOption
     {
         return buttonListener;
     }
-    public void executeAction( int x, int y)
-    {
+    public void executeAction(int x, int y) {
 
     }
 

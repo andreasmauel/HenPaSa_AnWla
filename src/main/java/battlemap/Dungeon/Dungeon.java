@@ -14,6 +14,7 @@ import equipment.Equipment;
 
 public class Dungeon
 {
+
     private TilePos[][] tiles;
     private CharacterPos[][] characters;
     private EquipmentPos[][] equipment;
