@@ -9,6 +9,7 @@ import Characters.classes.Fighter;
 import GameController.dices.DiceFour;
 import equipment.armor.LeatherArmor;
 
+import equipment.weapon.Dagger;
 import org.junit.Test;
 import util.Effect;
 
@@ -25,7 +26,7 @@ public class ArtifactTests {
 
 	private ArrayList<Effect> effect;
 	AbstractCharacter testMonster = new Monster("test", 5, 6, 7, 2, 3,
-			new Dwarf(), 2, 4, new LeatherArmor(), true, ViewDirection.NORTH, effect);
+			new Dwarf(), 2, 4, new LeatherArmor(), true, ViewDirection.NORTH, effect, new Dagger());
 
 	Amulet amulet = new Amulet();
 	Cloak cloak = new Cloak();

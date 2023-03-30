@@ -44,7 +44,7 @@ public abstract class AbstractCharacter implements Subject {
 
     public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
                              Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
-                             ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz) {
+                             ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz, Weapon currentWeapon) {
         this.name = name;
         this.dexterity = desterity;
         this.intelligence = intelligence;
@@ -53,6 +53,7 @@ public abstract class AbstractCharacter implements Subject {
         this.wisdom = wisdom;
         this.race = race;
         this.clazz = clazz;
+        this.currentWeapon = currentWeapon;
         if (clazz != null) {
             this.maxLifePoints = clazz.getBaseLifePoints();
         } else {

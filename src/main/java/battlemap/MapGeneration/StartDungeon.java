@@ -17,6 +17,7 @@ import equipment.armor.ChainMail;
 import equipment.armor.LeatherArmor;
 import equipment.armor.NoArmor;
 import equipment.weapon.BattleAxe;
+import equipment.weapon.Dagger;
 import spells.Fireball;
 import util.Attribute;
 import util.Effect;
@@ -138,7 +139,7 @@ public class StartDungeon
                 //SET MONSTERS
                 if(x==2 && y ==7 && generated[x][y] != true)
                 {
-                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster("Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, null));
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster("Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, null, new Dagger()));
                     generated[x][y] = true;
                 }
                 //SET MONSTERS

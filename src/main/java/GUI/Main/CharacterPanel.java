@@ -11,6 +11,7 @@ import util.Effect;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.ItemEvent;
 import java.util.List;
 import java.util.Random;
 
@@ -133,6 +134,7 @@ public class CharacterPanel extends JPanel implements Observer {
             weapons = new JComboBox();
             fillComboBox(weapons, player.getWeapons());
             weapons.setRenderer(new MyComboBoxRenderer());
+            weapons.setSelectedItem(player.getCurrentWeapon());
         } else {
             weapons = new JComboBox();
         }
@@ -140,6 +142,7 @@ public class CharacterPanel extends JPanel implements Observer {
             armor = new JComboBox();
             fillComboBox(armor, player.getArmor());
             armor.setRenderer(new MyComboBoxRenderer());
+            weapons.setSelectedItem(player.getCurrentarmor());
         } else {
             armor = new JComboBox();
         }
@@ -147,6 +150,7 @@ public class CharacterPanel extends JPanel implements Observer {
             artifact = new JComboBox();
             fillComboBox(artifact, player.getArtifact());
             artifact.setRenderer(new MyComboBoxRenderer());
+            weapons.setSelectedItem(player.getCurrentArtifact());
         } else {
             artifact = new JComboBox();
         }
@@ -159,13 +163,20 @@ public class CharacterPanel extends JPanel implements Observer {
         JLabel remainingMovement = new JLabel("Current Movement");
         remainingMovement.setForeground(Color.WHITE);
         weapons.addItemListener(e -> {
-            player.setCurrentWeapon((Weapon) e.getItem());
+            if(e.getStateChange() == ItemEvent.DESELECTED) {
+                player.setCurrentWeapon((Weapon) e.getItem());
+            }
         });
+
         armor.addItemListener(e -> {
-            player.setCurrentarmor((Armor) e.getItem());
+            if(e.getStateChange() == ItemEvent.DESELECTED) {
+                player.setCurrentarmor((Armor) e.getItem());
+            }
         });
         artifact.addItemListener(e -> {
-            player.setCurrentArtifact((Artifact) e.getItem());
+            if(e.getStateChange() == ItemEvent.DESELECTED) {
+                player.setCurrentArtifact((Artifact) e.getItem());
+            }
         });
         activeEquipment.add(weapons);
         activeEquipment.add(armor);
@@ -231,7 +242,8 @@ public class CharacterPanel extends JPanel implements Observer {
     @Override
     public void update() {
         updateAllValues();
-        System.out.println("Repainted");
+
+//        System.out.println(player.getCurrentWeapon().getName());
     }
 
     private void updateAllValues() {
@@ -251,9 +263,11 @@ public class CharacterPanel extends JPanel implements Observer {
          mov.setText("MOV: Movement" );
          maxMov.setText("Max Mov");
 
+         System.out.println(player.getCurrentWeapon());
          weapons.removeAllItems();
          fillComboBox(weapons, player.getWeapons());
          weapons.setSelectedItem(player.getCurrentWeapon());
+         System.out.println(player.getCurrentWeapon());
 
         armor.removeAllItems();
         fillComboBox(armor, player.getArmor());
@@ -267,8 +281,6 @@ public class CharacterPanel extends JPanel implements Observer {
             spells.removeAllItems();
             fillComboBox(spells, ((Mage) player.getClazz()).getSpells());
         }
-        this.repaint();
-
     }
 
     private void fillComboBox(JComboBox box, List<? extends Object> list) {
@@ -278,7 +290,6 @@ public class CharacterPanel extends JPanel implements Observer {
     }
 
     private static class MyComboBoxRenderer implements ListCellRenderer<Object> {
-
         @Override
         public Component getListCellRendererComponent(JList<? extends Object> list, Object value, int index,
                                                       boolean isSelected, boolean cellHasFocus) {

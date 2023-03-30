@@ -28,20 +28,19 @@ public class Player extends AbstractCharacter {
 
     public Player(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
                   Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
-                  ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz) {
+                  ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz, Weapon weapon) {
         super(name, dexterity, intelligence, strength, constitution, wisdom, race, walkingrange, armorClass,
-                currentArmor, isVisible, viewDirection, effects, clazz);
+                currentArmor, isVisible, viewDirection, effects, clazz, weapon );
 
         this.getClazz().applyModifiers(this);
         this.inventory = inventory;
         this.weapons = new ArrayList<>();
         this.weapons.add(new Dagger());
+        this.weapons.add(weapon);
         this.weapons.add(new BattleAxe());
         this.armor = new ArrayList<>();
         this.armor.add(new NoArmor());
         this.artifact = new ArrayList<>();
-
-
     }
 
 

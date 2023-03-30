@@ -17,6 +17,7 @@ import battlemap.Meta.TileType;
 import equipment.armor.ChainMail;
 import equipment.armor.LeatherArmor;
 import equipment.weapon.BattleAxe;
+import equipment.weapon.Dagger;
 import util.Attribute;
 
 import java.io.IOException;
@@ -132,7 +133,7 @@ public class ExpertDungeon
                 //SET MONSTERS
                 if(x==2 && y ==7 && generated[x][y] != true)
                 {
-                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster("Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, null));
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster("Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, null, new Dagger()));
                     generated[x][y] = true;
                 }
                 //SET MONSTERS
