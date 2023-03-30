@@ -3,6 +3,7 @@ package GameController;
 import Characters.AbstractCharacter;
 import Characters.Monster;
 import Characters.Player;
+import GUI.Main.ActionHandler.AttackAction;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,7 +16,7 @@ public class FightController {
     private AbstractCharacter currentCharacter;
     private int currentPlayerIndex = 0;
 
-    FightController(ArrayList<Player> players, ArrayList<Monster> monsters) {
+    public FightController(ArrayList<Player> players, ArrayList<Monster> monsters) {
         this.fightEnd = false;
         this.setPlayers(players);
         this.setMonsters(monsters);
@@ -53,7 +54,7 @@ public class FightController {
             if(character instanceof Monster){
                 monsterActions((Monster) character);
             } else {
-                playerAction(character, target);
+                playerAction((Player) character, monsters.get(0));
             }
         }
         endFightRound();

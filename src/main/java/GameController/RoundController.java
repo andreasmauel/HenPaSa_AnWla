@@ -2,6 +2,7 @@ package GameController;
 
 import Characters.Monster;
 import Characters.Player;
+import GUI.Main.ActionHandler.MoveAction;
 
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public class RoundController {
     private ArrayList<Player> players;
     private ArrayList<Monster> monsters;
 
-    private FightController fightController = new FightController(players, monsters);
+    private static FightController fightController = new FightController(players, monsters);
 
     RoundController(ArrayList<Player> players, ArrayList<Monster> monsters) {
         this.setPlayers(players);
@@ -34,10 +35,16 @@ public class RoundController {
     }
 
     public void performRound() {
-        for (Player player : this.players) {
-            this.playerAction(player);
-            this.checkFight(player);
+        Player player = getActivePlayer();
+        if(getActivePlayer() != null){
+            endRound();
         }
+       this.playerAction(player);
+       this.checkFight(player);
+       
+    }
+
+    private void endRound() {
     }
 
     private void monstersAction(Monster monster) {
@@ -53,5 +60,21 @@ public class RoundController {
 *            fightController.startFightRound(new EffectController());
 * TODO: funktion des Sichtfeldes noch erwartet
 */        }
+
+    public Player getActivePlayer() {
+        for (Player player : players) {
+            return player;
+        }
+        return null;
+    }
+
+    public void move(Player player){
+        int x = player.getX();
+        int y = player.getY();
+
+        String xcord;
+        String ycord;
+        MoveAction.executeAction(xcord,ycord);
+    }
     }
 
