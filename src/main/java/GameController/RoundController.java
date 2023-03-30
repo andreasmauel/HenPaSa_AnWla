@@ -14,7 +14,7 @@ public class RoundController {
     private int index = 0;
     private FightController fightController;
 
-    RoundController(ArrayList<Player> players, ArrayList<Monster> monster) {
+    RoundController(ArrayList<Player> players, ArrayList<Monster> monsters) {
         this.setPlayers(players);
         this.setMonsters(monsters);
         this.fightController = new FightController(this.players, this.monsters);

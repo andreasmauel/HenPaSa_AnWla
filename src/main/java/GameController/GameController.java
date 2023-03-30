@@ -27,7 +27,7 @@ public class GameController {
     private Dungeon dungeon;
     private HashMap<String, IDice> dices = new HashMap<String, IDice>();
     private GameStart gameStart = new GameStart();
-    private RoundController roundController = new RoundController(players, monster);
+    private RoundController roundController;
     private StartDungeon map;
 
     public GameController(){
@@ -35,6 +35,7 @@ public class GameController {
         dices.put("eight", new DiceEight());
         dices.put("ten", new DiceTen());
         dices.put("twenty", new DiceTwenty());
+        gameStart();
     }
 
     public void gameStart(){
@@ -48,7 +49,7 @@ public class GameController {
         this.players.add(player2);
         this.players.add(player3);
         this.players.add(player4);
-
+        this.roundController = new RoundController(players, monster);
         this.map = new StartDungeon();
         this.map.createMap(this.players, this);
     }

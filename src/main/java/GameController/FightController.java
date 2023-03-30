@@ -10,15 +10,15 @@ public class FightController {
     private boolean fightEnd;
     private ArrayList<Player> players;
     private ArrayList<Monster> monsters;
-    private ArrayList<AbstractCharacter> fightOrder;
+    private ArrayList<AbstractCharacter> fightOrder = new ArrayList<>();
     private AbstractCharacter currentCharacter;
     private int currentCharacterIndex = 0;
 
     public FightController(ArrayList<Player> players, ArrayList<Monster> monsters) {
         this.fightEnd = false;
-        this.startFight();
         this.setPlayers(players);
         this.setMonsters(monsters);
+        this.startFight();
     }
 
     public ArrayList<Player> getPlayers() {
