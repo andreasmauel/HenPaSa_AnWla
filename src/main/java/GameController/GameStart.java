@@ -13,6 +13,8 @@ import Characters.classes.Thief;
 import equipment.armor.Armor;
 import equipment.armor.ChainMail;
 import equipment.armor.LeatherArmor;
+import equipment.weapon.Rapier;
+import equipment.weapon.Spear;
 import equipment.weapon.Sword;
 import equipment.weapon.Weapon;
 import util.Attribute;
@@ -178,7 +180,7 @@ public class GameStart {
                                 savingThrows.add(Attribute.STRENGTH);
                                 savingThrows.add(Attribute.DEXTERITY);
                                 //ToDo Weapon Selection
-                                Weapon primaryWeapon;
+                                Weapon primaryWeapon = new Sword();
                                 Weapon secondaryWeapon = new Sword();
                                 FightingStyle fightingStyle;
                                 if (fightingStyleChoice.getSelectedItem().toString() == "Bogenschießen")
@@ -241,7 +243,7 @@ public class GameStart {
                                 //(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
                                 //                  Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
                                 //                  ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz)
-                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief);
+                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief, new Rapier());
                                 players.add(count, player);
                                 jDialog.setVisible(false);
                                 jDialog.dispatchEvent(new WindowEvent(
@@ -294,7 +296,7 @@ public class GameStart {
                                 //(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
                                 //                  Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
                                 //                  ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz)
-                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief);
+                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief, new Spear());
                                 players.add(count, player);
                                 jDialog.setVisible(false);
                                 jDialog.dispatchEvent(new WindowEvent(

@@ -43,10 +43,10 @@ public class GameController {
 
     public void gameStart(){
         //players.addAll(gameStart.run());
-        Player player1 = new Player("Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new ArrayList<>(), new Thief(4, Attribute.CHARISMA, Attribute.CONSTITUTION, new ArrayList<Attribute>()), new Dart());
-        Player player2 = new Player("Berta", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new ArrayList<>(), new Thief(4, Attribute.CHARISMA, Attribute.CONSTITUTION, new ArrayList<Attribute>()), new Rapier());
-        Player player3 = new Player("Hans", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new ArrayList<>(), new Thief(4, Attribute.CHARISMA, Attribute.CONSTITUTION, new ArrayList<Attribute>()), new Bow());
-        Player player4 = new Player("Guenter", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new ArrayList<>(), new Thief(4, Attribute.CHARISMA, Attribute.CONSTITUTION, new ArrayList<Attribute>()), new Spear());
+        Player player1 = new Player("Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Dart());
+        Player player2 = new Player("Berta", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Rapier());
+        Player player3 = new Player("Hans", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Bow());
+        Player player4 = new Player("Guenter", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Spear());
 
         this.players.add(player1);
         this.players.add(player2);
