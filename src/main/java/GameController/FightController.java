@@ -88,6 +88,6 @@ public class FightController {
     private void addToFight(AbstractCharacter character) {
         character.rollInitiative();
         this.fightOrder.add(character);
-        this.fightOrder.sort(new AbstractCharacter.InitiativeComperetor());
+        this.fightOrder.sort(new AbstractCharacter.InitiativeComparator());
     }
 }

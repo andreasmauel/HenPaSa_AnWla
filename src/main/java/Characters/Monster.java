@@ -17,11 +17,8 @@ public class Monster extends AbstractCharacter{
         super(name, dexterity, intelligence, strenght, constitution, wisdom,
         race, walkingrange, armorClass, currentarmor, isVisible,
         viewDirection, effects, null);
-        setLifepoints(20);
+        this.setMaxLifePoints(20);
     }
 
-    @Override
-    public void setLifepoints(int lifepoints) {
-        super.setLifepoints(lifepoints);
-    }
+
 }

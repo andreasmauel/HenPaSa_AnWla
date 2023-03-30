@@ -2,6 +2,7 @@ package Artifact;
 
 import Characters.AbstractCharacter;
 import GameController.dices.DiceFour;
+import util.Effect;
 
 public class HealingPotion extends Potion{
 
@@ -12,7 +13,7 @@ public class HealingPotion extends Potion{
     @Override
     public void use(AbstractCharacter player) {
         DiceFour dice = new DiceFour();
-        player.setLifepoints(player.getLifepoints() + dice.rollDice() + dice.rollDice() + 2);
+        player.setHealDamage(player.getCurrentLifepoints() + dice.rollDice() + dice.rollDice() + 2, Effect.HEAL);
 
     }
 }
