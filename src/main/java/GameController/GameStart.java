@@ -1,6 +1,9 @@
 package GameController;
 
 import Characters.Player;
+import Characters.Races.Dwarf;
+import Characters.Races.Elf;
+import Characters.Races.Human;
 import Characters.Races.Race;
 import Characters.classes.Clazz;
 
@@ -114,21 +117,69 @@ public class GameStart {
                         JLabel secondaryLabel = new JLabel("Zweitwichtigste Eigenschaft: " + secondary);
                         secondaryLabel.setBounds(10, 65, 250, 20);
                         jPanel.add(secondaryLabel);
+                        JLabel chooseEquipment = new JLabel("Ausrüstung wählen");
+                        JComboBox equipmentChoice = new JComboBox(new String[]{"", "Geschicklichkeit"});
                         JButton finish = new JButton("Auswahl bestätigen");
                         finish.setBounds(100, 110, 160, 20);
                         jPanel.add(finish);
                         finish.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-
+                                int dexterity = 10;
+                                int intelligence = 10;
+                                int strength = 10;
+                                int constitution = 10;
+                                int wisdom = 10;
+                                Race race = getRace(raceString);
+                                int armorClass = 13;
+                                int walkingRange = 5;
+                                Player player = new Player(dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, race, armorClass,);
                             }
                         });
 
                         jDialog.setModal(true);
                         jDialog.setVisible(true);
                     }
-                    if (clazzString == "Dieb"){
-                        //clazz = new Clazz()
+                    else if (clazzString == "Dieb"){
+                        String primary = "Stärke";
+                        String secondary = "Konstitution";
+                        JDialog jDialog = new JDialog();
+                        jDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        jDialog.setTitle("Bitte wichtigste Eigenschaften auswählen");
+                        jDialog.setSize(300,190);
+                        JPanel jPanel = new JPanel();
+                        jPanel.setLayout(null);
+                        jDialog.add(jPanel);
+
+                        JLabel primaryLabel = new JLabel("Wichtigste Eigenschaft wählen:");
+                        primaryLabel.setBounds(10, 5, 250, 20);
+                        jPanel.add(primaryLabel);
+                        JComboBox primaryCombo= new JComboBox(new String[]{"Stärke", "Geschicklichkeit"});
+                        primaryCombo.setBounds(10, 35, 250, 20);
+                        jPanel.add(primaryCombo);
+                        JLabel secondaryLabel = new JLabel("Zweitwichtigste Eigenschaft: " + secondary);
+                        secondaryLabel.setBounds(10, 65, 250, 20);
+                        jPanel.add(secondaryLabel);
+                        JButton finish = new JButton("Auswahl bestätigen");
+                        finish.setBounds(100, 110, 160, 20);
+                        jPanel.add(finish);
+                        finish.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                int dexterity = 10;
+                                int intelligence = 10;
+                                int strength = 10;
+                                int constitution = 10;
+                                int wisdom = 10;
+                                Race race = getRace(raceString);
+                                int armorClass = 10;
+                                int walkingRange = 5;
+                                //Player player = new Player(dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, race, armorClass,);
+                            }
+                        });
+
+                        jDialog.setModal(true);
+                        jDialog.setVisible(true);
                     }
                     if (clazzString == "Zauberer"){
                         //clazz = new Clazz()
@@ -138,6 +189,17 @@ public class GameStart {
             }
         });
     }
+
+    private Race getRace(String raceString){
+        if (raceString == "Zwerg")
+            return new Dwarf();
+        if (raceString == "Elfe")
+            return new Elf();
+        if (raceString == "Hobbit")
+            return new Elf();
+        else return new Human();
+    }
+
     public void createMapSelection(JPanel jPanelRoot){
         JPanel jPanel = new JPanel();
         jPanel.setLayout(null);

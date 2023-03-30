@@ -39,10 +39,8 @@ public class Player extends AbstractCharacter{
                   ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz) {
         super(name, dexterity, intelligence, strenght, constitution, wisdom, race, walkingrange, armorClass,
                 currentArmor, isVisible, viewDirection, effects, clazz);
-        this.clazz = clazz;
-        this.clazz.applyModifiers(this);
-                currentArmor, isVisible, viewDirection, effects, clazz);
 
+        this.getClazz().applyModifiers(this);
         this.inventory = inventory;
         this.weapons = new ArrayList<>();
         this.weapons.add(new Dagger());
@@ -67,7 +65,7 @@ public class Player extends AbstractCharacter{
 
 
     public int calculateMaxLivepoints(){
-        return clazz.getBaseLifePoints() + (modifier(Attribute.CONSTITUTION)-10)/2;
+        return getClazz().getBaseLifePoints() + (modifier(Attribute.CONSTITUTION)-10)/2;
     }
 
     public ArrayList<Weapon> getWeapons() {
