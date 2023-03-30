@@ -177,7 +177,7 @@ public class GameStart {
                                 savingThrows.add(Attribute.STRENGTH);
                                 savingThrows.add(Attribute.DEXTERITY);
                                 //ToDo Weapon Selection
-                                Weapon primaryWeapon = new Sword();
+                                Weapon primaryWeapon;
                                 Weapon secondaryWeapon = new Sword();
                                 FightingStyle fightingStyle;
                                 if (fightingStyleChoice.getSelectedItem().toString() == "Bogenschießen")
@@ -186,7 +186,7 @@ public class GameStart {
                                     fightingStyle = FightingStyle.CLOSECOMBAT;
                                 else fightingStyle = FightingStyle.DEFENSE;
                                 Clazz fighter = new Fighter(primaryAttribute, Attribute.CONSTITUTION, savingThrows, secondaryWeapon, fightingStyle);
-                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH,effects, fighter, primaryWeapon);
+                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, fighter, primaryWeapon);
                                 players.add(count, player);
                                 //frame.dispose();
                             }

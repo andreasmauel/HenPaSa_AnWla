@@ -17,7 +17,7 @@ public class Monster extends AbstractCharacter{
                    ViewDirection viewDirection, ArrayList<Effect> effects, Weapon weapon){
         super(name, dexterity, intelligence, strength, constitution, wisdom,
         race, walkingrange, armorClass, currentarmor, isVisible,
-        viewDirection, effects, null, weapon );
+        viewDirection, null, weapon );
         this.setMaxLifePoints(20);
     }
 

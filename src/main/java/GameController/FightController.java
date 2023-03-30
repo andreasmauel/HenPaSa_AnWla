@@ -50,7 +50,7 @@ public class FightController {
 
     public void startFightRound() {
         currentCharacter.getEffects();
-        EffectController effectController = new EffectController();
+
 
 
     }

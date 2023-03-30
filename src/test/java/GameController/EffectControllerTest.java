@@ -2,20 +2,22 @@ package GameController;
 
 import Characters.AbstractCharacter;
 import Characters.Player;
+import Characters.Races.Dwarf;
+import Characters.ViewDirection;
+import Characters.classes.Thief;
+import equipment.armor.ChainMail;
 import org.junit.jupiter.api.Test;
+import util.Attribute;
 import util.Effect;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class EffectControllerTest {
 
 
-    EffectController effectController = new EffectController();
+    EffectController effectController = new EffectController(new Player("Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH, new Thief(4, Attribute.CHARISMA, Attribute.CONSTITUTION, new ArrayList<>())));
 
     private void createEffects() {
 
