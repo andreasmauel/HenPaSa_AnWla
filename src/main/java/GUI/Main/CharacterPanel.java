@@ -100,7 +100,7 @@ public class CharacterPanel extends JPanel implements Observer {
         hpMax = new JLabel("Max HP: " + player.getMaxLifePoints());
         hpMax.setForeground(Color.WHITE);
         playerStats.add(hpMax);
-        str = new JLabel("STR: " + player.getStrenght());
+        str = new JLabel("STR: " + player.getStrength());
         str.setForeground(Color.WHITE);
         playerStats.add(str);
         dex = new JLabel("DEX: "+ player.getDexterity());
@@ -239,7 +239,7 @@ public class CharacterPanel extends JPanel implements Observer {
          clazz.setText("Class: " + player.getClazzName());
          hp.setText("HP: " + player.getCurrentLifepoints());
          hpMax.setText("Max HP: " + player.getMaxLifePoints());
-         str.setText("STR: " + player.getStrenght());
+         str.setText("STR: " + player.getStrength());
          dex.setText("DEX: " + player.getDexterity());
          wis.setText("WIS: " + player.getWisdom());
          inte.setText("INT: " + player.getIntelligence());

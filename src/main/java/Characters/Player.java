@@ -10,13 +10,10 @@ import equipment.armor.NoArmor;
 import equipment.weapon.BattleAxe;
 import equipment.weapon.Dagger;
 import equipment.weapon.Weapon;
-import observer.Observer;
-import observer.Subject;
 import util.Attribute;
 import util.Effect;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Player extends AbstractCharacter {
 
@@ -29,12 +26,13 @@ public class Player extends AbstractCharacter {
 
     private Artifact currentArtifact;
 
-    public Player(String name, int dexterity, int intelligence, int strenght, int constitution, int wisdom,
+    public Player(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
                   Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
                   ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz) {
-        super(name, dexterity, intelligence, strenght, constitution, wisdom, race, walkingrange, armorClass,
+        super(name, dexterity, intelligence, strength, constitution, wisdom, race, walkingrange, armorClass,
                 currentArmor, isVisible, viewDirection, effects, clazz);
 
+        this.getClazz().applyModifiers(this);
         this.inventory = inventory;
         this.weapons = new ArrayList<>();
         this.weapons.add(new Dagger());
@@ -66,7 +64,7 @@ public class Player extends AbstractCharacter {
 
 
     public int calculateMaxLivepoints(){
-        return 0;
+        return getClazz().getBaseLifePoints() + (modifier(Attribute.CONSTITUTION)-10)/2;
     }
 
     public ArrayList<Weapon> getWeapons() {

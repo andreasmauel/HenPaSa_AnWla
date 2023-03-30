@@ -1,6 +1,6 @@
 package Characters.Races;
 
-import Characters.Player;
+import Characters.AbstractCharacter;
 
 public abstract class Race {
     private int intelligenceModifier;
@@ -9,12 +9,12 @@ public abstract class Race {
     private int constitutionModifier;
     private int wisdomModifier;
 
-    public void applyModifier(Player player){
-        player.setIntelligence(player.getIntelligence() + intelligenceModifier);
-        player.setDexterity(player.getDexterity() + dexterityModifier);
-        player.setStrenght(player.getStrenght() + strengthModifier);
-        player.setConstitution(player.getConstitution() + constitutionModifier);
-        player.setWisdom(player.getWisdom() + wisdomModifier);
+    public void applyModifier(AbstractCharacter character){
+        character.setIntelligence(character.getIntelligence() + intelligenceModifier);
+        character.setDexterity(character.getDexterity() + dexterityModifier);
+        character.setStrength(character.getStrength() + strengthModifier);
+        character.setConstitution(character.getConstitution() + constitutionModifier);
+        character.setWisdom(character.getWisdom() + wisdomModifier);
     }
 
 }

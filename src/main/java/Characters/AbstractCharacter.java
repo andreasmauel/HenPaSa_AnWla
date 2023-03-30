@@ -21,7 +21,7 @@ public abstract class AbstractCharacter implements Subject {
     private String name;
     private int dexterity;
     private int intelligence;
-    private int strenght;
+    private int strength;
     private int constitution;
     private int wisdom;
     private Race race;
@@ -48,7 +48,7 @@ public abstract class AbstractCharacter implements Subject {
         this.name = name;
         this.dexterity = desterity;
         this.intelligence = intelligence;
-        this.strenght = strenght;
+        this.strength = strenght;
         this.constitution = constitution;
         this.wisdom = wisdom;
         this.race = race;
@@ -126,29 +126,40 @@ public abstract class AbstractCharacter implements Subject {
     }
 
     public void setDexterity(int dexterity) {
+        if (dexterity > 20){
+            this.dexterity = 20;
+        }
         this.dexterity = dexterity;
         notifyObserver();
     }
+
+    IDice dice = new DiceTwenty();
 
     public int getIntelligence() {
         return intelligence;
     }
 
     public void setIntelligence(int intelligence) {
+        if (intelligence > 20){
+            this.intelligence = 20;
+        }
         this.intelligence = intelligence;
         notifyObserver();
     }
 
-    public int getStrenght() {
-        return strenght;
+    public int getStrength() {
+        return strength;
     }
 
     public String getClazzName() {
         return this.clazz.getClassName();
     }
 
-    public void setStrenght(int strenght) {
-        this.strenght = strenght;
+    public void setStrength(int strength) {
+        if (strength > 20){
+            this.strength = 20;
+        }
+        this.strength = strength;
         notifyObserver();
     }
 
@@ -157,6 +168,9 @@ public abstract class AbstractCharacter implements Subject {
     }
 
     public void setConstitution(int constitution) {
+        if (constitution > 20){
+            this.constitution = 20;
+        }
         this.constitution = constitution;
         notifyObserver();
     }
@@ -166,6 +180,9 @@ public abstract class AbstractCharacter implements Subject {
     }
 
     public void setWisdom(int wisdom) {
+        if (wisdom > 20){
+            this.wisdom = 20;
+        }
         this.wisdom = wisdom;
         notifyObserver();
     }
@@ -180,6 +197,7 @@ public abstract class AbstractCharacter implements Subject {
 
     public void setRace(Race race) {
         this.race = race;
+        race.applyModifier(this);
         notifyObserver();
     }
 
@@ -303,7 +321,7 @@ public abstract class AbstractCharacter implements Subject {
                 return (getDexterity()-10)/2;
 
             case STRENGTH:
-                return (getStrenght()-10)/2;
+                return (getStrength()-10)/2;
 
             case INTELLIGENCE:
                 return (getIntelligence()-10)/2;
