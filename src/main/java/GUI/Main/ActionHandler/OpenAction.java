@@ -12,6 +12,8 @@ public class OpenAction extends ActionOption
     @Override
     public void executeAction( String x, String y)
     {
-
+        //get player
+        //get openable
+        // open
     }
 }

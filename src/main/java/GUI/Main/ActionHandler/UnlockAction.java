@@ -12,6 +12,11 @@ public class UnlockAction extends ActionOption
     @Override
     public void executeAction( String x, String y)
     {
-
+        //Get Player
+        //get door
+        //check for key
+        //make roll to unlock
+        //remove key
+        //unlocked door
     }
 }
