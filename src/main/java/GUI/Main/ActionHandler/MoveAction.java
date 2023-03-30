@@ -12,7 +12,7 @@ public class MoveAction extends ActionOption
     }
 
     @Override
-    public void executeAction( String x, String y)
+    public void executeAction( int x, int y)
     {
         //DialogBox.ConsoleOut("Shuffles to: " +x+" "+y);
     }

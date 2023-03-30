@@ -23,7 +23,9 @@ public class ActionOption
             String[] command = event.split(",");
             if(command[0].equals(getActionEvent()))
             {
-                executeAction(command[1], command[2]);
+                int x = Integer.getInteger(command[1]);
+                int y = Integer.getInteger(command[2]);
+                executeAction(x, y);
             }
         }
     }
@@ -51,7 +53,7 @@ public class ActionOption
     {
         return buttonListener;
     }
-    public void executeAction( String x, String y)
+    public void executeAction( int x, int y)
     {
 
     }

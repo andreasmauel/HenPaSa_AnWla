@@ -254,7 +254,7 @@ public class Dungeon
         int movePosX = charPosX;
         int movePosY = charPosY;
 
-        while(movePosX < x && movePosY < y)
+        while(movePosX < x-1 && movePosY < y-1)
         {
             diffX = x-movePosX;
             diffY = y-movePosY;
@@ -322,6 +322,21 @@ public class Dungeon
 
         return true;
 
+    }
+
+    public CharacterPos getCharacterByEntity(AbstractCharacter character)
+    {
+        for (CharacterPos[] seeker: characters)
+        {
+            for (CharacterPos looker: seeker)
+            {
+                if(looker.getCharacter().equals(character))
+                {
+                    return looker;
+                }
+            }
+        }
+        return null;
     }
 
     public String getName()

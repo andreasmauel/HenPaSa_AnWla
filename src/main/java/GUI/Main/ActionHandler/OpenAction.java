@@ -12,10 +12,14 @@ public class OpenAction extends ActionOption
     }
 
     @Override
-    public void executeAction( String x, String y)
+    public void executeAction( int x, int y)
     {
+
         //get player
+        //dungeon.getCharacterByEntity(CurrentBoi);
+
         //get openable
+
         // open
     }
 }

@@ -12,7 +12,7 @@ public class CloseAction extends ActionOption
     }
 
     @Override
-    public void executeAction( String x, String y)
+    public void executeAction( int x, int y)
     {
 
     }
