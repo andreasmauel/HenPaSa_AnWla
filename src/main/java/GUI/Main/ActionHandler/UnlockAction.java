@@ -9,8 +9,8 @@ public class UnlockAction extends ActionOption
     public UnlockAction(Dungeon dungeon)
     {
         super(dungeon);
-        this.actionName = "Pick-up";
-        this.actionEvent = "PICKUP";
+        this.actionName = "Unlock";
+        this.actionEvent = "UNLOCK";
     }
 
     @Override
