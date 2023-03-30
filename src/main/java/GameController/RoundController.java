@@ -72,8 +72,8 @@ public class RoundController {
         int x = player.getX();
         int y = player.getY();
 
-        String xcord;
-        String ycord;
+        String xcord = null;
+        String ycord = null;
         MoveAction.executeAction(xcord,ycord);
     }
     }
