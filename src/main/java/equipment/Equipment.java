@@ -24,6 +24,10 @@ public abstract class Equipment {
         return price;
     }
 
+    public String getName() {
+        return this.getClass().getSimpleName();
+    }
+
     public float getWeigth() {
         return weigth;
     }
