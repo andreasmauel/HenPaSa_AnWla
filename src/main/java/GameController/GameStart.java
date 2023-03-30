@@ -5,7 +5,17 @@ import Characters.Races.Dwarf;
 import Characters.Races.Elf;
 import Characters.Races.Human;
 import Characters.Races.Race;
+import Characters.ViewDirection;
 import Characters.classes.Clazz;
+import Characters.classes.Fighter;
+import Characters.classes.FightingStyle;
+import equipment.armor.Armor;
+import equipment.armor.ChainMail;
+import equipment.armor.LeatherArmor;
+import equipment.weapon.Sword;
+import equipment.weapon.Weapon;
+import util.Attribute;
+import util.Effect;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
@@ -117,10 +127,26 @@ public class GameStart {
                         JLabel secondaryLabel = new JLabel("Zweitwichtigste Eigenschaft: " + secondary);
                         secondaryLabel.setBounds(10, 65, 250, 20);
                         jPanel.add(secondaryLabel);
+                        JLabel chooseArmor = new JLabel("Rüstung wählen (Lederpanzer gewährt Pfeil u. Bogen):");
+                        chooseArmor.setBounds(10, 75, 250, 20);
+                        jPanel.add(chooseArmor);
+                        JComboBox armorChoice = new JComboBox(new String[]{"Kettenpanzer", "Lederpanzer"});
+                        armorChoice.setBounds(10, 85, 250, 20);
+                        jPanel.add(armorChoice);
                         JLabel chooseEquipment = new JLabel("Ausrüstung wählen");
+                        chooseEquipment.setBounds(10, 95, 250, 20);
+                        jPanel.add(chooseEquipment);
                         JComboBox equipmentChoice = new JComboBox(new String[]{"", "Geschicklichkeit"});
+                        equipmentChoice.setBounds(10, 105, 250, 20);
+                        jPanel.add(equipmentChoice);
+                        JLabel chooseFightingStyle = new JLabel("Kampfstil wählen");
+                        chooseFightingStyle.setBounds(10, 115, 250, 20);
+                        jPanel.add(chooseFightingStyle);
+                        JComboBox fightingStyleChoice = new JComboBox(new String[]{"Bogenschießen", "Nahkampf", "Verteidigung"});
+                        fightingStyleChoice.setBounds(10, 115, 250, 20);
+                        jPanel.add(fightingStyleChoice);
                         JButton finish = new JButton("Auswahl bestätigen");
-                        finish.setBounds(100, 110, 160, 20);
+                        finish.setBounds(100, 140, 160, 20);
                         jPanel.add(finish);
                         finish.addActionListener(new ActionListener() {
                             @Override
@@ -133,8 +159,33 @@ public class GameStart {
                                 Race race = getRace(raceString);
                                 int armorClass = 13;
                                 int walkingRange = 5;
-                                Player player = new Player(dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, race, armorClass,);
+                                ArrayList<Effect> effects = new ArrayList<>();
+                                Armor armor;
+                                if (armorChoice.getSelectedItem().toString() == "Lederpanzer")
+                                    armor = new LeatherArmor();
+                                else armor = new ChainMail();
+                                Attribute primaryAttribute;
+                                if (primaryCombo.getSelectedItem().toString() == "Stärke")
+                                    primaryAttribute = Attribute.STRENGTH;
+                                else
+                                    primaryAttribute = Attribute.DEXTERITY;
+                                ArrayList<Attribute> savingThrows = new ArrayList<Attribute>();
+                                savingThrows.add(Attribute.STRENGTH);
+                                savingThrows.add(Attribute.DEXTERITY);
+                                //ToDo Weapon Selection
+                                Weapon primaryWeapon;
+                                Weapon secondaryWeapon = new Sword();
+                                FightingStyle fightingStyle;
+                                if (fightingStyleChoice.getSelectedItem().toString() == "Bogenschießen")
+                                    fightingStyle = FightingStyle.BOWSHOOTING;
+                                if (fightingStyleChoice.getSelectedItem().toString() == "Nahkampf")
+                                    fightingStyle = FightingStyle.CLOSECOMBAT;
+                                else fightingStyle = FightingStyle.DEFENSE;
+                                Clazz fighter = new Fighter(primaryAttribute, Attribute.CONSTITUTION, savingThrows, secondaryWeapon, fightingStyle);
+                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH,effects, fighter);
+                                //players.add(playerCount, player);
                             }
+
                         });
 
                         jDialog.setModal(true);

@@ -6,18 +6,18 @@ import util.Attribute;
 import java.util.ArrayList;
 
 public class Fighter extends Clazz{
-    private Equipment secundaryWeapon;
+    private Equipment secondaryWeapon;
     private FightingStyle fightingStyle;
 
-    public Fighter(int baseArmorclass, Attribute mainAttribute, Attribute secondMainAttribute, ArrayList<Attribute> savingthrowAttribute, Equipment secundaryWeapon, FightingStyle fightingStyle) {
-        super("Fighter",10, baseArmorclass, mainAttribute, secondMainAttribute, savingthrowAttribute);
-        this.secundaryWeapon = secundaryWeapon;
+    public Fighter( Attribute mainAttribute, Attribute secondMainAttribute, ArrayList<Attribute> savingthrowAttribute, Equipment secondaryWeapon, FightingStyle fightingStyle) {
+        super("Fighter",10, 13, mainAttribute, secondMainAttribute, savingthrowAttribute);
+        this.secondaryWeapon = secondaryWeapon;
         this.fightingStyle = fightingStyle;
 
     }
 
 
-    public void setSecundaryWeapon(Equipment equipment){
-        this.secundaryWeapon = equipment;
+    public void setSecondaryWeapon(Equipment equipment){
+        this.secondaryWeapon = equipment;
     }
 }

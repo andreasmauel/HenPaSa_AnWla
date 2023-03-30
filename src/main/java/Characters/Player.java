@@ -34,10 +34,10 @@ public class Player extends AbstractCharacter{
         }
     }
 
-    public Player(String name, int dexterity, int intelligence, int strenght, int constitution, int wisdom,
+    public Player(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
                   Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
                   ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz) {
-        super(name, dexterity, intelligence, strenght, constitution, wisdom, race, walkingrange, armorClass,
+        super(name, dexterity, intelligence, strength, constitution, wisdom, race, walkingrange, armorClass,
                 currentArmor, isVisible, viewDirection, effects, clazz);
 
         this.getClazz().applyModifiers(this);
