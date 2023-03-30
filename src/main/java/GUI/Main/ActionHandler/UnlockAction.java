@@ -17,19 +17,10 @@ public class UnlockAction extends ActionOption
     @Override
     public void executeAction( int x, int y)
     {
-        //Get Player
-        //get door
-        //check for key
-        //make roll to unlock
-        //remove key
-        //unlocked door
 
-       // if(dungeon.isInRange(CurrentBoi, 1, x, y))
-       // {
-            //dungeon.getTilePos(x, y).open();
-           // Player curBoi = new Player();
-            // curBoi.arti
+        if(dungeon.isInRange(this.gameController.getRoundController().getActivePlayer(), 1, x, y))
+        {
 
-        //}
+        }
     }
 }
