@@ -1,5 +1,7 @@
 package GUI.Main.ActionHandler;
 
+import battlemap.Dungeon.Dungeon;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,6 +9,8 @@ public class ActionOption
 {
     protected String actionName = "Action";
     protected String actionEvent = "NULL";
+
+    protected Dungeon dungeon;
 
     protected ButtonListener buttonListener = new ButtonListener();
 
@@ -19,14 +23,16 @@ public class ActionOption
             String[] command = event.split(",");
             if(command[0].equals(getActionEvent()))
             {
-                executeAction(command[1], command[2]);
+                int x = Integer.getInteger(command[1]);
+                int y = Integer.getInteger(command[2]);
+                executeAction(x, y);
             }
         }
     }
 
-    public ActionOption()
+    public ActionOption(Dungeon dungeon)
     {
-
+        this.dungeon = dungeon;
     }
 
     @Override
@@ -47,7 +53,7 @@ public class ActionOption
     {
         return buttonListener;
     }
-    public void executeAction( String x, String y)
+    public void executeAction( int x, int y)
     {
 
     }

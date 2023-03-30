@@ -16,7 +16,7 @@ public class Monster extends AbstractCharacter{
                    ViewDirection viewDirection, ArrayList<Effect> effects){
         super(name, dexterity, intelligence, strenght, constitution, wisdom,
         race, walkingrange, armorClass, currentarmor, isVisible,
-        viewDirection, effects);
+        viewDirection, effects, null);
         setLifepoints(20);
     }
 

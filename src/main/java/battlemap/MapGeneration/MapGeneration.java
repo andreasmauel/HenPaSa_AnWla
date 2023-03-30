@@ -1,10 +1,14 @@
 package battlemap.MapGeneration;
 
+import Characters.Monster;
+import Characters.Races.Hobbit;
+import Characters.ViewDirection;
 import GUI.Main.MainFrame;
 import battlemap.Dungeon.Dungeon;
 import battlemap.Lockables.Chest;
 import battlemap.Lockables.Door;
 import battlemap.Meta.TileType;
+import equipment.armor.LeatherArmor;
 
 import java.io.IOException;
 
@@ -106,7 +110,7 @@ public class MapGeneration
                 //SET MONSTERS
                 if(x==2 && y ==7 && generated[x][y] != true)
                 {
-                    //dungeon.setCharacterPos(x,y,TileType.MONSTER,new AbstractCharacter());
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster("Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, null));
                     generated[x][y] = true;
                 }
                 //SET MONSTERS
