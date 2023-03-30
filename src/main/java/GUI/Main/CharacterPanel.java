@@ -13,7 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.util.List;
-import java.util.Random;
+
 
 public class CharacterPanel extends JPanel implements Observer {
 
@@ -212,8 +212,8 @@ public class CharacterPanel extends JPanel implements Observer {
         //
         JButton button2 = new JButton("SetValue");
         button2.addActionListener(e -> {
-            Random random = new Random();
-            player.setHealDamage(random.nextInt(1, 3), Effect.DAMAGE);
+
+            player.setHealDamage(2, Effect.DAMAGE);
         });
         effectsPanel.add(button);
         effectsPanel.add(button2);

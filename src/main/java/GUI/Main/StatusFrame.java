@@ -1,17 +1,6 @@
 package GUI.Main;
 
 import Characters.Player;
-import Characters.Races.Elf;
-import Characters.ViewDirection;
-import Characters.classes.Clazz;
-import Characters.classes.Mage;
-import Characters.classes.Thief;
-import equipment.armor.LeatherArmor;
-import equipment.armor.NoArmor;
-import spells.Fireball;
-import spells.Spell;
-import util.Attribute;
-import util.Effect;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
