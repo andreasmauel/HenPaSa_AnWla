@@ -11,8 +11,11 @@ public class Mage extends Clazz{
     private ArrayList<Spell> spells;
     public int BaseLifePoints = 8;
 
-    public Mage(int baseArmorclass, Attribute mainAttribute, Attribute secondMainAttribute, ArrayList<Attribute> savingthrowAttribute) {
-        super("Mage",8, baseArmorclass, mainAttribute, secondMainAttribute, savingthrowAttribute);
+    public Mage( Attribute secondMainAttribute) {
+        super("Mage",8, 10, Attribute.INTELLIGENCE, secondMainAttribute, new ArrayList<Attribute>() {{
+            add(Attribute.INTELLIGENCE);
+            add(Attribute.WISDOM);
+        }});
         this.spells = new ArrayList<>();
     }
 
