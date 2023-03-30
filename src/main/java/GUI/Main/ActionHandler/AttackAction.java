@@ -16,6 +16,8 @@ public class AttackAction extends ActionOption
     @Override
     public void executeAction( int x, int y)
     {
-
+        //WELCHER GEGENER STEHET AUF DEM FELD
+        //if(gegner ist in range der waffe) {
+        // character.attack(gegner)
     }
 }

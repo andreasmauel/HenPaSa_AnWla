@@ -122,18 +122,26 @@ public class StartDungeon
 //              MAKE CHARACTERS
                 if(x==2 && y ==11 && generated[x][y] != true) {
                     dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(0));
+                    players.get(0).setxPosition(2);
+                    players.get(0).setyPosition(11);
                     generated[x][y] = true;
                 }
                 if(x==3 && y ==11 && generated[x][y] != true) {
                     dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(1));
+                    players.get(1).setxPosition(3);
+                    players.get(1).setyPosition(11);
                     generated[x][y] = true;
                 }
                 if(x==2 && y ==12 && generated[x][y] != true) {
                     dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(2));
+                    players.get(2).setxPosition(2);
+                    players.get(2).setyPosition(12);
                     generated[x][y] = true;
                 }
                 if(x==3 && y ==12 && generated[x][y] != true) {
                     dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(3));
+                    players.get(3).setxPosition(3);
+                    players.get(3).setyPosition(12);
                     generated[x][y] = true;
                 }
                 //MAKE CHARACTERS

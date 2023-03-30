@@ -26,12 +26,12 @@ public class ActionOption
             String[] command = event.split(",");
             if(command[0].equals(getActionEvent()))
             {
-                int x = Integer.getInteger(command[1]);
-                int y = Integer.getInteger(command[2]);
+                int x = Integer.parseInt(command[1]);
+                int y = Integer.parseInt(command[2]);
                 try {
                     executeAction(x, y);
                 } catch (Exception exception) {
-
+                    System.out.println("HEY FEHLER HIER!!!!!!!!!");
                 }
 
             }

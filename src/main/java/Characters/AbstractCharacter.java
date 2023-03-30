@@ -30,6 +30,7 @@ public abstract class AbstractCharacter implements Subject {
     private int currentLifepoints;
     private int maxLifePoints;
     private int walkingrange;
+    private int remainingRange;
     private int armorClass;
     private Weapon currentWeapon;
     private Armor currentarmor;
@@ -68,6 +69,7 @@ public abstract class AbstractCharacter implements Subject {
         this.currentarmor = currentarmor;
         this.isVisible = isVisible;
         this.viewDirection = viewDirection;
+        this.remainingRange = walkingrange;
         this.effects = effects;
 
     }
@@ -89,6 +91,13 @@ public abstract class AbstractCharacter implements Subject {
         }
     }
 
+    public int getRemainingRange() {
+        return remainingRange;
+    }
+
+    public void setRemainingRange(int remainingRange) {
+        this.remainingRange = remainingRange;
+    }
 
     public int getId() {
         return id;
@@ -300,9 +309,9 @@ public abstract class AbstractCharacter implements Subject {
         return effects;
     }
 
-    public void attack(AbstractCharacter character) {
+    public void attack(AbstractCharacter enemyCharacter) {
         int damage = this.currentWeapon.useWeapon();
-        character.getDamage(damage);
+        enemyCharacter.getDamage(damage);
     }
 
     public void getDamage(int damage) {

@@ -10,4 +10,14 @@ public class DistanceCalculator {
         return distanceX + distanceY;
     }
 
+    public static boolean isRange(AbstractCharacter ac1, int range,int x, int y) {
+        int distanceX = Math.abs(ac1.getX() - x);
+        int distanceY = Math.abs(ac1.getY() - y);
+        if(distanceX + distanceY > range) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }

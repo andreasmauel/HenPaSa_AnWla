@@ -26,6 +26,10 @@ public class MonsterController {
       }
     }
 
+    public void move() {
+        //MOVE IMPLEMENTIEREN BEI SASCHA FRAGEN
+    }
+
 
     public AbstractCharacter getNearestPlayer() {
 

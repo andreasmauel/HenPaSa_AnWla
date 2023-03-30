@@ -163,18 +163,19 @@ public class CharacterPanel extends JPanel implements Observer {
         JLabel remainingMovement = new JLabel("Current Movement");
         remainingMovement.setForeground(Color.WHITE);
         weapons.addItemListener(e -> {
-            if(e.getStateChange() == ItemEvent.DESELECTED) {
+            if(e.getStateChange() == ItemEvent.SELECTED) {
                 player.setCurrentWeapon((Weapon) e.getItem());
+                System.out.println(e.getItem());
             }
         });
 
         armor.addItemListener(e -> {
-            if(e.getStateChange() == ItemEvent.DESELECTED) {
+            if(e.getStateChange() == ItemEvent.SELECTED) {
                 player.setCurrentarmor((Armor) e.getItem());
             }
         });
         artifact.addItemListener(e -> {
-            if(e.getStateChange() == ItemEvent.DESELECTED) {
+            if(e.getStateChange() == ItemEvent.SELECTED) {
                 player.setCurrentArtifact((Artifact) e.getItem());
             }
         });
@@ -264,18 +265,23 @@ public class CharacterPanel extends JPanel implements Observer {
          mov.setText("MOV: Movement" );
          maxMov.setText("Max Mov");
 
-         System.out.println(player.getCurrentWeapon());
+
+         Weapon safeCurrentWeapon = player.getCurrentWeapon();
          weapons.removeAllItems();
          fillComboBox(weapons, player.getWeapons());
+         player.setCurrentWeapon(safeCurrentWeapon);
          weapons.setSelectedItem(player.getCurrentWeapon());
-         System.out.println(player.getCurrentWeapon());
 
+        Armor safeCurrentArmor = player.getCurrentarmor();
         armor.removeAllItems();
         fillComboBox(armor, player.getArmor());
+        player.setCurrentarmor(safeCurrentArmor);
         armor.setSelectedItem(player.getCurrentarmor());
 
+        Artifact safeCurrentArtifact = player.getCurrentArtifact();
         artifact.removeAllItems();
         fillComboBox(artifact, player.getArtifact());
+        player.setCurrentArtifact(safeCurrentArtifact);
         artifact.setSelectedItem(player.getCurrentArtifact());
 
         if(player.getClazz() instanceof Mage) {
