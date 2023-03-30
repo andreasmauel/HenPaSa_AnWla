@@ -60,37 +60,26 @@ public class StatusFrame
     }
 
     public void setActiveCharacter(int p) throws IOException {
-        File file;
-        switch(p)
-        {
-            case 1:
-                file = new File(".\\Graphics\\Status_P1_selected.png");
-                break;
-            case 2:
-                file = new File(".\\Graphics\\Status_P2_selected.png");
-                break;
-            case 3:
-                file = new File(".\\Graphics\\Status_P3_selected.png");
-                break;
-            case 4:
-                file = new File(".\\Graphics\\Status_P4_selected.png");
-                break;
-            default:
-                file = new File(".\\Graphics\\Status_MO_selected.png");
-                break;
+        for(CharacterPanel component : (CharacterPanel[])statusFrame.getComponents()) {
+            if(component.active) {
+                component.toggleBorder();
+            }
         }
+        CharacterPanel panel = (CharacterPanel) statusFrame.getComponent(p);
+        panel.toggleBorder();
+    }
 
-        boxes = ImageIO.read(file);
-        ImageIcon imageIcon = new ImageIcon(boxes);
-        JLabel jLabel = new JLabel();
-        jLabel.setIcon(imageIcon);
-        jLabel.setBounds(0,0, 430, 750);
-
-        statusFrame.remove(0);
-        statusFrame.add(jLabel);
-        statusFrame.repaint();
+//        boxes = ImageIO.read(file);
+//        ImageIcon imageIcon = new ImageIcon(boxes);
+//        JLabel jLabel = new JLabel();
+//        jLabel.setIcon(imageIcon);
+//        jLabel.setBounds(0,0, 430, 750);
+//
+//        statusFrame.remove(0);
+//        statusFrame.add(jLabel);
+//        statusFrame.repaint();
     }
 
 
 
-}
+

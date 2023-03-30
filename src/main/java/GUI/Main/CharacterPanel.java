@@ -233,6 +233,7 @@ public class CharacterPanel extends JPanel implements Observer {
         active = !active;
     }
 
+
     private void disableComponents(JPanel panel, boolean bool) {
         for (Component component : panel.getComponents()) {
             component.setEnabled(bool);
