@@ -10,6 +10,7 @@ import Characters.classes.FightingStyle;
 import Characters.classes.Mage;
 import Characters.classes.Thief;
 import GUI.Main.MainFrame;
+import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
 import battlemap.Lockables.Door;
 import battlemap.Meta.TileType;
@@ -33,13 +34,13 @@ public class VeteranDungeon
         players.add(new Player("Tim",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Thief(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>())));
         players.add(new Player("Brian",16,10,12,14,0,new Human(),5,10,new ChainMail(), false, ViewDirection.NORTH, null, new Fighter(10, Attribute.STRENGTH, Attribute.DEXTERITY, new ArrayList<Attribute>(), new BattleAxe(), FightingStyle.CLOSECOMBAT)));
         VeteranDungeon map = new VeteranDungeon();
-        map.createMap(players);
+        map.createMap(players, new GameController());
     }
 
     public VeteranDungeon(){
     }
 
-    public Dungeon createMap(ArrayList<Player> players)
+    public Dungeon createMap(ArrayList<Player> players, GameController gameController)
     {
         dungeon = new Dungeon(25, 15, "Veteran Dungeon");
         boolean[][] generated = new boolean[dungeon.getxMax()][dungeon.getyMax()];
@@ -147,7 +148,7 @@ public class VeteranDungeon
                 //SET MONSTERS
             }
         }
-        mainFrame = new MainFrame(dungeon);
+        mainFrame = new MainFrame(dungeon, gameController);
         return dungeon;
     }
 }

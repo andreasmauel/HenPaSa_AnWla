@@ -1,5 +1,6 @@
 package GUI.Main;
 
+import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
 import battlemap.Meta.TileType;
 
@@ -31,7 +32,7 @@ public class MainFrame {
 
     private MouseDetector mouseClick = new MouseDetector();
 
-    public MainFrame(Dungeon dungeon){
+    public MainFrame(Dungeon dungeon, GameController gameController){
         jFrame.setLayout(null);
         jFrame.setSize(1920, 1080);
         jFrame.setVisible(true);
@@ -46,7 +47,7 @@ public class MainFrame {
         generateStatusScreen();
 //        statusPanel.setActiveCharacter(1);
         generateDialogBox();
-        generateContextMenu(this.dungeon);
+        generateContextMenu(this.dungeon, gameController);
 
 
         jFrame.setExtendedState(jFrame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -202,8 +203,8 @@ public class MainFrame {
         jFrame.repaint();
     }
 
-    private void generateContextMenu(Dungeon dungeon){
-        jFrame.add(contextMenu.generateContextMenu(dungeon));
+    private void generateContextMenu(Dungeon dungeon, GameController gameController){
+        jFrame.add(contextMenu.generateContextMenu(dungeon, gameController));
         jFrame.repaint();
     }
 

@@ -19,7 +19,7 @@ public class GameController {
     private FightController fightController = new FightController(players, monster);
     private RoundController roundController = new RoundController(players, monster);
 
-    GameController(){
+    public GameController(){
         dices.put("four", new DiceFour());
         dices.put("eight", new DiceEight());
         dices.put("ten", new DiceTen());

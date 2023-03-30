@@ -2,6 +2,7 @@ package GUI.Main;
 
 import GUI.Main.ActionHandler.ActionHandler;
 import GUI.Main.ActionHandler.ActionOption;
+import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
 import battlemap.Meta.TileType;
 
@@ -46,9 +47,9 @@ public class ContextMenu
         }
     }
 
-    public JPanel generateContextMenu(Dungeon dungeon){
+    public JPanel generateContextMenu(Dungeon dungeon, GameController gameController){
 
-        handler = new ActionHandler(dungeon);
+        handler = new ActionHandler(dungeon, gameController);
 
         tileType = new JLabel();
         tileType.setBounds(10,10, 430, 30);
