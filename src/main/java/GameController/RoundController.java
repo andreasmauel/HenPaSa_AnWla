@@ -12,6 +12,7 @@ public class RoundController {
 
     private  ArrayList<Player> players;
     private ArrayList<Monster> monsters;
+    private int index = 0;
 
 
 
@@ -49,6 +50,7 @@ public class RoundController {
     }
 
     private void endRound() {
+        index++;
     }
 
     private void monstersAction(Monster monster) {
@@ -66,10 +68,7 @@ public class RoundController {
 */        }
 
     public Player getActivePlayer() {
-        for (Player player : players) {
-            return player;
-        }
-        return null;
+        return players.get(index);
     }
 
     public void move(int x , int y){
