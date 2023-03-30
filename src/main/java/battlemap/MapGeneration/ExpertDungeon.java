@@ -138,7 +138,7 @@ public class ExpertDungeon
                 //SET MONSTERS
             }
         }
-        mainFrame = new MainFrame(dungeon, gameController);
+        mainFrame = new MainFrame(dungeon, gameController, players);
         return dungeon;
     }
 }

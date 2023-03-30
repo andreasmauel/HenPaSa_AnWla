@@ -46,19 +46,13 @@ public class FightController {
             this.addToFight(monster);
         }
         this.currentCharacter = this.fightOrder.get(this.currentPlayerIndex);
-    }
+}
 
-    public void startFightRound(EffectController effectController) {
-        effectController.activeEffects(); // active effects
-        for(AbstractCharacter character: fightOrder) {
-            if(character instanceof Monster){
-                monsterActions((Monster) character);
-            } else {
-                playerAction((Player) character, monsters.get(0));
-            }
-        }
-        endFightRound();
-        //TODO effect aktive?, character actions, round end
+    public void startFightRound() {
+        currentCharacter.getEffects();
+        EffectController effectController = new EffectController();
+
+
     }
 
     public void endFightRound() {

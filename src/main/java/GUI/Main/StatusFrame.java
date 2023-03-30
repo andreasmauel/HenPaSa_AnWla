@@ -27,7 +27,7 @@ public class StatusFrame
     private JPanel statusFrame;
     private BufferedImage boxes;
 
-    public JPanel generateStatusBackground(){
+    public JPanel generateStatusBackground(ArrayList<Player> players){
         File file = new File(".\\Graphics\\Status.png");
         try {
             boxes = ImageIO.read(file);
@@ -45,29 +45,9 @@ public class StatusFrame
         statusFrame.setLayout(new BoxLayout(statusFrame, BoxLayout.PAGE_AXIS));
         statusFrame.setBounds(1250,0, 430, 750);
 //        statusFrame.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-
-
-        Clazz thief = new Thief(10, Attribute.DEXTERITY, Attribute.CONSTITUTION, new ArrayList<Attribute>());
-        Mage mage = new Mage(10, Attribute.DEXTERITY, Attribute.CONSTITUTION, new ArrayList<Attribute>());
-        mage.addSpell(new Fireball());
-        Player player = new Player("Gustav", 10,10,10,10,
-                1,new Elf(), 5,3, new NoArmor(), true, ViewDirection.EAST,
-                new ArrayList<Effect>(), thief);
-        Player player2 = new Player("Ronaldo", 10,10,10,10,
-                1,new Elf(), 5,3, new LeatherArmor(), true, ViewDirection.EAST,
-                new ArrayList<Effect>(), mage);
-//        player2.addEffect(Effect.REDUCEATTACK);
-//        player2.addEffect(Effect.HIDE);
-//        player2.addEffect(Effect.SLEEP);
-//        player.addEffect(Effect.REDUCEATTACK);
-//        player.addEffect(Effect.HIDE);
-//        player.addEffect(Effect.ARMOR);
-
-        statusFrame.add(new CharacterPanel(player));
-        statusFrame.add(new CharacterPanel(player));
-        statusFrame.add(new CharacterPanel(player));
-        statusFrame.add(new CharacterPanel(player2));
-
+        for(Player player : players) {
+            statusFrame.add(new CharacterPanel(player));
+        }
         JLabel jLabel = new JLabel( );
 //        jLabel.setIcon(imageIcon);
 //        jLabel.setBounds(0,0, 430, 750);

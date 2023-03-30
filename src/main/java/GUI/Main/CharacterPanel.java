@@ -130,19 +130,22 @@ public class CharacterPanel extends JPanel implements Observer {
         activeEquipment.setLayout(new GridLayout(4, 2, 5, 5));
 
         if (player.getWeapons().size() != 0) {
-            weapons = new JComboBox(player.getWeapons().toArray());
+            weapons = new JComboBox();
+            fillComboBox(weapons, player.getWeapons());
             weapons.setRenderer(new MyComboBoxRenderer());
         } else {
             weapons = new JComboBox();
         }
         if (player.getArmor().size() != 0) {
-            armor = new JComboBox(player.getArmor().toArray());
+            armor = new JComboBox();
+            fillComboBox(armor, player.getArmor());
             armor.setRenderer(new MyComboBoxRenderer());
         } else {
             armor = new JComboBox();
         }
         if (player.getArtifact().size() != 0) {
-            artifact = new JComboBox(player.getArtifact().toArray());
+            artifact = new JComboBox();
+            fillComboBox(artifact, player.getArtifact());
             artifact.setRenderer(new MyComboBoxRenderer());
         } else {
             artifact = new JComboBox();
@@ -233,7 +236,7 @@ public class CharacterPanel extends JPanel implements Observer {
 
     private void updateAllValues() {
 
-        playerName.setText("Name: " + player.getName());
+         playerName.setText("Name: " + player.getName());
          level.setText("Level: 1");
          race.setText("Race: " + player.getRaceName());
          clazz.setText("Class: " + player.getClazzName());
@@ -247,6 +250,7 @@ public class CharacterPanel extends JPanel implements Observer {
          ac.setText("AC: " + player.getArmorClass());
          mov.setText("MOV: Movement" );
          maxMov.setText("Max Mov");
+
          weapons.removeAllItems();
          fillComboBox(weapons, player.getWeapons());
          weapons.setSelectedItem(player.getCurrentWeapon());
@@ -263,7 +267,7 @@ public class CharacterPanel extends JPanel implements Observer {
             spells.removeAllItems();
             fillComboBox(spells, ((Mage) player.getClazz()).getSpells());
         }
-
+        this.repaint();
 
     }
 
@@ -288,7 +292,5 @@ public class CharacterPanel extends JPanel implements Observer {
             }
             return component;
         }
-
     }
-
 }

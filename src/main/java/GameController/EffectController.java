@@ -18,7 +18,7 @@ public class EffectController {
         this.effects = new HashMap<>();
     }
 
-    public String triggerEffect(Effect effect, int stat) {
+    public String triggerEffects() {
 
 //        switch(effect) {
 //            case DAMAGE -> this.character.setLife(this.character.getLife - stat );
@@ -40,7 +40,6 @@ public class EffectController {
     }
 
     public List<Effect> activeEffects() {
-
         Map<Effect, Integer> effectsCopy = new HashMap<Effect, Integer>(this.effects);
         decreaseDuration();
         return getListOfMap(effectsCopy);
