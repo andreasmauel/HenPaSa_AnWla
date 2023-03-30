@@ -1,5 +1,7 @@
 package GUI.Main.ActionHandler;
 
+import battlemap.Dungeon.Dungeon;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,6 +9,8 @@ public class ActionOption
 {
     protected String actionName = "Action";
     protected String actionEvent = "NULL";
+
+    protected Dungeon dungeon;
 
     protected ButtonListener buttonListener = new ButtonListener();
 
@@ -24,9 +28,9 @@ public class ActionOption
         }
     }
 
-    public ActionOption()
+    public ActionOption(Dungeon dungeon)
     {
-
+        this.dungeon = dungeon;
     }
 
     @Override

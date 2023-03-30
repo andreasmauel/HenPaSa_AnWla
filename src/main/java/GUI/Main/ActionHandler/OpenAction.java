@@ -1,10 +1,12 @@
 package GUI.Main.ActionHandler;
 
+import battlemap.Dungeon.Dungeon;
+
 public class OpenAction extends ActionOption
 {
-    public OpenAction()
+    public OpenAction(Dungeon dungeon)
     {
-        super();
+        super(dungeon);
         this.actionName = "Open";
         this.actionEvent = "OPEN";
     }

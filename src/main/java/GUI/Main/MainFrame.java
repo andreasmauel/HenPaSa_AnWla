@@ -46,7 +46,7 @@ public class MainFrame {
         generateStatusScreen();
 //        statusPanel.setActiveCharacter(1);
         generateDialogBox();
-        generateContextMenu();
+        generateContextMenu(this.dungeon);
 
 
         jFrame.setExtendedState(jFrame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -197,8 +197,8 @@ public class MainFrame {
         jFrame.repaint();
     }
 
-    private void generateContextMenu() throws IOException {
-        jFrame.add(contextMenu.generateContextMenu());
+    private void generateContextMenu(Dungeon dungeon) throws IOException {
+        jFrame.add(contextMenu.generateContextMenu(dungeon));
         jFrame.repaint();
     }
 

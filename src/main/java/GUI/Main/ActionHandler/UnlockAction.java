@@ -1,10 +1,12 @@
 package GUI.Main.ActionHandler;
 
+import battlemap.Dungeon.Dungeon;
+
 public class UnlockAction extends ActionOption
 {
-    public UnlockAction()
+    public UnlockAction(Dungeon dungeon)
     {
-        super();
+        super(dungeon);
         this.actionName = "Pick-up";
         this.actionEvent = "PICKUP";
     }

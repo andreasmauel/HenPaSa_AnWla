@@ -1,10 +1,12 @@
 package GUI.Main.ActionHandler;
 
+import battlemap.Dungeon.Dungeon;
+
 public class AttackAction extends ActionOption
 {
-    public AttackAction()
+    public AttackAction(Dungeon dungeon)
     {
-        super();
+        super(dungeon);
         this.actionName = "Attack";
         this.actionEvent = "ATTACK";
     }

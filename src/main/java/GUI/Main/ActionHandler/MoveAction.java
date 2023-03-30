@@ -1,10 +1,12 @@
 package GUI.Main.ActionHandler;
 
+import battlemap.Dungeon.Dungeon;
+
 public class MoveAction extends ActionOption
 {
-    public MoveAction()
+    public MoveAction(Dungeon dungeon)
     {
-        super();
+        super(dungeon);
         this.actionName = "Move";
         this.actionEvent = "MOVE";
     }

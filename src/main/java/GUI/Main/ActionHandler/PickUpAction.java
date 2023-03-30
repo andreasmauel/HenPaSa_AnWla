@@ -1,10 +1,12 @@
 package GUI.Main.ActionHandler;
 
+import battlemap.Dungeon.Dungeon;
+
 public class PickUpAction extends ActionOption
 {
-    public PickUpAction()
+    public PickUpAction(Dungeon dungeon)
     {
-        super();
+        super(dungeon);
         this.actionName = "Pick-up";
         this.actionEvent = "PICKUP";
     }

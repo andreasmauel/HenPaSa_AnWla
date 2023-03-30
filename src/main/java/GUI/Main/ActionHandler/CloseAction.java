@@ -1,10 +1,12 @@
 package GUI.Main.ActionHandler;
 
+import battlemap.Dungeon.Dungeon;
+
 public class CloseAction extends ActionOption
 {
-    public CloseAction()
+    public CloseAction(Dungeon dungeon)
     {
-        super();
+        super(dungeon);
         this.actionName = "Close";
         this.actionEvent = "CLOSE";
     }

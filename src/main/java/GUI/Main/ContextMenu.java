@@ -2,6 +2,7 @@ package GUI.Main;
 
 import GUI.Main.ActionHandler.ActionHandler;
 import GUI.Main.ActionHandler.ActionOption;
+import battlemap.Dungeon.Dungeon;
 import battlemap.Meta.TileType;
 
 import javax.swing.*;
@@ -18,7 +19,7 @@ public class ContextMenu
     private JButton confirm;
     private JComboBox options;
 
-    private ActionHandler handler = new ActionHandler();
+    private ActionHandler handler;
     private int posX;
     private int posY;
 
@@ -45,7 +46,10 @@ public class ContextMenu
         }
     }
 
-    public JPanel generateContextMenu() throws IOException {
+    public JPanel generateContextMenu(Dungeon dungeon) throws IOException {
+
+        handler = new ActionHandler(dungeon);
+
         tileType = new JLabel();
         tileType.setBounds(10,10, 430, 30);
         tileType.setFont(new Font("Impact", Font.PLAIN, 30));
