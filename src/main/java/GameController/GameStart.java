@@ -21,6 +21,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -92,7 +93,7 @@ public class GameStart {
         finnishButton.setBounds(25, 360,300, 40);
         jPanel.add(finnishButton);
         JLabel statusLabel = new JLabel("");
-        statusLabel.setBounds(25, 400,300, 40);
+        statusLabel.setBounds(25, 400,330, 40);
         jPanel.add(statusLabel);
         finnishButton.addActionListener(new ActionListener() {
 
@@ -112,8 +113,8 @@ public class GameStart {
                         String secondary = "Konstitution";
                         JDialog jDialog = new JDialog();
                         jDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                        jDialog.setTitle("Bitte wichtigste Eigenschaften auswählen");
-                        jDialog.setSize(300,190);
+                        jDialog.setTitle("Zusätzliche Eigenschaften auswählen");
+                        jDialog.setSize(300,300);
                         JPanel jPanel = new JPanel();
                         jPanel.setLayout(null);
                         jDialog.add(jPanel);
@@ -128,25 +129,25 @@ public class GameStart {
                         secondaryLabel.setBounds(10, 65, 250, 20);
                         jPanel.add(secondaryLabel);
                         JLabel chooseArmor = new JLabel("Rüstung wählen (Lederpanzer gewährt Pfeil u. Bogen):");
-                        chooseArmor.setBounds(10, 75, 250, 20);
+                        chooseArmor.setBounds(10, 95, 250, 20);
                         jPanel.add(chooseArmor);
                         JComboBox armorChoice = new JComboBox(new String[]{"Kettenpanzer", "Lederpanzer"});
-                        armorChoice.setBounds(10, 85, 250, 20);
+                        armorChoice.setBounds(10, 125, 250, 20);
                         jPanel.add(armorChoice);
                         JLabel chooseEquipment = new JLabel("Ausrüstung wählen");
-                        chooseEquipment.setBounds(10, 95, 250, 20);
+                        chooseEquipment.setBounds(10, 155, 250, 20);
                         jPanel.add(chooseEquipment);
                         JComboBox equipmentChoice = new JComboBox(new String[]{"", "Geschicklichkeit"});
-                        equipmentChoice.setBounds(10, 105, 250, 20);
+                        equipmentChoice.setBounds(10, 185, 250, 20);
                         jPanel.add(equipmentChoice);
                         JLabel chooseFightingStyle = new JLabel("Kampfstil wählen");
-                        chooseFightingStyle.setBounds(10, 115, 250, 20);
+                        chooseFightingStyle.setBounds(10, 215, 250, 20);
                         jPanel.add(chooseFightingStyle);
                         JComboBox fightingStyleChoice = new JComboBox(new String[]{"Bogenschießen", "Nahkampf", "Verteidigung"});
-                        fightingStyleChoice.setBounds(10, 115, 250, 20);
+                        fightingStyleChoice.setBounds(10, 245, 250, 20);
                         jPanel.add(fightingStyleChoice);
                         JButton finish = new JButton("Auswahl bestätigen");
-                        finish.setBounds(100, 140, 160, 20);
+                        finish.setBounds(100, 295, 160, 20);
                         jPanel.add(finish);
                         finish.addActionListener(new ActionListener() {
                             @Override
