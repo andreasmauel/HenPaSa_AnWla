@@ -4,6 +4,7 @@ import Artifact.Artifact;
 import Characters.Races.Race;
 import Characters.classes.Clazz;
 
+import GameController.EffectController;
 import equipment.Equipment;
 import equipment.armor.Armor;
 import equipment.armor.NoArmor;
@@ -28,9 +29,9 @@ public class Player extends AbstractCharacter {
 
     public Player(String name, int dexterity, int intelligence, int strength, int constitution, int wisdom,
                   Race race, int walkingrange, int armorClass, Armor currentArmor, boolean isVisible,
-                  ViewDirection viewDirection, ArrayList<Effect> effects, Clazz clazz) {
+                  ViewDirection viewDirection, Clazz clazz) {
         super(name, dexterity, intelligence, strength, constitution, wisdom, race, walkingrange, armorClass,
-                currentArmor, isVisible, viewDirection, effects, clazz);
+                currentArmor, isVisible, viewDirection, clazz);
 
         this.getClazz().applyModifiers(this);
         this.inventory = inventory;

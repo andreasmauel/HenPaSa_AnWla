@@ -187,7 +187,7 @@ public class CharacterPanel extends JPanel implements Observer {
         JPanel effectsPanel = new JPanel();
         effectsPanel.setLayout(new BoxLayout(effectsPanel, BoxLayout.PAGE_AXIS));
         effectsPanel.setBackground(new Color(72, 72, 72, 255));
-        for (Effect effect : player.getEffects()) {
+        for (Effect effect : player.getEffects().activeEffects()) {
             JLabel label = new JLabel(effect.name());
             label.setForeground(Color.WHITE);
             effectsPanel.add(label);

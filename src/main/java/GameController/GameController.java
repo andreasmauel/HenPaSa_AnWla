@@ -50,7 +50,7 @@ public class GameController {
         this.players.add(player4);
 
         StartDungeon dungeon = new StartDungeon();
-        //dungeon.createMap(this.players, this);
+        dungeon.createMap(this.players, this);
     }
 
     public void setPlayers(ArrayList<Player> players) {

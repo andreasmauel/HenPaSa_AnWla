@@ -188,7 +188,7 @@ public class GameStart {
                                     fightingStyle = FightingStyle.CLOSECOMBAT;
                                 else fightingStyle = FightingStyle.DEFENSE;
                                 Clazz fighter = new Fighter(primaryAttribute, Attribute.CONSTITUTION, savingThrows, secondaryWeapon, fightingStyle);
-                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH,effects, fighter);
+                                Player player = new Player(nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, fighter);
                                 players.add(count, player);
                                 jDialog.setVisible(false);
                                 jDialog.dispatchEvent(new WindowEvent(
