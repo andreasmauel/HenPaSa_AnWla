@@ -97,6 +97,7 @@ public abstract class AbstractCharacter implements Subject {
 
     public void setRemainingRange(int remainingRange) {
         this.remainingRange = remainingRange;
+        notifyObserver();
     }
 
     public int getId() {

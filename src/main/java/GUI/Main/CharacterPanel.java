@@ -119,7 +119,7 @@ public class CharacterPanel extends JPanel implements Observer {
         ac = new JLabel("AC: " + player.getArmorClass());
         ac.setForeground(Color.WHITE);
         playerStats.add(ac);
-        mov = new JLabel("MOV: " + player.getWalkingrange());
+        mov = new JLabel("MOV: " + player.getRemainingRange());
         mov.setForeground(Color.WHITE);
         playerStats.add(mov);
         maxMov = new JLabel("Max MOV: " + player.getWalkingrange());
@@ -262,8 +262,8 @@ public class CharacterPanel extends JPanel implements Observer {
          inte.setText("INT: " + player.getIntelligence());
          con.setText("CON: " + player.getConstitution());
          ac.setText("AC: " + player.getArmorClass());
-         mov.setText("MOV: Movement" );
-         maxMov.setText("Max Mov");
+         mov.setText("MOV: " + player.getRemainingRange());
+         maxMov.setText("Max Mov: " + player.getWalkingrange());
 
 
          Weapon safeCurrentWeapon = player.getCurrentWeapon();

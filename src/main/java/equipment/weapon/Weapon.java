@@ -10,10 +10,10 @@ public abstract class Weapon extends Equipment {
 
     private final IDice dice;
     private final boolean multiAttackAllowed;
-    private final float range;
+    private final int range;
     private final boolean isThrowable;
 
-    public Weapon(Attribute attribute, float price, float weigth, int requiredStrength, IDice dice, boolean multiAttackAllowed, float range, boolean isThrowable) {
+    public Weapon(Attribute attribute, float price, float weigth, int requiredStrength, IDice dice, boolean multiAttackAllowed, int range, boolean isThrowable) {
         super(attribute, price, weigth, requiredStrength);
         this.dice = dice;
         this.multiAttackAllowed = multiAttackAllowed;
@@ -29,7 +29,7 @@ public abstract class Weapon extends Equipment {
         return multiAttackAllowed;
     }
 
-    public float getRange() {
+    public int getRange() {
         return range;
     }
 
