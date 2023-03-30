@@ -13,7 +13,7 @@ public class GameController {
 
     private ArrayList<Player> players = new ArrayList<Player>();
     private ArrayList<Monster> monster = new ArrayList<Monster>();
-    private Dungeon dungeon;
+    public static Dungeon dungeon;
     private HashMap<String, IDice> dices = new HashMap<String, IDice>();
     private GameStart gameStart = new GameStart();
     private FightController fightController = new FightController(players, monster);
