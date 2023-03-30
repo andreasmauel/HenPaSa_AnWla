@@ -65,8 +65,11 @@ public class StatusFrame
                 component.toggleBorder();
             }
         }
-        CharacterPanel panel = (CharacterPanel) statusFrame.getComponent(p);
-        panel.toggleBorder();
+        if(p > 0 && p<5) {
+            CharacterPanel panel = (CharacterPanel) statusFrame.getComponent(p - 1);
+            panel.toggleBorder();
+        }
+
     }
 
 //        boxes = ImageIO.read(file);
