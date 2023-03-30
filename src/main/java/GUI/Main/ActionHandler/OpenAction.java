@@ -15,12 +15,7 @@ public class OpenAction extends ActionOption
     @Override
     public void executeAction( int x, int y)
     {
-
-        //get player
-        //dungeon.getCharacterByEntity(CurrentBoi);
-
-        //get openable
-
-        // open
+        //if(dungeon.isInRange(CurrentBoi, 1, x, y))
+        //    dungeon.getTilePos(x,y).open();
     }
 }

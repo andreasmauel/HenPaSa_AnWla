@@ -27,9 +27,13 @@ public class StatusFrame
     private JPanel statusFrame;
     private BufferedImage boxes;
 
-    public JPanel generateStatusBackground() throws IOException {
+    public JPanel generateStatusBackground(){
         File file = new File(".\\Graphics\\Status.png");
-        boxes = ImageIO.read(file);
+        try {
+            boxes = ImageIO.read(file);
+        } catch (IOException e) {
+            DialogBox.ConsoleOut("Couldn't load file " + file);
+        }
         ImageIcon imageIcon = new ImageIcon(boxes);
         statusFrame = new JPanel()
         {

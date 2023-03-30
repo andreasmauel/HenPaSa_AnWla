@@ -46,7 +46,7 @@ public class ContextMenu
         }
     }
 
-    public JPanel generateContextMenu(Dungeon dungeon) throws IOException {
+    public JPanel generateContextMenu(Dungeon dungeon){
 
         handler = new ActionHandler(dungeon);
 
