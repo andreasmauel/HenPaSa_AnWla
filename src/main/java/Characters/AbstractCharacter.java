@@ -4,17 +4,19 @@ import Characters.Races.Race;
 import Characters.classes.Clazz;
 import GameController.dices.DiceTwenty;
 import GameController.dices.IDice;
-import battlemap.Dungeon.Dungeon;
 import equipment.armor.Armor;
 import equipment.armor.ChainMail;
 import equipment.weapon.Weapon;
+import observer.Observer;
+import observer.Subject;
 import util.Attribute;
 import util.Effect;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
-public abstract class AbstractCharacter {
+public abstract class AbstractCharacter implements Subject {
     private Clazz clazz;
     private String name;
     private int dexterity;
@@ -26,7 +28,7 @@ public abstract class AbstractCharacter {
     private int lifepoints;
     private int walkingrange;
     private int armorClass;
-    private Weapon weapon;
+    private Weapon currentWeapon;
     private Armor currentarmor;
     private boolean isVisible;
     private ViewDirection viewDirection;
@@ -36,22 +38,8 @@ public abstract class AbstractCharacter {
     private int xPosition;
     private int yPosition;
 
+    private List<Observer> observer = new ArrayList<>();
 
-    public int getX() {
-        return this.xPosition;
-    }
-
-    public int getY() {
-        return this.yPosition;
-    }
-
-    public void setxPosition(int xPosition){
-        this.xPosition = xPosition;
-    }
-
-    public void setyPosition(int yPosition){
-        this.yPosition = yPosition;
-    }
 
     public AbstractCharacter(String name, int desterity, int intelligence, int strenght, int constitution, int wisdom,
                              Race race, int walkingrange, int armorClass, Armor currentarmor, boolean isVisible,
@@ -78,12 +66,46 @@ public abstract class AbstractCharacter {
 
     }
 
+
+    public void addObserver(Observer observer) {
+        this.observer.add(observer);
+    }
+
+
+    public void removeObserver(Observer observer) {
+        this.observer.remove(observer);
+    }
+
+
+    public void notifyObserver() {
+        for(Observer observer : this.observer) {
+            observer.update();
+        }
+    }
+
+    public int getX() {
+        return this.xPosition;
+    }
+
+    public int getY() {
+        return this.yPosition;
+    }
+
+    public void setxPosition(int xPosition){
+        this.xPosition = xPosition;
+    }
+
+    public void setyPosition(int yPosition){
+        this.yPosition = yPosition;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+        notifyObserver();
     }
 
     public Clazz getClazz() {
@@ -92,6 +114,7 @@ public abstract class AbstractCharacter {
 
     public void addEffect(Effect effect) {
         this.effects.add(effect);
+        notifyObserver();
     }
 
     public int getDexterity() {
@@ -100,6 +123,7 @@ public abstract class AbstractCharacter {
 
     public void setDexterity(int dexterity) {
         this.dexterity = dexterity;
+        notifyObserver();
     }
 
     public int getIntelligence() {
@@ -108,6 +132,7 @@ public abstract class AbstractCharacter {
 
     public void setIntelligence(int intelligence) {
         this.intelligence = intelligence;
+        notifyObserver();
     }
 
     public int getStrenght() {
@@ -120,6 +145,7 @@ public abstract class AbstractCharacter {
 
     public void setStrenght(int strenght) {
         this.strenght = strenght;
+        notifyObserver();
     }
 
     public int getConstitution() {
@@ -128,6 +154,7 @@ public abstract class AbstractCharacter {
 
     public void setConstitution(int constitution) {
         this.constitution = constitution;
+        notifyObserver();
     }
 
     public int getWisdom() {
@@ -136,6 +163,7 @@ public abstract class AbstractCharacter {
 
     public void setWisdom(int wisdom) {
         this.wisdom = wisdom;
+        notifyObserver();
     }
 
     public Race getRace() {
@@ -148,6 +176,7 @@ public abstract class AbstractCharacter {
 
     public void setRace(Race race) {
         this.race = race;
+        notifyObserver();
     }
 
     public int getLifepoints() {
@@ -156,6 +185,7 @@ public abstract class AbstractCharacter {
 
     public void setLifepoints(int lifepoints) {
         this.lifepoints = lifepoints;
+        notifyObserver();
     }
 
         public int getWalkingrange() {
@@ -164,6 +194,7 @@ public abstract class AbstractCharacter {
 
     public void setWalkingrange(int walkingrange) {
         this.walkingrange = walkingrange;
+        notifyObserver();
     }
 
     public int getArmorClass() {
@@ -172,10 +203,11 @@ public abstract class AbstractCharacter {
 
     public void setArmorClass(int armorClass) {
         this.armorClass = armorClass;
+        notifyObserver();
     }
 
-    public Weapon getWeapon() {
-        return weapon;
+    public Weapon getCurrentWeapon() {
+        return currentWeapon;
     }
 
     public Armor getCurrentarmor() {
@@ -184,10 +216,12 @@ public abstract class AbstractCharacter {
 
     public void setCurrentarmor(Armor currentarmor) {
         this.currentarmor = currentarmor;
+        notifyObserver();
     }
 
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
+    public void setCurrentWeapon(Weapon currentWeapon) {
+        this.currentWeapon = currentWeapon;
+        notifyObserver();
     }
 
     public int getInitiative() {
@@ -223,10 +257,11 @@ public abstract class AbstractCharacter {
 
     public void setEffects(ArrayList<Effect> effects) {
         this.effects = effects;
+        notifyObserver();
     }
 
     public void attack(AbstractCharacter character){
-       int damage = this.weapon.useWeapon();
+       int damage = this.currentWeapon.useWeapon();
        character.getDamage(damage);
     }
 
@@ -234,9 +269,6 @@ public abstract class AbstractCharacter {
         this.setLifepoints(this.getLifepoints() - damage);
     }
 
-    public void changeWeapon(Weapon weapon){
-        this.weapon = weapon;
-    }
 
     public int modifier(util.Attribute attribute){
         switch (attribute){
@@ -261,7 +293,7 @@ public abstract class AbstractCharacter {
         return 0;
     }
 
-    public static class InitiativeComperetor implements Comparator<AbstractCharacter> {
+    public static class InitiativeComparator implements Comparator<AbstractCharacter> {
         @Override
         public int compare(AbstractCharacter otherPlayer, AbstractCharacter player) {
             if (otherPlayer.getInitiative() < player.getInitiative()) {

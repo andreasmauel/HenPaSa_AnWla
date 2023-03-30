@@ -1,20 +1,21 @@
 package GUI.Main;
 
-import Characters.AbstractCharacter;
+import Artifact.Artifact;
 import Characters.Player;
 import Characters.classes.Mage;
-import equipment.Equipment;
+import equipment.armor.Armor;
+import equipment.weapon.Weapon;
+import observer.Observer;
 import util.Effect;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.util.Arrays;
 
-public class CharacterPanel extends JPanel {
+public class CharacterPanel extends JPanel implements Observer {
 
     public CharacterPanel(Player player) {
         this.player = player;
+        this.player.addObserver(this);
         initCharacter();
     }
 
@@ -67,7 +68,7 @@ public class CharacterPanel extends JPanel {
     }
 
     private void setPlayerStats() {
-        playerStats.setLayout(new GridLayout(4, 2));
+        playerStats.setLayout(new GridLayout(5, 2));
 
         playerStats.add(createLabelWithValue("HP: ", player.getLifepoints()));
         playerStats.add(createLabelWithValue("Max HP: ", player.calculateMaxLivepoints()));
@@ -76,8 +77,9 @@ public class CharacterPanel extends JPanel {
         playerStats.add(createLabelWithValue("WIS: ", player.getWisdom()));
         playerStats.add(createLabelWithValue("INT: ", player.getInitiative()));
         playerStats.add(createLabelWithValue("CON: ", player.getConstitution()));
+        playerStats.add(createLabelWithValue("AC: " , player.getArmorClass()));
+        playerStats.add(createLabelWithValue("MOV: ", player.getWalkingrange()));
         playerStats.add(createLabelWithValue("Max MOV: ", player.getWalkingrange()));
-
     }
 
     private void setPickablePanel() {
@@ -112,6 +114,15 @@ public class CharacterPanel extends JPanel {
         }
         JLabel remainingMovement = new JLabel("Current Movement");
         remainingMovement.setForeground(Color.WHITE);
+        weapons.addItemListener( e -> {
+            player.setCurrentWeapon((Weapon)e.getItem());
+        });
+        armor.addItemListener(e -> {
+            player.setCurrentarmor((Armor)e.getItem());
+        });
+        artifact.addItemListener(e -> {
+            player.setCurrentArtifact((Artifact) e.getItem());
+        });
         activeEquipment.add(weapons);
         activeEquipment.add(armor);
         activeEquipment.add(artifact);
@@ -167,6 +178,11 @@ public class CharacterPanel extends JPanel {
         for(Component component : panel.getComponents()) {
             component.setEnabled(bool);
         }
+    }
+
+    @Override
+    public void update() {
+        this.repaint();
     }
 
     private static class MyComboBoxRenderer implements ListCellRenderer<Object> {

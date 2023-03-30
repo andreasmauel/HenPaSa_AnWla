@@ -21,7 +21,7 @@ public class MonsterController {
 
 
     public void attack() {
-      if(distanceToNearestEnemy() < this.monster.getWeapon().getRange()) {
+      if(distanceToNearestEnemy() < this.monster.getCurrentWeapon().getRange()) {
           this.monster.attack(this.nearestEnemy);
       }
     }
