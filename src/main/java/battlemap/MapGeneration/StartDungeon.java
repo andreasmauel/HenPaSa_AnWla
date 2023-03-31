@@ -1,5 +1,7 @@
 package battlemap.MapGeneration;
 
+import Artifact.Cloak;
+import Artifact.HealingPotion;
 import Characters.AbstractCharacter;
 import Characters.Monster;
 import Characters.Player;
@@ -11,6 +13,7 @@ import Characters.classes.*;
 import GUI.Main.MainFrame;
 import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
+import battlemap.Lockables.Chest;
 import battlemap.Lockables.Door;
 import battlemap.Meta.TileType;
 import equipment.armor.ChainMail;
@@ -18,6 +21,8 @@ import equipment.armor.LeatherArmor;
 import equipment.armor.NoArmor;
 import equipment.weapon.BattleAxe;
 import equipment.weapon.Dagger;
+import equipment.weapon.Rapier;
+import equipment.weapon.Spear;
 import spells.Fireball;
 import util.Attribute;
 import util.Effect;
@@ -102,19 +107,19 @@ public class StartDungeon
 
                 if(y==1 && x==2 && generated[x][y] != true)
                 {
-                    //dungeon.setChestPos(x,y,TileType.CHEST,new Chest(false, 5, new Equipment(), new Artifact()));
+                    dungeon.setChestPos(x,y,TileType.CHEST,new Chest(false, 5, new Rapier(), new Cloak()));
                     generated[x][y] = true;
                 }
 
                 if(y==7 && x==4 && generated[x][y] != true)
                 {
-                    //dungeon.setEquipmentPos(x,y,TileType.WEAPON,new Equipment());
+                    dungeon.setEquipmentPos(x,y,TileType.WEAPON,new Spear());
                     generated[x][y] = true;
                 }
 
                 if(y==3 && x==1 && generated[x][y] != true)
                 {
-                    //dungeon.setArtifactPos(x,y,TileType.MAGICAL,new Artifact());
+                    dungeon.setArtifactPos(x,y,TileType.MAGICAL,new HealingPotion(3));
                     generated[x][y] = true;
                 }
 
@@ -122,32 +127,39 @@ public class StartDungeon
 //              MAKE CHARACTERS
                 if(x==2 && y ==11 && generated[x][y] != true) {
                     dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(0));
-                    players.get(0).setxPosition(2);
-                    players.get(0).setyPosition(11);
                     generated[x][y] = true;
                 }
                 if(x==3 && y ==11 && generated[x][y] != true) {
                     dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(1));
-                    players.get(1).setxPosition(3);
-                    players.get(1).setyPosition(11);
                     generated[x][y] = true;
                 }
                 if(x==2 && y ==12 && generated[x][y] != true) {
                     dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(2));
-                    players.get(2).setxPosition(2);
-                    players.get(2).setyPosition(12);
                     generated[x][y] = true;
                 }
                 if(x==3 && y ==12 && generated[x][y] != true) {
                     dungeon.setCharacterPos(x, y, TileType.PLAYER,players.get(3));
-                    players.get(3).setxPosition(3);
-                    players.get(3).setyPosition(12);
                     generated[x][y] = true;
                 }
                 //MAKE CHARACTERS
 
                 //SET MONSTERS
                 if(x==2 && y ==7 && generated[x][y] != true)
+                {
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
+                    generated[x][y] = true;
+                }
+                if(x==3 && y ==4 && generated[x][y] != true)
+                {
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
+                    generated[x][y] = true;
+                }
+                if(x==8 && y ==3 && generated[x][y] != true)
+                {
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
+                    generated[x][y] = true;
+                }
+                if(x==10 && y ==5 && generated[x][y] != true)
                 {
                     dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
                     generated[x][y] = true;
