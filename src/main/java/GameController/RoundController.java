@@ -3,6 +3,7 @@ package GameController;
 import Characters.AbstractCharacter;
 import Characters.Monster;
 import Characters.Player;
+import GUI.Main.DialogBox;
 
 
 import java.util.ArrayList;
@@ -71,6 +72,7 @@ public class RoundController {
         }
         if (!this.fightActive) {
             if (this.checkFight()) {
+                DialogBox.ConsoleOut("Monster gesichtet. Kampf beginnt!!!");
                 this.fightActive = true;
                 ArrayList<Monster> monstersInFight = new ArrayList<>();
                 for (Monster monster : this.monsters) {
