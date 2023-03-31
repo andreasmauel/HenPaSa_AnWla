@@ -47,9 +47,9 @@ public class ContextMenu
         }
     }
 
-    public JPanel generateContextMenu(Dungeon dungeon, GameController gameController){
+    public JPanel generateContextMenu(Dungeon dungeon, GameController gameController, MainFrame mainFrame){
 
-        handler = new ActionHandler(dungeon, gameController);
+        handler = new ActionHandler(dungeon, gameController, mainFrame);
 
         tileType = new JLabel();
         tileType.setBounds(10,10, 430, 30);

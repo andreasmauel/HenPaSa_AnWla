@@ -112,6 +112,17 @@ public class Dungeon
 
     public void transferCharacterPos(int x, int y, CharacterPos character)
     {
+        for (CharacterPos[] seeker: characters)
+        {
+            for (CharacterPos looker: seeker)
+            {
+                if(looker != null) {
+                    if (looker.equals(character)) {
+                        deleteCharacterPos(looker.getMetaData().getPosX(), looker.getMetaData().getPosY());
+                    }
+                }
+            }
+        }
         characters[x][y] = character;
     }
 
@@ -263,7 +274,7 @@ public class Dungeon
         int movePosX = charPosX;
         int movePosY = charPosY;
 
-        while(movePosX < x-1 && movePosY < y-1)
+        while(movePosX < x-1 || movePosY < y-1)
         {
             diffX = x-movePosX;
             diffY = y-movePosY;
@@ -337,9 +348,10 @@ public class Dungeon
         {
             for (CharacterPos looker: seeker)
             {
-                if(looker.getCharacter().equals(character))
-                {
-                    return looker;
+                if(looker != null) {
+                    if (looker.getCharacter().equals(character)) {
+                        return looker;
+                    }
                 }
             }
         }
