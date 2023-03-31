@@ -17,20 +17,7 @@ public class StatusFrame
     private BufferedImage boxes;
 
     public JPanel generateStatusBackground(ArrayList<Player> players){
-        File file = new File(".\\Graphics\\Status.png");
-        try {
-            boxes = ImageIO.read(file);
-        } catch (IOException e) {
-            DialogBox.ConsoleOut("Couldn't load file " + file);
-        }
-        ImageIcon imageIcon = new ImageIcon(boxes);
-        statusFrame = new JPanel()
-        {
-            @Override public void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(imageIcon.getImage(), 0, 0, null);
-            }
-        };
+        statusFrame = new JPanel();
         statusFrame.setLayout(new BoxLayout(statusFrame, BoxLayout.PAGE_AXIS));
         statusFrame.setBounds(1250,0, 430, 750);
 //        statusFrame.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -48,18 +35,18 @@ public class StatusFrame
         return statusFrame;
     }
 
-    public void setActiveCharacter(int p) {
-        for(CharacterPanel component : (CharacterPanel[])statusFrame.getComponents()) {
-            if(component.active) {
-                component.toggleBorder();
-            }
-        }
-        if(p > 0 && p<5) {
-            CharacterPanel panel = (CharacterPanel) statusFrame.getComponent(p - 1);
-            panel.toggleBorder();
-        }
-        this.statusFrame.revalidate();
-    }
+//    public void setActiveCharacter(int p) {
+//        for(CharacterPanel component : (CharacterPanel[])statusFrame.getComponents()) {
+//            if(component.active) {
+//                component.toggleBorder();
+//            }
+//        }
+//        if(p > 0 && p<5) {
+//            CharacterPanel panel = (CharacterPanel) statusFrame.getComponent(p - 1);
+//            panel.toggleBorder();
+//        }
+//        this.statusFrame.revalidate();
+//    }
 
 //        boxes = ImageIO.read(file);
 //        ImageIcon imageIcon = new ImageIcon(boxes);
