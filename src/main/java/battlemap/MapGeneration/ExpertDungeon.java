@@ -1,5 +1,8 @@
 package battlemap.MapGeneration;
 
+import Artifact.Cloak;
+import Artifact.HealingPotion;
+import Artifact.KeyDoor;
 import Characters.Monster;
 import Characters.Player;
 import Characters.Races.Hobbit;
@@ -12,12 +15,16 @@ import Characters.classes.Thief;
 import GUI.Main.MainFrame;
 import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
+import battlemap.Lockables.Chest;
 import battlemap.Lockables.Door;
 import battlemap.Meta.TileType;
+import equipment.Equipment;
 import equipment.armor.ChainMail;
 import equipment.armor.LeatherArmor;
 import equipment.weapon.BattleAxe;
 import equipment.weapon.Dagger;
+import equipment.weapon.Rapier;
+import equipment.weapon.Spear;
 import util.Attribute;
 
 import java.io.IOException;
@@ -94,19 +101,19 @@ public class ExpertDungeon
 
                 if(y==1 && x==2 && generated[x][y] != true)
                 {
-                    //dungeon.setChestPos(x,y,TileType.CHEST,new Chest(false, 5, new Equipment(), new Artifact()));
+                    dungeon.setChestPos(x,y,TileType.CHEST,new Chest(false, 5, new Rapier(), new Cloak()));
                     generated[x][y] = true;
                 }
 
                 if(y==7 && x==4 && generated[x][y] != true)
                 {
-                    //dungeon.setEquipmentPos(x,y,TileType.WEAPON,new Equipment());
+                    dungeon.setEquipmentPos(x,y,TileType.WEAPON,new Spear());
                     generated[x][y] = true;
                 }
 
                 if(y==3 && x==1 && generated[x][y] != true)
                 {
-                    //dungeon.setArtifactPos(x,y,TileType.MAGICAL,new Artifact());
+                    dungeon.setArtifactPos(x,y,TileType.MAGICAL,new HealingPotion(3));
                     generated[x][y] = true;
                 }
 

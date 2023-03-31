@@ -26,13 +26,14 @@ public class MoveAction extends ActionOption
             if(isInRange) {
                 if(dungeon.getCharacterByEntity(character) != null) {
 
-                    if(x<0)
-                        x*=-1;
-                    if(y<0)
-                        y*=-1;
+                    int diffX = x-dungeon.getCharacterByEntity(character).getMetaData().getPosX();
+                    int diffY = y-dungeon.getCharacterByEntity(character).getMetaData().getPosY();
+                    if(diffX<0)
+                        diffX*=-1;
+                    if(diffY<0)
+                        diffY*=-1;
 
-                    int range =  x-dungeon.getCharacterByEntity(character).getMetaData().getPosX() +
-                                 y-dungeon.getCharacterByEntity(character).getMetaData().getPosX();
+                    int range =  diffX + diffY;
 
                     if(range <= character.getRemainingRange()) {
                         character.setRemainingRange(character.getRemainingRange() - range);
@@ -55,6 +56,10 @@ public class MoveAction extends ActionOption
                 }
 
             }
+        }
+        else
+        {
+            DialogBox.ConsoleOut("I cant walk any further");
         }
     }
 }
