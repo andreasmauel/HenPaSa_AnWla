@@ -246,7 +246,7 @@ public class GameStart {
                         JLabel chooseEquipment = new JLabel("Ausrüstung wählen");
                         chooseEquipment.setBounds(10, 65, 250, 20);
                         jPanel.add(chooseEquipment);
-                        JComboBox equipmentChoice = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Knüppel", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
+                        JComboBox equipmentChoice = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
                         equipmentChoice.setBounds(10, 95, 250, 20);
                         jPanel.add(equipmentChoice);
                         JButton finish = new JButton("Auswahl bestätigen");
@@ -299,7 +299,7 @@ public class GameStart {
                         JLabel chooseEquipment = new JLabel("Ausrüstung wählen");
                         chooseEquipment.setBounds(10, 95, 250, 20);
                         jPanel.add(chooseEquipment);
-                        JComboBox equipmentChoice = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Knüppel", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
+                        JComboBox equipmentChoice = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
                         equipmentChoice.setBounds(10, 125, 250, 20);
                         jPanel.add(equipmentChoice);
                         JButton finish = new JButton("Auswahl bestätigen");
