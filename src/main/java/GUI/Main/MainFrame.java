@@ -171,7 +171,7 @@ public class MainFrame {
                         case CHEST:
                             if (dungeon.getTilePos(x, y).getChest().isLocked()) {
                                 addTile(posX, posY, ".\\Graphics\\ChestTile_Locked.png");
-                            } else if (dungeon.getTilePos(x, y).getChest().getArtifactLoot() == null && dungeon.getTilePos(x, y).getChest().getEquipmentLoot() == null) {
+                            } else if (dungeon.getTilePos(x, y).getMetaData().isPassable()) {
                                 addTile(posX, posY, ".\\Graphics\\ChestTile_open.png");
                             } else {
                                 addTile(posX, posY, ".\\Graphics\\ChestTile_closed.png");

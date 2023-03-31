@@ -56,6 +56,9 @@ public class MoveAction extends ActionOption
                 }
 
             }
+            else {
+                DialogBox.ConsoleOut("There is something in the way!");
+            }
         }
         else
         {
