@@ -143,6 +143,21 @@ public class ExpertDungeon
                     dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
                     generated[x][y] = true;
                 }
+                if(x==3 && y ==4 && generated[x][y] != true)
+                {
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
+                    generated[x][y] = true;
+                }
+                if(x==8 && y ==3 && generated[x][y] != true)
+                {
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
+                    generated[x][y] = true;
+                }
+                if(x==10 && y ==5 && generated[x][y] != true)
+                {
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
+                    generated[x][y] = true;
+                }
                 //SET MONSTERS
             }
         }
