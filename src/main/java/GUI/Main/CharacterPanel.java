@@ -62,9 +62,9 @@ public class CharacterPanel extends JPanel implements Observer {
         playerInfo.setBackground(new Color(72, 72, 72, 255));
         playerStats.setBackground(new Color(72, 72, 72, 255));
         activeEquipment.setBackground(new Color(72, 72, 72, 255));
-        disableComponents(activeEquipment, false);
-        disableComponents(playerStats, false);
-        disableComponents(playerInfo, false);
+//        disableComponents(activeEquipment, false);
+//        disableComponents(playerStats, false);
+//        disableComponents(playerInfo, false);
         this.add(playerInfo, BorderLayout.NORTH);
         this.add(playerStats, BorderLayout.WEST);
         this.add(activeEquipment, BorderLayout.EAST);
@@ -160,8 +160,8 @@ public class CharacterPanel extends JPanel implements Observer {
         } else {
             spells = new JComboBox();
         }
-        JLabel remainingMovement = new JLabel("Current Movement");
-        remainingMovement.setForeground(Color.WHITE);
+
+
         weapons.addItemListener(e -> {
             if(e.getStateChange() == ItemEvent.SELECTED) {
                 player.setCurrentWeapon((Weapon) e.getItem());
@@ -183,9 +183,8 @@ public class CharacterPanel extends JPanel implements Observer {
         activeEquipment.add(armor);
         activeEquipment.add(artifact);
         activeEquipment.add(spells);
-        activeEquipment.add(remainingMovement);
         activeEquipment.add(createEffectsPanel());
-        disableComponents(activeEquipment, false);
+//        disableComponents(activeEquipment, false);
 
     }
 
@@ -199,40 +198,21 @@ public class CharacterPanel extends JPanel implements Observer {
         JPanel effectsPanel = new JPanel();
         effectsPanel.setLayout(new BoxLayout(effectsPanel, BoxLayout.PAGE_AXIS));
         effectsPanel.setBackground(new Color(72, 72, 72, 255));
-//        for (Effect effect : player.getEffects().activeEffects()) {
-//            JLabel label = new JLabel(effect.name());
-//            label.setForeground(Color.WHITE);
-//            effectsPanel.add(label);
-//        }
-
-        //Fuer Test
-        JButton button = new JButton("Change active");
-        button.addActionListener(e -> {
-            toggleBorder();
-        });
-        //
-        JButton button2 = new JButton("SetValue");
-        button2.addActionListener(e -> {
-
-            player.setHealDamage(2, Effect.DAMAGE);
-        });
-        effectsPanel.add(button);
-        effectsPanel.add(button2);
         return effectsPanel;
     }
 
-    public void toggleBorder() {
-        if (!active) {
-            this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
-        } else {
-            this.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 3));
-        }
-
-        disableComponents(activeEquipment, active);
-        disableComponents(playerInfo, active);
-        disableComponents(playerStats, active);
-        active = !active;
-    }
+//    public void toggleBorder() {
+//        if (!active) {
+//            this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
+//        } else {
+//            this.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 3));
+//        }
+//
+//        disableComponents(activeEquipment, active);
+//        disableComponents(playerInfo, active);
+//        disableComponents(playerStats, active);
+//        active = !active;
+//    }
 
 
     private void disableComponents(JPanel panel, boolean bool) {
