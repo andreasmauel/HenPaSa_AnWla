@@ -207,7 +207,6 @@ public class CharacterPanel extends JPanel implements Observer {
         } else {
             this.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 3));
         }
-
         disableComponents(activeEquipment, !active);
         disableComponents(playerInfo, !active);
         disableComponents(playerStats, !active);
