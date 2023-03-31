@@ -23,14 +23,23 @@ public class MoveAction extends ActionOption
         if(character.getRemainingRange() > 0) {
             boolean isInRange = dungeon.isInRange(character, character.getWalkingrange(), x, y);
             if(isInRange) {
-                character.setxPosition(x);
-                character.setyPosition(y);
-                //MOVE BILD
+                if(dungeon.getCharacterByEntity(character) != null) {
+                    character.setxPosition(x);
+                    character.setyPosition(y);
+                    dungeon.transferCharacterPos(x, y, dungeon.getCharacterByEntity(character));
 
-                character.setRemainingRange(character.getRemainingRange() - 0); //GEGANGENE RANGE MUSS NOCH ANGEGEBEN WERDEN
+                    dungeon.deleteCharacterPos(dungeon.getCharacterByEntity(character).getMetaData().getPosX(),
+                                               dungeon.getCharacterByEntity(character).getMetaData().getPosY());
+
+                    character.setRemainingRange(character.getRemainingRange() - 0); //GEGANGENE RANGE MUSS NOCH ANGEGEBEN WERDEN
+                    DialogBox.ConsoleOut("Shuffles to: " + x + " " + y);
+                }
+                else
+                {
+                    DialogBox.ConsoleOut("Error when moving, couldnt find character Position");
+                }
 
             }
-            DialogBox.ConsoleOut("Shuffles to: " + x + " " + y);
         }
     }
 }
