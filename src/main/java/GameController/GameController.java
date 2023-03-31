@@ -57,6 +57,7 @@ public class GameController {
         this.roundController = new RoundController(players, monster, this);
         this.map = new StartDungeon();
         this.map.createMap(this.players, this);
+        this.map.getMainFrame().getStatusPanel().setActiveCharacter(this.roundController.getActivePlayer().getId());
     }
 
     public StartDungeon getMap() {
