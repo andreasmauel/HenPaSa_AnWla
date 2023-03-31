@@ -30,6 +30,8 @@ public class GameController {
     private RoundController roundController;
     private StartDungeon map;
 
+    public static boolean GAME_CONFIG = false;
+
     public GameController(){
         dices.put("four", new DiceFour());
         dices.put("eight", new DiceEight());
@@ -43,10 +45,15 @@ public class GameController {
     }
 
     public void gameStart() throws InterruptedException {
-        players.addAll(gameStart.run());
-        while(players.get(3) == null) {
-            wait(100);
-        }
+        //players.addAll(gameStart.run());
+        Player player1 = new Player(1, "Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Dart());
+        Player player2 = new Player(2, "Berta", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Rapier());
+        Player player3 = new Player(3, "Hans", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Bow());
+        Player player4 = new Player(4, "Guenter", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Spear());
+        this.players.add(player1);
+        this.players.add(player2);
+        this.players.add(player3);
+        this.players.add(player4);
         this.roundController = new RoundController(players, monster, this);
         this.map = new StartDungeon();
         this.map.createMap(this.players, this);

@@ -2,15 +2,16 @@ package GUI.Main.ActionHandler;
 
 import Characters.Monster;
 import Characters.Player;
+import GUI.Main.MainFrame;
 import GameController.GameController;
 import GameController.RoundController;
 import battlemap.Dungeon.Dungeon;
 
 public class AttackAction extends ActionOption
 {
-    public AttackAction(Dungeon dungeon, GameController gameController)
+    public AttackAction(Dungeon dungeon, GameController gameController, MainFrame mainframe)
     {
-        super(dungeon, gameController);
+        super(dungeon, gameController, mainframe);
         this.actionName = "Attack";
         this.actionEvent = "ATTACK";
     }

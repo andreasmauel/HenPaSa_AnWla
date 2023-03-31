@@ -1,5 +1,6 @@
 package GUI.Main.ActionHandler;
 
+import GUI.Main.MainFrame;
 import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
 import battlemap.Meta.TileType;
@@ -16,15 +17,15 @@ public class ActionHandler
     public ActionOption unlock;
     public ActionOption endTurn;
 
-    public ActionHandler(Dungeon dungeon, GameController gameController)
+    public ActionHandler(Dungeon dungeon, GameController gameController, MainFrame mainFrame)
     {
-        attack = new AttackAction(dungeon, gameController);
-        move = new MoveAction(dungeon, gameController);
-        pickup = new PickUpAction(dungeon, gameController);
-        open = new OpenAction(dungeon, gameController);
-        close = new CloseAction(dungeon, gameController);
-        unlock = new UnlockAction(dungeon, gameController);
-        endTurn = new EndTurnAction(dungeon, gameController);
+        attack = new AttackAction(dungeon, gameController, mainFrame);
+        move = new MoveAction(dungeon, gameController, mainFrame);
+        pickup = new PickUpAction(dungeon, gameController, mainFrame);
+        open = new OpenAction(dungeon, gameController, mainFrame);
+        close = new CloseAction(dungeon, gameController, mainFrame);
+        unlock = new UnlockAction(dungeon, gameController, mainFrame);
+        endTurn = new EndTurnAction(dungeon, gameController, mainFrame);
     }
 
     public ArrayList<ActionOption> getOptions(TileType tileType)

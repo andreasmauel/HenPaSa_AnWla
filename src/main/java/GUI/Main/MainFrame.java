@@ -53,7 +53,7 @@ public class MainFrame {
         generateStatusScreen(players);
 //        statusPanel.setActiveCharacter(1);
         generateDialogBox();
-        generateContextMenu(this.dungeon, gameController);
+        generateContextMenu(this.dungeon, gameController, this);
 
 
         jFrame.setExtendedState(jFrame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -98,7 +98,8 @@ public class MainFrame {
         dungeonPanel.add(jLabel);
     }
 
-    private void generateMap(Dungeon dungeon) {
+    public void generateMap(Dungeon dungeon) {
+        dungeonPanel.removeAll();
         for(int x = 0; x < dungeon.getxMax(); x++)
         {
             int posX = x*50;
@@ -209,8 +210,8 @@ public class MainFrame {
         jFrame.repaint();
     }
 
-    private void generateContextMenu(Dungeon dungeon, GameController gameController){
-        jFrame.add(contextMenu.generateContextMenu(dungeon, gameController));
+    private void generateContextMenu(Dungeon dungeon, GameController gameController, MainFrame mainFrame){
+        jFrame.add(contextMenu.generateContextMenu(dungeon, gameController, mainFrame));
         jFrame.repaint();
     }
 

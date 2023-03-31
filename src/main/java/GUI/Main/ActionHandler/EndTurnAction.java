@@ -1,5 +1,6 @@
 package GUI.Main.ActionHandler;
 
+import GUI.Main.MainFrame;
 import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
 
@@ -7,8 +8,8 @@ import java.io.IOException;
 
 public class EndTurnAction extends ActionOption
 {
-    public EndTurnAction(Dungeon dungeon, GameController gameController) {
-        super(dungeon, gameController);
+    public EndTurnAction(Dungeon dungeon, GameController gameController, MainFrame mainframe) {
+        super(dungeon, gameController, mainframe);
         this.actionName = "End Turn";
         this.actionEvent = "ENDTURN";
     }
