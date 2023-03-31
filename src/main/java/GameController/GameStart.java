@@ -135,10 +135,10 @@ public class GameStart {
                         JLabel chooseEquipment = new JLabel("Ausrüstung wählen");
                         chooseEquipment.setBounds(10, 165, 250, 20);
                         jPanel.add(chooseEquipment);
-                        JComboBox equipmentChoice1 = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Knüppel", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
+                        JComboBox equipmentChoice1 = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Knüppel", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen", "Schild"});
                         equipmentChoice1.setBounds(10, 195, 250, 20);
                         jPanel.add(equipmentChoice1);
-                        JComboBox equipmentChoice2 = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Knüppel", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
+                        JComboBox equipmentChoice2 = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Knüppel", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen", "Schild"});
                         equipmentChoice2.setBounds(10, 225, 250, 20);
                         jPanel.add(equipmentChoice2);
                         JLabel chooseFightingStyle = new JLabel("Kampfstil wählen");
@@ -333,6 +333,7 @@ public class GameStart {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (players.get(0) != null && players.get(1) != null && players.get(2) != null ) {
+                    GameController.GAME_CONFIG = true;
                     jFrame.setVisible(false);
                     jFrame.dispatchEvent(new WindowEvent(
                             jFrame, WindowEvent.WINDOW_CLOSING));
