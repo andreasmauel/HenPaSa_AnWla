@@ -94,12 +94,14 @@ public abstract class TilePos
             if(!chest.isLocked())
             {
                 metaData.setPassable(false);
+                DialogBox.ConsoleOut("You close the Chest?");
             }
         } else if (door!=null)
         {
             if(!door.isLocked())
             {
                 metaData.setPassable(false);
+                DialogBox.ConsoleOut("You close the Door");
             }
         }
     }
