@@ -130,6 +130,14 @@ public class Dungeon
     {
         characters[x][y] = null;
     }
+    public void deleteEquipmentPos(int x, int y)
+    {
+        equipment[x][y] = null;
+    }
+    public void deleteArtifactPos(int x, int y)
+    {
+        artifacts[x][y] = null;
+    }
 
     public void setCharacterPos(int x, int y, TileType type, AbstractCharacter character)
     {
