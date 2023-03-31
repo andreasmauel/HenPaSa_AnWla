@@ -27,7 +27,7 @@ public class GameController {
     private Dungeon dungeon;
     private HashMap<String, IDice> dices = new HashMap<String, IDice>();
     private GameStart gameStart = new GameStart();
-    public RoundController roundController;
+    private RoundController roundController;
     private StartDungeon map;
 
     public static boolean GAME_CONFIG = false;
@@ -45,7 +45,7 @@ public class GameController {
     }
 
     public void gameStart() throws InterruptedException {
-        players.addAll(gameStart.run(this));
+        //players.addAll(gameStart.run());
         Player player1 = new Player(1, "Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Dart());
         Player player2 = new Player(2, "Berta", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Rapier());
         Player player3 = new Player(3, "Hans", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Bow());
@@ -54,8 +54,12 @@ public class GameController {
         this.players.add(player2);
         this.players.add(player3);
         this.players.add(player4);
-
+        this.roundController = new RoundController(players, monster, this);
+        this.map = new StartDungeon();
+        this.map.createMap(this.players, this);
+        this.map.getMainFrame().getStatusPanel().setActiveCharacter(this.roundController.getActivePlayer().getId());
     }
+
     public StartDungeon getMap() {
         return map;
     }
