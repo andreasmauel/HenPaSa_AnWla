@@ -99,6 +99,7 @@ public class MainFrame {
     }
 
     public void generateMap(Dungeon dungeon) {
+        dungeonPanel.removeAll();
         for(int x = 0; x < dungeon.getxMax(); x++)
         {
             int posX = x*50;
