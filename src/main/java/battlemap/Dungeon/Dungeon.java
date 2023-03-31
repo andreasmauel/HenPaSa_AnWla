@@ -337,9 +337,10 @@ public class Dungeon
         {
             for (CharacterPos looker: seeker)
             {
-                if(looker.getCharacter().equals(character))
-                {
-                    return looker;
+                if(looker != null) {
+                    if (looker.getCharacter().equals(character)) {
+                        return looker;
+                    }
                 }
             }
         }
