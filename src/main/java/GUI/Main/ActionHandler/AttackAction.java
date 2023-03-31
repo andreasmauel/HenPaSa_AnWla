@@ -1,5 +1,6 @@
 package GUI.Main.ActionHandler;
 
+import Characters.AbstractCharacter;
 import Characters.Monster;
 import Characters.Player;
 import GUI.Main.MainFrame;
@@ -19,10 +20,10 @@ public class AttackAction extends ActionOption
     @Override
     public void executeAction( int x, int y)
     {
-        //WELCHER GEGENER STEHET AUF DEM FELD
+        AbstractCharacter enemy = dungeon.getCharacterPos(x,y).getCharacter();
         Player character = this.gameController.getRoundController().getActivePlayer();
         if(dungeon.isInRange(character, character.getCurrentWeapon().getRange(), x, y)) {
-            character.attack(null);
+            character.attack(enemy);
         }
         //TODO
     }

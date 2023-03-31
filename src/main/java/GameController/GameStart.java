@@ -7,6 +7,7 @@ import Characters.Races.Human;
 import Characters.Races.Race;
 import Characters.ViewDirection;
 import Characters.classes.*;
+import battlemap.MapGeneration.StartDungeon;
 import equipment.armor.Armor;
 import equipment.armor.ChainMail;
 import equipment.armor.LeatherArmor;
@@ -27,10 +28,14 @@ public class GameStart {
     private final String CHOOSE_NAME = "Enter your Character's Name";
     private final String CHOOSE_RACE = "Choose a race for your Character";
     private final String CHOOSE_CLASS = "Choose a class for your Character";
+
     private final String CONFIGURE_PLAYER_CHAR = "";
     private final String GAME_TITLE = "Dungeon Crawler";
+
+    private GameController gameController;
     private ArrayList<Player> players = new ArrayList<>();
-    public ArrayList<Player> run(){
+    public ArrayList<Player> run(GameController gameController){
+        this.gameController = gameController;
         gameStartScreen();
         return this.players;
     }
@@ -364,6 +369,12 @@ public class GameStart {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (players.get(0) != null && players.get(1) != null && players.get(2) != null ) {
+                    RoundController roundController = new RoundController(players, gameController.getMonster(), gameController);
+                    gameController.setRoundController(roundController);
+                    StartDungeon map = new StartDungeon();
+                    gameController.setMap(map);
+                    map.createMap(players, gameController);
+                    map.getMainFrame().getStatusPanel().setActiveCharacter(roundController.getActivePlayer().getId());
                     jFrame.setVisible(false);
                     jFrame.dispatchEvent(new WindowEvent(
                             jFrame, WindowEvent.WINDOW_CLOSING));
