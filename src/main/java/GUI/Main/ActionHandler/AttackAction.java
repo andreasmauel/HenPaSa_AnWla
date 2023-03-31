@@ -3,6 +3,7 @@ package GUI.Main.ActionHandler;
 import Characters.AbstractCharacter;
 import Characters.Monster;
 import Characters.Player;
+import GUI.Main.DialogBox;
 import GUI.Main.MainFrame;
 import GameController.GameController;
 import GameController.RoundController;
@@ -23,8 +24,11 @@ public class AttackAction extends ActionOption
         AbstractCharacter enemy = dungeon.getCharacterPos(x,y).getCharacter();
         Player character = this.gameController.getRoundController().getActivePlayer();
         if(dungeon.isInRange(character, character.getCurrentWeapon().getRange(), x, y)) {
-            character.attack(enemy);
+            int damage = character.attack(enemy);
+            DialogBox.ConsoleOut(enemy.getName() + " takes " + damage + " damage.");
+            return;
         }
+        DialogBox.ConsoleOut("Enemy is out of range");
         //TODO
     }
 }
