@@ -17,7 +17,7 @@ public class EndTurnAction extends ActionOption
 
     @Override
     public void executeAction( int x, int y) {
-        DialogBox.ConsoleOut("Spieler " + gameController.getRoundController().getActivePlayer().getId() + " ist am Zug");
         this.gameController.getRoundController().nextRound();
+        DialogBox.ConsoleOut("Spieler " + gameController.getRoundController().getActivePlayer().getId() + " ist am Zug");
     }
 }

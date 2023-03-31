@@ -4,6 +4,7 @@ import Characters.AbstractCharacter;
 import Characters.Monster;
 import Characters.Player;
 import GUI.Main.DialogBox;
+import util.DistanceCalculator;
 
 
 import java.util.ArrayList;
@@ -76,7 +77,7 @@ public class RoundController {
                 this.fightActive = true;
                 ArrayList<Monster> monstersInFight = new ArrayList<>();
                 for (Monster monster : this.monsters) {
-                    if (this.gameController.getDungeon().isInRange(activeCharacter, 5, monster.getX(), monster.getY())) {
+                    if (DistanceCalculator.isRange(activeCharacter, 5, monster.getX(), monster.getY())) {
                         monstersInFight.add(monster);
                     }
                 }
@@ -90,11 +91,11 @@ public class RoundController {
         boolean isInFightRange = false;
         if (this.activeCharacter instanceof Monster) {
             for (Player player : this.players) {
-                return this.gameController.getDungeon().isInRange(activeCharacter, 3, player.getX(), player.getY());
+                return DistanceCalculator.isRange(activeCharacter, 3, player.getX(), player.getY());
             }
         } else if (this.activeCharacter instanceof  Player) {
             for (Monster monster : this.monsters) {
-                return this.gameController.getDungeon().isInRange(activeCharacter, 3, monster.getX(), monster.getY());
+                return DistanceCalculator.isRange(activeCharacter, 3, monster.getX(), monster.getY());
             }
         }
        return isInFightRange;
