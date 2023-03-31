@@ -25,16 +25,29 @@ public class MoveAction extends ActionOption
             boolean isInRange = dungeon.isInRange(character, character.getWalkingrange(), x, y);
             if(isInRange) {
                 if(dungeon.getCharacterByEntity(character) != null) {
-                    character.setxPosition(x);
-                    character.setyPosition(y);
-                    dungeon.transferCharacterPos(x, y, dungeon.getCharacterByEntity(character));
 
-                    dungeon.deleteCharacterPos(dungeon.getCharacterByEntity(character).getMetaData().getPosX(),
-                                               dungeon.getCharacterByEntity(character).getMetaData().getPosY());
+                    if(x<0)
+                        x*=-1;
+                    if(y<0)
+                        y*=-1;
 
-                    character.setRemainingRange(character.getRemainingRange() - 0); //GEGANGENE RANGE MUSS NOCH ANGEGEBEN WERDEN
-                    DialogBox.ConsoleOut("Shuffles to: " + x + " " + y);
-                    mainFrame.generateMap(dungeon);
+                    int range =  x-dungeon.getCharacterByEntity(character).getMetaData().getPosX() +
+                                 y-dungeon.getCharacterByEntity(character).getMetaData().getPosX();
+
+                    if(range <= character.getRemainingRange()) {
+                        character.setRemainingRange(character.getRemainingRange() - range);
+                        character.setxPosition(x);
+                        character.setyPosition(y);
+                        dungeon.transferCharacterPos(x, y, dungeon.getCharacterByEntity(character));
+                        dungeon.getCharacterPos(x, y).getMetaData().setPosX(x);
+                        dungeon.getCharacterPos(x, y).getMetaData().setPosY(y);
+                        DialogBox.ConsoleOut("Shuffles to: " + x + " " + y);
+                        mainFrame.generateMap(dungeon);
+                    }
+                    else
+                    {
+                        DialogBox.ConsoleOut("I can't walk this far");
+                    }
                 }
                 else
                 {
