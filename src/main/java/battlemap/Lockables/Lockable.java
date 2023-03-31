@@ -1,5 +1,7 @@
 package battlemap.Lockables;
 
+import GUI.Main.DialogBox;
+
 public abstract class Lockable
 {
     protected boolean isSecret;
@@ -17,6 +19,9 @@ public abstract class Lockable
         if(roll >= difficultyClass)
         {
             isLocked = false;
+        }
+        else {
+            DialogBox.ConsoleOut("Your Lockpick failed, roll: " + roll);
         }
     }
 

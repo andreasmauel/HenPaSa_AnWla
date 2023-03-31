@@ -38,7 +38,6 @@ public class ActionHandler
 
         } else if (tileType == TileType.DOOR || tileType == TileType.CHEST)
         {
-            aO.add(attack);
             aO.add(move);
             aO.add(open);
             aO.add(close);
@@ -47,14 +46,12 @@ public class ActionHandler
 
         } else if (tileType == TileType.POTION || tileType == TileType.ARMOR || tileType == TileType.WEAPON || tileType == TileType.MAGICAL)
         {
-            aO.add(attack);
             aO.add(move);
             aO.add(pickup);
             aO.add(endTurn);
 
         } else if (tileType == TileType.WALL)
         {
-            aO.add(attack);
             aO.add(endTurn);
 
         } else

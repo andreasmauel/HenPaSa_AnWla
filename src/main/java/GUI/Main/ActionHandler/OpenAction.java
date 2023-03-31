@@ -22,6 +22,6 @@ public class OpenAction extends ActionOption
             mainFrame.generateMap(dungeon);
         }
         else
-            DialogBox.ConsoleOut("Das ist zu weit weg!");
+            DialogBox.ConsoleOut("Its too far away!");
     }
 }
