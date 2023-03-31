@@ -37,18 +37,19 @@ public class StatusFrame
         return statusFrame;
     }
 
-//    public void setActiveCharacter(int p) {
-//        for(CharacterPanel component : (CharacterPanel[])statusFrame.getComponents()) {
-//            if(component.active) {
-//                component.toggleBorder();
-//            }
-//        }
-//        if(p > 0 && p<5) {
-//            CharacterPanel panel = (CharacterPanel) statusFrame.getComponent(p - 1);
-//            panel.toggleBorder();
-//        }
-//        this.statusFrame.revalidate();
-//    }
+    public void setActiveCharacter(int p) {
+        for(Component component : statusFrame.getComponents()) {
+            CharacterPanel panel = (CharacterPanel) component;
+            if(panel.active) {
+                panel.toggleBorder();
+            }
+        }
+        if(p > 0 && p<5) {
+            CharacterPanel panel = (CharacterPanel) statusFrame.getComponent(p - 1);
+            panel.toggleBorder();
+        }
+        this.statusFrame.revalidate();
+    }
 
 //        boxes = ImageIO.read(file);
 //        ImageIcon imageIcon = new ImageIcon(boxes);

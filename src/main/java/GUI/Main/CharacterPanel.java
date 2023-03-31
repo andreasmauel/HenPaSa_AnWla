@@ -28,7 +28,7 @@ public class CharacterPanel extends JPanel implements Observer {
     private JPanel playerStats = new JPanel();
     private JPanel activeEquipment = new JPanel();
     private JPanel equipmentSpellsEffects = new JPanel();
-    boolean active = true;
+    boolean active = false;
 
     //Alle Attribute
     JLabel playerName;
@@ -62,9 +62,9 @@ public class CharacterPanel extends JPanel implements Observer {
         playerInfo.setBackground(new Color(72, 72, 72, 255));
         playerStats.setBackground(new Color(72, 72, 72, 255));
         activeEquipment.setBackground(new Color(72, 72, 72, 255));
-//        disableComponents(activeEquipment, false);
-//        disableComponents(playerStats, false);
-//        disableComponents(playerInfo, false);
+        disableComponents(activeEquipment, active);
+        disableComponents(playerStats, active);
+        disableComponents(playerInfo, active);
         this.add(playerInfo, BorderLayout.NORTH);
         this.add(playerStats, BorderLayout.WEST);
         this.add(activeEquipment, BorderLayout.EAST);
@@ -184,7 +184,7 @@ public class CharacterPanel extends JPanel implements Observer {
         activeEquipment.add(artifact);
         activeEquipment.add(spells);
         activeEquipment.add(createEffectsPanel());
-//        disableComponents(activeEquipment, false);
+        disableComponents(activeEquipment, active);
 
     }
 
@@ -201,18 +201,19 @@ public class CharacterPanel extends JPanel implements Observer {
         return effectsPanel;
     }
 
-//    public void toggleBorder() {
-//        if (!active) {
-//            this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
-//        } else {
-//            this.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 3));
-//        }
-//
-//        disableComponents(activeEquipment, active);
-//        disableComponents(playerInfo, active);
-//        disableComponents(playerStats, active);
-//        active = !active;
-//    }
+    public void toggleBorder() {
+        if (active) {
+            this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
+        } else {
+            this.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 3));
+        }
+
+        disableComponents(activeEquipment, !active);
+        disableComponents(playerInfo, !active);
+        disableComponents(playerStats, !active);
+        active = !active;
+        this.repaint();
+    }
 
 
     private void disableComponents(JPanel panel, boolean bool) {

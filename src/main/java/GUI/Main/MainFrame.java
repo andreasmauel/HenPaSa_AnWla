@@ -112,24 +112,24 @@ public class MainFrame {
                             switch(dungeon.getCharacterPos(x, y).getCharacter().getClazzName())
                             {
                                 case "Mage":
-                                    addTile(posX, posY, ".\\Graphics\\mage.png");
+                                    addTile(posX, posY, ".//Graphics//mage.png");
                                     break;
                                 case "Thief":
-                                    addTile(posX, posY, ".\\Graphics\\thief.png");
+                                    addTile(posX, posY, ".//Graphics//thief.png");
                                     break;
                                 case "Fighter":
-                                    addTile(posX, posY, ".\\Graphics\\fighter.png");
+                                    addTile(posX, posY, ".//Graphics//fighter.png");
                                     break;
                                 default:
-                                    addTile(posX, posY, ".\\Graphics\\fighter.png");
+                                    addTile(posX, posY, ".//Graphics//fighter.png");
                                     break;
                             }
                             break;
                         case MONSTER:
-                            addTile(posX, posY, ".\\Graphics\\monster_orc.png");
+                            addTile(posX, posY, ".//Graphics//monster_orc.png");
                             break;
                         default:
-                            addTile(posX, posY, ".\\Graphics\\FloorTile.png");
+                            addTile(posX, posY, ".//Graphics//FloorTile.png");
                             break;
                     }
                 }
@@ -140,60 +140,60 @@ public class MainFrame {
                             if(dungeon.getTilePos(x, y-1).getMetaData().getTileType() == TileType.WALL)
                             {
                                 if (dungeon.getTilePos(x, y).getDoor().isLocked()) {
-                                    addRotTile(posX, posY, ".\\Graphics\\DoorTile_Locked.png");
+                                    addRotTile(posX, posY, ".//Graphics//DoorTile_Locked.png");
                                 } else if (dungeon.getTilePos(x, y).getMetaData().isPassable()) {
-                                    addRotTile(posX, posY, ".\\Graphics\\DoorTile_open.png");
+                                    addRotTile(posX, posY, ".//Graphics//DoorTile_open.png");
                                 } else {
-                                    addRotTile(posX, posY, ".\\Graphics\\DoorTile_closed.png");
+                                    addRotTile(posX, posY, ".//Graphics//DoorTile_closed.png");
                                 }
                             }
                             else
                             {
                                 if (dungeon.getTilePos(x, y).getDoor().isLocked()) {
-                                    addTile(posX, posY, ".\\Graphics\\DoorTile_Locked.png");
+                                    addTile(posX, posY, ".//Graphics//DoorTile_Locked.png");
                                 } else if (dungeon.getTilePos(x, y).getMetaData().isPassable()) {
-                                    addTile(posX, posY, ".\\Graphics\\DoorTile_open.png");
+                                    addTile(posX, posY, ".//Graphics//DoorTile_open.png");
                                 } else {
-                                    addTile(posX, posY, ".\\Graphics\\DoorTile_closed.png");
+                                    addTile(posX, posY, ".//Graphics//DoorTile_closed.png");
                                 }
                             }
                             } catch (Exception e )
                             {
                                 if (dungeon.getTilePos(x, y).getDoor().isLocked()) {
-                                    addTile(posX, posY, ".\\Graphics\\DoorTile_Locked.png");
+                                    addTile(posX, posY, ".//Graphics//DoorTile_Locked.png");
                                 } else if (dungeon.getTilePos(x, y).getMetaData().isPassable()) {
-                                    addTile(posX, posY, ".\\Graphics\\DoorTile_open.png");
+                                    addTile(posX, posY, ".//Graphics//DoorTile_open.png");
                                 } else {
-                                    addTile(posX, posY, ".\\Graphics\\DoorTile_closed.png");
+                                    addTile(posX, posY, ".//Graphics//DoorTile_closed.png");
                                 }
                             }
                             break;
                         case CHEST:
                             if (dungeon.getTilePos(x, y).getChest().isLocked()) {
-                                addTile(posX, posY, ".\\Graphics\\ChestTile_Locked.png");
+                                addTile(posX, posY, ".//Graphics//ChestTile_Locked.png");
                             } else if (dungeon.getTilePos(x, y).getMetaData().isPassable()) {
-                                addTile(posX, posY, ".\\Graphics\\ChestTile_open.png");
+                                addTile(posX, posY, ".//Graphics//ChestTile_open.png");
                             } else {
-                                addTile(posX, posY, ".\\Graphics\\ChestTile_closed.png");
+                                addTile(posX, posY, ".//Graphics//ChestTile_closed.png");
                             }
                             break;
                         case WALL:
-                            addTile(posX, posY, ".\\Graphics\\WallTile.png");
+                            addTile(posX, posY, ".//Graphics//WallTile.png");
                             break;
                         default:
-                            addTile(posX, posY, ".\\Graphics\\FloorTile.png");
+                            addTile(posX, posY, ".//Graphics//FloorTile.png");
                             break;
                     }
                 }
                 else if(dungeon.getEquipmentPos(x,y) != null) {
-                    addTile(posX, posY, ".\\Graphics\\ItemTile.png");
+                    addTile(posX, posY, ".//Graphics//ItemTile.png");
                 }
                 else if(dungeon.getArtifactPos(x,y) != null) {
-                    addTile(posX, posY, ".\\Graphics\\ArtifactTile.png");
+                    addTile(posX, posY, ".//Graphics//ArtifactTile.png");
                 }
                 else
                 {
-                    addTile(posX, posY, ".\\Graphics\\FloorTile.png");
+                    addTile(posX, posY, ".//Graphics//FloorTile.png");
                 }
             }
         }
