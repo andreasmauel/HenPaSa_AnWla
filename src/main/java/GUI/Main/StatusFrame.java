@@ -48,7 +48,7 @@ public class StatusFrame
         return statusFrame;
     }
 
-    public void setActiveCharacter(int p) throws IOException {
+    public void setActiveCharacter(int p) {
         for(CharacterPanel component : (CharacterPanel[])statusFrame.getComponents()) {
             if(component.active) {
                 component.toggleBorder();
@@ -58,7 +58,7 @@ public class StatusFrame
             CharacterPanel panel = (CharacterPanel) statusFrame.getComponent(p - 1);
             panel.toggleBorder();
         }
-
+        this.statusFrame.revalidate();
     }
 
 //        boxes = ImageIO.read(file);
