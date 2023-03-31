@@ -36,7 +36,7 @@ public class PickUpAction extends ActionOption
                 } else if (dungeon.getEquipmentPos(x,y).getMetaData().getTileType() == TileType.ARMOR) {
                     this.gameController.getRoundController().getActivePlayer().getArmor().add((Armor) dungeon.getEquipmentPos(x, y).getEquipment());
                 }
-                DialogBox.ConsoleOut("You picked up a: "+dungeon.getEquipmentPos(x,y).getEquipment().toString());
+                DialogBox.ConsoleOut("You picked up a: "+dungeon.getEquipmentPos(x,y).getEquipment().getName());
                 dungeon.deleteEquipmentPos(x,y);
             }
             mainFrame.generateMap(dungeon);
