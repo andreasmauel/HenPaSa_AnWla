@@ -21,8 +21,10 @@ public class StatusFrame
         statusFrame.setLayout(new BoxLayout(statusFrame, BoxLayout.PAGE_AXIS));
         statusFrame.setBounds(1250,0, 430, 750);
 //        statusFrame.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        int playerCount = 1;
         for(Player player : players) {
             statusFrame.add(new CharacterPanel(player));
+            playerCount ++;
         }
         JLabel jLabel = new JLabel( );
 //        jLabel.setIcon(imageIcon);

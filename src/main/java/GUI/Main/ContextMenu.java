@@ -78,6 +78,7 @@ public class ContextMenu
         confirm.addActionListener(handler.pickup.getButtonListener());
         confirm.addActionListener(handler.open.getButtonListener());
         confirm.addActionListener(handler.unlock.getButtonListener());
+        confirm.addActionListener(handler.endTurn.getButtonListener());
         confirm.setBounds(10, 200, 80, 30);
 
         menu = new JPanel();

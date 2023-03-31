@@ -308,9 +308,10 @@ public abstract class AbstractCharacter implements Subject {
         return effects;
     }
 
-    public void attack(AbstractCharacter enemyCharacter) {
+    public int attack(AbstractCharacter enemyCharacter) {
         int damage = this.currentWeapon.useWeapon();
         enemyCharacter.getDamage(damage);
+        return damage;
     }
 
     public void getDamage(int damage) {

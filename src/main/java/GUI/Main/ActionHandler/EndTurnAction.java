@@ -19,6 +19,5 @@ public class EndTurnAction extends ActionOption
     public void executeAction( int x, int y) {
         DialogBox.ConsoleOut("Spieler " + gameController.getRoundController().getActivePlayer().getId() + " ist am Zug");
         this.gameController.getRoundController().nextRound();
-//        this.gameController.getMap().getMainFrame().getStatusPanel().setActiveCharacter(gameController.getRoundController().getActivePlayer().getId());
     }
 }
