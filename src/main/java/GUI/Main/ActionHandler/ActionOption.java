@@ -1,5 +1,6 @@
 package GUI.Main.ActionHandler;
 
+import GUI.Main.MainFrame;
 import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
 
@@ -14,6 +15,7 @@ public class ActionOption
 
     protected Dungeon dungeon;
     protected GameController gameController;
+    protected MainFrame mainFrame;
 
     protected ButtonListener buttonListener = new ButtonListener();
 
@@ -38,10 +40,11 @@ public class ActionOption
         }
     }
 
-    public ActionOption(Dungeon dungeon, GameController gameController)
+    public ActionOption(Dungeon dungeon, GameController gameController, MainFrame mainframe)
     {
         this.dungeon = dungeon;
         this.gameController = gameController;
+        this.mainFrame = mainframe;
     }
 
     @Override

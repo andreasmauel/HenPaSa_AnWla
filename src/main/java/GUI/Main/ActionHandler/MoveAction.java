@@ -3,15 +3,16 @@ package GUI.Main.ActionHandler;
 import Characters.Player;
 import GUI.Main.CharacterPanel;
 import GUI.Main.DialogBox;
+import GUI.Main.MainFrame;
 import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
 import util.DistanceCalculator;
 
 public class MoveAction extends ActionOption
 {
-    public MoveAction(Dungeon dungeon, GameController gameController)
+    public MoveAction(Dungeon dungeon, GameController gameController, MainFrame mainframe)
     {
-        super(dungeon, gameController);
+        super(dungeon, gameController, mainframe);
         this.actionName = "Move";
         this.actionEvent = "MOVE";
     }
@@ -33,6 +34,7 @@ public class MoveAction extends ActionOption
 
                     character.setRemainingRange(character.getRemainingRange() - 0); //GEGANGENE RANGE MUSS NOCH ANGEGEBEN WERDEN
                     DialogBox.ConsoleOut("Shuffles to: " + x + " " + y);
+                    mainFrame.generateMap(dungeon);
                 }
                 else
                 {
