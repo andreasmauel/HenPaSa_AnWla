@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class RoundController {
     private ArrayList<Player> players;
     private ArrayList<Monster> monsters;
-    private ArrayList<AbstractCharacter> turnOrder;
+    private ArrayList<AbstractCharacter> turnOrder = new ArrayList<>();
     private int index = 0;
     private FightController fightController;
     private AbstractCharacter activeCharacter;
