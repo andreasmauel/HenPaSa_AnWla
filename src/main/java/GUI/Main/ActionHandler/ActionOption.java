@@ -30,12 +30,7 @@ public class ActionOption
             {
                 int x = Integer.parseInt(command[1]);
                 int y = Integer.parseInt(command[2]);
-                try {
-                    executeAction(x, y);
-                } catch (Exception exception) {
-                    System.out.println("HEY FEHLER HIER!!!!!!!!!");
-                }
-
+                executeAction(x, y);
             }
         }
     }
@@ -65,8 +60,7 @@ public class ActionOption
     {
         return buttonListener;
     }
-    public void executeAction(int x, int y) throws IOException {
-
+    public void executeAction(int x, int y) {
     }
 
 }
