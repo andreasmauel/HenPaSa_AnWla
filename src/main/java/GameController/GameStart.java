@@ -11,10 +11,7 @@ import equipment.armor.Armor;
 import equipment.armor.ChainMail;
 import equipment.armor.LeatherArmor;
 import equipment.armor.NoArmor;
-import equipment.weapon.Rapier;
-import equipment.weapon.Spear;
-import equipment.weapon.Sword;
-import equipment.weapon.Weapon;
+import equipment.weapon.*;
 import util.Attribute;
 
 import javax.swing.*;
@@ -135,10 +132,10 @@ public class GameStart {
                         JLabel chooseEquipment = new JLabel("Ausrüstung wählen");
                         chooseEquipment.setBounds(10, 165, 250, 20);
                         jPanel.add(chooseEquipment);
-                        JComboBox equipmentChoice1 = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Knüppel", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
+                        JComboBox equipmentChoice1 = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
                         equipmentChoice1.setBounds(10, 195, 250, 20);
                         jPanel.add(equipmentChoice1);
-                        JComboBox equipmentChoice2 = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Knüppel", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
+                        JComboBox equipmentChoice2 = new JComboBox(new String[]{"Dolch", "Wurfpfeil", "Handaxt", "Streitaxt", "Speer", "Schwert", "Degen", "Pfeil und Bogen"});
                         equipmentChoice2.setBounds(10, 225, 250, 20);
                         jPanel.add(equipmentChoice2);
                         JLabel chooseFightingStyle = new JLabel("Kampfstil wählen");
@@ -173,7 +170,41 @@ public class GameStart {
                                 ArrayList<Attribute> savingThrows = new ArrayList<Attribute>();
                                 savingThrows.add(Attribute.STRENGTH);
                                 savingThrows.add(Attribute.DEXTERITY);
-                                //ToDo Weapon Selection
+                                if(equipmentChoice1.getSelectedItem().toString() == "Dolch") {
+                                    Weapon primaryWeapon = new Dagger();
+                                } else if (equipmentChoice1.getSelectedItem().toString() == "Wurfpfeil") {
+                                    Weapon primaryWeapon = new Dart();
+                                } else if (equipmentChoice1.getSelectedItem().toString() == "Handaxt") {
+                                    Weapon primaryWeapon = new HandAxe();
+                                } else if (equipmentChoice1.getSelectedItem().toString() == "Streitaxt") {
+                                    Weapon primaryWeapon = new BattleAxe();
+                                } else if (equipmentChoice1.getSelectedItem().toString() == "Speer") {
+                                    Weapon primaryWeapon = new Spear();
+                                }else if (equipmentChoice1.getSelectedItem().toString() == "Schwert") {
+                                    Weapon primaryWeapon = new Sword();
+                                } else if (equipmentChoice1.getSelectedItem().toString() == "Degen") {
+                                    Weapon primaryWeapon = new Rapier();
+                                } else if(equipmentChoice1.getSelectedItem().toString() == "Pfeil und Bogen"){
+                                    Weapon primaryWeapon = new Bow();
+                                }
+
+                                if(equipmentChoice2.getSelectedItem().toString() == "Dolch") {
+                                    Weapon primaryWeapon = new Dagger();
+                                } else if (equipmentChoice2.getSelectedItem().toString() == "Wurfpfeil") {
+                                    Weapon primaryWeapon = new Dart();
+                                } else if (equipmentChoice2.getSelectedItem().toString() == "Handaxt") {
+                                    Weapon primaryWeapon = new HandAxe();
+                                } else if (equipmentChoice2.getSelectedItem().toString() == "Streitaxt") {
+                                    Weapon primaryWeapon = new BattleAxe();
+                                } else if (equipmentChoice2.getSelectedItem().toString() == "Speer") {
+                                    Weapon primaryWeapon = new Spear();
+                                }else if (equipmentChoice2.getSelectedItem().toString() == "Schwert") {
+                                    Weapon primaryWeapon = new Sword();
+                                } else if (equipmentChoice2.getSelectedItem().toString() == "Degen") {
+                                    Weapon primaryWeapon = new Rapier();
+                                } else if(equipmentChoice2.getSelectedItem().toString() == "Pfeil und Bogen"){
+                                    Weapon primaryWeapon = new Bow();
+                                }
                                 Weapon primaryWeapon = new Sword();
                                 Weapon secondaryWeapon = new Sword();
                                 FightingStyle fightingStyle;
