@@ -35,7 +35,7 @@ public class StartDungeon
 {
     private Dungeon dungeon;
     private MainFrame mainFrame;
-
+    private ArrayList<Monster> monsters = new ArrayList<>();
     public  StartDungeon(){
 
     }
@@ -146,28 +146,52 @@ public class StartDungeon
                 //SET MONSTERS
                 if(x==2 && y ==7 && generated[x][y] != true)
                 {
-                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
+                    Monster monster = new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger());
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER,monster);
                     generated[x][y] = true;
+                    monster.setxPosition(2);
+                    monster.setyPosition(7);
+                    monsters.add(monster);
                 }
                 if(x==3 && y ==4 && generated[x][y] != true)
                 {
-                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
+                    Monster monster2 = new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger());
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER, monster2);
                     generated[x][y] = true;
+                    monster2.setxPosition(3);
+                    monster2.setyPosition(4);
+                    monsters.add(monster2);
                 }
                 if(x==8 && y ==3 && generated[x][y] != true)
                 {
-                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
+                    Monster monster3 = new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger());
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER,monster3);
                     generated[x][y] = true;
+                    monster3.setxPosition(8);
+                    monster3.setyPosition(3);
+                    monsters.add(monster3);
                 }
                 if(x==10 && y ==5 && generated[x][y] != true)
                 {
-                    dungeon.setCharacterPos(x,y,TileType.MONSTER,new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger()));
+                    Monster monster4 = new Monster(5, "Goblin", 14, 10, 8, 10, 8, new Hobbit(), 5, 15, new LeatherArmor(), true, ViewDirection.SOUTH, new Dagger());
+                    dungeon.setCharacterPos(x,y,TileType.MONSTER, monster4);
                     generated[x][y] = true;
+                    monster4.setxPosition(10);
+                    monster4.setyPosition(5);
+                    monsters.add(monster4);
                 }
                 //SET MONSTERS
             }
         }
         mainFrame = new MainFrame(dungeon, gameController, players);
+        return dungeon;
+    }
+
+    public ArrayList<Monster> getMonsters() {
+        return monsters;
+    }
+
+    public Dungeon getDungeon() {
         return dungeon;
     }
 }

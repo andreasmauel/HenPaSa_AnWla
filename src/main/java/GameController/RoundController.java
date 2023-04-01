@@ -63,7 +63,7 @@ public class RoundController {
         this.monsters = monsters;
     }
 
-    public void nextRound() {
+    public int nextRound() {
         if (this.fightActive) {
             this.fightController.nextRound();
         }
@@ -85,6 +85,7 @@ public class RoundController {
             }
         }
         this.activeCharacter = this.turnOrder.get(this.index);
+        return this.activeCharacter.getId();
     }
 
     private boolean checkFight() {

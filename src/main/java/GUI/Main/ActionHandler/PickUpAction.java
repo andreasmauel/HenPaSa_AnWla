@@ -24,17 +24,21 @@ public class PickUpAction extends ActionOption
         if(dungeon.isInRange(this.gameController.getRoundController().getActivePlayer(), 1, x, y)) {
             if(dungeon.fieldSearch(x,y) == TileList.ARTIFACTS)
             {
-                this.gameController.getRoundController().getActivePlayer().getArtifact().add(dungeon.getArtifactPos(x,y).getArtifact());
-                DialogBox.ConsoleOut("You picked up a: "+dungeon.getArtifactPos(x,y).getArtifact().toString());
+                if(this.gameController.getRoundController().getActivePlayer().getArtifact().size() == 0) {
+                    this.gameController.getRoundController().getActivePlayer().setCurrentArtifact(dungeon.getArtifactPos(x,y).getArtifact());
+                }
+                this.gameController.getRoundController().getActivePlayer().addArtifact(dungeon.getArtifactPos(x,y).getArtifact());
+
+                DialogBox.ConsoleOut("You picked up a: "+dungeon.getArtifactPos(x,y).getArtifact().getClass().getSimpleName());
                 dungeon.deleteArtifactPos(x,y);
             }
             else if(dungeon.fieldSearch(x,y) == TileList.EQUIPMENT)
             {
                 if(dungeon.getEquipmentPos(x,y).getMetaData().getTileType() == TileType.WEAPON)
                 {
-                    this.gameController.getRoundController().getActivePlayer().getWeapons().add((Weapon) dungeon.getEquipmentPos(x,y).getEquipment());
+                    this.gameController.getRoundController().getActivePlayer().addWeapons((Weapon) dungeon.getEquipmentPos(x,y).getEquipment());
                 } else if (dungeon.getEquipmentPos(x,y).getMetaData().getTileType() == TileType.ARMOR) {
-                    this.gameController.getRoundController().getActivePlayer().getArmor().add((Armor) dungeon.getEquipmentPos(x, y).getEquipment());
+                    this.gameController.getRoundController().getActivePlayer().addArmor((Armor) dungeon.getEquipmentPos(x, y).getEquipment());
                 }
                 DialogBox.ConsoleOut("You picked up a: "+dungeon.getEquipmentPos(x,y).getEquipment().getName());
                 dungeon.deleteEquipmentPos(x,y);

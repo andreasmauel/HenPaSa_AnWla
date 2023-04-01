@@ -1,5 +1,6 @@
 package GameController;
 
+import Characters.AbstractCharacter;
 import Characters.Monster;
 import Characters.Player;
 import Characters.Races.Dwarf;
@@ -9,16 +10,18 @@ import Characters.classes.FightingStyle;
 import Characters.classes.Mage;
 import Characters.classes.Thief;
 import GameController.dices.*;
+import battlemap.AbstractPositions.CharacterPos;
 import battlemap.Dungeon.Dungeon;
 import battlemap.MapGeneration.StartDungeon;
 import equipment.armor.ChainMail;
 import equipment.weapon.*;
+import observer.Observer;
 import util.Attribute;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class GameController {
+public class GameController implements Observer {
 
 
     private ArrayList<Player> players = new ArrayList<Player>();
@@ -57,6 +60,10 @@ public class GameController {
         this.map = new StartDungeon();
         this.map.createMap(this.players, this);
         this.map.getMainFrame().getStatusPanel().setActiveCharacter(this.roundController.getActivePlayer().getId());
+        this.monster = new ArrayList<>(map.getMonsters());
+        System.out.println(players);
+        System.out.println(monster);
+        this.addCharacterToObserver();
     }
 
     public StartDungeon getMap() {
@@ -65,6 +72,15 @@ public class GameController {
 
     public void setMap(StartDungeon map) {
         this.map = map;
+    }
+
+    public void addCharacterToObserver() {
+        for(Player player : players) {
+            player.addObserver(this);
+        }
+        for(Monster monster : monster) {
+            monster.addObserver(this);
+        }
     }
 
     public void setPlayers(ArrayList<Player> players) {
@@ -121,5 +137,16 @@ public class GameController {
 
     public ArrayList<Monster> getMonster() {
         return monster;
+    }
+
+    @Override
+    public void update(AbstractCharacter character) {
+        System.out.println(character.getCurrentLifepoints());
+        if(character.getCurrentLifepoints() == 0) {
+            System.out.println(character.getX());
+            System.out.println(character.getY());
+            map.getDungeon().deleteCharacterPos(character.getX(), character.getY());
+            map.getMainFrame().generateMap(map.getDungeon());
+        }
     }
 }

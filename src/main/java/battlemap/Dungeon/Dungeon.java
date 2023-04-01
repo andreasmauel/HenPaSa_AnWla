@@ -11,7 +11,7 @@ import battlemap.Lockables.Door;
 import battlemap.Meta.TileType;
 import battlemap.Positions.*;
 import equipment.Equipment;
-import util.DistanceCalculator;
+import observer.Observer;
 
 public class Dungeon
 {
@@ -378,4 +378,6 @@ public class Dungeon
     public int getyMax() {
         return yMax;
     }
+
+
 }

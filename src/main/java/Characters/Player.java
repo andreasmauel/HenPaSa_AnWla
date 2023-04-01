@@ -80,8 +80,22 @@ public class Player extends AbstractCharacter {
     }
 
     public ArrayList<Artifact> getArtifact() {
-        return artifact;
+        return this.artifact;
     }
 
+    public void addWeapons(Weapon weapon) {
+        this.weapons.add(weapon);
+        notifyObserver();
+    }
 
+    public void addArmor(Armor armor) {
+        this.armor.add(armor);
+        notifyObserver();
+    }
+
+    public void addArtifact(Artifact artifact) {
+        this.artifact.add(artifact);
+        System.out.println(this.artifact);
+        notifyObserver();
+    }
 }

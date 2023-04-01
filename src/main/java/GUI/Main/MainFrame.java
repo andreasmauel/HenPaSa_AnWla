@@ -1,9 +1,11 @@
 package GUI.Main;
 
+import Characters.AbstractCharacter;
 import Characters.Player;
 import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
 import battlemap.Meta.TileType;
+import observer.Observer;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,13 +18,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MainFrame {
+public class MainFrame  {
     private JFrame jFrame = new JFrame();
     private JPanel dungeonPanel = new JPanel();
     private StatusFrame statusPanel = new StatusFrame();
     private DialogBox dialogBox = new DialogBox();
     private ContextMenu contextMenu = new ContextMenu();
     private Dungeon dungeon;
+
 
     private class MouseDetector extends MouseAdapter
     {

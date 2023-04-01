@@ -1,12 +1,12 @@
 package GUI.Main;
 
 import Artifact.Artifact;
+import Characters.AbstractCharacter;
 import Characters.Player;
 import Characters.classes.Mage;
 import equipment.armor.Armor;
 import equipment.weapon.Weapon;
 import observer.Observer;
-import util.Effect;
 
 import javax.swing.*;
 
@@ -45,7 +45,6 @@ public class CharacterPanel extends JPanel implements Observer {
     JLabel ac;
     JLabel mov;
     JLabel maxMov;
-
 
 
     JComboBox weapons;
@@ -104,10 +103,10 @@ public class CharacterPanel extends JPanel implements Observer {
         str = new JLabel("STR: " + player.getStrength());
         str.setForeground(Color.WHITE);
         playerStats.add(str);
-        dex = new JLabel("DEX: "+ player.getDexterity());
+        dex = new JLabel("DEX: " + player.getDexterity());
         dex.setForeground(Color.WHITE);
         playerStats.add(dex);
-        wis = new JLabel("WIS: "+ player.getWisdom());
+        wis = new JLabel("WIS: " + player.getWisdom());
         wis.setForeground(Color.WHITE);
         playerStats.add(wis);
         inte = new JLabel("INT: " + player.getInitiative());
@@ -119,7 +118,7 @@ public class CharacterPanel extends JPanel implements Observer {
         ac = new JLabel("AC: " + player.getArmorClass());
         ac.setForeground(Color.WHITE);
         playerStats.add(ac);
-        mov = new JLabel("MOV: " + player.getRemainingRange());
+        mov = new JLabel("MOV: " + player.getRemainingWalkingRange());
         mov.setForeground(Color.WHITE);
         playerStats.add(mov);
         maxMov = new JLabel("Max MOV: " + player.getWalkingrange());
@@ -163,19 +162,19 @@ public class CharacterPanel extends JPanel implements Observer {
 
 
         weapons.addItemListener(e -> {
-            if(e.getStateChange() == ItemEvent.SELECTED) {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
                 player.setCurrentWeapon((Weapon) e.getItem());
                 System.out.println(e.getItem());
             }
         });
 
         armor.addItemListener(e -> {
-            if(e.getStateChange() == ItemEvent.SELECTED) {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
                 player.setCurrentarmor((Armor) e.getItem());
             }
         });
         artifact.addItemListener(e -> {
-            if(e.getStateChange() == ItemEvent.SELECTED) {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
                 player.setCurrentArtifact((Artifact) e.getItem());
             }
         });
@@ -222,7 +221,7 @@ public class CharacterPanel extends JPanel implements Observer {
     }
 
     @Override
-    public void update() {
+    public void update(AbstractCharacter character) {
         updateAllValues();
 
 //        System.out.println(player.getCurrentWeapon().getName());
@@ -230,27 +229,27 @@ public class CharacterPanel extends JPanel implements Observer {
 
     private void updateAllValues() {
 
-         playerName.setText("Name: " + player.getName());
-         level.setText("Level: 1");
-         race.setText("Race: " + player.getRaceName());
-         clazz.setText("Class: " + player.getClazzName());
-         hp.setText("HP: " + player.getCurrentLifepoints());
-         hpMax.setText("Max HP: " + player.getMaxLifePoints());
-         str.setText("STR: " + player.getStrength());
-         dex.setText("DEX: " + player.getDexterity());
-         wis.setText("WIS: " + player.getWisdom());
-         inte.setText("INT: " + player.getIntelligence());
-         con.setText("CON: " + player.getConstitution());
-         ac.setText("AC: " + player.getArmorClass());
-         mov.setText("MOV: " + player.getRemainingRange());
-         maxMov.setText("Max Mov: " + player.getWalkingrange());
+        playerName.setText("Name: " + player.getName());
+        level.setText("Level: 1");
+        race.setText("Race: " + player.getRaceName());
+        clazz.setText("Class: " + player.getClazzName());
+        hp.setText("HP: " + player.getCurrentLifepoints());
+        hpMax.setText("Max HP: " + player.getMaxLifePoints());
+        str.setText("STR: " + player.getStrength());
+        dex.setText("DEX: " + player.getDexterity());
+        wis.setText("WIS: " + player.getWisdom());
+        inte.setText("INT: " + player.getIntelligence());
+        con.setText("CON: " + player.getConstitution());
+        ac.setText("AC: " + player.getArmorClass());
+        mov.setText("MOV: " + player.getRemainingWalkingRange());
+        maxMov.setText("Max Mov: " + player.getWalkingrange());
 
 
-         Weapon safeCurrentWeapon = player.getCurrentWeapon();
-         weapons.removeAllItems();
-         fillComboBox(weapons, player.getWeapons());
-         player.setCurrentWeapon(safeCurrentWeapon);
-         weapons.setSelectedItem(player.getCurrentWeapon());
+        Weapon safeCurrentWeapon = player.getCurrentWeapon();
+        weapons.removeAllItems();
+        fillComboBox(weapons, player.getWeapons());
+        player.setCurrentWeapon(safeCurrentWeapon);
+        weapons.setSelectedItem(player.getCurrentWeapon());
 
         Armor safeCurrentArmor = player.getCurrentarmor();
         armor.removeAllItems();
@@ -259,19 +258,23 @@ public class CharacterPanel extends JPanel implements Observer {
         armor.setSelectedItem(player.getCurrentarmor());
 
         Artifact safeCurrentArtifact = player.getCurrentArtifact();
-        artifact.removeAllItems();
-        fillComboBox(artifact, player.getArtifact());
-        player.setCurrentArtifact(safeCurrentArtifact);
-        artifact.setSelectedItem(player.getCurrentArtifact());
-
-        if(player.getClazz() instanceof Mage) {
+        if(safeCurrentArtifact != null) {
+            artifact.removeAllItems();
+            fillComboBox(artifact, player.getArtifact());
+            if (artifact.getItemCount() != 0) {
+                artifact.setRenderer(new MyComboBoxRenderer());
+            }
+            player.setCurrentArtifact(safeCurrentArtifact);
+            artifact.setSelectedItem(player.getCurrentArtifact());
+        }
+        if (player.getClazz() instanceof Mage) {
             spells.removeAllItems();
             fillComboBox(spells, ((Mage) player.getClazz()).getSpells());
         }
     }
 
     private void fillComboBox(JComboBox box, List<? extends Object> list) {
-        for(Object object : list) {
+        for (Object object : list) {
             box.addItem(object);
         }
     }
@@ -280,6 +283,7 @@ public class CharacterPanel extends JPanel implements Observer {
         @Override
         public Component getListCellRendererComponent(JList<? extends Object> list, Object value, int index,
                                                       boolean isSelected, boolean cellHasFocus) {
+
             Component component = new JLabel(value.getClass().getSimpleName());
             if (isSelected) {
                 component.setBackground(list.getSelectionBackground());

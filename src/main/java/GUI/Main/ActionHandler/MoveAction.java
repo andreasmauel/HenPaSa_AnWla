@@ -1,12 +1,10 @@
 package GUI.Main.ActionHandler;
 
 import Characters.Player;
-import GUI.Main.CharacterPanel;
 import GUI.Main.DialogBox;
 import GUI.Main.MainFrame;
 import GameController.GameController;
 import battlemap.Dungeon.Dungeon;
-import util.DistanceCalculator;
 
 public class MoveAction extends ActionOption
 {
@@ -21,7 +19,7 @@ public class MoveAction extends ActionOption
     public void executeAction( int x, int y)
     {
         Player character = this.gameController.getRoundController().getActivePlayer();
-        if(character.getRemainingRange() > 0) {
+        if(character.getRemainingWalkingRange() > 0) {
             boolean isInRange = dungeon.isInRange(character, character.getWalkingrange(), x, y);
             if(isInRange) {
                 if(dungeon.getCharacterByEntity(character) != null) {
@@ -35,8 +33,8 @@ public class MoveAction extends ActionOption
 
                     int range =  diffX + diffY;
 
-                    if(range <= character.getRemainingRange()) {
-                        character.setRemainingRange(character.getRemainingRange() - range);
+                    if(range <= character.getRemainingWalkingRange()) {
+                        character.setRemainingWalkingRange(character.getRemainingWalkingRange() - range);
                         character.setxPosition(x);
                         character.setyPosition(y);
                         dungeon.transferCharacterPos(x, y, dungeon.getCharacterByEntity(character));
