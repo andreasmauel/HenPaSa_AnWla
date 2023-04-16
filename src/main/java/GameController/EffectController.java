@@ -87,8 +87,8 @@ public class EffectController {
             duration--;
             if (duration == 0) {
                 switch (entry.getKey()) {
-                    case ARMOR -> this.character.setArmorClass(this.character.getArmorClass() - 2);
-                    case SLEEP -> this.isSleepActive = false;
+                    case ARMOR: this.character.setArmorClass(this.character.getArmorClass() - 2);
+                    case SLEEP: this.isSleepActive = false;
                 }
                 this.effects.remove(entry.getKey());
             } else {

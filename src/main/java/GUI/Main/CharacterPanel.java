@@ -153,12 +153,12 @@ public class CharacterPanel extends JPanel implements Observer {
         } else {
             artifact = new JComboBox();
         }
-        if (this.player.getClazz() instanceof Mage) {
-            spells = new JComboBox(((Mage) this.player.getClazz()).getSpells().toArray());
-            spells.setRenderer(new MyComboBoxRenderer());
-        } else {
-            spells = new JComboBox();
-        }
+//        if (this.player.getClazz() instanceof Mage) {
+//            spells = new JComboBox(((Mage) this.player.getClazz()).getSpells().toArray());
+//            spells.setRenderer(new MyComboBoxRenderer());
+//        } else {
+//            spells = new JComboBox();
+//        }
 
 
         weapons.addItemListener(e -> {
@@ -181,7 +181,7 @@ public class CharacterPanel extends JPanel implements Observer {
         activeEquipment.add(weapons);
         activeEquipment.add(armor);
         activeEquipment.add(artifact);
-        activeEquipment.add(spells);
+//        activeEquipment.add(spells);
         activeEquipment.add(createEffectsPanel());
         disableComponents(activeEquipment, active);
 
@@ -267,10 +267,10 @@ public class CharacterPanel extends JPanel implements Observer {
             player.setCurrentArtifact(safeCurrentArtifact);
             artifact.setSelectedItem(player.getCurrentArtifact());
         }
-        if (player.getClazz() instanceof Mage) {
-            spells.removeAllItems();
-            fillComboBox(spells, ((Mage) player.getClazz()).getSpells());
-        }
+//        if (player.getClazz() instanceof Mage) {
+//            spells.removeAllItems();
+//            fillComboBox(spells, ((Mage) player.getClazz()).getSpells());
+//        }
     }
 
     private void fillComboBox(JComboBox box, List<? extends Object> list) {

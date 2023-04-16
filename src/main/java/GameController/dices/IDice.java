@@ -9,7 +9,7 @@ public abstract class IDice {
 
     public abstract int rollDice();
 
-    public int rollDiceAdvantage(){
+    public int rollDiceAdvantage() {
         int x = rollDice(), y = rollDice();
         if (x > y) {
             return x;
@@ -18,7 +18,7 @@ public abstract class IDice {
         }
     }
 
-    public int rollDiceDisadvantage(){
+    public int rollDiceDisadvantage() {
         int x = rollDice(), y = rollDice();
         if (x > y) {
             return y;
@@ -27,8 +27,8 @@ public abstract class IDice {
         }
     }
 
-    public DiceSites getDiceSites(){
+    public DiceSites getDiceSites() {
         return diceSites;
     }
-    }
+}
 
