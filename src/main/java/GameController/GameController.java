@@ -47,23 +47,23 @@ public class GameController implements Observer {
     }
 
     public void gameStart() throws InterruptedException {
-//        players.addAll(gameStart.run());
+        players.addAll(gameStart.run(this));
         Player player1 = new Player(1, "Dave", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Dart());
         Player player2 = new Player(2, "Berta", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Bow());
         Player player3 = new Player(3, "Hans", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Bow());
         Player player4 = new Player(4, "Guenter", 10, 10, 10, 10, 10, new Dwarf(), 10, 10, new ChainMail(), true, ViewDirection.NORTH,  new Thief(), new Bow());
-        this.players.add(player1);
-        this.players.add(player2);
-        this.players.add(player3);
-        this.players.add(player4);
-        this.roundController = new RoundController(players, monster, this);
-        this.map = new StartDungeon();
-        this.map.createMap(this.players, this);
-        this.map.getMainFrame().getStatusPanel().setActiveCharacter(this.roundController.getActivePlayer().getId());
-        this.monster = new ArrayList<>(map.getMonsters());
+        //this.players.add(player1);
+        //this.players.add(player2);
+        //this.players.add(player3);
+        //this.players.add(player4);
+        //this.roundController = new RoundController(players, monster, this);
+        //this.map = new StartDungeon();
+        //this.map.createMap(this.players, this);
+        //this.map.getMainFrame().getStatusPanel().setActiveCharacter(this.roundController.getActivePlayer().getId());
+        //this.monster = new ArrayList<>(map.getMonsters());
         System.out.println(players);
         System.out.println(monster);
-        this.addCharacterToObserver();
+        //this.addCharacterToObserver();
     }
 
     public StartDungeon getMap() {

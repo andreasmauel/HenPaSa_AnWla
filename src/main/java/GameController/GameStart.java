@@ -7,6 +7,7 @@ import Characters.Races.Human;
 import Characters.Races.Race;
 import Characters.ViewDirection;
 import Characters.classes.*;
+import battlemap.MapGeneration.StartDungeon;
 import equipment.armor.Armor;
 import equipment.armor.ChainMail;
 import equipment.armor.LeatherArmor;
@@ -29,8 +30,11 @@ public class GameStart {
     private final String CHOOSE_CLASS = "Choose a class for your Character";
     private final String CONFIGURE_PLAYER_CHAR = "";
     private final String GAME_TITLE = "Dungeon Crawler";
+
+    private GameController gameController;
     private ArrayList<Player> players = new ArrayList<>();
-    public ArrayList<Player> run(){
+    public ArrayList<Player> run(GameController gameController){
+        this.gameController = gameController;
         gameStartScreen();
         return this.players;
     }
@@ -265,7 +269,7 @@ public class GameStart {
                                 Armor armor = new LeatherArmor();
                                 int walkingRange = 5;
                                 Thief thief = new Thief();
-                                Player player = new Player(count, nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief, new Rapier());
+                                Player player = new Player(count +1, nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, thief, new Rapier());
                                 players.add(count, player);
                                 jDialog.setVisible(false);
                                 jDialog.dispatchEvent(new WindowEvent(
@@ -323,7 +327,7 @@ public class GameStart {
                                 else
                                     secondary = Attribute.DEXTERITY;
                                 Mage mage = new Mage(secondary);
-                                Player player = new Player(count, nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, mage, new Spear());
+                                Player player = new Player(count +1, nameSelection.getText(), dexterity, intelligence, strength, constitution, wisdom, race, walkingRange, armorClass, armor, true, ViewDirection.NORTH, mage, new Spear());
                                 players.add(count, player);
                                 jDialog.setVisible(false);
                                 jDialog.dispatchEvent(new WindowEvent(
@@ -364,6 +368,15 @@ public class GameStart {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (players.get(0) != null && players.get(1) != null && players.get(2) != null ) {
+                    RoundController roundController = new RoundController(players, gameController.getMonster(), gameController);
+                    gameController.setRoundController(roundController);
+                    StartDungeon map = new StartDungeon();
+                    map.createMap(players, gameController);
+                    map.getMainFrame().getStatusPanel().setActiveCharacter(roundController.getActivePlayer().getId());
+                    System.out.println(roundController.getActivePlayer().getId());
+                    gameController.setMap(map);
+                    gameController.setMonster(new ArrayList<>(map.getMonsters()));
+                    gameController.addCharacterToObserver();
                     jFrame.setVisible(false);
                     jFrame.dispatchEvent(new WindowEvent(
                             jFrame, WindowEvent.WINDOW_CLOSING));
