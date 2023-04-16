@@ -78,7 +78,7 @@ public class GameStart {
         JLabel classSelectionLabel = new JLabel(this.CHOOSE_CLASS);
         classSelectionLabel.setBounds(25, 150, 300, 40);
         jPanel.add(classSelectionLabel);
-        JComboBox classSelection = new JComboBox(new String[]{"", "Kämpfer", "Zauberer", "Dieb"});
+        JComboBox classSelection = new JComboBox(new String[]{"", "Kämpfer (funktioniert beim Spielstart nicht!)", "Zauberer", "Dieb"});
         classSelection.setBounds(25, 200, 300, 40);
         jPanel.add(classSelection);
         JLabel raceSelectionLabel = new JLabel(this.CHOOSE_RACE);
